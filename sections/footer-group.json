@@ -1,0 +1,1 @@
+{"type":"footer","name":"t:names.footer","sections":{"genetix_footer":{"type":"genetix-footer","blocks":{"shop":{"type":"links","settings":{"heading":"Shop"}},"support":{"type":"links","settings":{"heading":"Customer care"}},"company":{"type":"links","settings":{"heading":"Company"}}},"block_order":["shop","support","company"],"settings":{}}},"order":["genetix_footer"]}

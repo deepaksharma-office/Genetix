@@ -1,0 +1,17 @@
+{{ 'genetix-base.css' | asset_url | stylesheet_tag }}
+{{ 'genetix-hero.css' | asset_url | stylesheet_tag }}
+<section class="genetix genetix-hero" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-overlay:{{ section.settings.overlay }};--gx-overlay-opacity:{{ section.settings.overlay_opacity | divided_by: 100.0 }};--gx-min-height:{{ section.settings.min_height }}px;--gx-min-height-mobile:{{ section.settings.mobile_min_height }}px">
+  <picture class="genetix-hero__background">
+    {% if section.settings.mobile_image != blank %}<source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 900 }}">{% endif %}
+    {% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 2400 | image_tag: widths: '750,1100,1500,2000,2400', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.image_alt }}{% endif %}
+  </picture>
+  <span class="genetix-hero__overlay"></span>
+  <div class="genetix__inner"><div class="genetix-hero__content" style="text-align:{{ section.settings.alignment }}">
+    {% if section.settings.eyebrow != blank %}<p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+    <h1>{{ section.settings.heading | escape }}</h1>
+    {% if section.settings.text != blank %}<div class="genetix__copy">{{ section.settings.text }}</div>{% endif %}
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}<a class="genetix__button" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>{% endif %}
+  </div></div>
+  {% if section.settings.product_image != blank %}{{ section.settings.product_image | image_url: width: 700 | image_tag: class: 'genetix-hero__product', widths: '240,360,500,700', alt: section.settings.product_alt }}{% endif %}
+</section>
+{% schema %}{"name":"GENETIX hero","settings":[{"type":"image_picker","id":"image","label":"Desktop background"},{"type":"image_picker","id":"mobile_image","label":"Mobile background"},{"type":"text","id":"image_alt","label":"Background image alt text"},{"type":"image_picker","id":"product_image","label":"Foreground product image"},{"type":"text","id":"product_alt","label":"Product image alt text"},{"type":"text","id":"eyebrow","label":"Eyebrow","default":"THE SCIENCE OF SCALP"},{"type":"text","id":"heading","label":"Heading","default":"Clinical peptide science. Uncompromised quality. Superior bioavailability."},{"type":"richtext","id":"text","label":"Text","default":"<p>Targeted support for healthier-looking hair and scalp.</p>"},{"type":"text","id":"button_label","label":"Button label","default":"Shop now"},{"type":"url","id":"button_link","label":"Button link"},{"type":"text_alignment","id":"alignment","label":"Text alignment","default":"left"},{"type":"color","id":"background","label":"Background","default":"#eaf5fa"},{"type":"color","id":"text_color","label":"Text","default":"#173c48"},{"type":"color","id":"overlay","label":"Overlay","default":"#ffffff"},{"type":"range","id":"overlay_opacity","label":"Overlay opacity","min":0,"max":90,"step":5,"unit":"%","default":10},{"type":"range","id":"min_height","label":"Desktop minimum height","min":360,"max":900,"step":20,"unit":"px","default":560},{"type":"range","id":"mobile_min_height","label":"Mobile minimum height","min":420,"max":900,"step":20,"unit":"px","default":620}],"presets":[{"name":"GENETIX hero"}]}{% endschema %}
