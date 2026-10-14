@@ -2,7 +2,7 @@
 
 {% liquid
   assign section_id = 'ImageTextOffer-' | append: section.id
-  assign background_type = section.settings.background_type
+  assign mobile_image_after = section.settings.mobile_image_after_block
 %}
 
 <section
@@ -11,15 +11,13 @@
     image-text-offer
     image-text-offer--image-{{ section.settings.image_position }}
     image-text-offer--align-{{ section.settings.vertical_alignment }}
-    image-text-offer--mobile-{{ section.settings.mobile_layout }}
-    image-text-offer--bg-{{ background_type }}
+    image-text-offer--bg-{{ section.settings.background_type }}
   "
   style="
     --ito-max-width: {{ section.settings.max_width }}px;
 
     --ito-padding-top: {{ section.settings.padding_top }}px;
     --ito-padding-bottom: {{ section.settings.padding_bottom }}px;
-
     --ito-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
     --ito-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
 
@@ -27,39 +25,45 @@
     --ito-side-padding-mobile: {{ section.settings.side_padding_mobile }}px;
 
     --ito-column-gap: {{ section.settings.column_gap }}px;
-    --ito-mobile-gap: {{ section.settings.mobile_gap }}px;
-
     --ito-content-width: {{ section.settings.content_width }}%;
     --ito-image-width: {{ section.settings.image_width }}%;
 
-    --ito-background-color: {{ section.settings.background_color }};
-    --ito-background-gradient: {{ section.settings.background_gradient }};
+    --ito-bg-color: {{ section.settings.background_color }};
+    --ito-bg-gradient: {{ section.settings.background_gradient }};
 
-    --ito-bg-overlay: {{ section.settings.background_overlay_opacity | divided_by: 100.0 }};
+    --ito-overlay-color: {{ section.settings.background_overlay_color }};
+    --ito-overlay-opacity: {{ section.settings.background_overlay_opacity | divided_by: 100.0 }};
+
+    --ito-main-image-width: {{ section.settings.main_image_max_width }}px;
+    --ito-main-image-width-mobile: {{ section.settings.main_image_width_mobile }}%;
 
     --ito-divider-color: {{ section.settings.divider_color }};
     --ito-divider-opacity: {{ section.settings.divider_opacity | divided_by: 100.0 }};
-    --ito-divider-margin-top: {{ section.settings.divider_margin_top }}px;
-    --ito-divider-margin-bottom: {{ section.settings.divider_margin_bottom }}px;
+    --ito-divider-top: {{ section.settings.divider_margin_top }}px;
+    --ito-divider-bottom: {{ section.settings.divider_margin_bottom }}px;
 
     --ito-footer-color: {{ section.settings.footer_text_color }};
     --ito-footer-size: {{ section.settings.footer_text_size }}px;
 
-    --ito-main-image-max-width: {{ section.settings.main_image_max_width }}px;
+    --ito-floating-width: {{ section.settings.floating_image_width }}px;
+    --ito-floating-width-mobile: {{ section.settings.floating_image_width_mobile }}px;
 
-    --ito-float-width: {{ section.settings.floating_image_width }}px;
-    --ito-float-width-mobile: {{ section.settings.floating_image_width_mobile }}px;
-    --ito-float-x: {{ section.settings.floating_image_x }}px;
-    --ito-float-y: {{ section.settings.floating_image_y }}px;
-    --ito-float-opacity: {{ section.settings.floating_image_opacity | divided_by: 100.0 }};
-    --ito-float-z: {{ section.settings.floating_image_z_index }};
+    --ito-floating-x: {{ section.settings.floating_image_x }}%;
+    --ito-floating-y: {{ section.settings.floating_image_y }}%;
+
+    --ito-floating-opacity: {{ section.settings.floating_image_opacity | divided_by: 100.0 }};
+    --ito-floating-z: {{ section.settings.floating_image_z_index }};
   "
 >
-  {% if background_type == 'image' and section.settings.background_image != blank %}
+
+  {% if section.settings.background_type == 'image'
+    and section.settings.background_image != blank
+  %}
     <div
       class="image-text-offer__background"
       style="
-        background-image: url('{{ section.settings.background_image | image_url: width: 3000 }}');
+        background-image:
+          url('{{ section.settings.background_image | image_url: width: 3000 }}');
         background-position: {{ section.settings.background_position }};
       "
       aria-hidden="true"
@@ -68,20 +72,21 @@
     {% if section.settings.background_overlay_opacity > 0 %}
       <div
         class="image-text-offer__background-overlay"
-        style="background: {{ section.settings.background_overlay_color }};"
         aria-hidden="true"
       ></div>
     {% endif %}
   {% endif %}
 
+
+  {% comment %}
+    DESKTOP FLOATING IMAGE
+  {% endcomment %}
+
   {% if section.settings.floating_image != blank %}
     <div
       class="
-        image-text-offer__floating-image
-        image-text-offer__floating-image--{{ section.settings.floating_image_position }}
-        {% unless section.settings.show_floating_image_mobile %}
-          image-text-offer__floating-image--hide-mobile
-        {% endunless %}
+        image-text-offer__floating
+        image-text-offer__floating--desktop
       "
       aria-hidden="true"
     >
@@ -91,59 +96,104 @@
         | image_tag:
           loading: 'lazy',
           widths: '150, 250, 350, 500, 700, 900, 1200',
-          sizes: '(max-width: 749px) 250px, 500px',
           class: 'image-text-offer__floating-img'
       }}
     </div>
   {% endif %}
+
 
   <div class="image-text-offer__inner">
 
     <div class="image-text-offer__main">
 
       <div class="image-text-offer__content">
+
         <div class="image-text-offer__blocks">
 
+          {% comment %}
+            MOBILE IMAGE BEFORE ALL BLOCKS
+          {% endcomment %}
+
+          {% if mobile_image_after == 0
+            and section.settings.image != blank
+          %}
+            <div class="image-text-offer__mobile-main-image">
+              <div
+                class="
+                  image-text-offer__image-wrapper
+                  image-text-offer__image-wrapper--{{ section.settings.image_fit }}
+                "
+              >
+                {{
+                  section.settings.image
+                  | image_url: width: 1600
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '300, 500, 700, 900, 1200, 1600',
+                    sizes: '100vw',
+                    class: 'image-text-offer__image'
+                }}
+              </div>
+            </div>
+          {% endif %}
+
+
           {% for block in section.blocks %}
+
             {% case block.type %}
 
               {% when 'title' %}
-                {% liquid
-                  assign title_tag = block.settings.tag
-                %}
 
                 <div
-                  class="image-text-offer__block image-text-offer__title-block"
+                  class="
+                    image-text-offer__block
+                    image-text-offer__title-block
+                  "
                   style="
                     --block-color: {{ block.settings.color }};
                     --block-bold-color: {{ block.settings.bold_color }};
+
                     --block-size: {{ block.settings.font_size }}px;
                     --block-size-mobile: {{ block.settings.font_size_mobile }}px;
+
                     --block-weight: {{ block.settings.font_weight }};
                     --block-line-height: {{ block.settings.line_height | divided_by: 100.0 }};
-                    --block-spacing-bottom: {{ block.settings.spacing_bottom }}px;
+
                     --block-letter-spacing: {{ block.settings.letter_spacing | divided_by: 10.0 }}px;
+
+                    --block-spacing-bottom: {{ block.settings.spacing_bottom }}px;
+                    --block-spacing-bottom-mobile: {{ block.settings.spacing_bottom_mobile }}px;
                   "
                   {{ block.shopify_attributes }}
                 >
                   {% if block.settings.title != blank %}
-                    <{{ title_tag }} class="image-text-offer__title">
+                    <{{ block.settings.tag }}
+                      class="image-text-offer__title"
+                    >
                       {{ block.settings.title }}
-                    </{{ title_tag }}>
+                    </{{ block.settings.tag }}>
                   {% endif %}
                 </div>
 
 
               {% when 'text' %}
+
                 <div
-                  class="image-text-offer__block image-text-offer__text-block"
+                  class="
+                    image-text-offer__block
+                    image-text-offer__text-block
+                  "
                   style="
                     --block-color: {{ block.settings.color }};
                     --block-bold-color: {{ block.settings.bold_color }};
+
                     --block-size: {{ block.settings.font_size }}px;
                     --block-size-mobile: {{ block.settings.font_size_mobile }}px;
+
                     --block-line-height: {{ block.settings.line_height | divided_by: 100.0 }};
+
                     --block-spacing-bottom: {{ block.settings.spacing_bottom }}px;
+                    --block-spacing-bottom-mobile: {{ block.settings.spacing_bottom_mobile }}px;
                   "
                   {{ block.shopify_attributes }}
                 >
@@ -156,6 +206,7 @@
 
 
               {% when 'button' %}
+
                 <div
                   class="
                     image-text-offer__block
@@ -163,27 +214,31 @@
                     image-text-offer__button-block--{{ block.settings.alignment }}
                   "
                   style="
-                    --button-background: {{ block.settings.background_color }};
+                    --button-bg: {{ block.settings.background_color }};
                     --button-text: {{ block.settings.text_color }};
                     --button-icon: {{ block.settings.icon_color }};
                     --button-border: {{ block.settings.border_color }};
+
                     --button-border-width: {{ block.settings.border_width }}px;
                     --button-radius: {{ block.settings.border_radius }}px;
 
-                    --button-font-size: {{ block.settings.font_size }}px;
-                    --button-font-size-mobile: {{ block.settings.font_size_mobile }}px;
+                    --button-size: {{ block.settings.font_size }}px;
+                    --button-size-mobile: {{ block.settings.font_size_mobile }}px;
 
-                    --button-padding-x: {{ block.settings.padding_horizontal }}px;
-                    --button-padding-y: {{ block.settings.padding_vertical }}px;
+                    --button-pad-x: {{ block.settings.padding_horizontal }}px;
+                    --button-pad-y: {{ block.settings.padding_vertical }}px;
 
                     --button-icon-size: {{ block.settings.icon_size }}px;
-                    --button-gap: {{ block.settings.icon_gap }}px;
+                    --button-icon-gap: {{ block.settings.icon_gap }}px;
 
                     --block-spacing-bottom: {{ block.settings.spacing_bottom }}px;
+                    --block-spacing-bottom-mobile: {{ block.settings.spacing_bottom_mobile }}px;
                   "
                   {{ block.shopify_attributes }}
                 >
+
                   {% if block.settings.label != blank %}
+
                     <a
                       {% if block.settings.link != blank %}
                         href="{{ block.settings.link }}"
@@ -191,13 +246,20 @@
                         role="link"
                         aria-disabled="true"
                       {% endif %}
+
                       class="image-text-offer__button"
-                      {% if block.settings.open_new_tab and block.settings.link != blank %}
+
+                      {% if block.settings.open_new_tab
+                        and block.settings.link != blank
+                      %}
                         target="_blank"
                         rel="noopener noreferrer"
                       {% endif %}
                     >
-                      <span>{{ block.settings.label }}</span>
+
+                      <span>
+                        {{ block.settings.label }}
+                      </span>
 
                       {% if block.settings.show_icon %}
                         <span class="image-text-offer__button-icon">
@@ -211,18 +273,83 @@
                           </svg>
                         </span>
                       {% endif %}
+
                     </a>
+
                   {% endif %}
+
                 </div>
 
             {% endcase %}
+
+
+            {% comment %}
+              MAIN IMAGE INSERTED BETWEEN MOBILE BLOCKS
+            {% endcomment %}
+
+            {% if forloop.index == mobile_image_after
+              and section.settings.image != blank
+            %}
+              <div class="image-text-offer__mobile-main-image">
+                <div
+                  class="
+                    image-text-offer__image-wrapper
+                    image-text-offer__image-wrapper--{{ section.settings.image_fit }}
+                  "
+                >
+                  {{
+                    section.settings.image
+                    | image_url: width: 1600
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '300, 500, 700, 900, 1200, 1600',
+                      sizes: '100vw',
+                      class: 'image-text-offer__image'
+                  }}
+                </div>
+              </div>
+            {% endif %}
+
           {% endfor %}
 
+
+          {% comment %}
+            STACKED FLOATING IMAGE ON MOBILE
+          {% endcomment %}
+
+          {% if section.settings.floating_image != blank
+            and section.settings.show_floating_image_mobile
+          %}
+            <div
+              class="
+                image-text-offer__floating-mobile
+                image-text-offer__floating-mobile--{{ section.settings.floating_mobile_alignment }}
+              "
+            >
+              {{
+                section.settings.floating_image
+                | image_url: width: 1000
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '150, 250, 350, 500, 700, 1000',
+                  class: 'image-text-offer__floating-img'
+              }}
+            </div>
+          {% endif %}
+
         </div>
+
       </div>
 
+
+      {% comment %}
+        DESKTOP MAIN IMAGE
+      {% endcomment %}
+
       <div class="image-text-offer__media">
+
         {% if section.settings.image != blank %}
+
           <div
             class="
               image-text-offer__image-wrapper
@@ -239,16 +366,22 @@
                 class: 'image-text-offer__image'
             }}
           </div>
+
         {% else %}
+
           <div class="image-text-offer__placeholder">
             {{ 'image' | placeholder_svg_tag }}
           </div>
+
         {% endif %}
+
       </div>
 
     </div>
 
+
     {% if section.settings.show_footer %}
+
       <div class="image-text-offer__footer">
 
         {% if section.settings.show_divider %}
@@ -261,6 +394,7 @@
             image-text-offer__footer-content--{{ section.settings.footer_alignment_mobile }}
           "
         >
+
           {% if section.settings.disclaimer != blank %}
             <div class="image-text-offer__disclaimer rte">
               {{ section.settings.disclaimer }}
@@ -272,13 +406,17 @@
               {{ section.settings.footer_right_text }}
             </div>
           {% endif %}
+
         </div>
 
       </div>
+
     {% endif %}
 
   </div>
+
 </section>
+
 
 {% schema %}
 {
@@ -303,7 +441,7 @@
     {
       "type": "select",
       "id": "image_position",
-      "label": "Image position",
+      "label": "Desktop image position",
       "options": [
         {
           "value": "right",
@@ -319,7 +457,7 @@
     {
       "type": "select",
       "id": "vertical_alignment",
-      "label": "Content vertical alignment",
+      "label": "Desktop vertical alignment",
       "options": [
         {
           "value": "top",
@@ -337,25 +475,9 @@
       "default": "center"
     },
     {
-      "type": "select",
-      "id": "mobile_layout",
-      "label": "Mobile layout",
-      "options": [
-        {
-          "value": "content-first",
-          "label": "Content first"
-        },
-        {
-          "value": "image-first",
-          "label": "Image first"
-        }
-      ],
-      "default": "content-first"
-    },
-    {
       "type": "range",
       "id": "content_width",
-      "label": "Content width",
+      "label": "Desktop content width",
       "min": 30,
       "max": 70,
       "step": 1,
@@ -365,32 +487,22 @@
     {
       "type": "range",
       "id": "image_width",
-      "label": "Image width",
+      "label": "Desktop image width",
       "min": 30,
       "max": 70,
       "step": 1,
       "unit": "%",
-      "default": 45
+      "default": 40
     },
     {
       "type": "range",
       "id": "column_gap",
       "label": "Desktop column gap",
       "min": 0,
-      "max": 150,
+      "max": 120,
       "step": 2,
       "unit": "px",
-      "default": 50
-    },
-    {
-      "type": "range",
-      "id": "mobile_gap",
-      "label": "Mobile content/image gap",
-      "min": 0,
-      "max": 100,
-      "step": 2,
-      "unit": "px",
-      "default": 36
+      "default": 40
     },
 
     {
@@ -400,7 +512,7 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Image"
+      "label": "Main image"
     },
     {
       "type": "select",
@@ -425,12 +537,32 @@
     {
       "type": "range",
       "id": "main_image_max_width",
-      "label": "Image maximum width",
+      "label": "Desktop image max width",
       "min": 200,
       "max": 1200,
       "step": 20,
       "unit": "px",
       "default": 700
+    },
+    {
+      "type": "range",
+      "id": "main_image_width_mobile",
+      "label": "Mobile image width",
+      "min": 20,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 75
+    },
+    {
+      "type": "range",
+      "id": "mobile_image_after_block",
+      "label": "Mobile image after block",
+      "info": "0 = before all blocks. For the reference layout use 2.",
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "default": 2
     },
 
     {
@@ -455,19 +587,19 @@
           "label": "Background image"
         }
       ],
-      "default": "solid"
+      "default": "gradient"
     },
     {
       "type": "color",
       "id": "background_color",
-      "label": "Solid background color",
-      "default": "#041B3A"
+      "label": "Solid background",
+      "default": "#031A38"
     },
     {
       "type": "color_background",
       "id": "background_gradient",
       "label": "Gradient background",
-      "default": "linear-gradient(135deg, #02152f 0%, #062b60 50%, #02152f 100%)"
+      "default": "linear-gradient(135deg, #02152F 0%, #082E66 50%, #02152F 100%)"
     },
     {
       "type": "image_picker",
@@ -477,39 +609,39 @@
     {
       "type": "select",
       "id": "background_position",
-      "label": "Background image position",
+      "label": "Background position",
       "options": [
-        {
-          "value": "center center",
-          "label": "Center"
-        },
-        {
-          "value": "center top",
-          "label": "Top"
-        },
-        {
-          "value": "center bottom",
-          "label": "Bottom"
-        },
-        {
-          "value": "left center",
-          "label": "Left"
-        },
-        {
-          "value": "right center",
-          "label": "Right"
-        },
         {
           "value": "left top",
           "label": "Top left"
+        },
+        {
+          "value": "center top",
+          "label": "Top center"
         },
         {
           "value": "right top",
           "label": "Top right"
         },
         {
+          "value": "left center",
+          "label": "Center left"
+        },
+        {
+          "value": "center center",
+          "label": "Center"
+        },
+        {
+          "value": "right center",
+          "label": "Center right"
+        },
+        {
           "value": "left bottom",
           "label": "Bottom left"
+        },
+        {
+          "value": "center bottom",
+          "label": "Bottom center"
         },
         {
           "value": "right bottom",
@@ -521,13 +653,13 @@
     {
       "type": "color",
       "id": "background_overlay_color",
-      "label": "Background image overlay",
+      "label": "Background overlay",
       "default": "#00142E"
     },
     {
       "type": "range",
       "id": "background_overlay_opacity",
-      "label": "Background image overlay opacity",
+      "label": "Overlay opacity",
       "min": 0,
       "max": 100,
       "step": 1,
@@ -545,54 +677,10 @@
       "label": "Floating image"
     },
     {
-      "type": "select",
-      "id": "floating_image_position",
-      "label": "Floating image position",
-      "options": [
-        {
-          "value": "top-left",
-          "label": "Top left"
-        },
-        {
-          "value": "top-center",
-          "label": "Top center"
-        },
-        {
-          "value": "top-right",
-          "label": "Top right"
-        },
-        {
-          "value": "center-left",
-          "label": "Center left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "center-right",
-          "label": "Center right"
-        },
-        {
-          "value": "bottom-left",
-          "label": "Bottom left"
-        },
-        {
-          "value": "bottom-center",
-          "label": "Bottom center"
-        },
-        {
-          "value": "bottom-right",
-          "label": "Bottom right"
-        }
-      ],
-      "default": "center-right"
-    },
-    {
       "type": "range",
       "id": "floating_image_width",
-      "label": "Desktop floating image width",
-      "min": 40,
+      "label": "Desktop floating width",
+      "min": 50,
       "max": 800,
       "step": 10,
       "unit": "px",
@@ -600,33 +688,25 @@
     },
     {
       "type": "range",
-      "id": "floating_image_width_mobile",
-      "label": "Mobile floating image width",
-      "min": 40,
-      "max": 400,
-      "step": 10,
-      "unit": "px",
-      "default": 120
-    },
-    {
-      "type": "range",
       "id": "floating_image_x",
-      "label": "Horizontal offset",
+      "label": "Horizontal position",
+      "info": "Position is based on the full section width.",
       "min": 0,
       "max": 100,
       "step": 1,
       "unit": "%",
-      "default": 0
+      "default": 75
     },
     {
       "type": "range",
       "id": "floating_image_y",
-      "label": "Vertical offset",
+      "label": "Vertical position",
+      "info": "Position is based on the full section height.",
       "min": 0,
       "max": 100,
       "step": 1,
       "unit": "%",
-      "default": 0
+      "default": 50
     },
     {
       "type": "range",
@@ -650,13 +730,43 @@
     {
       "type": "checkbox",
       "id": "show_floating_image_mobile",
-      "label": "Show floating image on mobile",
-      "default": true
+      "label": "Stack floating image on mobile",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "floating_image_width_mobile",
+      "label": "Mobile floating image width",
+      "min": 50,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 150
+    },
+    {
+      "type": "select",
+      "id": "floating_mobile_alignment",
+      "label": "Mobile floating image alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
     },
 
     {
       "type": "header",
-      "content": "Bottom content"
+      "content": "Bottom area"
     },
     {
       "type": "checkbox",
@@ -691,7 +801,7 @@
       "id": "divider_margin_top",
       "label": "Space above divider",
       "min": 0,
-      "max": 150,
+      "max": 100,
       "step": 2,
       "unit": "px",
       "default": 30
@@ -710,7 +820,7 @@
       "type": "richtext",
       "id": "disclaimer",
       "label": "Left disclaimer",
-      "default": "<p>Sign by November 30, 2026 to claim. New projects only.<br>Excludes existing projects and maintenance fees.</p>"
+      "default": "<p>Sign by November 30, 2026 to claim. New projects only. Excludes existing projects and maintenance fees.</p>"
     },
     {
       "type": "inline_richtext",
@@ -721,13 +831,13 @@
     {
       "type": "color",
       "id": "footer_text_color",
-      "label": "Bottom text color",
+      "label": "Footer text color",
       "default": "#FFFFFF"
     },
     {
       "type": "range",
       "id": "footer_text_size",
-      "label": "Bottom text size",
+      "label": "Footer font size",
       "min": 10,
       "max": 30,
       "step": 1,
@@ -737,7 +847,7 @@
     {
       "type": "select",
       "id": "footer_alignment_mobile",
-      "label": "Mobile bottom alignment",
+      "label": "Mobile footer alignment",
       "options": [
         {
           "value": "left",
@@ -753,7 +863,7 @@
 
     {
       "type": "header",
-      "content": "Section spacing"
+      "content": "Spacing"
     },
     {
       "type": "range",
@@ -763,7 +873,7 @@
       "max": 200,
       "step": 4,
       "unit": "px",
-      "default": 64
+      "default": 72
     },
     {
       "type": "range",
@@ -773,7 +883,7 @@
       "max": 200,
       "step": 4,
       "unit": "px",
-      "default": 64
+      "default": 24
     },
     {
       "type": "range",
@@ -783,7 +893,7 @@
       "max": 160,
       "step": 4,
       "unit": "px",
-      "default": 52
+      "default": 48
     },
     {
       "type": "range",
@@ -793,7 +903,7 @@
       "max": 160,
       "step": 4,
       "unit": "px",
-      "default": 52
+      "default": 40
     },
     {
       "type": "range",
@@ -816,6 +926,7 @@
       "default": 20
     }
   ],
+
   "blocks": [
     {
       "type": "title",
@@ -948,13 +1059,22 @@
           "min": -20,
           "max": 50,
           "step": 1,
-          "default": 0,
-          "info": "Value is converted to tenths of a pixel."
+          "default": 0
         },
         {
           "type": "range",
           "id": "spacing_bottom",
-          "label": "Bottom spacing",
+          "label": "Desktop bottom spacing",
+          "min": 0,
+          "max": 80,
+          "step": 2,
+          "unit": "px",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "spacing_bottom_mobile",
+          "label": "Mobile bottom spacing",
           "min": 0,
           "max": 80,
           "step": 2,
@@ -963,6 +1083,7 @@
         }
       ]
     },
+
     {
       "type": "text",
       "name": "Text",
@@ -1018,7 +1139,17 @@
         {
           "type": "range",
           "id": "spacing_bottom",
-          "label": "Bottom spacing",
+          "label": "Desktop bottom spacing",
+          "min": 0,
+          "max": 80,
+          "step": 2,
+          "unit": "px",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "spacing_bottom_mobile",
+          "label": "Mobile bottom spacing",
           "min": 0,
           "max": 80,
           "step": 2,
@@ -1027,6 +1158,7 @@
         }
       ]
     },
+
     {
       "type": "button",
       "name": "CTA button",
@@ -1057,7 +1189,7 @@
         {
           "type": "select",
           "id": "alignment",
-          "label": "Button alignment",
+          "label": "Alignment",
           "options": [
             {
               "value": "left",
@@ -1077,7 +1209,7 @@
         {
           "type": "color",
           "id": "background_color",
-          "label": "Background",
+          "label": "Background color",
           "default": "#FF7200"
         },
         {
@@ -1171,7 +1303,7 @@
         {
           "type": "range",
           "id": "icon_gap",
-          "label": "Space between text and icon",
+          "label": "Icon gap",
           "min": 4,
           "max": 50,
           "step": 2,
@@ -1181,7 +1313,17 @@
         {
           "type": "range",
           "id": "spacing_bottom",
-          "label": "Bottom spacing",
+          "label": "Desktop bottom spacing",
+          "min": 0,
+          "max": 80,
+          "step": 2,
+          "unit": "px",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "spacing_bottom_mobile",
+          "label": "Mobile bottom spacing",
           "min": 0,
           "max": 80,
           "step": 2,
@@ -1191,6 +1333,7 @@
       ]
     }
   ],
+
   "presets": [
     {
       "name": "Image text offer",
@@ -1203,13 +1346,14 @@
             "bold_color": "#FF7200",
             "font_size": 18,
             "font_size_mobile": 15,
-            "spacing_bottom": 18
+            "spacing_bottom": 18,
+            "spacing_bottom_mobile": 18
           }
         },
         {
           "type": "title",
           "settings": {
-            "title": "Better Shopify experiences. <strong>20% less.</strong>",
+            "title": "Better Shopify experiences.",
             "tag": "h2",
             "color": "#FFFFFF",
             "bold_color": "#FF7200",
@@ -1234,7 +1378,8 @@
             "text": "<p>3000+ Shopify projects delivered</p>",
             "font_size": 20,
             "font_size_mobile": 18,
-            "spacing_bottom": 0
+            "spacing_bottom": 0,
+            "spacing_bottom_mobile": 0
           }
         }
       ]
