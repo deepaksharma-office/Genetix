@@ -1,1 +1,61 @@
-{"type":"footer","name":"t:names.footer","sections":{"genetix_footer":{"type":"genetix-footer","blocks":{"shop":{"type":"links","settings":{"heading":"Shop"}},"support":{"type":"links","settings":{"heading":"Customer care"}},"company":{"type":"links","settings":{"heading":"Company"}}},"block_order":["shop","support","company"],"settings":{}}},"order":["genetix_footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "t:names.footer",
+  "sections": {
+    "genetix_footer": {
+      "type": "genetix-footer",
+      "blocks": {
+        "shop": {
+          "type": "links",
+          "settings": {
+            "heading": "Shop",
+            "menu": ""
+          }
+        },
+        "support": {
+          "type": "links",
+          "settings": {
+            "heading": "Customer care",
+            "menu": ""
+          }
+        },
+        "company": {
+          "type": "links",
+          "settings": {
+            "heading": "Company",
+            "menu": ""
+          }
+        }
+      },
+      "block_order": [
+        "shop",
+        "support",
+        "company"
+      ],
+      "settings": {
+        "logo": "shopify://shop_images/GENETIX_Peptides_Shopify_Header_Logo_Transparent_3200px.png",
+        "description": "<p>Clinical peptide science, thoughtfully composed.</p>",
+        "contact": "",
+        "instagram": "",
+        "facebook": "",
+        "copyright": "GENETIX Peptides",
+        "show_payments": true,
+        "background": "#ffffff",
+        "text_color": "#173c48",
+        "border_color": "#dce7eb"
+      }
+    }
+  },
+  "order": [
+    "genetix_footer"
+  ]
+}
