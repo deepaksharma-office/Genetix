@@ -17,22 +17,22 @@
         "shop": {
           "type": "links",
           "settings": {
-            "heading": "Shop",
-            "menu": ""
+            "heading": "Explore",
+            "menu": "explore"
           }
         },
         "support": {
           "type": "links",
           "settings": {
             "heading": "Customer care",
-            "menu": ""
+            "menu": "customer-care"
           }
         },
         "company": {
           "type": "links",
           "settings": {
-            "heading": "Company",
-            "menu": ""
+            "heading": "Contact",
+            "menu": "contact"
           }
         }
       },
