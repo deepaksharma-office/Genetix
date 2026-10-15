@@ -36,6 +36,7 @@
         "cruelty": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Cruelty-Free-Rabbit.png",
             "heading": "Cruelty free",
             "text": "A considered approach to care.",
             "link_label": "",
@@ -45,6 +46,7 @@
         "tested": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Icon-flask-58.png",
             "heading": "Laboratory tested",
             "text": "Quality standards matter.",
             "link_label": "",
@@ -54,6 +56,7 @@
         "facility": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Icon-factory-69.png",
             "heading": "Manufactured with care",
             "text": "Edit this with your verified facility details.",
             "link_label": "",
@@ -63,6 +66,7 @@
         "usa": {
           "type": "item",
           "settings": {
+            "image": "shopify://shop_images/Icon-flag-80.png",
             "heading": "Made in the USA",
             "text": "Edit this claim to match your product.",
             "link_label": "",
@@ -80,7 +84,7 @@
         "eyebrow": "THE GENETIX PROMISE",
         "heading": "Care you can feel good about.",
         "text": "<p>Considered ingredients. Thoughtful standards. A refined experience.</p>",
-        "icon_size": 64,
+        "icon_size": 76,
         "background": "#ffffff",
         "text_color": "#173c48"
       }
