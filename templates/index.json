@@ -710,7 +710,7 @@
           "type": "button",
           "settings": {
             "label": "Discover more",
-            "link": "",
+            "link": "shopify://products/genetix-peptides",
             "open_new_tab": false,
             "show_arrow": true,
             "background": "#ffffff",
@@ -858,7 +858,7 @@
         "heading": "Good questions. Clear answers.",
         "text": "<p>Everything you need to know.</p>",
         "link_label": "Contact our team",
-        "link": "",
+        "link": "shopify://pages/contact",
         "open_first": true,
         "sticky_offset": 100,
         "background": "#ffffff",
