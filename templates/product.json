@@ -6,8 +6,105 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
+    "genetix_featured_product_a79zr4": {
+      "type": "genetix-featured-product",
+      "blocks": {
+        "impact_NtXNPx": {
+          "type": "impact",
+          "settings": {
+            "value": "2%",
+            "label": "GHK-Cu"
+          }
+        },
+        "impact_AHrV8T": {
+          "type": "impact",
+          "settings": {
+            "value": "6%",
+            "label": "PAL-150"
+          }
+        },
+        "impact_KJKLkE": {
+          "type": "impact",
+          "settings": {
+            "value": "3%",
+            "label": "Niacinamide"
+          }
+        },
+        "impact_Bh3kXF": {
+          "type": "impact",
+          "settings": {
+            "value": "0.25%",
+            "label": "PDRN+"
+          }
+        },
+        "icon_text_Rr73dE": {
+          "type": "icon_text",
+          "settings": {
+            "icon": "shield",
+            "text": "Secure checkout"
+          }
+        },
+        "icon_text_CLtcgg": {
+          "type": "icon_text",
+          "settings": {
+            "icon": "truck",
+            "text": "Free insured U.S. shipping"
+          }
+        },
+        "accordion_qeU8nt": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Formula & ingredients",
+            "content": "<p>Add product details here.</p>"
+          }
+        },
+        "accordion_68C9tk": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Quality & laboratory testing",
+            "content": "<p>Add product details here.</p>"
+          }
+        },
+        "accordion_E4HaWw": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Shipping & fulfillment",
+            "content": "<p>Add product details here.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "impact_NtXNPx",
+        "impact_AHrV8T",
+        "impact_KJKLkE",
+        "impact_Bh3kXF",
+        "icon_text_Rr73dE",
+        "icon_text_CLtcgg",
+        "accordion_qeU8nt",
+        "accordion_68C9tk",
+        "accordion_E4HaWw"
+      ],
+      "name": "GENETIX featured product",
+      "settings": {
+        "product": "{{ product }}",
+        "eyebrow": "THE DAILY ESSENTIAL",
+        "fallback_title": "GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix",
+        "product_meta": "2 fl oz / 60 ml · Skin + Scalp",
+        "currency_label": "USD",
+        "media_label": "GHK-Cu SCALP MATRIX",
+        "variant_label": "Choose an option",
+        "button_label": "Add to bag",
+        "show_button_arrow": true,
+        "button_background": "#153640",
+        "button_color": "#ffffff",
+        "background": "#ffffff",
+        "media_background": "#eef8fb",
+        "text_color": "#173c48"
+      }
+    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -38,6 +135,7 @@
             "media_columns": "two",
             "image_gap": 4,
             "large_first_image": false,
+            "icons_style": "arrow",
             "slideshow_controls_style": "counter",
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "right",
@@ -116,6 +214,7 @@
                 "border_opacity": 100,
                 "border_color": "",
                 "border_radius": 0,
+                "link": "",
                 "open_in_new_tab": false,
                 "placeholder": "",
                 "padding-block-start": 0,
@@ -312,6 +411,7 @@
       "block_order": [
         "disclosures_g9mWze"
       ],
+      "disabled": true,
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
@@ -468,6 +568,7 @@
     }
   },
   "order": [
+    "genetix_featured_product_a79zr4",
     "main",
     "product_recommendations_qggXJq"
   ]
