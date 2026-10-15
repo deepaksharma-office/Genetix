@@ -367,29 +367,33 @@
         "one": {
           "type": "step",
           "settings": {
-            "heading": "Prepared with care",
-            "text": "Add accurate fulfillment details here."
+            "image": "shopify://shop_images/Vector_2.png",
+            "heading": "Free insured U.S. shipping",
+            "text": "Enjoy free standard insured shipping on all domestic U.S. orders."
           }
         },
         "two": {
           "type": "step",
           "settings": {
-            "heading": "Dispatch updates",
-            "text": "Add accurate fulfillment details here."
+            "image": "shopify://shop_images/Icon-clock-571.png",
+            "heading": "Dispatch in 24–48 hours",
+            "text": "All shipments are securely processed and dispatched from our fulfillment facility within 24 to 48 hours."
           }
         },
         "three": {
           "type": "step",
           "settings": {
-            "heading": "Delivery tracking",
-            "text": "Add accurate fulfillment details here."
+            "image": "shopify://shop_images/Icon-truck-585.png",
+            "heading": "2–4 business day delivery",
+            "text": "Standard transit delivery takes 2 to 4 business days straight to your door."
           }
         },
         "four": {
           "type": "step",
           "settings": {
-            "heading": "Arrival support",
-            "text": "Add accurate fulfillment details here."
+            "image": "shopify://shop_images/Icon-mail-598.png",
+            "heading": "Automatic tracking emails",
+            "text": "Tracking parameters are automatically emailed to you the moment your package leaves our dock."
           }
         }
       },
@@ -438,6 +442,7 @@
         "three"
       ],
       "settings": {
+        "image": "shopify://shop_images/Rectangle_1.png",
         "image_alt": "",
         "eyebrow": "BUILT FOR A CONSIDERED ROUTINE",
         "heading": "Refinement, in your hands.",
