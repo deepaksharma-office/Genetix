@@ -139,7 +139,7 @@
             "value": "2",
             "unit": "%",
             "heading": "Pure GHK-Cu Complex",
-            "text": "Add merchant-supplied ingredient information."
+            "text": "Reconstituted from 99%pure cosmetic-grade crystals into a high-performance Hyaluronic Acid matrix base for rapid dermal absorption."
           }
         },
         "two": {
@@ -148,8 +148,8 @@
             "kicker": "ACTIVE INGREDIENT",
             "value": "6",
             "unit": "%",
-            "heading": "Matrix support",
-            "text": "Add merchant-supplied ingredient information."
+            "heading": "PAL-150 Matrikine Complex",
+            "text": "Infused with lipophilic palmitic fatty-acid tails that act like a Trojan Horse, seamlessly bypassing the skin's oil barrier."
           }
         },
         "three": {
@@ -159,7 +159,17 @@
             "value": "3",
             "unit": "%",
             "heading": "Niacinamide",
-            "text": "Add merchant-supplied ingredient information."
+            "text": "The precise clinical sweet spot to eliminate hyperpigmentation and reinforce the skin barrier."
+          }
+        },
+        "ingredient_84bAng": {
+          "type": "ingredient",
+          "settings": {
+            "kicker": "ACTIVE INGREDIENT",
+            "value": "HA",
+            "unit": "",
+            "heading": "High-Purity Hyaluronic Acid Base",
+            "text": "An advanced molecular moisture magnet that floods the epidermal layers, deeply hydrating tissue while pulling active peptide sequences down with it."
           }
         },
         "four": {
@@ -168,8 +178,8 @@
             "kicker": "ACTIVE INGREDIENT",
             "value": "0.25",
             "unit": "%",
-            "heading": "Hyaluronic acid",
-            "text": "Add merchant-supplied ingredient information."
+            "heading": "Salmon Mesenchymal Cell Conditioned Media (PDRN+)",
+            "text": "Utilizing cutting-edge cellular DNA fragments to accelerate systemic tissue repair and revitalize skin at the cellular level."
           }
         }
       },
@@ -177,6 +187,7 @@
         "one",
         "two",
         "three",
+        "ingredient_84bAng",
         "four"
       ],
       "settings": {
