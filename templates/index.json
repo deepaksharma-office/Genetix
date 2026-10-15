@@ -429,7 +429,7 @@
           "type": "button",
           "settings": {
             "label": "Meet the matrix",
-            "link": "shopify://pages/data-sharing-opt-out",
+            "link": "shopify://pages/meet-the-matrix",
             "open_new_tab": false,
             "show_arrow": true,
             "background": "#153640",
