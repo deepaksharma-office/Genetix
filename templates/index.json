@@ -240,6 +240,7 @@
         "eyebrow": "THE VAULT MATRIX",
         "heading": "Unmatched quality. Uncompromised value.",
         "text": "<p>Carefully considered. Precisely composed.</p>",
+        "image": "shopify://shop_images/Hero-Reference-Bottle-39.png",
         "image_alt": "",
         "button_label": "Shop the matrix",
         "button_link": "",
@@ -250,12 +251,13 @@
     "genetix_daily": {
       "type": "genetix-daily-moment",
       "settings": {
+        "image": "shopify://shop_images/Rectangle.png",
         "image_alt": "",
         "eyebrow": "CLINICAL CARE, ELEVATED",
         "heading": "Your skin.\nYour scalp.\nYour daily moment.",
-        "text": "<p>Bring a little more intention to your routine.</p>",
+        "text": "<p>Bring a little more intention to your routine. GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix brings focused peptide care to your skin and scalp.</p>",
         "button_label": "Meet the matrix",
-        "button_link": "",
+        "button_link": "shopify://pages/data-sharing-opt-out",
         "background": "#eaf5fa",
         "text_color": "#173c48"
       }
@@ -263,12 +265,13 @@
     "genetix_less": {
       "type": "genetix-less-noise",
       "settings": {
+        "image": "shopify://shop_images/Genetix_Shopify_Hero_Background_Only_2560x960_39b24bc9-2fa4-40be-9da5-65fad7143a40.png",
         "image_alt": "",
         "eyebrow": "THE GENETIX APPROACH",
         "heading": "Less noise. More intention.",
         "text": "<p>We believe great care begins with a considered formula.</p>",
-        "button_label": "Explore the formula",
-        "button_link": "",
+        "button_label": "Meet the ingredient matrix",
+        "button_link": "shopify://pages/meet-the-ingredient-matrix",
         "background": "#ffffff",
         "text_color": "#173c48"
       }
