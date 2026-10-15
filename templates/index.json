@@ -327,19 +327,19 @@
         "one": {
           "type": "evidence",
           "settings": {
-            "text": "Add verified manufacturing information"
+            "text": "Manufactured in an FDA Registered Facility"
           }
         },
         "two": {
           "type": "evidence",
           "settings": {
-            "text": "Add verified origin information"
+            "text": "Made in the USA"
           }
         },
         "three": {
           "type": "evidence",
           "settings": {
-            "text": "Add available testing information"
+            "text": "Laboratory Tested"
           }
         }
       },
@@ -349,10 +349,10 @@
         "three"
       ],
       "settings": {
-        "eyebrow": "BUILT ON EVIDENCE",
+        "eyebrow": "QUALITY + LABORATORY TESTING",
         "heading": "Evidence matters. Quality comes first.",
-        "text": "<p>Add only testing and manufacturing claims supported by your records.</p>",
-        "card_eyebrow": "DOCUMENTATION",
+        "text": "<p>Our manufacturing and testing standards are central to the GENETIX PEPTIDES matrix. Laboratory testing and lab reports will be published in this dedicated section.</p>",
+        "card_eyebrow": "DOCUMENTATION / THE GENETIX MATRIX",
         "card_heading": "Laboratory testing & lab reports",
         "card_text": "<p>Make supporting documentation available when appropriate.</p>",
         "document_link": "",
