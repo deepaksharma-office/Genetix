@@ -1,19 +1,556 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "genetix_hero": {"type":"genetix-hero","settings":{}},
-    "genetix_icons": {"type":"genetix-icon-text","blocks":{"cruelty":{"type":"item","settings":{"heading":"Cruelty free","text":"A considered approach to care."}},"tested":{"type":"item","settings":{"heading":"Laboratory tested","text":"Quality standards matter."}},"facility":{"type":"item","settings":{"heading":"Manufactured with care","text":"Edit this with your verified facility details."}},"usa":{"type":"item","settings":{"heading":"Made in the USA","text":"Edit this claim to match your product."}}},"block_order":["cruelty","tested","facility","usa"],"settings":{}},
-    "genetix_product": {"type":"genetix-featured-product","blocks":{"details":{"type":"accordion","settings":{"heading":"Product & ingredients"}},"quality":{"type":"accordion","settings":{"heading":"Quality & laboratory testing"}},"shipping":{"type":"accordion","settings":{"heading":"Shipping & fulfillment"}}},"block_order":["details","quality","shipping"],"settings":{}},
-    "genetix_ledger": {"type":"genetix-ingredient-ledger","blocks":{"one":{"type":"ingredient","settings":{"value":"2","unit":"%","heading":"Pure GHK-Cu Complex"}},"two":{"type":"ingredient","settings":{"value":"6","unit":"%","heading":"Matrix support"}},"three":{"type":"ingredient","settings":{"value":"3","unit":"%","heading":"Niacinamide"}},"four":{"type":"ingredient","settings":{"value":"0.25","unit":"%","heading":"Hyaluronic acid"}}},"block_order":["one","two","three","four"],"settings":{}},
-    "genetix_vault": {"type":"genetix-vault-matrix","blocks":{"one":{"type":"metric","settings":{"value":"$150–$199","label":"Comparable value"}},"two":{"type":"metric","settings":{"value":"1 oz","label":"Standard size"}},"three":{"type":"metric","settings":{"value":"2 oz","label":"Net contents"}},"four":{"type":"metric","settings":{"value":"2×","label":"The volume"}}},"block_order":["one","two","three","four"],"settings":{}},
-    "genetix_daily": {"type":"genetix-daily-moment","settings":{}},
-    "genetix_less": {"type":"genetix-less-noise","settings":{}},
-    "genetix_formula": {"type":"genetix-formula","blocks":{"one":{"type":"entry","settings":{"heading":"Skin + scalp"}},"two":{"type":"entry","settings":{"heading":"Laboratory tested"}},"three":{"type":"entry","settings":{"heading":"Manufactured with care"}},"four":{"type":"entry","settings":{"heading":"2 fl oz / 60 ml"}}},"block_order":["one","two","three","four"],"settings":{}},
-    "genetix_evidence": {"type":"genetix-evidence","blocks":{"one":{"type":"evidence","settings":{"text":"Add verified manufacturing information"}},"two":{"type":"evidence","settings":{"text":"Add verified origin information"}},"three":{"type":"evidence","settings":{"text":"Add available testing information"}}},"block_order":["one","two","three"],"settings":{}},
-    "genetix_fulfillment": {"type":"genetix-fulfillment","blocks":{"one":{"type":"step","settings":{"heading":"Prepared with care"}},"two":{"type":"step","settings":{"heading":"Dispatch updates"}},"three":{"type":"step","settings":{"heading":"Delivery tracking"}},"four":{"type":"step","settings":{"heading":"Arrival support"}}},"block_order":["one","two","three","four"],"settings":{}},
-    "genetix_refinement": {"type":"genetix-refinement","blocks":{"one":{"type":"spec","settings":{"label":"Format","value":"Merchant supplied"}},"two":{"type":"spec","settings":{"label":"Size","value":"Merchant supplied"}},"three":{"type":"spec","settings":{"label":"Routine","value":"Merchant supplied"}}},"block_order":["one","two","three"],"settings":{}},
-    "genetix_second": {"type":"genetix-second-coming","settings":{}},
-    "genetix_faq": {"type":"genetix-faq","blocks":{"one":{"type":"faq","settings":{"question":"What is the GENETIX Matrix?"}},"two":{"type":"faq","settings":{"question":"How should I use this product?"}},"three":{"type":"faq","settings":{"question":"Where is GENETIX manufactured?"}},"four":{"type":"faq","settings":{"question":"Are laboratory reports available?"}},"five":{"type":"faq","settings":{"question":"How will I receive my order?"}}},"block_order":["one","two","three","four","five"],"settings":{}},
-    "genetix_newsletter": {"type":"genetix-newsletter","settings":{}}
+    "genetix_hero": {
+      "type": "genetix-hero",
+      "settings": {
+        "image": "shopify://shop_images/Hero-Reference-Molecular-Background_2.png",
+        "image_alt": "",
+        "product_image": "shopify://shop_images/Hero-Reference-Bottle-39.png",
+        "product_alt": "",
+        "eyebrow": "THE SCIENCE OF SCALP",
+        "heading": "Clinical peptide science. Uncompromised quality. Superior bioavailability.",
+        "text": "<p>Targeted support for healthier-looking hair and scalp.</p>",
+        "button_label": "Shop now",
+        "button_link": "shopify://products/genetix-peptides",
+        "alignment": "left",
+        "background": "#eaf5fa",
+        "text_color": "#173c48",
+        "overlay": "#ffffff",
+        "overlay_opacity": 10,
+        "min_height": 560,
+        "mobile_min_height": 620
+      }
+    },
+    "genetix_icons": {
+      "type": "genetix-icon-text",
+      "blocks": {
+        "cruelty": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Cruelty-Free-Rabbit.png",
+            "heading": "Cruelty free",
+            "text": "A considered approach to care.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "tested": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Icon-flask-58.png",
+            "heading": "Laboratory tested",
+            "text": "Quality standards matter.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "facility": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Icon-factory-69.png",
+            "heading": "Manufactured with care",
+            "text": "Edit this with your verified facility details.",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "usa": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Icon-flag-80.png",
+            "heading": "Made in the USA",
+            "text": "Edit this claim to match your product.",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "cruelty",
+        "tested",
+        "facility",
+        "usa"
+      ],
+      "settings": {
+        "eyebrow": "THE GENETIX PROMISE",
+        "heading": "Care you can feel good about.",
+        "text": "<p>Considered ingredients. Thoughtful standards. A refined experience.</p>",
+        "icon_size": 76,
+        "background": "#ffffff",
+        "text_color": "#173c48"
+      }
+    },
+    "genetix_product": {
+      "type": "genetix-featured-product",
+      "blocks": {
+        "details": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Product & ingredients",
+            "content": "<p>Add product details here.</p>"
+          }
+        },
+        "quality": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Quality & laboratory testing",
+            "content": "<p>Add product details here.</p>"
+          }
+        },
+        "shipping": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Shipping & fulfillment",
+            "content": "<p>Add product details here.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "details",
+        "quality",
+        "shipping"
+      ],
+      "settings": {
+        "product": "genetix-peptides",
+        "eyebrow": "THE HERO FORMULA",
+        "fallback_title": "GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix",
+        "variant_label": "Choose an option",
+        "button_label": "Add to cart",
+        "background": "#ffffff",
+        "text_color": "#173c48"
+      }
+    },
+    "genetix_ledger": {
+      "type": "genetix-ingredient-ledger",
+      "blocks": {
+        "one": {
+          "type": "ingredient",
+          "settings": {
+            "kicker": "ACTIVE INGREDIENT",
+            "value": "2",
+            "unit": "%",
+            "heading": "Pure GHK-Cu Complex",
+            "text": "Reconstituted from 99%pure cosmetic-grade crystals into a high-performance Hyaluronic Acid matrix base for rapid dermal absorption."
+          }
+        },
+        "two": {
+          "type": "ingredient",
+          "settings": {
+            "kicker": "ACTIVE INGREDIENT",
+            "value": "6",
+            "unit": "%",
+            "heading": "PAL-150 Matrikine Complex",
+            "text": "Infused with lipophilic palmitic fatty-acid tails that act like a Trojan Horse, seamlessly bypassing the skin's oil barrier."
+          }
+        },
+        "three": {
+          "type": "ingredient",
+          "settings": {
+            "kicker": "ACTIVE INGREDIENT",
+            "value": "3",
+            "unit": "%",
+            "heading": "Niacinamide",
+            "text": "The precise clinical sweet spot to eliminate hyperpigmentation and reinforce the skin barrier."
+          }
+        },
+        "ingredient_84bAng": {
+          "type": "ingredient",
+          "settings": {
+            "kicker": "ACTIVE INGREDIENT",
+            "value": "HA",
+            "unit": "",
+            "heading": "High-Purity Hyaluronic Acid Base",
+            "text": "An advanced molecular moisture magnet that floods the epidermal layers, deeply hydrating tissue while pulling active peptide sequences down with it."
+          }
+        },
+        "four": {
+          "type": "ingredient",
+          "settings": {
+            "kicker": "ACTIVE INGREDIENT",
+            "value": "0.25",
+            "unit": "%",
+            "heading": "Salmon Mesenchymal Cell Conditioned Media (PDRN+)",
+            "text": "Utilizing cutting-edge cellular DNA fragments to accelerate systemic tissue repair and revitalize skin at the cellular level."
+          }
+        }
+      },
+      "block_order": [
+        "one",
+        "two",
+        "three",
+        "ingredient_84bAng",
+        "four"
+      ],
+      "settings": {
+        "eyebrow": "THE INGREDIENT LEDGER",
+        "heading": "The GENETIX Matrix: Science. Not Words.",
+        "text": "<p>Four ingredients. One advanced matrix.</p>",
+        "background": "#eaf5fa",
+        "text_color": "#173c48"
+      }
+    },
+    "genetix_vault": {
+      "type": "genetix-vault-matrix",
+      "blocks": {
+        "one": {
+          "type": "metric",
+          "settings": {
+            "value": "$150–$199",
+            "label": "Comparable value"
+          }
+        },
+        "two": {
+          "type": "metric",
+          "settings": {
+            "value": "1 oz",
+            "label": "Standard size"
+          }
+        },
+        "three": {
+          "type": "metric",
+          "settings": {
+            "value": "2 oz",
+            "label": "Net contents"
+          }
+        },
+        "four": {
+          "type": "metric",
+          "settings": {
+            "value": "2×",
+            "label": "The volume"
+          }
+        }
+      },
+      "block_order": [
+        "one",
+        "two",
+        "three",
+        "four"
+      ],
+      "settings": {
+        "eyebrow": "THE VAULT MATRIX",
+        "heading": "Unmatched quality. Uncompromised value.",
+        "text": "<p>Carefully considered. Precisely composed.</p>",
+        "image": "shopify://shop_images/Hero-Reference-Bottle-39.png",
+        "image_alt": "",
+        "button_label": "Shop the matrix",
+        "button_link": "",
+        "background": "#153640",
+        "text_color": "#ffffff"
+      }
+    },
+    "genetix_daily": {
+      "type": "genetix-daily-moment",
+      "settings": {
+        "image": "shopify://shop_images/Rectangle.png",
+        "image_alt": "",
+        "eyebrow": "CLINICAL CARE, ELEVATED",
+        "heading": "Your skin.\nYour scalp.\nYour daily moment.",
+        "text": "<p>Bring a little more intention to your routine. GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix brings focused peptide care to your skin and scalp.</p>",
+        "button_label": "Meet the matrix",
+        "button_link": "shopify://pages/data-sharing-opt-out",
+        "background": "#eaf5fa",
+        "text_color": "#173c48"
+      }
+    },
+    "genetix_less": {
+      "type": "genetix-less-noise",
+      "settings": {
+        "image": "shopify://shop_images/Genetix_Shopify_Hero_Background_Only_2560x960_39b24bc9-2fa4-40be-9da5-65fad7143a40.png",
+        "image_alt": "",
+        "eyebrow": "THE GENETIX APPROACH",
+        "heading": "Less noise. More intention.",
+        "text": "<p>We believe great care begins with a considered formula.</p>",
+        "button_label": "Meet the ingredient matrix",
+        "button_link": "shopify://pages/meet-the-ingredient-matrix",
+        "background": "#ffffff",
+        "text_color": "#173c48"
+      }
+    },
+    "genetix_formula": {
+      "type": "genetix-formula",
+      "blocks": {
+        "one": {
+          "type": "entry",
+          "settings": {
+            "heading": "Skin + scalp",
+            "text": "Focused care for your daily routine."
+          }
+        },
+        "two": {
+          "type": "entry",
+          "settings": {
+            "heading": "Laboratory tested",
+            "text": "Focused care for your daily routine."
+          }
+        },
+        "three": {
+          "type": "entry",
+          "settings": {
+            "heading": "Manufactured with care",
+            "text": "Focused care for your daily routine."
+          }
+        },
+        "four": {
+          "type": "entry",
+          "settings": {
+            "heading": "2 fl oz / 60 ml",
+            "text": "Focused care for your daily routine."
+          }
+        }
+      },
+      "block_order": [
+        "one",
+        "two",
+        "three",
+        "four"
+      ],
+      "settings": {
+        "eyebrow": "ONE FORMULA",
+        "heading": "Thoughtfully composed.",
+        "background": "#153640",
+        "text_color": "#ffffff"
+      }
+    },
+    "genetix_evidence": {
+      "type": "genetix-evidence",
+      "blocks": {
+        "one": {
+          "type": "evidence",
+          "settings": {
+            "text": "Manufactured in an FDA Registered Facility"
+          }
+        },
+        "two": {
+          "type": "evidence",
+          "settings": {
+            "text": "Made in the USA"
+          }
+        },
+        "three": {
+          "type": "evidence",
+          "settings": {
+            "text": "Laboratory Tested"
+          }
+        }
+      },
+      "block_order": [
+        "one",
+        "two",
+        "three"
+      ],
+      "settings": {
+        "eyebrow": "QUALITY + LABORATORY TESTING",
+        "heading": "Evidence matters. Quality comes first.",
+        "text": "<p>Our manufacturing and testing standards are central to the GENETIX PEPTIDES matrix. Laboratory testing and lab reports will be published in this dedicated section.</p>",
+        "card_eyebrow": "DOCUMENTATION / THE GENETIX MATRIX",
+        "card_heading": "Laboratory testing & lab reports",
+        "card_text": "<p>Make supporting documentation available when appropriate.</p>",
+        "document_link": "",
+        "link_label": "View report",
+        "background": "#eaf5fa",
+        "text_color": "#173c48"
+      }
+    },
+    "genetix_fulfillment": {
+      "type": "genetix-fulfillment",
+      "blocks": {
+        "one": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Vector_2.png",
+            "heading": "Free insured U.S. shipping",
+            "text": "Enjoy free standard insured shipping on all domestic U.S. orders."
+          }
+        },
+        "two": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Icon-clock-571.png",
+            "heading": "Dispatch in 24–48 hours",
+            "text": "All shipments are securely processed and dispatched from our fulfillment facility within 24 to 48 hours."
+          }
+        },
+        "three": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Icon-truck-585.png",
+            "heading": "2–4 business day delivery",
+            "text": "Standard transit delivery takes 2 to 4 business days straight to your door."
+          }
+        },
+        "four": {
+          "type": "step",
+          "settings": {
+            "image": "shopify://shop_images/Icon-mail-598.png",
+            "heading": "Automatic tracking emails",
+            "text": "Tracking parameters are automatically emailed to you the moment your package leaves our dock."
+          }
+        }
+      },
+      "block_order": [
+        "one",
+        "two",
+        "three",
+        "four"
+      ],
+      "settings": {
+        "eyebrow": "SIMPLY DELIVERED",
+        "heading": "From our facility to your door.",
+        "icon_size": 40,
+        "background": "#153640",
+        "text_color": "#ffffff"
+      }
+    },
+    "genetix_refinement": {
+      "type": "genetix-refinement",
+      "blocks": {
+        "one": {
+          "type": "spec",
+          "settings": {
+            "label": "Format",
+            "value": "Merchant supplied"
+          }
+        },
+        "two": {
+          "type": "spec",
+          "settings": {
+            "label": "Size",
+            "value": "Merchant supplied"
+          }
+        },
+        "three": {
+          "type": "spec",
+          "settings": {
+            "label": "Routine",
+            "value": "Merchant supplied"
+          }
+        }
+      },
+      "block_order": [
+        "one",
+        "two",
+        "three"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Rectangle_1.png",
+        "image_alt": "",
+        "eyebrow": "BUILT FOR A CONSIDERED ROUTINE",
+        "heading": "Refinement, in your hands.",
+        "text": "<p>A refined format designed to fit into your routine.</p>",
+        "button_label": "Discover more",
+        "button_link": "",
+        "background": "#ffffff",
+        "text_color": "#173c48"
+      }
+    },
+    "genetix_second": {
+      "type": "genetix-second-coming",
+      "settings": {
+        "eyebrow": "COMING SOON",
+        "heading": "Second Coming",
+        "text": "<p>A new addition to the GENETIX collection.</p>",
+        "button_label": "Learn more",
+        "button_link": "",
+        "image": "shopify://shop_images/Cream-Jar-Placeholder.png",
+        "image_alt": "",
+        "background": "#eaf5fa",
+        "text_color": "#173c48"
+      }
+    },
+    "genetix_faq": {
+      "type": "genetix-faq",
+      "blocks": {
+        "one": {
+          "type": "faq",
+          "settings": {
+            "question": "What is the GENETIX Matrix?",
+            "answer": "<p>Add your answer here.</p>"
+          }
+        },
+        "two": {
+          "type": "faq",
+          "settings": {
+            "question": "How should I use this product?",
+            "answer": "<p>Add your answer here.</p>"
+          }
+        },
+        "three": {
+          "type": "faq",
+          "settings": {
+            "question": "Where is GENETIX manufactured?",
+            "answer": "<p>Add your answer here.</p>"
+          }
+        },
+        "four": {
+          "type": "faq",
+          "settings": {
+            "question": "Are laboratory reports available?",
+            "answer": "<p>Add your answer here.</p>"
+          }
+        },
+        "five": {
+          "type": "faq",
+          "settings": {
+            "question": "How will I receive my order?",
+            "answer": "<p>Add your answer here.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "one",
+        "two",
+        "three",
+        "four",
+        "five"
+      ],
+      "settings": {
+        "eyebrow": "FREQUENTLY ASKED QUESTIONS",
+        "heading": "Good questions. Clear answers.",
+        "text": "<p>Everything you need to know.</p>",
+        "link_label": "Contact our team",
+        "link": "",
+        "sticky_offset": 100,
+        "background": "#ffffff",
+        "text_color": "#173c48"
+      }
+    },
+    "genetix_newsletter": {
+      "type": "genetix-newsletter",
+      "settings": {
+        "eyebrow": "JOIN THE FORMULA",
+        "heading": "Subscribe to our newsletter.",
+        "text": "<p>Product news, new releases, and the latest from GENETIX.</p>",
+        "placeholder": "Your email address",
+        "button_label": "Subscribe",
+        "background": "#eaf5fa",
+        "text_color": "#173c48"
+      }
+    }
   },
-  "order": ["genetix_hero","genetix_icons","genetix_product","genetix_ledger","genetix_vault","genetix_daily","genetix_less","genetix_formula","genetix_evidence","genetix_fulfillment","genetix_refinement","genetix_second","genetix_faq","genetix_newsletter"]
+  "order": [
+    "genetix_hero",
+    "genetix_icons",
+    "genetix_product",
+    "genetix_ledger",
+    "genetix_vault",
+    "genetix_daily",
+    "genetix_less",
+    "genetix_formula",
+    "genetix_evidence",
+    "genetix_fulfillment",
+    "genetix_refinement",
+    "genetix_second",
+    "genetix_faq",
+    "genetix_newsletter"
+  ]
 }
