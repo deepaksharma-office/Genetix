@@ -1,0 +1,87 @@
+{% doc %}
+  Renders the shared GENETIX call-to-action as a link or form button.
+
+  @param {string} label - Button label.
+  @param {string} [link] - Link destination when rendering an anchor.
+  @param {color} [background] - Button background color.
+  @param {color} [color] - Button text and icon color.
+  @param {boolean} [show_arrow] - Whether to display the up-right arrow.
+  @param {boolean} [open_new_tab] - Whether an anchor opens in a new tab.
+  @param {string} [tag] - Use `button` for a form control; defaults to `a`.
+  @param {string} [button_type] - Native button type; defaults to `button`.
+  @param {boolean} [disabled] - Disables a rendered button.
+  @param {string} [price] - Optional price appended to the label.
+  @param {string} [class] - Additional CSS class names.
+
+  @example
+  {% render 'genetix-button', label: 'Shop now', link: product.url, show_arrow: true %}
+{% enddoc %}
+
+{% liquid
+  assign element = tag | default: 'a'
+  assign native_type = button_type | default: 'button'
+%}
+
+{% if element == 'button' %}
+  <button
+    class="genetix-button{% if class != blank %} {{ class }}{% endif %}"
+    type="{{ native_type }}"
+    style="--genetix-button-bg:{{ background | default: '#153640' }};--genetix-button-color:{{ color | default: '#ffffff' }};"
+    {% if disabled %}disabled{% endif %}
+  >
+    <span>{{ label | escape }}{% if price != blank %} — <span data-button-price>{{ price }}</span>{% endif %}</span>
+    {% if show_arrow %}
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path></svg>
+    {% endif %}
+  </button>
+{% else %}
+  <a
+    class="genetix-button{% if class != blank %} {{ class }}{% endif %}"
+    {% if link != blank %}href="{{ link }}"{% else %}role="link" aria-disabled="true"{% endif %}
+    {% if open_new_tab and link != blank %}target="_blank" rel="noopener noreferrer"{% endif %}
+    style="--genetix-button-bg:{{ background | default: '#153640' }};--genetix-button-color:{{ color | default: '#ffffff' }};"
+  >
+    <span>{{ label | escape }}</span>
+    {% if show_arrow %}
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path></svg>
+    {% endif %}
+  </a>
+{% endif %}
+
+{% stylesheet %}
+  .genetix-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    min-height: 46px;
+    padding: 10px 14px 10px 20px;
+    border: 1px solid var(--genetix-button-bg);
+    border-radius: 0;
+    background: var(--genetix-button-bg);
+    color: var(--genetix-button-color);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  .genetix-button svg {
+    width: 22px;
+    height: 22px;
+    flex: none;
+  }
+
+  .genetix-button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  .genetix-button[aria-disabled='true'],
+  .genetix-button:disabled {
+    opacity: 0.65;
+    cursor: default;
+  }
+{% endstylesheet %}

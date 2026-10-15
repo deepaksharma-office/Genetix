@@ -1,3 +1,74 @@
-{{ 'genetix-base.css' | asset_url | stylesheet_tag }}{{ 'genetix-less-noise.css' | asset_url | stylesheet_tag }}
-<section class="genetix genetix-less-noise" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }}"><div class="genetix__split"><div class="genetix__panel genetix-less-noise__content"><p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.heading | escape }}</h2><div class="genetix__copy">{{ section.settings.text }}</div>{% if section.settings.button_link != blank %}<a class="genetix__button" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>{% endif %}</div><picture class="genetix-less-noise__art">{% if section.settings.mobile_image != blank %}<source media="(max-width:749px)" srcset="{{ section.settings.mobile_image | image_url: width: 800 }}">{% endif %}{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 1400 | image_tag: widths: '500,800,1100,1400', alt: section.settings.image_alt }}{% else %}<span>The beauty of precision.</span>{% endif %}</picture></div></section>
-{% schema %}{"name":"GENETIX less noise","settings":[{"type":"image_picker","id":"image","label":"Desktop image"},{"type":"image_picker","id":"mobile_image","label":"Mobile image"},{"type":"text","id":"image_alt","label":"Image alt text"},{"type":"text","id":"eyebrow","label":"Eyebrow","default":"THE GENETIX APPROACH"},{"type":"text","id":"heading","label":"Heading","default":"Less noise. More intention."},{"type":"richtext","id":"text","label":"Text","default":"<p>We believe great care begins with a considered formula.</p>"},{"type":"text","id":"button_label","label":"Button label","default":"Explore the formula"},{"type":"url","id":"button_link","label":"Button link"},{"type":"color","id":"background","label":"Background","default":"#ffffff"},{"type":"color","id":"text_color","label":"Text","default":"#173c48"}],"presets":[{"name":"GENETIX less noise"}]}{% endschema %}
+{% comment %}
+  Editorial split section with section-managed copy and block-managed right-side card and image.
+  @example
+  Add one card block followed by one image block.
+{% endcomment %}
+{{ 'genetix-base.css' | asset_url | stylesheet_tag }}
+{{ 'genetix-less-noise.css' | asset_url | stylesheet_tag }}
+<section class="genetix genetix-less-noise" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};">
+  <div class="genetix__inner genetix-less-noise__inner">
+    <div class="genetix-less-noise__content">
+      {% if section.settings.eyebrow != blank %}<p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+      {% if section.settings.heading != blank %}<h2>{{ section.settings.heading | escape | newline_to_br }}</h2>{% endif %}
+      {% if section.settings.text != blank %}<div class="genetix__copy genetix-less-noise__copy rte">{{ section.settings.text }}</div>{% endif %}
+      {% if section.settings.secondary_text != blank %}<div class="genetix-less-noise__secondary rte">{{ section.settings.secondary_text }}</div>{% endif %}
+      {% if section.settings.button_label != blank %}
+        {% render 'genetix-button', label: section.settings.button_label, link: section.settings.button_link, background: section.settings.button_background, color: section.settings.button_color, show_arrow: section.settings.show_arrow, open_new_tab: section.settings.open_new_tab, class: 'genetix-less-noise__button' %}
+      {% endif %}
+    </div>
+
+    <div class="genetix-less-noise__visual">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'card' %}
+            <div class="genetix-less-noise__card" style="--gx-card-bg:{{ block.settings.background }};--gx-card-color:{{ block.settings.color }};--gx-card-muted:{{ block.settings.muted_color }};" {{ block.shopify_attributes }}>
+              {% if block.settings.eyebrow != blank %}<p class="genetix-less-noise__card-eyebrow">{{ block.settings.eyebrow | escape }}</p>{% endif %}
+              {% if block.settings.title != blank %}<h3>{{ block.settings.title | escape | newline_to_br }}</h3>{% endif %}
+              {% if block.settings.text != blank %}<div class="genetix-less-noise__card-text rte">{{ block.settings.text }}</div>{% endif %}
+            </div>
+          {% when 'image' %}
+            <picture class="genetix-less-noise__art" style="--gx-image-bg:{{ block.settings.background }};" {{ block.shopify_attributes }}>
+              {% if block.settings.mobile_image != blank %}<source media="(max-width:749px)" srcset="{{ block.settings.mobile_image | image_url: width: 900 }}" width="{{ block.settings.mobile_image.width }}" height="{{ block.settings.mobile_image.height }}">{% endif %}
+              {% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 1400 | image_tag: widths: '500, 800, 1100, 1400', sizes: '(min-width: 750px) 48vw, 100vw', loading: 'lazy', alt: block.settings.image_alt }}{% endif %}
+            </picture>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "GENETIX less noise",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE GENETIX PHILOSOPHY" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Less noise.\nMore intention." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>We believe great care begins with a considered formula. The GENETIX MATRIX brings together five active ingredients in one skin and scalp routine.</p>" },
+    { "type": "richtext", "id": "secondary_text", "label": "Secondary text", "default": "<p>Precision in formulation. Purpose in every ingredient.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Meet the ingredient matrix" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "checkbox", "id": "open_new_tab", "label": "Open in new tab", "default": false },
+    { "type": "checkbox", "id": "show_arrow", "label": "Show arrow", "default": true },
+    { "type": "color", "id": "button_background", "label": "Button background", "default": "#ffffff" },
+    { "type": "color", "id": "button_color", "label": "Button text and icon", "default": "#173c48" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" }
+  ],
+  "blocks": [
+    { "type": "card", "name": "Text card", "limit": 1, "settings": [
+      { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE MATRIX" },
+      { "type": "textarea", "id": "title", "label": "Title", "default": "The beauty\nof precision." },
+      { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Biotechnology. Refined.</p>" },
+      { "type": "color", "id": "background", "label": "Background", "default": "#eaf5fa" },
+      { "type": "color", "id": "color", "label": "Title color", "default": "#173c48" },
+      { "type": "color", "id": "muted_color", "label": "Supporting text color", "default": "#647c84" }
+    ] },
+    { "type": "image", "name": "Image", "limit": 1, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Desktop image" },
+      { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },
+      { "type": "text", "id": "image_alt", "label": "Image alt text" },
+      { "type": "color", "id": "background", "label": "Background", "default": "#eaf5fa" }
+    ] }
+  ],
+  "presets": [{ "name": "GENETIX less noise", "blocks": [{ "type": "card" }, { "type": "image" }] }]
+}
+{% endschema %}

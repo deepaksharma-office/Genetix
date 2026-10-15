@@ -1,3 +1,130 @@
-{{ 'genetix-base.css' | asset_url | stylesheet_tag }}{{ 'genetix-vault-matrix.css' | asset_url | stylesheet_tag }}
-<section class="genetix genetix__dark genetix-vault" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }}"><div class="genetix__inner"><div class="genetix-vault__top"><p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.heading | escape }}</h2>{{ section.settings.text }}</div><div class="genetix-vault__metrics"><div>{% for block in section.blocks limit: 2 %}<div class="genetix-vault__metric" {{ block.shopify_attributes }}><strong>{{ block.settings.value | escape }}</strong><span>{{ block.settings.label | escape }}</span></div>{% endfor %}</div><div class="genetix-vault__media">{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 700 | image_tag: class: 'genetix-vault__image', alt: section.settings.image_alt }}{% endif %}</div><div>{% for block in section.blocks offset: 2 %}<div class="genetix-vault__metric" {{ block.shopify_attributes }}><strong>{{ block.settings.value | escape }}</strong><span>{{ block.settings.label | escape }}</span></div>{% endfor %}</div></div>{% if section.settings.button_label != blank and section.settings.button_link != blank %}<a class="genetix__button" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>{% endif %}</div></section>
-{% schema %}{"name":"GENETIX vault matrix","max_blocks":4,"settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"THE VAULT MATRIX"},{"type":"text","id":"heading","label":"Heading","default":"Unmatched quality. Uncompromised value."},{"type":"richtext","id":"text","label":"Text","default":"<p>Carefully considered. Precisely composed.</p>"},{"type":"image_picker","id":"image","label":"Product image"},{"type":"text","id":"image_alt","label":"Image alt text"},{"type":"text","id":"button_label","label":"Button label","default":"Shop the matrix"},{"type":"url","id":"button_link","label":"Button link"},{"type":"color","id":"background","label":"Background","default":"#153640"},{"type":"color","id":"text_color","label":"Text","default":"#ffffff"}],"blocks":[{"type":"metric","name":"Metric","settings":[{"type":"text","id":"value","label":"Value","default":"2 oz"},{"type":"text","id":"label","label":"Label","default":"Net contents"}]}],"presets":[{"name":"GENETIX vault matrix","blocks":[{"type":"metric","settings":{"value":"$150–$199","label":"Comparable value"}},{"type":"metric","settings":{"value":"1 oz","label":"Standard size"}},{"type":"metric"},{"type":"metric","settings":{"value":"2×","label":"The volume"}}]}]}{% endschema %}
+{% comment %}
+  A premium product-value comparison with configurable content blocks and central product artwork.
+  @example
+  Add a title, supporting rich text, two comparison blocks, and a button block.
+{% endcomment %}
+{{ 'genetix-base.css' | asset_url | stylesheet_tag }}
+{{ 'genetix-vault-matrix.css' | asset_url | stylesheet_tag }}
+<section class="genetix genetix__dark genetix-vault" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-vault-muted:{{ section.settings.muted_color }};--gx-vault-line:{{ section.settings.line_color }};--gx-vault-image-width:{{ section.settings.image_width }}px;">
+  <div class="genetix__inner genetix-vault__inner">
+    <div class="genetix-vault__top">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'title' %}
+            <div class="genetix-vault__title-block" style="--gx-block-size:{{ block.settings.font_size }}px;--gx-block-size-mobile:{{ block.settings.font_size_mobile }}px;--gx-block-color:{{ block.settings.color }};" {{ block.shopify_attributes }}>
+              {% if block.settings.eyebrow != blank %}<p class="genetix__eyebrow">{{ block.settings.eyebrow | escape }}</p>{% endif %}
+              {% if block.settings.title != blank %}<h2>{{ block.settings.title | escape | newline_to_br }}</h2>{% endif %}
+            </div>
+          {% when 'richtext' %}
+            {% if block.settings.text != blank %}<div class="genetix-vault__intro rte" style="--gx-block-size:{{ block.settings.font_size }}px;--gx-block-color:{{ block.settings.color }};" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>{% endif %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+
+    <div class="genetix-vault__comparison-grid">
+      <div class="genetix-vault__column genetix-vault__column--left">
+        {% for block in section.blocks %}
+          {% if block.type == 'comparison' and block.settings.side == 'left' %}
+            <article class="genetix-vault__comparison" {{ block.shopify_attributes }}>
+              {% if block.settings.eyebrow != blank %}<p class="genetix-vault__comparison-eyebrow">{{ block.settings.eyebrow | escape }}</p>{% endif %}
+              {% if block.settings.title != blank %}<h3>{{ block.settings.title }}</h3>{% endif %}
+              {% if block.settings.subtitle != blank %}<p class="genetix-vault__subtitle">{{ block.settings.subtitle | escape }}</p>{% endif %}
+              {% if block.settings.text != blank %}<div class="genetix-vault__body rte">{{ block.settings.text }}</div>{% endif %}
+              {% if block.settings.footer_title != blank or block.settings.footer_text != blank %}<div class="genetix-vault__comparison-footer"><strong>{{ block.settings.footer_title | escape }}</strong><span>{{ block.settings.footer_text | escape }}</span></div>{% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="genetix-vault__product-stage">
+        {% if section.settings.image != blank %}
+          <div class="genetix-vault__product-float">
+            {{ section.settings.image | image_url: width: 900 | image_tag: class: 'genetix-vault__image', widths: '260, 420, 600, 900', sizes: '(min-width: 750px) 28vw, 58vw', loading: 'lazy', alt: section.settings.image_alt }}
+          </div>
+          <span class="genetix-vault__shadow" aria-hidden="true"></span>
+        {% endif %}
+      </div>
+
+      <div class="genetix-vault__column genetix-vault__column--right">
+        {% for block in section.blocks %}
+          {% if block.type == 'comparison' and block.settings.side == 'right' %}
+            <article class="genetix-vault__comparison" {{ block.shopify_attributes }}>
+              {% if block.settings.eyebrow != blank %}<p class="genetix-vault__comparison-eyebrow">{{ block.settings.eyebrow | escape }}</p>{% endif %}
+              {% if block.settings.title != blank %}<h3>{{ block.settings.title }}</h3>{% endif %}
+              {% if block.settings.subtitle != blank %}<p class="genetix-vault__subtitle">{{ block.settings.subtitle | escape }}</p>{% endif %}
+              {% if block.settings.text != blank %}<div class="genetix-vault__body rte">{{ block.settings.text }}</div>{% endif %}
+              {% if block.settings.footer_title != blank or block.settings.footer_text != blank %}<div class="genetix-vault__comparison-footer"><strong>{{ block.settings.footer_title | escape }}</strong><span>{{ block.settings.footer_text | escape }}</span></div>{% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'button' %}
+          {% if block.settings.label != blank %}
+            <div class="genetix-vault__button-wrap" {{ block.shopify_attributes }}>
+              {% render 'genetix-button', label: block.settings.label, link: block.settings.link, background: block.settings.background, color: block.settings.color, show_arrow: block.settings.show_arrow, open_new_tab: block.settings.open_new_tab, class: 'genetix-vault__button' %}
+            </div>
+          {% endif %}
+        {% when 'metric' %}
+          <div class="genetix-vault__legacy-metric" {{ block.shopify_attributes }}><strong>{{ block.settings.value | escape }}</strong><span>{{ block.settings.label | escape }}</span></div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "GENETIX vault matrix",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Product image" },
+    { "type": "text", "id": "image_alt", "label": "Image alt text" },
+    { "type": "range", "id": "image_width", "label": "Product image width", "min": 160, "max": 460, "step": 10, "unit": "px", "default": 280 },
+    { "type": "color", "id": "background", "label": "Background", "default": "#153640" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" },
+    { "type": "color", "id": "muted_color", "label": "Muted text", "default": "#a9bec4" },
+    { "type": "color", "id": "line_color", "label": "Divider", "default": "#49636b" }
+  ],
+  "blocks": [
+    { "type": "title", "name": "Title", "limit": 1, "settings": [
+      { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE VAULT MATRIX" },
+      { "type": "textarea", "id": "title", "label": "Title", "default": "Unmatched quality.\nUncompromised value." },
+      { "type": "color", "id": "color", "label": "Color", "default": "#ffffff" },
+      { "type": "range", "id": "font_size", "label": "Desktop size", "min": 28, "max": 80, "step": 1, "unit": "px", "default": 52 },
+      { "type": "range", "id": "font_size_mobile", "label": "Mobile size", "min": 24, "max": 52, "step": 1, "unit": "px", "default": 36 }
+    ] },
+    { "type": "richtext", "name": "Rich text", "settings": [
+      { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Concentrated science. A generous 2 oz format. Considered value.</p>" },
+      { "type": "color", "id": "color", "label": "Color", "default": "#a9bec4" },
+      { "type": "range", "id": "font_size", "label": "Size", "min": 11, "max": 24, "step": 1, "unit": "px", "default": 14 }
+    ] },
+    { "type": "comparison", "name": "Comparison column", "limit": 2, "settings": [
+      { "type": "select", "id": "side", "label": "Position", "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }], "default": "left" },
+      { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE INDUSTRY STANDARD" },
+      { "type": "inline_richtext", "id": "title", "label": "Title", "default": "$150.00–$199.00" },
+      { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "For a standard 1 oz bottle" },
+      { "type": "richtext", "id": "text", "label": "Description", "default": "<p>Corporate brands charge up to $150.00 to $199.00 for a tiny, standard 1 oz bottle of diluted, unbonded formulas.</p>" },
+      { "type": "text", "id": "footer_title", "label": "Footer title", "default": "1 oz" },
+      { "type": "text", "id": "footer_text", "label": "Footer text", "default": "Standard bottle volume" }
+    ] },
+    { "type": "button", "name": "Shop button", "limit": 1, "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Shop the matrix" },
+      { "type": "url", "id": "link", "label": "Link" },
+      { "type": "checkbox", "id": "open_new_tab", "label": "Open in new tab", "default": false },
+      { "type": "checkbox", "id": "show_arrow", "label": "Show arrow", "default": true },
+      { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
+      { "type": "color", "id": "color", "label": "Text and icon", "default": "#153640" }
+    ] },
+    { "type": "metric", "name": "Legacy metric", "settings": [{ "type": "text", "id": "value", "label": "Value", "default": "2 oz" }, { "type": "text", "id": "label", "label": "Label", "default": "Net contents" }] }
+  ],
+  "presets": [{ "name": "GENETIX vault matrix", "blocks": [
+    { "type": "title" },
+    { "type": "richtext" },
+    { "type": "comparison" },
+    { "type": "comparison", "settings": { "side": "right", "eyebrow": "THE GENETIX STANDARD", "title": "2 oz", "subtitle": "60 ml of concentrated care", "text": "<p>We reject corporate markups. We deliver a massive, clinical-grade 2 oz bottle loaded with uncompromised, active compound concentrations.</p>", "footer_title": "2× the volume", "footer_text": "Compared with a standard 1 oz bottle" } },
+    { "type": "button" }
+  ] }]
+}
+{% endschema %}

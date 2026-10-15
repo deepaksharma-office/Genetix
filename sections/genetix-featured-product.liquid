@@ -1,15 +1,167 @@
-{{ 'genetix-base.css' | asset_url | stylesheet_tag }}{{ 'genetix-featured-product.css' | asset_url | stylesheet_tag }}
+{% comment %}
+  Featured product purchase section with media, proof points, and exclusive accordions.
+  @example
+  Select a product, then add impact, icon text, and accordion blocks.
+{% endcomment %}
+{{ 'genetix-base.css' | asset_url | stylesheet_tag }}
+{{ 'genetix-featured-product.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'genetix-featured-product.js' | asset_url }}" type="module"></script>
-{% assign product = section.settings.product %}{% assign variant = product.selected_or_first_available_variant %}
-<section class="genetix genetix-product" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }}"><div class="genetix__inner">
-<genetix-product id="GenetixProduct-{{ section.id }}"><div class="genetix-product__layout"><div>
-  <button class="genetix-product__main" type="button" data-zoom-open aria-label="Zoom product image">{% if product.featured_media != blank %}{{ product.featured_media.preview_image | image_url: width: 1100 | image_tag: class: 'genetix__media', widths: '400,700,900,1100', alt: product.featured_media.alt, data-main-image: '' }}{% else %}<span>Select a product to display its media.</span>{% endif %}</button>
-  <div class="genetix-product__thumbs">{% for media in product.media limit: 6 %}<button class="genetix-product__thumb" type="button" data-media-src="{{ media.preview_image | image_url: width: 1600 }}" data-media-alt="{{ media.alt | escape }}" aria-label="View {{ media.alt | default: product.title | escape }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}">{{ media.preview_image | image_url: width: 140 | image_tag: alt: '' }}</button>{% endfor %}</div>
-  {% if product.featured_media != blank %}<dialog class="genetix-product__zoom"><button class="genetix-product__zoom-close" type="button" data-zoom-close aria-label="Close image zoom">×</button>{{ product.featured_media.preview_image | image_url: width: 1800 | image_tag: alt: product.featured_media.alt, data-zoom-image: '' }}</dialog>{% endif %}
-</div><div><p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ product.title | default: section.settings.fallback_title | escape }}</h2>
-  {% if product != blank %}<p><span class="genetix-product__price" data-price>{{ variant.price | money }}</span>{% if variant.compare_at_price > variant.price %}<span class="genetix-product__compare">{{ variant.compare_at_price | money }}</span>{% endif %}</p><div class="genetix__copy">{{ product.description | strip_html | truncatewords: 45 }}</div>
-  {% form 'product', product %}<label for="Variant-{{ section.id }}">{{ section.settings.variant_label | escape }}</label><select id="Variant-{{ section.id }}" name="id" data-variant-select>{% for item in product.variants %}<option value="{{ item.id }}" data-price="{{ item.price | money }}" data-available="{{ item.available }}" {% if item == variant %}selected{% endif %}>{{ item.title | escape }}</option>{% endfor %}</select><input type="hidden" name="quantity" value="1"><button class="genetix__button genetix-product__submit" type="submit" {% unless variant.available %}disabled{% endunless %}>{{ section.settings.button_label | escape }}</button><p class="genetix-product__error" data-error role="status"></p>{% endform %}
-  {% else %}<p class="genetix__copy">Choose a product in the theme editor.</p>{% endif %}
-  {% for block in section.blocks %}<details {{ block.shopify_attributes }}><summary>{{ block.settings.heading | escape }}</summary>{{ block.settings.content }}</details>{% endfor %}
-</div></div></genetix-product></div></section>
-{% schema %}{"name":"GENETIX featured product","max_blocks":4,"settings":[{"type":"product","id":"product","label":"Product"},{"type":"text","id":"eyebrow","label":"Eyebrow","default":"THE HERO FORMULA"},{"type":"text","id":"fallback_title","label":"Placeholder title","default":"GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix"},{"type":"text","id":"variant_label","label":"Variant label","default":"Choose an option"},{"type":"text","id":"button_label","label":"Purchase button label","default":"Add to cart"},{"type":"color","id":"background","label":"Background","default":"#ffffff"},{"type":"color","id":"text_color","label":"Text","default":"#173c48"}],"blocks":[{"type":"accordion","name":"Information row","settings":[{"type":"text","id":"heading","label":"Heading","default":"Product & ingredients"},{"type":"richtext","id":"content","label":"Content","default":"<p>Add product details here.</p>"}]}],"presets":[{"name":"GENETIX featured product","blocks":[{"type":"accordion"},{"type":"accordion","settings":{"heading":"Quality & laboratory testing"}},{"type":"accordion","settings":{"heading":"Shipping & fulfillment"}}]}]}{% endschema %}
+{% liquid
+  assign product = section.settings.product
+  assign variant = product.selected_or_first_available_variant
+  assign initial_quantity = variant.quantity_rule.min | default: 1
+  assign button_price = variant.price | money
+  assign button_disabled = false
+  unless variant.available
+    assign button_disabled = true
+  endunless
+%}
+<section class="genetix genetix-product" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-media-bg:{{ section.settings.media_background }};">
+  <div class="genetix__inner">
+    <genetix-product id="GenetixProduct-{{ section.id }}">
+      <div class="genetix-product__layout">
+        <div class="genetix-product__gallery">
+          <div class="genetix-product__media-label"><span>{{ section.settings.media_label | escape }}</span><span aria-hidden="true">+</span></div>
+          <button class="genetix-product__main" type="button" data-zoom-open aria-label="Zoom product image">
+            {% if product.featured_media != blank %}
+              {{ product.featured_media.preview_image | image_url: width: 1100 | image_tag: class: 'genetix-product__main-image', widths: '400, 700, 900, 1100', sizes: '(min-width: 750px) 46vw, 100vw', loading: 'eager', alt: product.featured_media.alt, data-main-image: '' }}
+            {% else %}
+              <span>Select a product to display its media.</span>
+            {% endif %}
+          </button>
+          <div class="genetix-product__thumbs">
+            {% for media in product.media limit: 6 %}
+              <button class="genetix-product__thumb" type="button" data-media-src="{{ media.preview_image | image_url: width: 1600 }}" data-media-alt="{{ media.alt | escape }}" aria-label="View {{ media.alt | default: product.title | escape }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}">
+                {{ media.preview_image | image_url: width: 140 | image_tag: alt: '', loading: 'lazy' }}
+              </button>
+            {% endfor %}
+          </div>
+          {% if product.featured_media != blank %}
+            <dialog class="genetix-product__zoom">
+              <button class="genetix-product__zoom-close" type="button" data-zoom-close aria-label="Close image zoom">&times;</button>
+              {{ product.featured_media.preview_image | image_url: width: 1800 | image_tag: alt: product.featured_media.alt, data-zoom-image: '' }}
+            </dialog>
+          {% endif %}
+        </div>
+
+        <div class="genetix-product__details">
+          {% if section.settings.eyebrow != blank %}<p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+          <h2>{{ product.title | default: section.settings.fallback_title | escape }}</h2>
+          {% if section.settings.product_meta != blank %}<p class="genetix-product__meta">{{ section.settings.product_meta | escape }}</p>{% endif %}
+
+          {% if product != blank %}
+            <div class="genetix-product__price-row">
+              <span class="genetix-product__price" data-price>{{ variant.price | money }}</span>
+              {% if variant.compare_at_price > variant.price %}<span class="genetix-product__compare">{{ variant.compare_at_price | money }}</span>{% endif %}
+              {% if section.settings.currency_label != blank %}<span class="genetix-product__currency">{{ section.settings.currency_label | escape }}</span>{% endif %}
+            </div>
+            <div class="genetix__copy genetix-product__description">{{ product.description | strip_html | truncatewords: 45 }}</div>
+
+            <div class="genetix-product__impacts">
+              {% for block in section.blocks %}
+                {% if block.type == 'impact' %}
+                  <div class="genetix-product__impact" {{ block.shopify_attributes }}><strong>{{ block.settings.value | escape }}</strong><span>{{ block.settings.label | escape }}</span></div>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            {% form 'product', product, class: 'genetix-product__form' %}
+              {% if product.variants.size > 1 %}
+                <label for="Variant-{{ section.id }}">{{ section.settings.variant_label | escape }}</label>
+                <select id="Variant-{{ section.id }}" name="id" data-variant-select>
+                  {% for item in product.variants %}
+                    <option value="{{ item.id }}" data-price="{{ item.price | money }}" data-available="{{ item.available }}" data-min="{{ item.quantity_rule.min | default: 1 }}" data-max="{{ item.quantity_rule.max }}" data-step="{{ item.quantity_rule.increment | default: 1 }}" {% if item == variant %}selected{% endif %}>{{ item.title | escape }}</option>
+                  {% endfor %}
+                </select>
+              {% else %}
+                <input type="hidden" name="id" value="{{ variant.id }}">
+              {% endif %}
+              <div class="genetix-product__purchase-row">
+                <div class="genetix-product__quantity">
+                  <button type="button" data-quantity-minus aria-label="Decrease quantity">&minus;</button>
+                  <input type="number" name="quantity" value="{{ initial_quantity }}" min="{{ initial_quantity }}" {% if variant.quantity_rule.max %}max="{{ variant.quantity_rule.max }}"{% endif %} step="{{ variant.quantity_rule.increment | default: 1 }}" data-quantity-input aria-label="Quantity">
+                  <button type="button" data-quantity-plus aria-label="Increase quantity">+</button>
+                </div>
+                {% render 'genetix-button', label: section.settings.button_label, background: section.settings.button_background, color: section.settings.button_color, show_arrow: section.settings.show_button_arrow, tag: 'button', button_type: 'submit', disabled: button_disabled, price: button_price, class: 'genetix-product__submit' %}
+              </div>
+              <p class="genetix-product__error" data-error role="status"></p>
+            {% endform %}
+
+            <div class="genetix-product__assurances">
+              {% for block in section.blocks %}
+                {% if block.type == 'icon_text' %}
+                  <div class="genetix-product__assurance" {{ block.shopify_attributes }}>
+                    {% case block.settings.icon %}
+                      {% when 'shield' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3 5 6v5c0 4.6 2.9 8.1 7 10 4.1-1.9 7-5.4 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+                      {% when 'truck' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg>
+                      {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg>
+                    {% endcase %}
+                    <span>{{ block.settings.text | escape }}</span>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="genetix__copy">Choose a product in the theme editor.</p>
+          {% endif %}
+
+          <div class="genetix-product__accordions">
+            {% for block in section.blocks %}
+              {% if block.type == 'accordion' %}
+                {% assign panel_id = 'ProductAccordion-' | append: section.id | append: '-' | append: block.id %}
+                <div class="genetix-product__accordion" {{ block.shopify_attributes }}>
+                  <button class="genetix-product__accordion-trigger" type="button" aria-expanded="false" aria-controls="{{ panel_id }}" data-accordion-trigger>
+                    <span>{{ block.settings.heading | escape }}</span>
+                    <span class="genetix-product__accordion-icon" aria-hidden="true">
+                      <svg class="genetix-product__plus" viewBox="0 0 24 24" fill="currentColor"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
+                      <svg class="genetix-product__minus" viewBox="0 0 24 24" fill="currentColor"><path d="M5 11V13H19V11H5Z"></path></svg>
+                    </span>
+                  </button>
+                  <div id="{{ panel_id }}" class="genetix-product__accordion-panel" data-accordion-panel><div class="genetix-product__accordion-content rte">{{ block.settings.content }}</div></div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </genetix-product>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "GENETIX featured product",
+  "max_blocks": 16,
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE DAILY ESSENTIAL" },
+    { "type": "text", "id": "fallback_title", "label": "Placeholder title", "default": "GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix" },
+    { "type": "text", "id": "product_meta", "label": "Product meta", "default": "2 fl oz / 60 ml · Skin + Scalp" },
+    { "type": "text", "id": "currency_label", "label": "Currency label", "default": "USD" },
+    { "type": "text", "id": "media_label", "label": "Media label", "default": "GHK-Cu SCALP MATRIX" },
+    { "type": "text", "id": "variant_label", "label": "Variant label", "default": "Choose an option" },
+    { "type": "text", "id": "button_label", "label": "Purchase button label", "default": "Add to bag" },
+    { "type": "checkbox", "id": "show_button_arrow", "label": "Show purchase button arrow", "default": true },
+    { "type": "color", "id": "button_background", "label": "Purchase button background", "default": "#153640" },
+    { "type": "color", "id": "button_color", "label": "Purchase button text and icon", "default": "#ffffff" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "media_background", "label": "Media background", "default": "#eef8fb" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" }
+  ],
+  "blocks": [
+    { "type": "impact", "name": "Impact number", "settings": [{ "type": "text", "id": "value", "label": "Value", "default": "2%" }, { "type": "text", "id": "label", "label": "Label", "default": "GHK-Cu" }] },
+    { "type": "icon_text", "name": "Icon with text", "settings": [{ "type": "select", "id": "icon", "label": "Icon", "options": [{ "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }, { "value": "plus", "label": "Plus" }], "default": "shield" }, { "type": "text", "id": "text", "label": "Text", "default": "Secure checkout" }] },
+    { "type": "accordion", "name": "Information row", "settings": [{ "type": "text", "id": "heading", "label": "Heading", "default": "Formula & ingredients" }, { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Add product details here.</p>" }] }
+  ],
+  "presets": [{ "name": "GENETIX featured product", "blocks": [
+    { "type": "impact", "settings": { "value": "2%", "label": "GHK-Cu" } },
+    { "type": "impact", "settings": { "value": "6%", "label": "PAL-150" } },
+    { "type": "impact", "settings": { "value": "3%", "label": "Niacinamide" } },
+    { "type": "impact", "settings": { "value": "0.25%", "label": "PDRN+" } },
+    { "type": "icon_text", "settings": { "icon": "shield", "text": "Secure checkout" } },
+    { "type": "icon_text", "settings": { "icon": "truck", "text": "Free insured U.S. shipping" } },
+    { "type": "accordion" },
+    { "type": "accordion", "settings": { "heading": "Quality & laboratory testing" } },
+    { "type": "accordion", "settings": { "heading": "Shipping & fulfillment" } }
+  ] }]
+}
+{% endschema %}

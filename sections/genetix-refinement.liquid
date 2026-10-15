@@ -1,3 +1,108 @@
-{{ 'genetix-base.css' | asset_url | stylesheet_tag }}{{ 'genetix-refinement.css' | asset_url | stylesheet_tag }}
-<section class="genetix genetix-refinement" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }}"><div class="genetix__inner"><div class="genetix__split"><picture class="genetix-refinement__media">{% if section.settings.mobile_image != blank %}<source media="(max-width:749px)" srcset="{{ section.settings.mobile_image | image_url: width: 800 }}">{% endif %}{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 1200 | image_tag: widths: '400,700,900,1200', alt: section.settings.image_alt }}{% endif %}</picture><div class="genetix__panel"><p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.heading | escape }}</h2><div class="genetix__copy">{{ section.settings.text }}</div><div class="genetix-refinement__specs">{% for block in section.blocks %}<div class="genetix-refinement__spec" {{ block.shopify_attributes }}><span>{{ block.settings.label | escape }}</span><strong>{{ block.settings.value | escape }}</strong></div>{% endfor %}</div>{% if section.settings.button_link != blank %}<a class="genetix__button" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>{% endif %}</div></div></div></section>
-{% schema %}{"name":"GENETIX refinement","max_blocks":8,"settings":[{"type":"image_picker","id":"image","label":"Desktop image"},{"type":"image_picker","id":"mobile_image","label":"Mobile image"},{"type":"text","id":"image_alt","label":"Image alt text"},{"type":"text","id":"eyebrow","label":"Eyebrow","default":"BUILT FOR A CONSIDERED ROUTINE"},{"type":"text","id":"heading","label":"Heading","default":"Refinement, in your hands."},{"type":"richtext","id":"text","label":"Text","default":"<p>A refined format designed to fit into your routine.</p>"},{"type":"text","id":"button_label","label":"Button label","default":"Discover more"},{"type":"url","id":"button_link","label":"Button link"},{"type":"color","id":"background","label":"Background","default":"#ffffff"},{"type":"color","id":"text_color","label":"Text","default":"#173c48"}],"blocks":[{"type":"spec","name":"Specification","settings":[{"type":"text","id":"label","label":"Label","default":"Format"},{"type":"text","id":"value","label":"Value","default":"Merchant supplied"}]}],"presets":[{"name":"GENETIX refinement","blocks":[{"type":"spec"},{"type":"spec","settings":{"label":"Size"}},{"type":"spec","settings":{"label":"Routine"}}]}]}{% endschema %}
+{% comment %}
+  Product-format story with responsive media and merchant-ordered content blocks.
+  @example
+  Configure the image on the section and arrange content in the right column with blocks.
+{% endcomment %}
+{{ 'genetix-base.css' | asset_url | stylesheet_tag }}
+{{ 'genetix-refinement.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="genetix genetix-refinement"
+  style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-refinement-muted:{{ section.settings.muted_color }};--gx-refinement-line:{{ section.settings.line_color }};--gx-pt:{{ section.settings.padding_top }}px;--gx-pb:{{ section.settings.padding_bottom }}px;--gx-pt-mobile:{{ section.settings.padding_top_mobile }}px;--gx-pb-mobile:{{ section.settings.padding_bottom_mobile }}px;"
+>
+  <div class="genetix__inner genetix-refinement__inner">
+    <div class="genetix-refinement__layout">
+      <picture class="genetix-refinement__media">
+        {% if section.settings.mobile_image != blank %}
+          <source media="(max-width: 749px)" srcset="{{ section.settings.mobile_image | image_url: width: 900 }}" width="{{ section.settings.mobile_image.width }}" height="{{ section.settings.mobile_image.height }}">
+        {% endif %}
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 1400 | image_tag: widths: '480, 720, 960, 1200, 1400', sizes: '(min-width: 990px) 46vw, 100vw', loading: 'lazy', alt: section.settings.image_alt }}
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'genetix-refinement__placeholder' }}
+        {% endif %}
+      </picture>
+
+      <div class="genetix-refinement__content">
+        {% for block in section.blocks %}
+          <div class="genetix-refinement__block genetix-refinement__block--{{ block.type }}" {{ block.shopify_attributes }}>
+            {% case block.type %}
+              {% when 'eyebrow' %}
+                {% if block.settings.text != blank %}<p class="genetix-refinement__eyebrow">{{ block.settings.text | escape }}</p>{% endif %}
+              {% when 'title' %}
+                {% if block.settings.title != blank %}<h2>{{ block.settings.title | escape | newline_to_br }}</h2>{% endif %}
+              {% when 'text' %}
+                {% if block.settings.text != blank %}<div class="genetix-refinement__text rte">{{ block.settings.text }}</div>{% endif %}
+              {% when 'spec' %}
+                <dl class="genetix-refinement__spec">
+                  {% if block.settings.label != blank %}<dt>{{ block.settings.label | escape }}</dt>{% endif %}
+                  {% if block.settings.value != blank %}<dd>{{ block.settings.value | escape }}</dd>{% endif %}
+                </dl>
+              {% when 'button' %}
+                {% if block.settings.label != blank %}
+                  {% render 'genetix-button', label: block.settings.label, link: block.settings.link, background: block.settings.background, color: block.settings.color, show_arrow: block.settings.show_arrow, open_new_tab: block.settings.open_new_tab, class: 'genetix-refinement__button' %}
+                {% endif %}
+            {% endcase %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GENETIX refinement",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Desktop image" },
+    { "type": "image_picker", "id": "mobile_image", "label": "Mobile image" },
+    { "type": "text", "id": "image_alt", "label": "Image alt text", "default": "GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix packaging" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" },
+    { "type": "color", "id": "muted_color", "label": "Muted text", "default": "#647c84" },
+    { "type": "color", "id": "line_color", "label": "Divider lines", "default": "#dce7eb" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_top_mobile", "label": "Mobile padding top", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Mobile padding bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 40 }
+  ],
+  "blocks": [
+    { "type": "eyebrow", "name": "Eyebrow", "settings": [
+      { "type": "text", "id": "text", "label": "Text", "default": "THE COMPLETE EXPERIENCE" }
+    ] },
+    { "type": "title", "name": "Title", "settings": [
+      { "type": "textarea", "id": "title", "label": "Title", "default": "Refinement\nin your hands." }
+    ] },
+    { "type": "text", "name": "Text", "settings": [
+      { "type": "richtext", "id": "text", "label": "Text", "default": "<p>GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix.</p>" }
+    ] },
+    { "type": "spec", "name": "Specification", "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Format" },
+      { "type": "text", "id": "value", "label": "Value", "default": "Skin & Scalp Matrix" }
+    ] },
+    { "type": "button", "name": "Button", "limit": 1, "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Discover more" },
+      { "type": "url", "id": "link", "label": "Link" },
+      { "type": "checkbox", "id": "open_new_tab", "label": "Open in new tab", "default": false },
+      { "type": "checkbox", "id": "show_arrow", "label": "Show arrow", "default": true },
+      { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
+      { "type": "color", "id": "color", "label": "Text and icon", "default": "#173c48" }
+    ] }
+  ],
+  "presets": [{
+    "name": "GENETIX refinement",
+    "blocks": [
+      { "type": "eyebrow" },
+      { "type": "title" },
+      { "type": "text" },
+      { "type": "text", "settings": { "text": "<p>A complete skin and scalp matrix, in a generous 2 oz format.</p>" } },
+      { "type": "spec" },
+      { "type": "spec", "settings": { "label": "Volume", "value": "2 fl oz / 60 ml" } },
+      { "type": "spec", "settings": { "label": "Key actives", "value": "GHK-Cu · PAL-150 · Niacinamide" } },
+      { "type": "spec", "settings": { "label": "Matrix base", "value": "Hyaluronic Acid · Salmon Mesenchymal Cell Conditioned Media (PDRN+)" } },
+      { "type": "button" }
+    ]
+  }]
+}
+{% endschema %}

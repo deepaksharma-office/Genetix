@@ -11,23 +11,85 @@
   "sections": {
     "genetix_hero": {
       "type": "genetix-hero",
+      "blocks": {
+        "eyebrow": {
+          "type": "text",
+          "settings": {
+            "text": "<p>THE SCIENCE OF CONSIDERED CARE</p>",
+            "style": "eyebrow",
+            "color": "#173c48",
+            "font_size": 11,
+            "font_size_mobile": 10
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "title": "Clinical peptide science. <strong>Uncompromised quality.</strong> Superior bioavailability.",
+            "color": "#173c48",
+            "highlight_color": "#2196b5",
+            "font_size": 48,
+            "font_size_mobile": 36
+          }
+        },
+        "subheading": {
+          "type": "text",
+          "settings": {
+            "text": "<p>GHK-Cu Skin & Scalp Matrix</p>",
+            "style": "body",
+            "color": "#173c48",
+            "font_size": 17,
+            "font_size_mobile": 15
+          }
+        },
+        "description": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Most skincare brands sell watered-down formulas that sit on the surface. GENETIX PEPTIDES engineers advanced, lipid-stabilized matrices designed to penetrate the oil barrier and remodel the skin from the deep dermis up.</p>",
+            "style": "body",
+            "color": "#173c48",
+            "font_size": 14,
+            "font_size_mobile": 14
+          }
+        },
+        "shop": {
+          "type": "button",
+          "settings": {
+            "label": "Shop now",
+            "link": "shopify://products/genetix-peptides",
+            "open_new_tab": false,
+            "show_arrow": true,
+            "background": "#153640",
+            "color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow",
+        "title",
+        "subheading",
+        "description",
+        "shop"
+      ],
       "settings": {
         "image": "shopify://shop_images/Hero-Reference-Molecular-Background_2.png",
         "image_alt": "",
         "product_image": "shopify://shop_images/Hero-Reference-Bottle-39.png",
         "product_alt": "",
-        "eyebrow": "THE SCIENCE OF SCALP",
-        "heading": "Clinical peptide science. Uncompromised quality. Superior bioavailability.",
-        "text": "<p>Targeted support for healthier-looking hair and scalp.</p>",
-        "button_label": "Shop now",
-        "button_link": "shopify://products/genetix-peptides",
+        "product_width": 340,
+        "product_position_x": 72,
+        "product_position_y": 8,
+        "floating_text": "GHK-Cu",
+        "floating_text_color": "#9ddfeb",
+        "floating_text_size": 112,
+        "floating_text_position_x": 50,
+        "floating_text_offset_y": 20,
         "alignment": "left",
         "background": "#eaf5fa",
-        "text_color": "#173c48",
         "overlay": "#ffffff",
-        "overlay_opacity": 10,
+        "overlay_opacity": 5,
         "min_height": 560,
-        "mobile_min_height": 620
+        "mobile_min_height": 680
       }
     },
     "genetix_icons": {
@@ -92,10 +154,52 @@
     "genetix_product": {
       "type": "genetix-featured-product",
       "blocks": {
+        "impact_ghk": {
+          "type": "impact",
+          "settings": {
+            "value": "2%",
+            "label": "GHK-Cu"
+          }
+        },
+        "impact_pal": {
+          "type": "impact",
+          "settings": {
+            "value": "6%",
+            "label": "PAL-150"
+          }
+        },
+        "impact_niacinamide": {
+          "type": "impact",
+          "settings": {
+            "value": "3%",
+            "label": "Niacinamide"
+          }
+        },
+        "impact_pdrn": {
+          "type": "impact",
+          "settings": {
+            "value": "0.25%",
+            "label": "PDRN+"
+          }
+        },
+        "secure_checkout": {
+          "type": "icon_text",
+          "settings": {
+            "icon": "shield",
+            "text": "Secure checkout"
+          }
+        },
+        "insured_shipping": {
+          "type": "icon_text",
+          "settings": {
+            "icon": "truck",
+            "text": "Free insured U.S. shipping"
+          }
+        },
         "details": {
           "type": "accordion",
           "settings": {
-            "heading": "Product & ingredients",
+            "heading": "Formula & ingredients",
             "content": "<p>Add product details here.</p>"
           }
         },
@@ -115,17 +219,30 @@
         }
       },
       "block_order": [
+        "impact_ghk",
+        "impact_pal",
+        "impact_niacinamide",
+        "impact_pdrn",
+        "secure_checkout",
+        "insured_shipping",
         "details",
         "quality",
         "shipping"
       ],
       "settings": {
         "product": "genetix-peptides",
-        "eyebrow": "THE HERO FORMULA",
+        "eyebrow": "THE DAILY ESSENTIAL",
         "fallback_title": "GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix",
+        "product_meta": "2 fl oz / 60 ml · Skin + Scalp",
+        "currency_label": "USD",
+        "media_label": "GHK-Cu SCALP MATRIX",
         "variant_label": "Choose an option",
-        "button_label": "Add to cart",
+        "button_label": "Add to bag",
+        "show_button_arrow": true,
+        "button_background": "#153640",
+        "button_color": "#ffffff",
         "background": "#ffffff",
+        "media_background": "#eef8fb",
         "text_color": "#173c48"
       }
     },
@@ -201,77 +318,178 @@
     "genetix_vault": {
       "type": "genetix-vault-matrix",
       "blocks": {
-        "one": {
-          "type": "metric",
+        "vault_title": {
+          "type": "title",
           "settings": {
-            "value": "$150–$199",
-            "label": "Comparable value"
+            "eyebrow": "THE VAULT MATRIX",
+            "title": "Unmatched quality.\nUncompromised value.",
+            "color": "#ffffff",
+            "font_size": 52,
+            "font_size_mobile": 36
           }
         },
-        "two": {
-          "type": "metric",
+        "vault_intro": {
+          "type": "richtext",
           "settings": {
-            "value": "1 oz",
-            "label": "Standard size"
+            "text": "<p>Concentrated science. A generous 2 oz format. Considered value.</p>",
+            "color": "#a9bec4",
+            "font_size": 14
           }
         },
-        "three": {
-          "type": "metric",
+        "industry": {
+          "type": "comparison",
           "settings": {
-            "value": "2 oz",
-            "label": "Net contents"
+            "side": "left",
+            "eyebrow": "THE INDUSTRY STANDARD",
+            "title": "$150.00–$199.00",
+            "subtitle": "For a standard 1 oz bottle",
+            "text": "<p>Corporate brands charge up to $150.00 to $199.00 for a tiny, standard 1 oz bottle of diluted, unbonded formulas.</p>",
+            "footer_title": "1 oz",
+            "footer_text": "Standard bottle volume"
           }
         },
-        "four": {
-          "type": "metric",
+        "genetix_standard": {
+          "type": "comparison",
           "settings": {
-            "value": "2×",
-            "label": "The volume"
+            "side": "right",
+            "eyebrow": "THE GENETIX STANDARD",
+            "title": "2 oz",
+            "subtitle": "60 ml of concentrated care",
+            "text": "<p>We reject corporate markups. We deliver a massive, clinical-grade 2 oz bottle loaded with uncompromised, active compound concentrations.</p>",
+            "footer_title": "2× the volume",
+            "footer_text": "Compared with a standard 1 oz bottle"
+          }
+        },
+        "vault_button": {
+          "type": "button",
+          "settings": {
+            "label": "Shop the matrix",
+            "link": "shopify://products/genetix-peptides",
+            "open_new_tab": false,
+            "show_arrow": true,
+            "background": "#ffffff",
+            "color": "#153640"
           }
         }
       },
       "block_order": [
-        "one",
-        "two",
-        "three",
-        "four"
+        "vault_title",
+        "vault_intro",
+        "industry",
+        "genetix_standard",
+        "vault_button"
       ],
       "settings": {
-        "eyebrow": "THE VAULT MATRIX",
-        "heading": "Unmatched quality. Uncompromised value.",
-        "text": "<p>Carefully considered. Precisely composed.</p>",
         "image": "shopify://shop_images/Hero-Reference-Bottle-39.png",
         "image_alt": "",
-        "button_label": "Shop the matrix",
-        "button_link": "",
+        "image_width": 280,
         "background": "#153640",
-        "text_color": "#ffffff"
+        "text_color": "#ffffff",
+        "muted_color": "#a9bec4",
+        "line_color": "#49636b"
       }
     },
     "genetix_daily": {
       "type": "genetix-daily-moment",
+      "blocks": {
+        "daily_eyebrow": {
+          "type": "text",
+          "settings": {
+            "text": "<p>CLINICAL CARE, EVERY DAY</p>",
+            "style": "eyebrow",
+            "color": "#173c48",
+            "font_size": 9,
+            "spacing_top": 0,
+            "spacing_bottom": 16
+          }
+        },
+        "daily_title": {
+          "type": "title",
+          "settings": {
+            "title": "Your skin.\nYour scalp.\nYour daily moment.",
+            "color": "#173c48",
+            "font_size": 50,
+            "font_size_mobile": 36,
+            "spacing_top": 16,
+            "spacing_bottom": 56
+          }
+        },
+        "daily_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bring a little more intention to your routine. GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix brings focused peptide care to your skin and scalp.</p>",
+            "style": "body",
+            "color": "#173c48",
+            "font_size": 15,
+            "spacing_top": 0,
+            "spacing_bottom": 20
+          }
+        },
+        "daily_button": {
+          "type": "button",
+          "settings": {
+            "label": "Meet the matrix",
+            "link": "shopify://pages/data-sharing-opt-out",
+            "open_new_tab": false,
+            "show_arrow": true,
+            "background": "#153640",
+            "color": "#ffffff",
+            "spacing_top": 28,
+            "spacing_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "daily_eyebrow",
+        "daily_title",
+        "daily_text",
+        "daily_button"
+      ],
       "settings": {
         "image": "shopify://shop_images/Rectangle.png",
         "image_alt": "",
-        "eyebrow": "CLINICAL CARE, ELEVATED",
-        "heading": "Your skin.\nYour scalp.\nYour daily moment.",
-        "text": "<p>Bring a little more intention to your routine. GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix brings focused peptide care to your skin and scalp.</p>",
-        "button_label": "Meet the matrix",
-        "button_link": "shopify://pages/data-sharing-opt-out",
         "background": "#eaf5fa",
         "text_color": "#173c48"
       }
     },
     "genetix_less": {
       "type": "genetix-less-noise",
+      "blocks": {
+        "matrix_card": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "THE MATRIX",
+            "title": "The beauty\nof precision.",
+            "text": "<p>Biotechnology. Refined.</p>",
+            "background": "#eaf5fa",
+            "color": "#173c48",
+            "muted_color": "#647c84"
+          }
+        },
+        "matrix_image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Genetix_Shopify_Hero_Background_Only_2560x960_39b24bc9-2fa4-40be-9da5-65fad7143a40.png",
+            "image_alt": "",
+            "background": "#eaf5fa"
+          }
+        }
+      },
+      "block_order": [
+        "matrix_card",
+        "matrix_image"
+      ],
       "settings": {
-        "image": "shopify://shop_images/Genetix_Shopify_Hero_Background_Only_2560x960_39b24bc9-2fa4-40be-9da5-65fad7143a40.png",
-        "image_alt": "",
-        "eyebrow": "THE GENETIX APPROACH",
-        "heading": "Less noise. More intention.",
-        "text": "<p>We believe great care begins with a considered formula.</p>",
+        "eyebrow": "THE GENETIX PHILOSOPHY",
+        "heading": "Less noise.\nMore intention.",
+        "text": "<p>We believe great care begins with a considered formula. The GENETIX MATRIX brings together five active ingredients in one skin and scalp routine.</p>",
+        "secondary_text": "<p>Precision in formulation. Purpose in every ingredient.</p>",
         "button_label": "Meet the ingredient matrix",
         "button_link": "shopify://pages/meet-the-ingredient-matrix",
+        "open_new_tab": false,
+        "show_arrow": true,
+        "button_background": "#ffffff",
+        "button_color": "#173c48",
         "background": "#ffffff",
         "text_color": "#173c48"
       }
@@ -327,38 +545,58 @@
         "one": {
           "type": "evidence",
           "settings": {
+            "icon": "shield",
             "text": "Manufactured in an FDA Registered Facility"
           }
         },
         "two": {
           "type": "evidence",
           "settings": {
+            "icon": "flag",
             "text": "Made in the USA"
           }
         },
         "three": {
           "type": "evidence",
           "settings": {
-            "text": "Laboratory Tested"
+            "icon": "flask",
+            "text": "Laboratory tested"
+          }
+        },
+        "documentation": {
+          "type": "document_card",
+          "settings": {
+            "eyebrow": "DOCUMENTATION / THE GENETIX MATRIX",
+            "icon": "document",
+            "heading": "Laboratory testing\n& lab reports",
+            "text": "<p>Explore our testing documentation when the reports are published.</p>",
+            "status_icon": "clock",
+            "status_text": "Reports coming soon",
+            "button_label": "Coming soon",
+            "button_link": "",
+            "open_new_tab": false,
+            "show_arrow": false,
+            "button_background": "#eef8fb",
+            "button_color": "#647c84",
+            "background": "#ffffff",
+            "border_color": "#dce7eb"
           }
         }
       },
       "block_order": [
         "one",
         "two",
-        "three"
+        "three",
+        "documentation"
       ],
       "settings": {
         "eyebrow": "QUALITY + LABORATORY TESTING",
-        "heading": "Evidence matters. Quality comes first.",
+        "heading": "Evidence matters.\nQuality comes first.",
         "text": "<p>Our manufacturing and testing standards are central to the GENETIX PEPTIDES matrix. Laboratory testing and lab reports will be published in this dedicated section.</p>",
-        "card_eyebrow": "DOCUMENTATION / THE GENETIX MATRIX",
-        "card_heading": "Laboratory testing & lab reports",
-        "card_text": "<p>Make supporting documentation available when appropriate.</p>",
-        "document_link": "",
-        "link_label": "View report",
-        "background": "#eaf5fa",
-        "text_color": "#173c48"
+        "background": "#eef8fb",
+        "text_color": "#173c48",
+        "muted_color": "#647c84",
+        "accent_color": "#25a7ca"
       }
     },
     "genetix_fulfillment": {
@@ -404,67 +642,169 @@
         "four"
       ],
       "settings": {
-        "eyebrow": "SIMPLY DELIVERED",
+        "eyebrow": "SHIPPING + FULFILLMENT",
         "heading": "From our facility to your door.",
-        "icon_size": 40,
+        "icon_size": 20,
         "background": "#153640",
-        "text_color": "#ffffff"
+        "text_color": "#ffffff",
+        "muted_color": "#a9bec4",
+        "line_color": "#49636b"
       }
     },
     "genetix_refinement": {
       "type": "genetix-refinement",
       "blocks": {
+        "eyebrow": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "THE COMPLETE EXPERIENCE"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "title": "Refinement\nin your hands."
+          }
+        },
+        "intro": {
+          "type": "text",
+          "settings": {
+            "text": "<p>GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix.</p>"
+          }
+        },
+        "description": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A complete skin and scalp matrix, in a generous 2 oz format.</p>"
+          }
+        },
         "one": {
           "type": "spec",
           "settings": {
             "label": "Format",
-            "value": "Merchant supplied"
+            "value": "Skin & Scalp Matrix"
           }
         },
         "two": {
           "type": "spec",
           "settings": {
-            "label": "Size",
-            "value": "Merchant supplied"
+            "label": "Volume",
+            "value": "2 fl oz / 60 ml"
           }
         },
         "three": {
           "type": "spec",
           "settings": {
-            "label": "Routine",
-            "value": "Merchant supplied"
+            "label": "Key actives",
+            "value": "GHK-Cu · PAL-150 · Niacinamide"
+          }
+        },
+        "four": {
+          "type": "spec",
+          "settings": {
+            "label": "Matrix base",
+            "value": "Hyaluronic Acid · Salmon Mesenchymal Cell Conditioned Media (PDRN+)"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "Discover more",
+            "link": "",
+            "open_new_tab": false,
+            "show_arrow": true,
+            "background": "#ffffff",
+            "color": "#173c48"
           }
         }
       },
       "block_order": [
+        "eyebrow",
+        "title",
+        "intro",
+        "description",
         "one",
         "two",
-        "three"
+        "three",
+        "four",
+        "button"
       ],
       "settings": {
         "image": "shopify://shop_images/Rectangle_1.png",
-        "image_alt": "",
-        "eyebrow": "BUILT FOR A CONSIDERED ROUTINE",
-        "heading": "Refinement, in your hands.",
-        "text": "<p>A refined format designed to fit into your routine.</p>",
-        "button_label": "Discover more",
-        "button_link": "",
+        "image_alt": "GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix packaging",
         "background": "#ffffff",
-        "text_color": "#173c48"
+        "text_color": "#173c48",
+        "muted_color": "#647c84",
+        "line_color": "#dce7eb",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
       }
     },
     "genetix_second": {
       "type": "genetix-second-coming",
+      "blocks": {
+        "second_eyebrow": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "COMING NEXT / GENETIX PEPTIDES"
+          }
+        },
+        "second_title": {
+          "type": "title",
+          "settings": {
+            "title": "Second Coming",
+            "subtitle": "The cream version."
+          }
+        },
+        "second_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A new addition to the GENETIX PEPTIDES collection. Product details will be shared here ahead of launch.</p>"
+          }
+        },
+        "second_badge": {
+          "type": "badge",
+          "settings": {
+            "text": "Coming soon",
+            "background": "#ffffff",
+            "color": "#647c84"
+          }
+        },
+        "second_button": {
+          "type": "button",
+          "settings": {
+            "label": "Notify me",
+            "link": "",
+            "open_new_tab": false,
+            "show_arrow": true,
+            "background": "#153640",
+            "color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "second_eyebrow",
+        "second_title",
+        "second_text",
+        "second_badge",
+        "second_button"
+      ],
       "settings": {
-        "eyebrow": "COMING SOON",
-        "heading": "Second Coming",
-        "text": "<p>A new addition to the GENETIX collection.</p>",
-        "button_label": "Learn more",
-        "button_link": "",
-        "image": "shopify://shop_images/Cream-Jar-Placeholder.png",
-        "image_alt": "",
+        "background_image": "shopify://shop_images/Genetix_Shopify_Hero_Background_Only_2560x960_39b24bc9-2fa4-40be-9da5-65fad7143a40.png",
+        "product_image": "shopify://shop_images/Cream-Jar-Placeholder.png",
+        "product_alt": "GENETIX PEPTIDES Second Coming cream",
+        "stage_eyebrow": "THE NEXT CHAPTER",
+        "product_width": 420,
         "background": "#eaf5fa",
-        "text_color": "#173c48"
+        "card_background": "#f9fcfd",
+        "text_color": "#173c48",
+        "muted_color": "#647c84",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "padding_top_mobile": 48,
+        "padding_bottom_mobile": 48
       }
     },
     "genetix_faq": {
@@ -519,6 +859,7 @@
         "text": "<p>Everything you need to know.</p>",
         "link_label": "Contact our team",
         "link": "",
+        "open_first": true,
         "sticky_offset": 100,
         "background": "#ffffff",
         "text_color": "#173c48"

@@ -1,3 +1,114 @@
-{{ 'genetix-base.css' | asset_url | stylesheet_tag }}{{ 'genetix-second-coming.css' | asset_url | stylesheet_tag }}
-<section class="genetix genetix-second" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }}"><div class="genetix__inner"><div class="genetix__split"><div class="genetix__panel"><p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.heading | escape }}</h2><div class="genetix__copy">{{ section.settings.text }}</div>{% if section.settings.button_link != blank %}<a class="genetix__button" href="{{ section.settings.button_link }}">{{ section.settings.button_label | escape }}</a>{% endif %}</div><picture class="genetix-second__media">{% if section.settings.mobile_image != blank %}<source media="(max-width:749px)" srcset="{{ section.settings.mobile_image | image_url: width: 800 }}">{% endif %}{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 1200 | image_tag: widths: '400,700,900,1200', alt: section.settings.image_alt }}{% endif %}</picture></div></div></section>
-{% schema %}{"name":"GENETIX second coming","settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"COMING SOON"},{"type":"text","id":"heading","label":"Heading","default":"Second Coming"},{"type":"richtext","id":"text","label":"Text","default":"<p>A new addition to the GENETIX collection.</p>"},{"type":"text","id":"button_label","label":"Button label","default":"Learn more"},{"type":"url","id":"button_link","label":"Button or product link"},{"type":"image_picker","id":"image","label":"Desktop image"},{"type":"image_picker","id":"mobile_image","label":"Mobile image"},{"type":"text","id":"image_alt","label":"Image alt text"},{"type":"color","id":"background","label":"Background","default":"#eaf5fa"},{"type":"color","id":"text_color","label":"Text","default":"#173c48"}],"presets":[{"name":"GENETIX second coming"}]}{% endschema %}
+{% comment %}
+  Upcoming-product feature with block-managed editorial content and a layered product stage.
+  @example
+  Arrange eyebrow, title, text, badge, and button blocks beside the configured product artwork.
+{% endcomment %}
+{{ 'genetix-base.css' | asset_url | stylesheet_tag }}
+{{ 'genetix-second-coming.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="genetix genetix-second"
+  style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-second-muted:{{ section.settings.muted_color }};--gx-second-card:{{ section.settings.card_background }};--gx-second-product-width:{{ section.settings.product_width }}px;--gx-pt:{{ section.settings.padding_top }}px;--gx-pb:{{ section.settings.padding_bottom }}px;--gx-pt-mobile:{{ section.settings.padding_top_mobile }}px;--gx-pb-mobile:{{ section.settings.padding_bottom_mobile }}px;"
+>
+  <div class="genetix__inner genetix-second__inner">
+    <div class="genetix-second__layout">
+      <div class="genetix-second__content">
+        {% for block in section.blocks %}
+          <div class="genetix-second__block genetix-second__block--{{ block.type }}" {{ block.shopify_attributes }}>
+            {% case block.type %}
+              {% when 'eyebrow' %}
+                {% if block.settings.text != blank %}<p class="genetix-second__eyebrow">{{ block.settings.text | escape }}</p>{% endif %}
+              {% when 'title' %}
+                {% if block.settings.title != blank %}<h2>{{ block.settings.title | escape | newline_to_br }}</h2>{% endif %}
+                {% if block.settings.subtitle != blank %}<p class="genetix-second__subtitle">{{ block.settings.subtitle | escape }}</p>{% endif %}
+              {% when 'text' %}
+                {% if block.settings.text != blank %}<div class="genetix-second__text rte">{{ block.settings.text }}</div>{% endif %}
+              {% when 'badge' %}
+                {% if block.settings.text != blank %}<span class="genetix-second__badge" style="--gx-badge-bg:{{ block.settings.background }};--gx-badge-color:{{ block.settings.color }};">{{ block.settings.text | escape }}</span>{% endif %}
+              {% when 'button' %}
+                {% if block.settings.label != blank %}
+                  {% render 'genetix-button', label: block.settings.label, link: block.settings.link, background: block.settings.background, color: block.settings.color, show_arrow: block.settings.show_arrow, open_new_tab: block.settings.open_new_tab, class: 'genetix-second__button' %}
+                {% endif %}
+            {% endcase %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="genetix-second__stage">
+        {% if section.settings.stage_eyebrow != blank %}<p class="genetix-second__stage-eyebrow">{{ section.settings.stage_eyebrow | escape }}</p>{% endif %}
+        {% if section.settings.background_image != blank %}
+          <div class="genetix-second__stage-background" aria-hidden="true">
+            {{ section.settings.background_image | image_url: width: 1400 | image_tag: widths: '500, 750, 1000, 1400', sizes: '(min-width: 750px) 48vw, 100vw', loading: 'lazy', alt: '' }}
+          </div>
+        {% endif %}
+        <div class="genetix-second__product-area">
+          {% if section.settings.product_image != blank %}
+            <div class="genetix-second__product-float">
+              {{ section.settings.product_image | image_url: width: 1200 | image_tag: class: 'genetix-second__product', widths: '320, 520, 760, 1000, 1200', sizes: '(min-width: 750px) 34vw, 72vw', loading: 'lazy', alt: section.settings.product_alt }}
+            </div>
+            <span class="genetix-second__shadow" aria-hidden="true"></span>
+          {% else %}
+            {{ 'product-1' | placeholder_svg_tag: 'genetix-second__product-placeholder' }}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "GENETIX second coming",
+  "max_blocks": 10,
+  "settings": [
+    { "type": "image_picker", "id": "background_image", "label": "Stage background image" },
+    { "type": "image_picker", "id": "product_image", "label": "Floating product image" },
+    { "type": "text", "id": "product_alt", "label": "Product image alt text", "default": "GENETIX PEPTIDES Second Coming cream" },
+    { "type": "text", "id": "stage_eyebrow", "label": "Stage eyebrow", "default": "THE NEXT CHAPTER" },
+    { "type": "range", "id": "product_width", "label": "Product width", "min": 180, "max": 620, "step": 10, "unit": "px", "default": 420 },
+    { "type": "color", "id": "background", "label": "Section background", "default": "#eaf5fa" },
+    { "type": "color", "id": "card_background", "label": "Stage background", "default": "#f9fcfd" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" },
+    { "type": "color", "id": "muted_color", "label": "Muted text", "default": "#647c84" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_top_mobile", "label": "Mobile padding top", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom_mobile", "label": "Mobile padding bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "blocks": [
+    { "type": "eyebrow", "name": "Eyebrow", "settings": [
+      { "type": "text", "id": "text", "label": "Text", "default": "COMING NEXT / GENETIX PEPTIDES" }
+    ] },
+    { "type": "title", "name": "Title", "limit": 1, "settings": [
+      { "type": "textarea", "id": "title", "label": "Title", "default": "Second Coming" },
+      { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "The cream version." }
+    ] },
+    { "type": "text", "name": "Rich text", "settings": [
+      { "type": "richtext", "id": "text", "label": "Text", "default": "<p>A new addition to the GENETIX PEPTIDES collection. Product details will be shared here ahead of launch.</p>" }
+    ] },
+    { "type": "badge", "name": "Badge", "limit": 1, "settings": [
+      { "type": "text", "id": "text", "label": "Text", "default": "Coming soon" },
+      { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
+      { "type": "color", "id": "color", "label": "Text", "default": "#647c84" }
+    ] },
+    { "type": "button", "name": "Button", "limit": 1, "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Notify me" },
+      { "type": "url", "id": "link", "label": "Link" },
+      { "type": "checkbox", "id": "open_new_tab", "label": "Open in new tab", "default": false },
+      { "type": "checkbox", "id": "show_arrow", "label": "Show arrow", "default": true },
+      { "type": "color", "id": "background", "label": "Background", "default": "#153640" },
+      { "type": "color", "id": "color", "label": "Text and icon", "default": "#ffffff" }
+    ] }
+  ],
+  "presets": [{
+    "name": "GENETIX second coming",
+    "blocks": [
+      { "type": "eyebrow" },
+      { "type": "title" },
+      { "type": "text" },
+      { "type": "badge" },
+      { "type": "button" }
+    ]
+  }]
+}
+{% endschema %}

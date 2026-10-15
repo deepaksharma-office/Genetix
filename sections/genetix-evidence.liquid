@@ -1,3 +1,116 @@
-{{ 'genetix-base.css' | asset_url | stylesheet_tag }}{{ 'genetix-evidence.css' | asset_url | stylesheet_tag }}
-<section class="genetix genetix-evidence" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }}"><div class="genetix__split"><div class="genetix__panel"><p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.heading | escape }}</h2><div class="genetix__copy">{{ section.settings.text }}</div><ul class="genetix-evidence__list">{% for block in section.blocks %}<li {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</li>{% endfor %}</ul></div><article class="genetix-evidence__card"><p class="genetix__eyebrow">{{ section.settings.card_eyebrow | escape }}</p><h3>{{ section.settings.card_heading | escape }}</h3>{% if section.settings.document != blank %}{{ section.settings.document | image_url: width: 700 | image_tag: class: 'genetix__media', alt: section.settings.card_heading }}{% endif %}<div class="genetix__copy">{{ section.settings.card_text }}</div>{% if section.settings.document_link != blank %}<a href="{{ section.settings.document_link }}">{{ section.settings.link_label | escape }}</a>{% endif %}</article></div></section>
-{% schema %}{"name":"GENETIX evidence","max_blocks":6,"settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"BUILT ON EVIDENCE"},{"type":"text","id":"heading","label":"Heading","default":"Evidence matters. Quality comes first."},{"type":"richtext","id":"text","label":"Text","default":"<p>Add only testing and manufacturing claims supported by your records.</p>"},{"type":"text","id":"card_eyebrow","label":"Card eyebrow","default":"DOCUMENTATION"},{"type":"text","id":"card_heading","label":"Card heading","default":"Laboratory testing & lab reports"},{"type":"richtext","id":"card_text","label":"Card text","default":"<p>Make supporting documentation available when appropriate.</p>"},{"type":"image_picker","id":"document","label":"Document preview"},{"type":"url","id":"document_link","label":"Document link"},{"type":"text","id":"link_label","label":"Link label","default":"View report"},{"type":"color","id":"background","label":"Background","default":"#eaf5fa"},{"type":"color","id":"text_color","label":"Text","default":"#173c48"}],"blocks":[{"type":"evidence","name":"Evidence item","settings":[{"type":"text","id":"text","label":"Text","default":"Merchant-supplied evidence item"}]}],"presets":[{"name":"GENETIX evidence","blocks":[{"type":"evidence"},{"type":"evidence"},{"type":"evidence"}]}]}{% endschema %}
+{% comment %}
+  Evidence overview with icon proof rows and a configurable documentation card.
+  @example
+  Add evidence items for the left column and one documentation card for the right.
+{% endcomment %}
+{{ 'genetix-base.css' | asset_url | stylesheet_tag }}
+{{ 'genetix-evidence.css' | asset_url | stylesheet_tag }}
+<section class="genetix genetix-evidence" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-evidence-muted:{{ section.settings.muted_color }};--gx-evidence-accent:{{ section.settings.accent_color }};">
+  <div class="genetix__inner genetix-evidence__inner">
+    <div class="genetix-evidence__content">
+      {% if section.settings.eyebrow != blank %}<p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+      {% if section.settings.heading != blank %}<h2>{{ section.settings.heading | escape | newline_to_br }}</h2>{% endif %}
+      {% if section.settings.text != blank %}<div class="genetix__copy genetix-evidence__intro rte">{{ section.settings.text }}</div>{% endif %}
+      <ul class="genetix-evidence__list" role="list">
+        {% for block in section.blocks %}
+          {% if block.type == 'evidence' %}
+            <li {{ block.shopify_attributes }}>
+              <span class="genetix-evidence__item-icon" aria-hidden="true">
+                {% if block.settings.custom_icon != blank %}
+                  {{ block.settings.custom_icon | image_url: width: 48 | image_tag: widths: '24, 36, 48', alt: '', loading: 'lazy' }}
+                {% else %}
+                  {% case block.settings.icon %}
+                    {% when 'flag' %}<svg viewBox="0 0 24 24"><path fill="#fff" d="M3 5h18v14H3z"/><path stroke="#d94a5b" stroke-width="2" d="M3 7h18M3 11h18M3 15h18"/><path fill="#244b87" d="M3 5h8v7H3z"/></svg>
+                    {% when 'flask' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3M8 15h8"/></svg>
+                    {% when 'check' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg>
+                    {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 5 6v5c0 4.6 2.9 8.1 7 10 4.1-1.9 7-5.4 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+                  {% endcase %}
+                {% endif %}
+              </span>
+              <span>{{ block.settings.text | escape }}</span>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+
+    {% for block in section.blocks %}
+      {% if block.type == 'document_card' %}
+        <article class="genetix-evidence__card" style="--gx-card-bg:{{ block.settings.background }};--gx-card-border:{{ block.settings.border_color }};" {{ block.shopify_attributes }}>
+          {% if block.settings.eyebrow != blank %}<p class="genetix__eyebrow genetix-evidence__card-eyebrow">{{ block.settings.eyebrow | escape }}</p>{% endif %}
+          <div class="genetix-evidence__document-icon" aria-hidden="true">
+            {% if block.settings.custom_icon != blank %}
+              {{ block.settings.custom_icon | image_url: width: 96 | image_tag: widths: '48, 72, 96', alt: '', loading: 'lazy' }}
+            {% else %}
+              {% case block.settings.icon %}
+                {% when 'flask' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3M8 15h8"/></svg>
+                {% when 'shield' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 5 6v5c0 4.6 2.9 8.1 7 10 4.1-1.9 7-5.4 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+                {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h5M9 12h6M9 16h6"/></svg>
+              {% endcase %}
+            {% endif %}
+          </div>
+          {% if block.settings.heading != blank %}<h3>{{ block.settings.heading | escape | newline_to_br }}</h3>{% endif %}
+          {% if block.settings.text != blank %}<div class="genetix-evidence__card-text rte">{{ block.settings.text }}</div>{% endif %}
+          {% if block.settings.status_text != blank %}
+            <div class="genetix-evidence__status">
+              <span aria-hidden="true">
+                {% if block.settings.status_icon == 'check' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg>{% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>{% endif %}
+              </span>
+              <span>{{ block.settings.status_text | escape }}</span>
+            </div>
+          {% endif %}
+          {% if block.settings.button_label != blank %}
+            <div class="genetix-evidence__button-wrap">
+              {% render 'genetix-button', label: block.settings.button_label, link: block.settings.button_link, background: block.settings.button_background, color: block.settings.button_color, show_arrow: block.settings.show_arrow, open_new_tab: block.settings.open_new_tab, class: 'genetix-evidence__button' %}
+            </div>
+          {% endif %}
+        </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "GENETIX evidence",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "QUALITY + LABORATORY TESTING" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Evidence matters.\nQuality comes first." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Our manufacturing and testing standards are central to the GENETIX PEPTIDES matrix. Laboratory testing and lab reports will be published in this dedicated section.</p>" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#eef8fb" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" },
+    { "type": "color", "id": "muted_color", "label": "Muted text", "default": "#647c84" },
+    { "type": "color", "id": "accent_color", "label": "Icon accent", "default": "#25a7ca" }
+  ],
+  "blocks": [
+    { "type": "evidence", "name": "Icon with text", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "options": [{ "value": "shield", "label": "Shield" }, { "value": "flag", "label": "Flag" }, { "value": "flask", "label": "Flask" }, { "value": "check", "label": "Check" }], "default": "shield" },
+      { "type": "image_picker", "id": "custom_icon", "label": "Custom icon" },
+      { "type": "text", "id": "text", "label": "Text", "default": "Manufactured in an FDA Registered Facility" }
+    ] },
+    { "type": "document_card", "name": "Documentation card", "limit": 1, "settings": [
+      { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "DOCUMENTATION / THE GENETIX MATRIX" },
+      { "type": "select", "id": "icon", "label": "Primary icon", "options": [{ "value": "document", "label": "Document" }, { "value": "flask", "label": "Flask" }, { "value": "shield", "label": "Shield" }], "default": "document" },
+      { "type": "image_picker", "id": "custom_icon", "label": "Custom primary icon" },
+      { "type": "textarea", "id": "heading", "label": "Heading", "default": "Laboratory testing\n& lab reports" },
+      { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Explore our testing documentation when the reports are published.</p>" },
+      { "type": "select", "id": "status_icon", "label": "Status icon", "options": [{ "value": "clock", "label": "Clock" }, { "value": "check", "label": "Check" }], "default": "clock" },
+      { "type": "text", "id": "status_text", "label": "Status text", "default": "Reports coming soon" },
+      { "type": "text", "id": "button_label", "label": "Button label", "default": "Coming soon" },
+      { "type": "url", "id": "button_link", "label": "Button link" },
+      { "type": "checkbox", "id": "open_new_tab", "label": "Open in new tab", "default": false },
+      { "type": "checkbox", "id": "show_arrow", "label": "Show arrow", "default": false },
+      { "type": "color", "id": "button_background", "label": "Button background", "default": "#eef8fb" },
+      { "type": "color", "id": "button_color", "label": "Button text and icon", "default": "#647c84" },
+      { "type": "color", "id": "background", "label": "Card background", "default": "#ffffff" },
+      { "type": "color", "id": "border_color", "label": "Card border", "default": "#dce7eb" }
+    ] }
+  ],
+  "presets": [{ "name": "GENETIX evidence", "blocks": [
+    { "type": "evidence" },
+    { "type": "evidence", "settings": { "icon": "flag", "text": "Made in the USA" } },
+    { "type": "evidence", "settings": { "icon": "flask", "text": "Laboratory tested" } },
+    { "type": "document_card" }
+  ] }]
+}
+{% endschema %}

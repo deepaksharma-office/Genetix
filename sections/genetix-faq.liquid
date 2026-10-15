@@ -1,3 +1,65 @@
-{{ 'genetix-base.css' | asset_url | stylesheet_tag }}{{ 'genetix-faq.css' | asset_url | stylesheet_tag }}<script src="{{ 'genetix-faq.js' | asset_url }}" defer></script>
-<section class="genetix" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-sticky:{{ section.settings.sticky_offset }}px"><genetix-faq><div class="genetix__inner genetix-faq__layout"><div class="genetix-faq__intro"><p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.heading | escape }}</h2><div class="genetix__copy">{{ section.settings.text }}</div>{% if section.settings.link != blank %}<a href="{{ section.settings.link }}">{{ section.settings.link_label | escape }}</a>{% endif %}</div><div>{% for block in section.blocks %}<article class="genetix-faq__item" {{ block.shopify_attributes }}><button class="genetix-faq__question" type="button" data-faq-button aria-expanded="false" aria-controls="Faq-{{ section.id }}-{{ block.id }}"><span>{{ block.settings.question | escape }}</span><span class="genetix-faq__mark" aria-hidden="true"></span></button><div class="genetix-faq__answer" id="Faq-{{ section.id }}-{{ block.id }}"><div>{{ block.settings.answer }}</div></div></article>{% endfor %}</div></div></genetix-faq></section>
-{% schema %}{"name":"GENETIX FAQ","max_blocks":12,"settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"FREQUENTLY ASKED QUESTIONS"},{"type":"text","id":"heading","label":"Heading","default":"Good questions. Clear answers."},{"type":"richtext","id":"text","label":"Introduction","default":"<p>Everything you need to know.</p>"},{"type":"text","id":"link_label","label":"Link label","default":"Contact our team"},{"type":"url","id":"link","label":"Link"},{"type":"range","id":"sticky_offset","label":"Desktop sticky offset","min":0,"max":200,"step":4,"unit":"px","default":100},{"type":"color","id":"background","label":"Background","default":"#ffffff"},{"type":"color","id":"text_color","label":"Text","default":"#173c48"}],"blocks":[{"type":"faq","name":"Question","settings":[{"type":"text","id":"question","label":"Question","default":"What is the GENETIX Matrix?"},{"type":"richtext","id":"answer","label":"Answer","default":"<p>Add your answer here.</p>"}]}],"presets":[{"name":"GENETIX FAQ","blocks":[{"type":"faq"},{"type":"faq"},{"type":"faq"},{"type":"faq"},{"type":"faq"}]}]}{% endschema %}
+{% comment %}
+  Two-column FAQ with a sticky introduction and one-open-at-a-time accordion behavior.
+  @example
+  Add question blocks and optionally open the first answer on page load.
+{% endcomment %}
+{{ 'genetix-base.css' | asset_url | stylesheet_tag }}
+{{ 'genetix-faq.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'genetix-faq.js' | asset_url }}" defer></script>
+
+<section class="genetix genetix-faq" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-sticky:{{ section.settings.sticky_offset }}px">
+  <genetix-faq data-open-first="{{ section.settings.open_first }}">
+    <div class="genetix__inner genetix-faq__layout">
+      <div class="genetix-faq__intro">
+        {% if section.settings.eyebrow != blank %}<p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
+        {% if section.settings.heading != blank %}<h2>{{ section.settings.heading | escape }}</h2>{% endif %}
+        {% if section.settings.text != blank %}<div class="genetix__copy">{{ section.settings.text }}</div>{% endif %}
+        {% if section.settings.link != blank %}<a class="genetix-faq__link" href="{{ section.settings.link }}">{{ section.settings.link_label | escape }}</a>{% endif %}
+      </div>
+
+      <div class="genetix-faq__items">
+        {% for block in section.blocks %}
+          <article class="genetix-faq__item" {{ block.shopify_attributes }}>
+            <button class="genetix-faq__question" type="button" data-faq-button aria-expanded="false" aria-controls="Faq-{{ section.id }}-{{ block.id }}">
+              <span>{{ block.settings.question | escape }}</span>
+              <span class="genetix-faq__mark" aria-hidden="true">
+                <svg class="genetix-faq__plus" viewBox="0 0 24 24" fill="currentColor"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
+                <svg class="genetix-faq__minus" viewBox="0 0 24 24" fill="currentColor"><path d="M5 11V13H19V11H5Z"></path></svg>
+              </span>
+            </button>
+            <div class="genetix-faq__answer" id="Faq-{{ section.id }}-{{ block.id }}" role="region" aria-label="{{ block.settings.question | escape }}">
+              <div>{{ block.settings.answer }}</div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </genetix-faq>
+</section>
+
+{% schema %}
+{
+  "name": "GENETIX FAQ",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "FREQUENTLY ASKED QUESTIONS" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Good questions. Clear answers." },
+    { "type": "richtext", "id": "text", "label": "Introduction", "default": "<p>Everything you need to know.</p>" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Contact our team" },
+    { "type": "url", "id": "link", "label": "Link" },
+    { "type": "checkbox", "id": "open_first", "label": "Open first question", "default": true },
+    { "type": "range", "id": "sticky_offset", "label": "Desktop sticky offset", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 100 },
+    { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" }
+  ],
+  "blocks": [{
+    "type": "faq",
+    "name": "Question",
+    "settings": [
+      { "type": "text", "id": "question", "label": "Question", "default": "What is the GENETIX Matrix?" },
+      { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Add your answer here.</p>" }
+    ]
+  }],
+  "presets": [{ "name": "GENETIX FAQ", "blocks": [{ "type": "faq" }, { "type": "faq" }, { "type": "faq" }, { "type": "faq" }, { "type": "faq" }] }]
+}
+{% endschema %}
