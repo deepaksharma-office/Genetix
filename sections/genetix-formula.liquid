@@ -9,7 +9,7 @@
 
 {% assign formula_blocks = section.blocks | where: 'type', 'entry' %}
 
-<section class="genetix genetix__dark genetix-formula" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-cols:{{ formula_blocks.size }}">
+<section class="genetix genetix__dark genetix-formula" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-cols:{{ formula_blocks.size }};--gx-pt:{{ section.settings.padding_top }}px;--gx-pb:{{ section.settings.padding_bottom }}px;--gx-pt-mobile:{{ section.settings.padding_top }}px;--gx-pb-mobile:{{ section.settings.padding_bottom }}px;">
   <div class="genetix__inner">
     <div class="genetix-formula__row">
       <div class="genetix-formula__title">
@@ -35,7 +35,9 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "ONE CONSIDERED FORMULA" },
     { "type": "textarea", "id": "heading", "label": "Heading", "default": "One formula.\nThoughtfully composed." },
     { "type": "color", "id": "background", "label": "Background", "default": "#153640" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" }
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 52 }
   ],
   "blocks": [
     { "type": "@app" },

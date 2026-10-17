@@ -9,7 +9,7 @@
 
 {% assign ingredient_blocks = section.blocks | where: 'type', 'ingredient' %}
 
-<section class="genetix genetix-ledger" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-cols:{{ ingredient_blocks.size }}">
+<section class="genetix genetix-ledger" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-cols:{{ ingredient_blocks.size }};--gx-pt:{{ section.settings.padding_top }}px;--gx-pb:{{ section.settings.padding_bottom }}px;--gx-pt-mobile:{{ section.settings.padding_top }}px;--gx-pb-mobile:{{ section.settings.padding_bottom }}px;">
   <div class="genetix__inner">
     <div class="genetix-ledger__head">
       <div>
@@ -41,7 +41,9 @@
     { "type": "text", "id": "heading", "label": "Heading", "default": "The GENETIX Matrix: Science. Not Words." },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Four ingredients. One advanced matrix.</p>" },
     { "type": "color", "id": "background", "label": "Background", "default": "#eaf5fa" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" }
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 52 }
   ],
   "blocks": [
     { "type": "@app" },

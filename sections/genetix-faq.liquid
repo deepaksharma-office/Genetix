@@ -7,7 +7,7 @@
 {{ 'genetix-faq.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'genetix-faq.js' | asset_url }}" defer></script>
 
-<section class="genetix genetix-faq" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-sticky:{{ section.settings.sticky_offset }}px">
+<section class="genetix genetix-faq" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-sticky:{{ section.settings.sticky_offset }}px;--gx-pt:{{ section.settings.padding_top }}px;--gx-pb:{{ section.settings.padding_bottom }}px;--gx-pt-mobile:{{ section.settings.padding_top }}px;--gx-pb-mobile:{{ section.settings.padding_bottom }}px;">
   <genetix-faq data-open-first="{{ section.settings.open_first }}">
     <div class="genetix__inner genetix-faq__layout">
       <div class="genetix-faq__intro">
@@ -53,7 +53,9 @@
     { "type": "checkbox", "id": "open_first", "label": "Open first question", "default": true },
     { "type": "range", "id": "sticky_offset", "label": "Desktop sticky offset", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 100 },
     { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" }
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 52 }
   ],
   "blocks": [
   { "type": "@app" },

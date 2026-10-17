@@ -9,7 +9,7 @@
 
 <section
   class="genetix genetix-icon-text"
-  style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-icon:{{ section.settings.icon_size }}px;--gx-icon-wrap-bg:{{ section.settings.icon_background }};--gx-icon-text-muted:{{ section.settings.muted_color }};--gx-icon-text-line:{{ section.settings.line_color }};--gx-icon-text-card-bg:{{ section.settings.card_background }};--gx-icon-text-card-color:{{ section.settings.card_text_color }};"
+  style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-icon:{{ section.settings.icon_size }}px;--gx-icon-wrap-bg:{{ section.settings.icon_background }};--gx-icon-text-muted:{{ section.settings.muted_color }};--gx-icon-text-line:{{ section.settings.line_color }};--gx-icon-text-card-bg:{{ section.settings.card_background }};--gx-icon-text-card-color:{{ section.settings.card_text_color }};--gx-pt:{{ section.settings.padding_top }}px;--gx-pb:{{ section.settings.padding_bottom }}px;--gx-pt-mobile:{{ section.settings.padding_top }}px;--gx-pb-mobile:{{ section.settings.padding_bottom }}px;"
 >
   <div class="genetix__inner genetix-icon-text__inner">
     <div class="genetix-icon-text__intro">
@@ -74,7 +74,9 @@
     { "type": "color", "id": "muted_color", "label": "Muted text", "default": "#71868d" },
     { "type": "color", "id": "line_color", "label": "Divider lines", "default": "#dce7eb" },
     { "type": "color", "id": "card_background", "label": "Statement background", "default": "#153f48" },
-    { "type": "color", "id": "card_text_color", "label": "Statement text", "default": "#ffffff" }
+    { "type": "color", "id": "card_text_color", "label": "Statement text", "default": "#ffffff" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 52 }
   ],
   "blocks": [
     { "type": "@app" },

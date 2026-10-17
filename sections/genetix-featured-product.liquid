@@ -16,7 +16,7 @@
     assign button_disabled = true
   endunless
 %}
-<section class="genetix genetix-product" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-media-bg:{{ section.settings.media_background }};">
+<section class="genetix genetix-product" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-media-bg:{{ section.settings.media_background }};--gx-pt:{{ section.settings.padding_top }}px;--gx-pb:{{ section.settings.padding_bottom }}px;--gx-pt-mobile:{{ section.settings.padding_top }}px;--gx-pb-mobile:{{ section.settings.padding_bottom }}px;">
   <div class="genetix__inner">
     <genetix-product id="GenetixProduct-{{ section.id }}">
       <div class="genetix-product__layout">
@@ -153,7 +153,9 @@
     { "type": "color", "id": "button_color", "label": "Purchase button text and icon", "default": "#ffffff" },
     { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
     { "type": "color", "id": "media_background", "label": "Media background", "default": "#eef8fb" },
-    { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" }
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 52 }
   ],
   "blocks": [
     { "type": "@app" },

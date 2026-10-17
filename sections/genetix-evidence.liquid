@@ -5,7 +5,7 @@
 {% endcomment %}
 {{ 'genetix-base.css' | asset_url | stylesheet_tag }}
 {{ 'genetix-evidence.css' | asset_url | stylesheet_tag }}
-<section class="genetix genetix-evidence" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-evidence-muted:{{ section.settings.muted_color }};--gx-evidence-accent:{{ section.settings.accent_color }};">
+<section class="genetix genetix-evidence" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-evidence-muted:{{ section.settings.muted_color }};--gx-evidence-accent:{{ section.settings.accent_color }};--gx-pt:{{ section.settings.padding_top }}px;--gx-pb:{{ section.settings.padding_bottom }}px;--gx-pt-mobile:{{ section.settings.padding_top }}px;--gx-pb-mobile:{{ section.settings.padding_bottom }}px;">
   <div class="genetix__inner genetix-evidence__inner">
     <div class="genetix-evidence__content">
       {% if section.settings.eyebrow != blank %}<p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
@@ -81,7 +81,9 @@
     { "type": "color", "id": "background", "label": "Background", "default": "#eef8fb" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" },
     { "type": "color", "id": "muted_color", "label": "Muted text", "default": "#647c84" },
-    { "type": "color", "id": "accent_color", "label": "Icon accent", "default": "#25a7ca" }
+    { "type": "color", "id": "accent_color", "label": "Icon accent", "default": "#25a7ca" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 52 }
   ],
   "blocks": [
     { "type": "@app" },

@@ -1,5 +1,5 @@
 .genetix-formula .genetix__inner {
-  padding-block: 46px;
+  padding-block: var(--gx-pt) var(--gx-pb);
 }
 
 .genetix-formula__row {
@@ -53,7 +53,7 @@
 
 @media (max-width: 749px) {
   .genetix-formula .genetix__inner {
-    padding-block: 40px;
+    padding-block: var(--gx-pt-mobile) var(--gx-pb-mobile);
   }
 
   .genetix-formula__row {

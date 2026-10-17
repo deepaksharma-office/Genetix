@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
   align-items: stretch;
-  padding-block: 58px;
+  padding-block: var(--gx-pt) var(--gx-pb);
 }
 
 .genetix-icon-text__intro {
@@ -114,7 +114,7 @@
 @media (max-width: 619px) {
   .genetix-icon-text__inner {
     grid-template-columns: 1fr;
-    padding-block: 42px;
+    padding-block: var(--gx-pt-mobile) var(--gx-pb-mobile);
   }
 
   .genetix-icon-text__intro {
