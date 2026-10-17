@@ -68,6 +68,7 @@
       {% endif %}
     {% endfor %}
   </div>
+  {% for block in section.blocks %}{% if block.type == '@app' %}{% render block %}{% endif %}{% endfor %}
 </section>
 {% schema %}
 {
@@ -83,6 +84,7 @@
     { "type": "color", "id": "accent_color", "label": "Icon accent", "default": "#25a7ca" }
   ],
   "blocks": [
+    { "type": "@app" },
     { "type": "evidence", "name": "Icon with text", "settings": [
       { "type": "select", "id": "icon", "label": "Icon", "options": [{ "value": "shield", "label": "Shield" }, { "value": "flag", "label": "Flag" }, { "value": "flask", "label": "Flask" }, { "value": "check", "label": "Check" }], "default": "shield" },
       { "type": "image_picker", "id": "custom_icon", "label": "Custom icon" },

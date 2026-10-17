@@ -1,1 +1,150 @@
-.genetix-icon-text{text-align:center}.genetix-icon-text__intro{max-width:680px;margin:0 auto 48px}.genetix-icon-text__items{display:grid;grid-template-columns:repeat(4,1fr);gap:36px}.genetix-icon-text__icon{width:var(--gx-icon);height:var(--gx-icon);margin:0 auto 20px;display:grid;place-items:center;border-radius:50%;background:var(--gx-teal);color:#fff}.genetix-icon-text__icon img{width:40%;height:100%;object-fit:contain}.genetix-icon-text__icon svg{width:52%;height:52%;fill:none;stroke:currentColor}.genetix-icon-text h3{font-size:18px}.genetix-icon-text__items p{font-size:14px;color:var(--gx-muted)}@media(max-width:749px){.genetix-icon-text__items{grid-template-columns:1fr}}
+.genetix-icon-text {
+  text-align: start;
+}
+
+.genetix-icon-text__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  align-items: stretch;
+  padding-block: 58px;
+}
+
+.genetix-icon-text__intro {
+  min-width: 0;
+  padding-inline-end: clamp(32px, 4.5vw, 72px);
+  border-inline-end: 1px solid var(--gx-icon-text-line);
+}
+
+.genetix-icon-text__intro .genetix__eyebrow {
+  margin-block-end: 13px;
+  font-size: 8px;
+  letter-spacing: 0;
+}
+
+.genetix-icon-text__intro h2 {
+  max-width: 15ch;
+  font-size: clamp(31px, 3.2vw, 46px);
+  line-height: 1.02;
+}
+
+.genetix-icon-text__statement {
+  margin-block-start: 25px;
+  padding: clamp(20px, 2.1vw, 29px) clamp(20px, 2.3vw, 31px);
+  border-radius: 2px;
+  background: var(--gx-icon-text-card-bg);
+  color: var(--gx-icon-text-card-color);
+  font-size: 14px;
+  line-height: 1.52;
+}
+
+.genetix-icon-text__statement p {
+  margin: 0;
+  line-height: inherit;
+}
+
+.genetix-icon-text__items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-width: 0;
+}
+
+.genetix-icon-text__item {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px clamp(16px, 2.2vw, 34px);
+  text-align: center;
+}
+
+.genetix-icon-text__item:nth-child(odd) {
+  border-inline-end: 1px solid var(--gx-icon-text-line);
+}
+
+.genetix-icon-text__item:nth-child(n + 3) {
+  border-block-start: 1px solid var(--gx-icon-text-line);
+}
+
+.genetix-icon-text__icon {
+  display: grid;
+  width: var(--gx-icon);
+  height: var(--gx-icon);
+  flex: none;
+  place-items: center;
+  margin-block-end: 10px;
+  border-radius: 50%;
+  background: var(--gx-icon-wrap-bg);
+  color: #fff;
+}
+
+.genetix-icon-text__icon img {
+  width: 52%;
+  height: 52%;
+  object-fit: contain;
+}
+
+.genetix-icon-text__icon svg {
+  width: 52%;
+  height: 52%;
+  fill: none;
+  stroke: currentColor;
+}
+
+.genetix-icon-text__item h3 {
+  max-width: 20ch;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.genetix-icon-text__item p {
+  max-width: 28ch;
+  margin: 10px 0 0;
+  color: var(--gx-icon-text-muted);
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.genetix-icon-text__item a {
+  margin-block-start: 10px;
+  color: inherit;
+  font-size: 10px;
+}
+
+@media (max-width: 619px) {
+  .genetix-icon-text__inner {
+    grid-template-columns: 1fr;
+    padding-block: 42px;
+  }
+
+  .genetix-icon-text__intro {
+    padding: 0 0 32px;
+    border-inline-end: 0;
+  }
+
+  .genetix-icon-text__intro h2 {
+    font-size: 34px;
+  }
+
+  .genetix-icon-text__items {
+    border-block-start: 1px solid var(--gx-icon-text-line);
+  }
+
+  .genetix-icon-text__item {
+    padding: 24px 14px;
+  }
+}
+
+@media (max-width: 419px) {
+  .genetix-icon-text__items {
+    grid-template-columns: 1fr;
+  }
+
+  .genetix-icon-text__item:nth-child(odd) {
+    border-inline-end: 0;
+  }
+
+  .genetix-icon-text__item:nth-child(n + 2) {
+    border-block-start: 1px solid var(--gx-icon-text-line);
+  }
+}

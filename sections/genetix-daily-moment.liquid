@@ -14,6 +14,7 @@
     <div class="genetix-daily__content">
       <div class="genetix-daily__blocks">
         {% for block in section.blocks %}
+          {% unless block.type == '@app' %}
           <div class="genetix-daily__block genetix-daily__block--{{ block.type }}" style="--gx-space-top:{{ block.settings.spacing_top }}px;--gx-space-bottom:{{ block.settings.spacing_bottom }}px;" {{ block.shopify_attributes }}>
             {% case block.type %}
               {% when 'title' %}
@@ -24,10 +25,12 @@
                 {% if block.settings.label != blank %}{% render 'genetix-button', label: block.settings.label, link: block.settings.link, background: block.settings.background, color: block.settings.color, show_arrow: block.settings.show_arrow, open_new_tab: block.settings.open_new_tab, class: 'genetix-daily__button' %}{% endif %}
             {% endcase %}
           </div>
+          {% endunless %}
         {% endfor %}
       </div>
     </div>
   </div>
+  {% for block in section.blocks %}{% if block.type == '@app' %}{% render block %}{% endif %}{% endfor %}
 </section>
 {% schema %}
 {
@@ -40,6 +43,7 @@
     { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" }
   ],
   "blocks": [
+    { "type": "@app" },
     { "type": "title", "name": "Title", "limit": 1, "settings": [
       { "type": "textarea", "id": "title", "label": "Title", "default": "Your skin.\nYour scalp.\nYour daily moment." },
       { "type": "color", "id": "color", "label": "Color", "default": "#173c48" },

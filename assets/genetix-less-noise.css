@@ -1,1 +1,162 @@
-.genetix-less-noise__inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(54px,8vw,130px);align-items:center}.genetix-less-noise__content{max-width:600px;min-width:0}.genetix-less-noise__content h2{font-size:clamp(38px,4.8vw,68px);line-height:1.03}.genetix-less-noise__copy{margin-top:48px;color:inherit}.genetix-less-noise__secondary{margin-top:28px;color:var(--gx-muted);font-size:14px}.genetix-less-noise__button{margin-top:62px;min-height:auto;padding:6px 0;border-width:0 0 1px;background:transparent;text-transform:none}.genetix-less-noise__button svg{width:17px;height:17px}.genetix-less-noise__visual{display:grid;grid-template-rows:auto minmax(210px,1fr);min-width:0}.genetix-less-noise__card{padding:clamp(34px,5vw,62px);background:var(--gx-card-bg);color:var(--gx-card-color)}.genetix-less-noise__card-eyebrow{margin:0 0 26px;color:var(--gx-card-muted);font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}.genetix-less-noise__card h3{margin:0;font-size:clamp(38px,4.5vw,64px);font-weight:400;line-height:1.02}.genetix-less-noise__card-text{margin-top:28px;color:var(--gx-card-muted);font-size:14px}.genetix-less-noise__card-text p{margin:0}.genetix-less-noise__art{display:block;min-height:210px;background:var(--gx-image-bg)}.genetix-less-noise__art img{display:block;width:100%;height:100%;min-height:210px;object-fit:cover}@media(max-width:749px){.genetix-less-noise__inner{grid-template-columns:1fr;gap:44px}.genetix-less-noise__copy{margin-top:30px}.genetix-less-noise__button{margin-top:36px}.genetix-less-noise__visual{grid-template-rows:auto minmax(180px,1fr)}.genetix-less-noise__card{padding:38px 24px}.genetix-less-noise__art,.genetix-less-noise__art img{min-height:180px}}
+.genetix-less-noise__inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  padding-block: 64px;
+}
+
+.genetix-less-noise__content {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-block: 10px 18px;
+  padding-inline: 0 clamp(48px, 6vw, 92px);
+}
+
+.genetix-less-noise__content .genetix__eyebrow {
+  margin-block-end: 23px;
+  font-size: 8px;
+  letter-spacing: 0;
+}
+
+.genetix-less-noise__content h2 {
+  max-width: 13ch;
+  font-size: clamp(38px, 4vw, 58px);
+  line-height: 1.03;
+}
+
+.genetix-less-noise__copy {
+  max-width: 59ch;
+  margin-block-start: 50px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.genetix-less-noise__copy p,
+.genetix-less-noise__secondary p,
+.genetix-less-noise__panel-text p {
+  margin: 0;
+  line-height: inherit;
+}
+
+.genetix-less-noise__secondary {
+  margin-block-start: 34px;
+  color: var(--gx-less-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.genetix-less-noise__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-block-start: auto;
+  padding-block: 7px 5px;
+  border-block-end: 1px solid currentColor;
+  color: inherit;
+  font-size: 11px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.genetix-less-noise__link svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
+}
+
+.genetix-less-noise__link[aria-disabled='true'] {
+  cursor: default;
+}
+
+.genetix-less-noise__link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+.genetix-less-noise__panel {
+  position: relative;
+  min-width: 0;
+  min-height: 440px;
+  overflow: hidden;
+  background: var(--gx-less-panel-bg);
+  color: var(--gx-less-panel-text);
+}
+
+.genetix-less-noise__media,
+.genetix-less-noise__media img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+}
+
+.genetix-less-noise__media img {
+  object-fit: cover;
+}
+
+.genetix-less-noise__panel-content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(48px, 5vw, 74px) clamp(38px, 4.5vw, 68px);
+}
+
+.genetix-less-noise__panel-eyebrow {
+  margin: 0 0 30px;
+  color: var(--gx-less-panel-muted);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.genetix-less-noise__panel h3 {
+  max-width: 10ch;
+  margin: 0;
+  color: var(--gx-less-panel-text);
+  font-size: clamp(38px, 4vw, 58px);
+  font-weight: 400;
+  line-height: 1.03;
+}
+
+.genetix-less-noise__panel-text {
+  margin-block-start: 34px;
+  color: var(--gx-less-panel-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+@media (max-width: 749px) {
+  .genetix-less-noise__inner {
+    grid-template-columns: 1fr;
+    padding-block: 44px;
+  }
+
+  .genetix-less-noise__content {
+    min-height: 460px;
+    padding-block: 0 44px;
+    padding-inline: 0;
+  }
+
+  .genetix-less-noise__content h2,
+  .genetix-less-noise__panel h3 {
+    font-size: 38px;
+  }
+
+  .genetix-less-noise__copy {
+    margin-block-start: 32px;
+  }
+
+  .genetix-less-noise__link {
+    margin-block-start: 48px;
+  }
+
+  .genetix-less-noise__panel {
+    min-height: 420px;
+  }
+
+  .genetix-less-noise__panel-content {
+    padding: 44px 28px;
+  }
+}

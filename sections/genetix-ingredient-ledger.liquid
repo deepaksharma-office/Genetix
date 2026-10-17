@@ -1,3 +1,72 @@
-{{ 'genetix-base.css' | asset_url | stylesheet_tag }}{{ 'genetix-ingredient-ledger.css' | asset_url | stylesheet_tag }}
-<section class="genetix genetix-ledger" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-cols:{{ section.blocks.size }}"><div class="genetix__inner"><div class="genetix-ledger__head"><div><p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.heading | escape }}</h2></div><div class="genetix__copy">{{ section.settings.text }}</div></div><div class="genetix__grid genetix-ledger__items">{% for block in section.blocks %}<article class="genetix-ledger__item" {{ block.shopify_attributes }}><p class="genetix__eyebrow">{{ block.settings.kicker | escape }}</p><div class="genetix-ledger__value">{{ block.settings.value | escape }}{{ block.settings.unit | escape }}</div><h3>{{ block.settings.heading | escape }}</h3><p>{{ block.settings.text | escape }}</p></article>{% endfor %}</div></div></section>
-{% schema %}{"name":"GENETIX ingredient ledger","max_blocks":5,"settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"THE INGREDIENT LEDGER"},{"type":"text","id":"heading","label":"Heading","default":"The GENETIX Matrix: Science. Not Words."},{"type":"richtext","id":"text","label":"Text","default":"<p>Four ingredients. One advanced matrix.</p>"},{"type":"color","id":"background","label":"Background","default":"#eaf5fa"},{"type":"color","id":"text_color","label":"Text","default":"#173c48"}],"blocks":[{"type":"ingredient","name":"Ingredient","settings":[{"type":"text","id":"kicker","label":"Label","default":"ACTIVE INGREDIENT"},{"type":"text","id":"value","label":"Value","default":"2"},{"type":"text","id":"unit","label":"Unit","default":"%"},{"type":"text","id":"heading","label":"Heading","default":"Pure GHK-Cu Complex"},{"type":"textarea","id":"text","label":"Description","default":"Add merchant-supplied ingredient information."}]}],"presets":[{"name":"GENETIX ingredient ledger","blocks":[{"type":"ingredient"},{"type":"ingredient","settings":{"value":"6","heading":"Matrix support"}},{"type":"ingredient","settings":{"value":"3","heading":"Niacinamide"}},{"type":"ingredient","settings":{"value":"0.25","heading":"Hyaluronic acid"}}]}]}{% endschema %}
+{% comment %}
+  Ingredient ledger with merchant-managed entries and support for theme app blocks.
+  @example
+  Add ingredient blocks to describe each active in the formula.
+{% endcomment %}
+
+{{ 'genetix-base.css' | asset_url | stylesheet_tag }}
+{{ 'genetix-ingredient-ledger.css' | asset_url | stylesheet_tag }}
+
+{% assign ingredient_blocks = section.blocks | where: 'type', 'ingredient' %}
+
+<section class="genetix genetix-ledger" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-cols:{{ ingredient_blocks.size }}">
+  <div class="genetix__inner">
+    <div class="genetix-ledger__head">
+      <div>
+        <p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <h2>{{ section.settings.heading | escape }}</h2>
+      </div>
+      <div class="genetix__copy">{{ section.settings.text }}</div>
+    </div>
+    <div class="genetix__grid genetix-ledger__items">
+      {% for block in ingredient_blocks %}
+        <article class="genetix-ledger__item" {{ block.shopify_attributes }}>
+          <p class="genetix__eyebrow">{{ block.settings.kicker | escape }}</p>
+          <div class="genetix-ledger__value">{{ block.settings.value | escape }}{{ block.settings.unit | escape }}</div>
+          <h3>{{ block.settings.heading | escape }}</h3>
+          <p>{{ block.settings.text | escape }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+  {% for block in section.blocks %}{% if block.type == '@app' %}{% render block %}{% endif %}{% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "GENETIX ingredient ledger",
+  "max_blocks": 9,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE INGREDIENT LEDGER" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The GENETIX Matrix: Science. Not Words." },
+    { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Four ingredients. One advanced matrix.</p>" },
+    { "type": "color", "id": "background", "label": "Background", "default": "#eaf5fa" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "text", "id": "kicker", "label": "Label", "default": "ACTIVE INGREDIENT" },
+        { "type": "text", "id": "value", "label": "Value", "default": "2" },
+        { "type": "text", "id": "unit", "label": "Unit", "default": "%" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Pure GHK-Cu Complex" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Add merchant-supplied ingredient information." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GENETIX ingredient ledger",
+      "blocks": [
+        { "type": "ingredient" },
+        { "type": "ingredient", "settings": { "value": "6", "heading": "Matrix support" } },
+        { "type": "ingredient", "settings": { "value": "3", "heading": "Niacinamide" } },
+        { "type": "ingredient", "settings": { "value": "0.25", "heading": "Hyaluronic acid" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

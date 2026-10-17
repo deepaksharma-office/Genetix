@@ -19,6 +19,7 @@
 
       <div class="genetix-faq__items">
         {% for block in section.blocks %}
+          {% unless block.type == '@app' %}
           <article class="genetix-faq__item" {{ block.shopify_attributes }}>
             <button class="genetix-faq__question" type="button" data-faq-button aria-expanded="false" aria-controls="Faq-{{ section.id }}-{{ block.id }}">
               <span>{{ block.settings.question | escape }}</span>
@@ -31,10 +32,12 @@
               <div>{{ block.settings.answer }}</div>
             </div>
           </article>
+          {% endunless %}
         {% endfor %}
       </div>
     </div>
   </genetix-faq>
+  {% for block in section.blocks %}{% if block.type == '@app' %}{% render block %}{% endif %}{% endfor %}
 </section>
 
 {% schema %}
@@ -52,7 +55,9 @@
     { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" }
   ],
-  "blocks": [{
+  "blocks": [
+  { "type": "@app" },
+  {
     "type": "faq",
     "name": "Question",
     "settings": [

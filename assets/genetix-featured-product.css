@@ -1,1 +1,53 @@
-.genetix-product__layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(40px,7vw,96px);align-items:start}.genetix-product__gallery{position:relative;min-width:0}.genetix-product__media-label{position:absolute;z-index:2;inset-block-start:20px;inset-inline:22px;display:flex;justify-content:space-between;font-size:9px;font-weight:600;letter-spacing:.05em}.genetix-product__main{width:100%;aspect-ratio:1/1.12;display:grid;place-items:center;border:0;background:var(--gx-media-bg);cursor:zoom-in}.genetix-product__main-image{width:72%;height:78%;object-fit:contain}.genetix-product__thumbs{display:flex;gap:10px;margin-top:12px}.genetix-product__thumb{width:62px;height:62px;border:1px solid var(--gx-line);background:#fff;padding:4px;cursor:pointer}.genetix-product__thumb[aria-current=true]{border-color:var(--gx-teal)}.genetix-product__thumb img{width:100%;height:100%;object-fit:contain}.genetix-product__details{min-width:0;padding-block:4px}.genetix-product__details h2{max-width:18ch;font-size:clamp(30px,3.1vw,50px);line-height:1.04}.genetix-product__meta{margin:26px 0 10px;color:var(--gx-muted);font-size:13px}.genetix-product__price-row{display:flex;align-items:baseline;gap:10px;padding-block:8px 24px;border-bottom:1px solid var(--gx-line)}.genetix-product__price{font-size:28px}.genetix-product__compare{color:var(--gx-muted);text-decoration:line-through}.genetix-product__currency{margin-inline-start:auto;color:var(--gx-muted);font-size:11px}.genetix-product__description{max-width:none;padding-block:22px;font-size:13px;line-height:1.55}.genetix-product__impacts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:4px 0 24px}.genetix-product__impact{display:grid;gap:2px}.genetix-product__impact strong{font-size:17px;font-weight:500}.genetix-product__impact span{color:var(--gx-muted);font-size:9px;text-transform:uppercase}.genetix-product label{display:block;margin:18px 0 8px}.genetix-product select{width:100%;min-height:46px;border:1px solid var(--gx-line);background:#fff;padding-inline:14px}.genetix-product__purchase-row{display:grid;grid-template-columns:116px minmax(0,1fr);gap:8px}.genetix-product__quantity{display:grid;grid-template-columns:34px minmax(0,1fr) 34px;min-height:48px;border:1px solid var(--gx-line);background:#fff}.genetix-product__quantity button,.genetix-product__quantity input{min-width:0;border:0;background:transparent;color:inherit;text-align:center;font:inherit}.genetix-product__quantity button{cursor:pointer}.genetix-product__quantity input{width:100%;appearance:textfield}.genetix-product__quantity input::-webkit-inner-spin-button{appearance:none}.genetix-product__submit{width:100%;min-height:48px;margin:0;justify-content:space-between;gap:16px;text-align:start}.genetix-product__submit svg{width:21px;height:21px;flex:none}.genetix-product__error{min-height:1.4em;margin:5px 0;color:#a22;font-size:12px}.genetix-product__assurances{display:flex;gap:28px;padding:12px 0 24px;border-bottom:1px solid var(--gx-line)}.genetix-product__assurance{display:flex;align-items:center;gap:8px;color:var(--gx-muted);font-size:11px}.genetix-product__assurance svg{width:17px;height:17px;stroke-width:1.4;flex:none}.genetix-product__accordion{border-bottom:1px solid var(--gx-line)}.genetix-product__accordion-trigger{width:100%;padding:20px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;border:0;background:transparent;color:inherit;text-align:start;font:inherit;cursor:pointer}.genetix-product__accordion-icon,.genetix-product__accordion-icon svg{width:18px;height:18px;flex:none}.genetix-product__minus,.genetix-product__accordion-trigger[aria-expanded=true] .genetix-product__plus{display:none}.genetix-product__accordion-trigger[aria-expanded=true] .genetix-product__minus{display:block}.genetix-product__accordion-panel{height:0;overflow:hidden;transition:height .32s ease}.genetix-product__accordion-content{padding:0 30px 20px 0;color:var(--gx-muted);font-size:13px}.genetix-product__accordion-content>:first-child{margin-top:0}.genetix-product__accordion-content>:last-child{margin-bottom:0}.genetix-product__zoom{width:min(92vw,900px);height:min(92vh,900px);border:0;padding:50px;background:#fff}.genetix-product__zoom::backdrop{background:rgb(0 0 0/.65)}.genetix-product__zoom img{width:100%;height:100%;object-fit:contain}.genetix-product__zoom-close{position:absolute;inset-block-start:12px;inset-inline-end:12px;width:36px;height:36px;border:0;background:var(--gx-teal);color:#fff;cursor:pointer}@media(max-width:749px){.genetix-product__layout{grid-template-columns:1fr;gap:36px}.genetix-product__details h2{font-size:34px}.genetix-product__impacts{gap:8px}.genetix-product__purchase-row{grid-template-columns:108px minmax(0,1fr)}.genetix-product__assurances{flex-direction:column;gap:10px}}@media(prefers-reduced-motion:reduce){.genetix-product__accordion-panel{transition:none}}
+.genetix-product__layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(40px,7vw,96px);align-items:start}
+.genetix-product__gallery{position:relative;min-width:0}
+.genetix-product__media-label{position:absolute;z-index:2;inset-block-start:20px;inset-inline-start:22px;font-size:9px;font-weight:600;letter-spacing:.05em}
+.genetix-product__gallery-open{position:absolute;z-index:3;inset-block-start:10px;inset-inline-end:10px;display:grid;width:44px;height:44px;padding:10px;place-items:center;border:0;background:transparent;color:var(--gx-text);cursor:pointer}
+.genetix-product__gallery-open svg{width:24px;height:24px}
+.genetix-product__gallery-open:focus-visible{outline:2px solid currentColor;outline-offset:-4px}
+.genetix-product__main{width:100%;aspect-ratio:1/1.12;display:grid;place-items:center;border:0;background:var(--gx-media-bg)}
+.genetix-product__main-image{width:72%;height:78%;object-fit:contain}
+.genetix-product__thumbs{display:flex;gap:10px;margin-top:12px}
+.genetix-product__thumb{width:62px;height:62px;border:1px solid var(--gx-line);background:#fff;padding:4px;cursor:pointer}
+.genetix-product__thumb[aria-current=true]{border-color:var(--gx-teal)}
+.genetix-product__thumb img{width:100%;height:100%;object-fit:contain}
+.genetix-product__details{min-width:0;padding-block:4px}
+.genetix-product__details h2{max-width:18ch;font-size:clamp(30px,3.1vw,50px);line-height:1.04}
+.genetix-product__meta{margin:26px 0 10px;color:var(--gx-muted);font-size:13px}
+.genetix-product__price-row{display:flex;align-items:baseline;gap:10px;padding-block:8px 24px;border-bottom:1px solid var(--gx-line)}
+.genetix-product__price{font-size:28px}
+.genetix-product__compare{color:var(--gx-muted);text-decoration:line-through}
+.genetix-product__currency{margin-inline-start:auto;color:var(--gx-muted);font-size:11px}
+.genetix-product__description{max-width:none;padding-block:22px;font-size:13px;line-height:1.55}
+.genetix-product__impacts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:4px 0 24px}
+.genetix-product__impact{display:grid;gap:2px}
+.genetix-product__impact strong{font-size:17px;font-weight:500}
+.genetix-product__impact span{color:var(--gx-muted);font-size:9px;text-transform:uppercase}
+.genetix-product label{display:block;margin:18px 0 8px}
+.genetix-product select{width:100%;min-height:46px;border:1px solid var(--gx-line);background:#fff;padding-inline:14px}
+.genetix-product__purchase-row{display:grid;grid-template-columns:116px minmax(0,1fr);gap:8px}
+.genetix-product__quantity{display:grid;grid-template-columns:34px minmax(0,1fr) 34px;min-height:48px;border:1px solid var(--gx-line);background:#fff}
+.genetix-product__quantity button,.genetix-product__quantity input{min-width:0;border:0;background:transparent;color:inherit;text-align:center;font:inherit}
+.genetix-product__quantity button{cursor:pointer}
+.genetix-product__quantity input{width:100%;appearance:textfield}
+.genetix-product__quantity input::-webkit-inner-spin-button{appearance:none}
+.genetix-product__submit{width:100%;min-height:48px;margin:0;justify-content:space-between;gap:16px;text-align:start}
+.genetix-product__submit svg{width:21px;height:21px;flex:none}
+.genetix-product__error{min-height:1.4em;margin:5px 0;color:#a22;font-size:12px}
+.genetix-product__assurances{display:flex;gap:28px;padding:12px 0 24px;border-bottom:1px solid var(--gx-line)}
+.genetix-product__assurance{display:flex;align-items:center;gap:8px;color:var(--gx-muted);font-size:11px}
+.genetix-product__assurance svg{width:17px;height:17px;stroke-width:1.4;flex:none}
+.genetix-product__accordion{border-bottom:1px solid var(--gx-line)}
+.genetix-product__accordion-trigger{width:100%;padding:20px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;border:0;background:transparent;color:inherit;text-align:start;font:inherit;cursor:pointer}
+.genetix-product__accordion-icon,.genetix-product__accordion-icon svg{width:18px;height:18px;flex:none}
+.genetix-product__minus,.genetix-product__accordion-trigger[aria-expanded=true] .genetix-product__plus{display:none}
+.genetix-product__accordion-trigger[aria-expanded=true] .genetix-product__minus{display:block}
+.genetix-product__accordion-panel{height:0;overflow:hidden;transition:height .32s ease}
+.genetix-product__accordion-content{padding:0 30px 20px 0;color:var(--gx-muted);font-size:13px}
+.genetix-product__accordion-content>:first-child{margin-top:0}
+.genetix-product__accordion-content>:last-child{margin-bottom:0}
+.genetix-product__zoom{width:min(92vw,900px);height:min(92vh,900px);border:0;padding:50px;background:#fff}
+.genetix-product__zoom::backdrop{background:rgb(0 0 0/.65)}
+.genetix-product__zoom img{width:100%;height:100%;object-fit:contain}
+.genetix-product__zoom-close{position:absolute;inset-block-start:12px;inset-inline-end:12px;width:36px;height:36px;border:0;background:var(--gx-teal);color:#fff;cursor:pointer}
+@media(max-width:749px){.genetix-product__layout{grid-template-columns:1fr;gap:36px}.genetix-product__details h2{font-size:34px}.genetix-product__impacts{gap:8px}.genetix-product__purchase-row{grid-template-columns:108px minmax(0,1fr)}.genetix-product__assurances{flex-direction:column;gap:10px}}
+@media(prefers-reduced-motion:reduce){.genetix-product__accordion-panel{transition:none}}

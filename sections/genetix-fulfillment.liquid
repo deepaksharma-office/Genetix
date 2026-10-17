@@ -11,6 +11,7 @@
     {% if section.settings.heading != blank %}<h2>{{ section.settings.heading | escape }}</h2>{% endif %}
     <div class="genetix-fulfillment__items">
       {% for block in section.blocks %}
+        {% unless block.type == '@app' %}
         <article class="genetix-fulfillment__item" {{ block.shopify_attributes }}>
           <div class="genetix-fulfillment__item-heading">
             <div class="genetix-fulfillment__icon">
@@ -24,14 +25,16 @@
           </div>
           {% if block.settings.text != blank %}<p>{{ block.settings.text | escape }}</p>{% endif %}
         </article>
+        {% endunless %}
       {% endfor %}
     </div>
   </div>
+  {% for block in section.blocks %}{% if block.type == '@app' %}{% render block %}{% endif %}{% endfor %}
 </section>
 {% schema %}
 {
   "name": "GENETIX fulfillment",
-  "max_blocks": 4,
+  "max_blocks": 8,
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "SHIPPING + FULFILLMENT" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "From our facility to your door." },
@@ -42,6 +45,7 @@
     { "type": "color", "id": "line_color", "label": "Item lines", "default": "#49636b" }
   ],
   "blocks": [
+    { "type": "@app" },
     { "type": "step", "name": "Fulfillment step", "settings": [
       { "type": "image_picker", "id": "image", "label": "Custom icon" },
       { "type": "text", "id": "heading", "label": "Heading", "default": "Prepared with care" },

@@ -21,14 +21,21 @@
     <genetix-product id="GenetixProduct-{{ section.id }}">
       <div class="genetix-product__layout">
         <div class="genetix-product__gallery">
-          <div class="genetix-product__media-label"><span>{{ section.settings.media_label | escape }}</span><span aria-hidden="true">+</span></div>
-          <button class="genetix-product__main" type="button" data-zoom-open aria-label="Zoom product image">
+          {% if section.settings.media_label != blank %}
+            <span class="genetix-product__media-label">{{ section.settings.media_label | escape }}</span>
+          {% endif %}
+          {% if product.featured_media != blank %}
+            <button class="genetix-product__gallery-open" type="button" data-zoom-open aria-label="Open product image gallery">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
+            </button>
+          {% endif %}
+          <div class="genetix-product__main">
             {% if product.featured_media != blank %}
               {{ product.featured_media.preview_image | image_url: width: 1100 | image_tag: class: 'genetix-product__main-image', widths: '400, 700, 900, 1100', sizes: '(min-width: 750px) 46vw, 100vw', loading: 'eager', alt: product.featured_media.alt, data-main-image: '' }}
             {% else %}
               <span>Select a product to display its media.</span>
             {% endif %}
-          </button>
+          </div>
           <div class="genetix-product__thumbs">
             {% for media in product.media limit: 6 %}
               <button class="genetix-product__thumb" type="button" data-media-src="{{ media.preview_image | image_url: width: 1600 }}" data-media-alt="{{ media.alt | escape }}" aria-label="View {{ media.alt | default: product.title | escape }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}">
@@ -126,6 +133,7 @@
       </div>
     </genetix-product>
   </div>
+  {% for block in section.blocks %}{% if block.type == '@app' %}{% render block %}{% endif %}{% endfor %}
 </section>
 {% schema %}
 {
@@ -148,6 +156,7 @@
     { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" }
   ],
   "blocks": [
+    { "type": "@app" },
     { "type": "impact", "name": "Impact number", "settings": [{ "type": "text", "id": "value", "label": "Value", "default": "2%" }, { "type": "text", "id": "label", "label": "Label", "default": "GHK-Cu" }] },
     { "type": "icon_text", "name": "Icon with text", "settings": [{ "type": "select", "id": "icon", "label": "Icon", "options": [{ "value": "shield", "label": "Shield" }, { "value": "truck", "label": "Truck" }, { "value": "plus", "label": "Plus" }], "default": "shield" }, { "type": "text", "id": "text", "label": "Text", "default": "Secure checkout" }] },
     { "type": "accordion", "name": "Information row", "settings": [{ "type": "text", "id": "heading", "label": "Heading", "default": "Formula & ingredients" }, { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Add product details here.</p>" }] }

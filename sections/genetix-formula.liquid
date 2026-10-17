@@ -1,3 +1,63 @@
-{{ 'genetix-base.css' | asset_url | stylesheet_tag }}{{ 'genetix-formula.css' | asset_url | stylesheet_tag }}
-<section class="genetix genetix__dark genetix-formula" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-cols:{{ section.blocks.size }}"><div class="genetix__inner"><div class="genetix-formula__row"><div class="genetix-formula__title"><p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p><h2>{{ section.settings.heading | escape }}</h2></div>{% for block in section.blocks %}<article class="genetix-formula__item" {{ block.shopify_attributes }}><strong>{{ block.settings.heading | escape }}</strong><p>{{ block.settings.text | escape }}</p></article>{% endfor %}</div></div></section>
-{% schema %}{"name":"GENETIX formula","max_blocks":4,"settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"ONE FORMULA"},{"type":"text","id":"heading","label":"Heading","default":"Thoughtfully composed."},{"type":"color","id":"background","label":"Background","default":"#153640"},{"type":"color","id":"text_color","label":"Text","default":"#ffffff"}],"blocks":[{"type":"entry","name":"Formula entry","settings":[{"type":"text","id":"heading","label":"Heading","default":"Skin + scalp"},{"type":"textarea","id":"text","label":"Description","default":"Focused care for your daily routine."}]}],"presets":[{"name":"GENETIX formula","blocks":[{"type":"entry"},{"type":"entry","settings":{"heading":"Laboratory tested"}},{"type":"entry","settings":{"heading":"Made in the USA"}},{"type":"entry","settings":{"heading":"2 fl oz / 60 ml"}}]}]}{% endschema %}
+{% comment %}
+  Compact formula summary with merchant-managed entries and support for theme app blocks.
+  @example
+  Add formula entry blocks to summarize the product's key attributes.
+{% endcomment %}
+
+{{ 'genetix-base.css' | asset_url | stylesheet_tag }}
+{{ 'genetix-formula.css' | asset_url | stylesheet_tag }}
+
+{% assign formula_blocks = section.blocks | where: 'type', 'entry' %}
+
+<section class="genetix genetix__dark genetix-formula" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-cols:{{ formula_blocks.size }}">
+  <div class="genetix__inner">
+    <div class="genetix-formula__row">
+      <div class="genetix-formula__title">
+        <p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <h2>{{ section.settings.heading | escape | newline_to_br }}</h2>
+      </div>
+      {% for block in formula_blocks %}
+        <article class="genetix-formula__item" {{ block.shopify_attributes }}>
+          <strong>{{ block.settings.heading | escape }}</strong>
+          <p>{{ block.settings.text | escape }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+  {% for block in section.blocks %}{% if block.type == '@app' %}{% render block %}{% endif %}{% endfor %}
+</section>
+
+{% schema %}
+{
+  "name": "GENETIX formula",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "ONE CONSIDERED FORMULA" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "One formula.\nThoughtfully composed." },
+    { "type": "color", "id": "background", "label": "Background", "default": "#153640" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#ffffff" }
+  ],
+  "blocks": [
+    { "type": "@app" },
+    {
+      "type": "entry",
+      "name": "Formula entry",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Skin + scalp" },
+        { "type": "textarea", "id": "text", "label": "Description", "default": "Focused care for your daily routine." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "GENETIX formula",
+      "blocks": [
+        { "type": "entry" },
+        { "type": "entry", "settings": { "heading": "Laboratory Tested", "text": "Quality at the core of the matrix." } },
+        { "type": "entry", "settings": { "heading": "Manufactured in an FDA Registered Facility", "text": "Considered manufacturing standards." } },
+        { "type": "entry", "settings": { "heading": "2 fl oz / 60 ml", "text": "A generous full-size format." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

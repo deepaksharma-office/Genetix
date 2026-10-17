@@ -33,6 +33,7 @@
       </div>
     {% endif %}
   </div>
+  {% for block in section.blocks %}{% if block.type == '@app' %}{% render block %}{% endif %}{% endfor %}
 </section>
 {% schema %}
 {
@@ -60,6 +61,7 @@
     { "type": "range", "id": "mobile_min_height", "label": "Mobile minimum height", "min": 420, "max": 900, "step": 20, "unit": "px", "default": 680 }
   ],
   "blocks": [
+    { "type": "@app" },
     { "type": "title", "name": "Title", "limit": 1, "settings": [
       { "type": "inline_richtext", "id": "title", "label": "Title", "default": "Clinical peptide science. <strong>Uncompromised quality.</strong> Superior bioavailability." },
       { "type": "color", "id": "color", "label": "Text color", "default": "#173c48" },

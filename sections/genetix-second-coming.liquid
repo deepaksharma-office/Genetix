@@ -14,6 +14,7 @@
     <div class="genetix-second__layout">
       <div class="genetix-second__content">
         {% for block in section.blocks %}
+          {% unless block.type == '@app' %}
           <div class="genetix-second__block genetix-second__block--{{ block.type }}" {{ block.shopify_attributes }}>
             {% case block.type %}
               {% when 'eyebrow' %}
@@ -31,6 +32,7 @@
                 {% endif %}
             {% endcase %}
           </div>
+          {% endunless %}
         {% endfor %}
       </div>
 
@@ -54,6 +56,7 @@
       </div>
     </div>
   </div>
+  {% for block in section.blocks %}{% if block.type == '@app' %}{% render block %}{% endif %}{% endfor %}
 </section>
 
 {% schema %}
@@ -76,6 +79,7 @@
     { "type": "range", "id": "padding_bottom_mobile", "label": "Mobile padding bottom", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 48 }
   ],
   "blocks": [
+    { "type": "@app" },
     { "type": "eyebrow", "name": "Eyebrow", "settings": [
       { "type": "text", "id": "text", "label": "Text", "default": "COMING NEXT / GENETIX PEPTIDES" }
     ] },

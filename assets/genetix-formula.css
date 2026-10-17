@@ -1,1 +1,81 @@
-.genetix-formula__row{display:grid;grid-template-columns:1.4fr repeat(var(--gx-cols),1fr);border-top:1px solid rgb(255 255 255/.2);margin-top:36px}.genetix-formula__title,.genetix-formula__item{padding:30px 24px}.genetix-formula__item{border-inline-start:1px solid rgb(255 255 255/.2)}.genetix-formula__item strong{display:block;margin-bottom:10px}@media(max-width:749px){.genetix-formula__row{grid-template-columns:1fr}.genetix-formula__item{border-inline-start:0;border-top:1px solid rgb(255 255 255/.2)}}
+.genetix-formula .genetix__inner {
+  padding-block: 46px;
+}
+
+.genetix-formula__row {
+  display: grid;
+  grid-template-columns: 1.8fr repeat(var(--gx-cols), minmax(0, 1fr));
+}
+
+.genetix-formula__title,
+.genetix-formula__item {
+  min-width: 0;
+  padding: 8px clamp(14px, 1.7vw, 26px);
+}
+
+.genetix-formula__title {
+  padding-inline-start: 0;
+}
+
+.genetix-formula__title .genetix__eyebrow {
+  margin-block-end: 16px;
+  font-size: 8px;
+  letter-spacing: 0;
+}
+
+.genetix-formula__title h2 {
+  max-width: 15ch;
+  font-size: clamp(24px, 2.25vw, 34px);
+  line-height: 1.08;
+}
+
+.genetix-formula__item {
+  display: flex;
+  flex-direction: column;
+  min-height: 126px;
+  border-inline-start: 1px solid rgb(255 255 255 / 0.16);
+}
+
+.genetix-formula__item strong {
+  display: block;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.genetix-formula__item p {
+  margin: auto 0 0;
+  color: rgb(255 255 255 / 0.62);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+@media (max-width: 749px) {
+  .genetix-formula .genetix__inner {
+    padding-block: 40px;
+  }
+
+  .genetix-formula__row {
+    grid-template-columns: 1fr;
+  }
+
+  .genetix-formula__title,
+  .genetix-formula__item {
+    padding: 24px 0;
+  }
+
+  .genetix-formula__title {
+    padding-block-start: 0;
+  }
+
+  .genetix-formula__item {
+    min-height: auto;
+    border-block-start: 1px solid rgb(255 255 255 / 0.16);
+    border-inline-start: 0;
+  }
+
+  .genetix-formula__item p {
+    margin-block-start: 18px;
+  }
+}

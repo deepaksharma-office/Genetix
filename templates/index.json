@@ -109,7 +109,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Icon-flask-58.png",
-            "heading": "Laboratory tested",
+            "heading": "Laboratory Tested",
             "text": "A focus on quality, consistency, and the details of the formula.",
             "link_label": "",
             "link": ""
@@ -143,12 +143,17 @@
         "usa"
       ],
       "settings": {
-        "eyebrow": "THE GENETIX PROMISE",
-        "heading": "Care you can feel good about.",
-        "text": "<p>Considered ingredients. Thoughtful standards. A refined experience.</p>",
-        "icon_size": 76,
+        "eyebrow": "THE GENETIX STANDARD",
+        "heading": "Formulating Through\nPure Biochemistry",
+        "text": "<p>At Genetix Peptides, we believe in formulating through pure biochemistry in an industry heavily crowded by ‘more is better’ marketing. We refuse to chase deceptive percentages. Every formulation we engineer is scientifically balanced at the exact, optimal ratios required to heal, restore, and revitalize the skin—ensuring maximum cellular absorption without causing localized harm. Because while more sounds better, true science knows exactly what works.</p>",
+        "icon_size": 72,
+        "icon_background": "#153640",
         "background": "#ffffff",
-        "text_color": "#173c48"
+        "text_color": "#173c48",
+        "muted_color": "#71868d",
+        "line_color": "#dce7eb",
+        "card_background": "#153f48",
+        "card_text_color": "#ffffff"
       }
     },
     "genetix_product": {
@@ -454,31 +459,6 @@
     },
     "genetix_less": {
       "type": "genetix-less-noise",
-      "blocks": {
-        "matrix_card": {
-          "type": "card",
-          "settings": {
-            "eyebrow": "THE MATRIX",
-            "title": "The beauty\nof precision.",
-            "text": "<p>Biotechnology. Refined.</p>",
-            "background": "#eaf5fa",
-            "color": "#173c48",
-            "muted_color": "#647c84"
-          }
-        },
-        "matrix_image": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Genetix_Shopify_Hero_Background_Only_2560x960_39b24bc9-2fa4-40be-9da5-65fad7143a40.png",
-            "image_alt": "",
-            "background": "#eaf5fa"
-          }
-        }
-      },
-      "block_order": [
-        "matrix_card",
-        "matrix_image"
-      ],
       "settings": {
         "eyebrow": "THE GENETIX PHILOSOPHY",
         "heading": "Less noise.\nMore intention.",
@@ -488,10 +468,17 @@
         "button_link": "shopify://pages/meet-the-ingredient-matrix",
         "open_new_tab": false,
         "show_arrow": true,
-        "button_background": "#ffffff",
-        "button_color": "#173c48",
+        "panel_eyebrow": "THE MATRIX",
+        "panel_heading": "The beauty\nof precision.",
+        "panel_text": "<p>Biotechnology. Refined.</p>",
+        "background_image": "shopify://shop_images/Genetix_Shopify_Hero_Background_Only_2560x960_39b24bc9-2fa4-40be-9da5-65fad7143a40.png",
+        "mobile_background_image": "",
         "background": "#ffffff",
-        "text_color": "#173c48"
+        "text_color": "#173c48",
+        "muted_color": "#647c84",
+        "panel_background": "#eaf5fa",
+        "panel_text_color": "#173c48",
+        "panel_muted_color": "#647c84"
       }
     },
     "genetix_formula": {
@@ -500,29 +487,29 @@
         "one": {
           "type": "entry",
           "settings": {
-            "heading": "Skin + scalp",
+            "heading": "Skin + Scalp",
             "text": "Focused care for your daily routine."
           }
         },
         "two": {
           "type": "entry",
           "settings": {
-            "heading": "Laboratory tested",
-            "text": "Focused care for your daily routine."
+            "heading": "Laboratory Tested",
+            "text": "Quality at the core of the matrix."
           }
         },
         "three": {
           "type": "entry",
           "settings": {
-            "heading": "Manufactured with care",
-            "text": "Focused care for your daily routine."
+            "heading": "Manufactured in an FDA Registered Facility",
+            "text": "Considered manufacturing standards."
           }
         },
         "four": {
           "type": "entry",
           "settings": {
             "heading": "2 fl oz / 60 ml",
-            "text": "Focused care for your daily routine."
+            "text": "A generous full-size format."
           }
         }
       },
@@ -533,8 +520,8 @@
         "four"
       ],
       "settings": {
-        "eyebrow": "ONE FORMULA",
-        "heading": "Thoughtfully composed.",
+        "eyebrow": "ONE CONSIDERED FORMULA",
+        "heading": "One formula.\nThoughtfully composed.",
         "background": "#153640",
         "text_color": "#ffffff"
       }
