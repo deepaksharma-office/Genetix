@@ -1,5 +1,9 @@
-.genetix-ledger__head{display:flex;justify-content:space-between;gap:40px;margin-bottom:38px;align-items: flex-end;}.genetix-ledger__items{grid-template-columns:repeat(var(--gx-cols),1fr)}.genetix-ledger__item{padding:30px;min-width:0}.genetix-ledger__item:hover{background:var(--gx-teal);color:#fff}.genetix-ledger__value{font-size:42px;margin:12px 0}.genetix-ledger__item p{font-size:14px}@media(max-width:749px){.genetix-ledger__head{display:block}.genetix-ledger__items{grid-template-columns:1fr}}
+.genetix-ledger__head{display:flex;justify-content:space-between;gap:40px;margin-bottom:38px;align-items: flex-end;}.genetix-ledger__items{grid-template-columns:repeat(var(--gx-cols),1fr)}.genetix-ledger__item{padding:30px;min-width:0}.genetix-ledger__item:hover{background:var(--gx-teal);color:#fff}.genetix-ledger__value{font-size:30px;margin:12px 0}.genetix-ledger__item p{font-size:12px}@media(max-width:749px){.genetix-ledger__head{display:block}.genetix-ledger__items{grid-template-columns:1fr}}
 .genetix__grid.genetix-ledger__items .genetix__grid>*{
     background: var(--gx-card, #fff);
     transition: 0.3s ease-in-out;
+}
+
+.genetix-ledger__item h3 {
+    font-size: 22px;
 }
