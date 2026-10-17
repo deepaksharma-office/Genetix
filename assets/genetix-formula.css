@@ -24,7 +24,6 @@
 }
 
 .genetix-formula__title h2 {
-  max-width: 15ch;
   font-size: clamp(24px, 2.25vw, 34px);
   line-height: 1.08;
 }
