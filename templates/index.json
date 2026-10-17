@@ -72,7 +72,7 @@
         "shop"
       ],
       "settings": {
-        "image": "shopify://shop_images/Hero-Reference-Molecular-Background_2.png",
+        "image": "shopify://shop_images/Group_1.svg",
         "image_alt": "",
         "product_image": "shopify://shop_images/Hero-Reference-Bottle-39.png",
         "product_alt": "",
@@ -472,7 +472,6 @@
         "panel_heading": "The beauty\nof precision.",
         "panel_text": "<p>Biotechnology. Refined.</p>",
         "background_image": "shopify://shop_images/Genetix_Shopify_Hero_Background_Only_2560x960_39b24bc9-2fa4-40be-9da5-65fad7143a40.png",
-        "mobile_background_image": "",
         "background": "#ffffff",
         "text_color": "#173c48",
         "muted_color": "#647c84",
