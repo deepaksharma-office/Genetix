@@ -16,7 +16,7 @@
 
 .genetix-less-noise__content .genetix__eyebrow {
   margin-block-end: 23px;
-  font-size: 8px;
+  font-size: 14px;
   letter-spacing: 0;
 }
 
@@ -55,7 +55,7 @@
   padding-block: 7px 5px;
   border-block-end: 1px solid currentColor;
   color: inherit;
-  font-size: 11px;
+  font-size: 16px;
   line-height: 1;
   text-decoration: none;
 }
@@ -105,7 +105,7 @@
 .genetix-less-noise__panel-eyebrow {
   margin: 0 0 30px;
   color: var(--gx-less-panel-muted);
-  font-size: 8px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0;
   text-transform: uppercase;
