@@ -100,7 +100,7 @@
           "settings": {
             "image": "shopify://shop_images/Cruelty-Free-Rabbit.png",
             "heading": "Cruelty free",
-            "text": "A considered approach to care.",
+            "text": "A considered approach to care, without unnecessary compromises.",
             "link_label": "",
             "link": ""
           }
@@ -110,7 +110,7 @@
           "settings": {
             "image": "shopify://shop_images/Icon-flask-58.png",
             "heading": "Laboratory tested",
-            "text": "Quality standards matter.",
+            "text": "A focus on quality, consistency, and the details of the formula.",
             "link_label": "",
             "link": ""
           }
@@ -119,8 +119,8 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Icon-factory-69.png",
-            "heading": "Manufactured with care",
-            "text": "Edit this with your verified facility details.",
+            "heading": "Manufactured in an FDA Registered Facility",
+            "text": "Manufactured with considered standards.",
             "link_label": "",
             "link": ""
           }
@@ -130,7 +130,7 @@
           "settings": {
             "image": "shopify://shop_images/Icon-flag-80.png",
             "heading": "Made in the USA",
-            "text": "Edit this claim to match your product.",
+            "text": "Produced in the United States. Refined care, down to the details.",
             "link_label": "",
             "link": ""
           }
@@ -429,7 +429,7 @@
           "type": "button",
           "settings": {
             "label": "Meet the matrix",
-            "link": "shopify://pages/data-sharing-opt-out",
+            "link": "shopify://pages/meet-the-matrix",
             "open_new_tab": false,
             "show_arrow": true,
             "background": "#153640",
@@ -710,7 +710,7 @@
           "type": "button",
           "settings": {
             "label": "Discover more",
-            "link": "",
+            "link": "shopify://products/genetix-peptides",
             "open_new_tab": false,
             "show_arrow": true,
             "background": "#ffffff",
@@ -858,7 +858,7 @@
         "heading": "Good questions. Clear answers.",
         "text": "<p>Everything you need to know.</p>",
         "link_label": "Contact our team",
-        "link": "",
+        "link": "shopify://pages/contact",
         "open_first": true,
         "sticky_offset": 100,
         "background": "#ffffff",
