@@ -93,7 +93,7 @@
 
 .genetix-icon-text__item h3 {
   max-width: 20ch;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.25;
 }
 
@@ -101,7 +101,7 @@
   max-width: 28ch;
   margin: 10px 0 0;
   color: var(--gx-icon-text-muted);
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.45;
 }
 
