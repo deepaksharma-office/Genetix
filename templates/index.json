@@ -143,8 +143,6 @@
         "usa"
       ],
       "settings": {
-        "padding_top": 48,
-        "padding_bottom": 52,
         "eyebrow": "THE GENETIX STANDARD",
         "heading": "Formulating Through\nPure Biochemistry",
         "text": "<p>At Genetix Peptides, we believe in formulating through pure biochemistry in an industry heavily crowded by ‘more is better’ marketing. We refuse to chase deceptive percentages. Every formulation we engineer is scientifically balanced at the exact, optimal ratios required to heal, restore, and revitalize the skin—ensuring maximum cellular absorption without causing localized harm. Because while more sounds better, true science knows exactly what works.</p>",
@@ -155,7 +153,9 @@
         "muted_color": "#71868d",
         "line_color": "#dce7eb",
         "card_background": "#153f48",
-        "card_text_color": "#ffffff"
+        "card_text_color": "#ffffff",
+        "padding_top": 48,
+        "padding_bottom": 52
       }
     },
     "genetix_product": {
@@ -237,8 +237,6 @@
         "shipping"
       ],
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 52,
         "product": "genetix-peptides",
         "eyebrow": "THE DAILY ESSENTIAL",
         "fallback_title": "GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix",
@@ -252,7 +250,9 @@
         "button_color": "#ffffff",
         "background": "#ffffff",
         "media_background": "#eef8fb",
-        "text_color": "#173c48"
+        "text_color": "#173c48",
+        "padding_top": 0,
+        "padding_bottom": 52
       }
     },
     "genetix_ledger": {
@@ -317,13 +317,13 @@
         "four"
       ],
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 52,
         "eyebrow": "THE INGREDIENT LEDGER",
         "heading": "The GENETIX Matrix: Science. Not Words.",
         "text": "<p>Four ingredients. One advanced matrix.</p>",
         "background": "#eaf5fa",
-        "text_color": "#173c48"
+        "text_color": "#173c48",
+        "padding_top": 0,
+        "padding_bottom": 52
       }
     },
     "genetix_vault": {
@@ -391,15 +391,15 @@
         "vault_button"
       ],
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 52,
         "image": "shopify://shop_images/Hero-Reference-Bottle-39.png",
         "image_alt": "",
         "image_width": 280,
         "background": "#153640",
         "text_color": "#ffffff",
         "muted_color": "#a9bec4",
-        "line_color": "#49636b"
+        "line_color": "#49636b",
+        "padding_top": 0,
+        "padding_bottom": 52
       }
     },
     "genetix_daily": {
@@ -459,19 +459,17 @@
         "daily_button"
       ],
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 52,
         "image": "shopify://shop_images/Rectangle.png",
         "image_alt": "",
         "background": "#eaf5fa",
-        "text_color": "#173c48"
+        "text_color": "#173c48",
+        "padding_top": 0,
+        "padding_bottom": 52
       }
     },
     "genetix_less": {
       "type": "genetix-less-noise",
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 52,
         "eyebrow": "THE GENETIX PHILOSOPHY",
         "heading": "Less noise.\nMore intention.",
         "text": "<p>We believe great care begins with a considered formula. The GENETIX MATRIX brings together five active ingredients in one skin and scalp routine.</p>",
@@ -483,13 +481,15 @@
         "panel_eyebrow": "THE MATRIX",
         "panel_heading": "The beauty\nof precision.",
         "panel_text": "<p>Biotechnology. Refined.</p>",
-        "background_image": "shopify://shop_images/Genetix_Shopify_Hero_Background_Only_2560x960_39b24bc9-2fa4-40be-9da5-65fad7143a40.png",
+        "background_image": "shopify://shop_images/Group_2.svg",
         "background": "#ffffff",
         "text_color": "#173c48",
         "muted_color": "#647c84",
         "panel_background": "#eaf5fa",
         "panel_text_color": "#173c48",
-        "panel_muted_color": "#647c84"
+        "panel_muted_color": "#647c84",
+        "padding_top": 0,
+        "padding_bottom": 52
       }
     },
     "genetix_formula": {
@@ -531,12 +531,12 @@
         "four"
       ],
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 52,
         "eyebrow": "ONE CONSIDERED FORMULA",
         "heading": "One formula.\nThoughtfully composed.",
         "background": "#153640",
-        "text_color": "#ffffff"
+        "text_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 52
       }
     },
     "genetix_evidence": {
@@ -590,15 +590,15 @@
         "documentation"
       ],
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 52,
         "eyebrow": "QUALITY + LABORATORY TESTING",
         "heading": "Evidence matters.\nQuality comes first.",
         "text": "<p>Our manufacturing and testing standards are central to the GENETIX PEPTIDES matrix. Laboratory testing and lab reports will be published in this dedicated section.</p>",
         "background": "#eef8fb",
         "text_color": "#173c48",
         "muted_color": "#647c84",
-        "accent_color": "#25a7ca"
+        "accent_color": "#25a7ca",
+        "padding_top": 0,
+        "padding_bottom": 52
       }
     },
     "genetix_fulfillment": {
@@ -644,15 +644,15 @@
         "four"
       ],
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 52,
         "eyebrow": "SHIPPING + FULFILLMENT",
         "heading": "From our facility to your door.",
         "icon_size": 20,
         "background": "#153640",
         "text_color": "#ffffff",
         "muted_color": "#a9bec4",
-        "line_color": "#49636b"
+        "line_color": "#49636b",
+        "padding_top": 0,
+        "padding_bottom": 52
       }
     },
     "genetix_refinement": {
@@ -858,8 +858,6 @@
         "five"
       ],
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 52,
         "eyebrow": "FREQUENTLY ASKED QUESTIONS",
         "heading": "Good questions. Clear answers.",
         "text": "<p>Everything you need to know.</p>",
@@ -868,21 +866,23 @@
         "open_first": true,
         "sticky_offset": 100,
         "background": "#ffffff",
-        "text_color": "#173c48"
+        "text_color": "#173c48",
+        "padding_top": 0,
+        "padding_bottom": 52
       }
     },
     "genetix_newsletter": {
       "type": "genetix-newsletter",
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 52,
         "eyebrow": "JOIN THE FORMULA",
         "heading": "Subscribe to our newsletter.",
         "text": "<p>Product news, new releases, and the latest from GENETIX.</p>",
         "placeholder": "Your email address",
         "button_label": "Subscribe",
         "background": "#eaf5fa",
-        "text_color": "#173c48"
+        "text_color": "#173c48",
+        "padding_top": 0,
+        "padding_bottom": 52
       }
     }
   },
