@@ -251,7 +251,7 @@
         "background": "#ffffff",
         "media_background": "#eef8fb",
         "text_color": "#173c48",
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 52
       }
     },
@@ -322,7 +322,7 @@
         "text": "<p>Four ingredients. One advanced matrix.</p>",
         "background": "#eaf5fa",
         "text_color": "#173c48",
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 52
       }
     },
@@ -398,7 +398,7 @@
         "text_color": "#ffffff",
         "muted_color": "#a9bec4",
         "line_color": "#49636b",
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 52
       }
     },
@@ -464,7 +464,7 @@
         "background": "#eaf5fa",
         "text_color": "#173c48",
         "padding_top": 0,
-        "padding_bottom": 52
+        "padding_bottom": 0
       }
     },
     "genetix_less": {
@@ -488,7 +488,7 @@
         "panel_background": "#eaf5fa",
         "panel_text_color": "#173c48",
         "panel_muted_color": "#647c84",
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 52
       }
     },
@@ -535,7 +535,7 @@
         "heading": "One formula.\nThoughtfully composed.",
         "background": "#153640",
         "text_color": "#ffffff",
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 52
       }
     },
@@ -597,7 +597,7 @@
         "text_color": "#173c48",
         "muted_color": "#647c84",
         "accent_color": "#25a7ca",
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 52
       }
     },
@@ -651,7 +651,7 @@
         "text_color": "#ffffff",
         "muted_color": "#a9bec4",
         "line_color": "#49636b",
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 52
       }
     },
@@ -740,9 +740,9 @@
         "text_color": "#173c48",
         "muted_color": "#647c84",
         "line_color": "#dce7eb",
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 52,
-        "padding_top_mobile": 0,
+        "padding_top_mobile": 52,
         "padding_bottom_mobile": 52
       }
     },
@@ -805,9 +805,9 @@
         "card_background": "#f9fcfd",
         "text_color": "#173c48",
         "muted_color": "#647c84",
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 52,
-        "padding_top_mobile": 0,
+        "padding_top_mobile": 52,
         "padding_bottom_mobile": 52
       }
     },
@@ -867,7 +867,7 @@
         "sticky_offset": 100,
         "background": "#ffffff",
         "text_color": "#173c48",
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 52
       }
     },
@@ -881,7 +881,7 @@
         "button_label": "Subscribe",
         "background": "#eaf5fa",
         "text_color": "#173c48",
-        "padding_top": 0,
+        "padding_top": 52,
         "padding_bottom": 52
       }
     }
