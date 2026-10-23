@@ -92,6 +92,7 @@
         "accordion_68C9tk",
         "accordion_E4HaWw"
       ],
+      "disabled": true,
       "name": "GENETIX featured product",
       "settings": {
         "product": "{{ product }}",
@@ -319,6 +320,10 @@
               },
               "blocks": {}
             },
+            "appstle_subscription_appstle_subscription_product_page_widget_UiVet6": {
+              "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-product-page-widget/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
+              "settings": {}
+            },
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
               "settings": {
@@ -410,6 +415,7 @@
             "group_icgrde",
             "divider_VJhene",
             "variant_picker_R3rGDr",
+            "appstle_subscription_appstle_subscription_product_page_widget_UiVet6",
             "buy_buttons_eYQEYi",
             "text_aEtTtq"
           ]
@@ -418,11 +424,10 @@
       "block_order": [
         "disclosures_g9mWze"
       ],
-      "disabled": true,
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
-        "equal_columns": false,
+        "equal_columns": true,
         "limit_details_width": false,
         "gap": 48,
         "enable_sticky_add_to_cart": true,
