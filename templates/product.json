@@ -12,6 +12,10 @@
     "genetix_featured_product_a79zr4": {
       "type": "genetix-featured-product",
       "blocks": {
+        "appstle_subscription_appstle_subscription_product_page_widget_YaiAbT": {
+          "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-product-page-widget/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
+          "settings": {}
+        },
         "impact_NtXNPx": {
           "type": "impact",
           "settings": {
@@ -77,6 +81,7 @@
         }
       },
       "block_order": [
+        "appstle_subscription_appstle_subscription_product_page_widget_YaiAbT",
         "impact_NtXNPx",
         "impact_AHrV8T",
         "impact_KJKLkE",
@@ -102,7 +107,9 @@
         "button_color": "#ffffff",
         "background": "#ffffff",
         "media_background": "#eef8fb",
-        "text_color": "#173c48"
+        "text_color": "#173c48",
+        "padding_top": 0,
+        "padding_bottom": 52
       }
     },
     "main": {
