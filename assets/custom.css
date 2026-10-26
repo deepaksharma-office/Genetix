@@ -8,3 +8,14 @@
     #003D56 100%
   ) !important;
 }
+
+.custom_gradient_style_hover:hover {
+  background: linear-gradient(
+    165deg,
+    #03415A 0%,
+    #00566B 30%,
+    #008B98 55%,
+    #00546A 78%,
+    #003D56 100%
+  ) !important;
+}
