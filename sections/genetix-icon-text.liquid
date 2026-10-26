@@ -28,7 +28,7 @@
       {% for block in section.blocks %}
         {% unless block.type == '@app' %}
         <article class="genetix-icon-text__item" {{ block.shopify_attributes }}>
-          <div class="genetix-icon-text__icon">
+          <div class="genetix-icon-text__icon custom_gradient_style ">
             {% if block.settings.image != blank %}
               {{
                 block.settings.image
