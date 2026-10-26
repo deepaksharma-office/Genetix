@@ -20,7 +20,7 @@
     </div>
     <div class="genetix__grid genetix-ledger__items">
       {% for block in ingredient_blocks %}
-        <article class="genetix-ledger__item custom_gradient_style " {{ block.shopify_attributes }}>
+        <article class="genetix-ledger__item custom_gradient_style_hover " {{ block.shopify_attributes }}>
           <p class="genetix__eyebrow">{{ block.settings.kicker | escape }}</p>
           <div class="genetix-ledger__value">{{ block.settings.value | escape }}{{ block.settings.unit | escape }}</div>
           <h3>{{ block.settings.heading | escape }}</h3>
