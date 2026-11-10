@@ -1,0 +1,33 @@
+.custom_gradient_style {
+  background: linear-gradient(
+    165deg,
+    #03415A 0%,
+    #00566B 30%,
+    #008B98 55%,
+    #00546A 78%,
+    #003D56 100%
+  ) !important;
+}
+
+.custom_gradient_style_hover:hover {
+  background: linear-gradient(
+    115deg,
+    #03415A 0%,
+    #00566B 30%,
+    #008B98 55%,
+    #00546A 78%,
+    #003D56 100%
+  ) !important;
+}
+
+.custom__bg_allweb {
+  background-image: var(--custom-page-background-image);
+  background-position: top center;
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+}
+
+.custom__bg_allweb .section-background,
+.custom__bg_allweb > .shopify-section > .genetix {
+  background: transparent;
+}

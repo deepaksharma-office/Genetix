@@ -11,6 +11,11 @@
     "name": "t:names.logo_and_favicon",
     "settings": [
       {
+        "type": "image_picker",
+        "id": "bg",
+        "label": "t:settings.background_image"
+      },
+      {
         "type": "paragraph",
         "content": "t:content.manage_store_name"
       },
