@@ -1,0 +1,19 @@
+{% doc %}
+  Renders quantity controls associated with the shared product form.
+
+  @example
+  Add the Quantity selector block before the purchase buttons.
+{% enddoc %}
+{% liquid
+  assign variant = closest.product.selected_or_first_available_variant
+  assign initial_quantity = variant.quantity_rule.min | default: 1
+  assign form_id = 'GenetixProductForm-' | append: section.id
+%}
+<div class="genetix-product-block genetix-product__quantity" {{ block.shopify_attributes }}>
+  <button type="button" data-quantity-minus aria-label="{{ 'accessibility.decrease_quantity' | t }}">&minus;</button>
+  <input type="number" name="quantity" form="{{ form_id }}" value="{{ initial_quantity }}" min="{{ initial_quantity }}" {% if variant.quantity_rule.max %}max="{{ variant.quantity_rule.max }}"{% endif %} step="{{ variant.quantity_rule.increment | default: 1 }}" data-quantity-input aria-label="{{ 'accessibility.quantity' | t }}">
+  <button type="button" data-quantity-plus aria-label="{{ 'accessibility.increase_quantity' | t }}">+</button>
+</div>
+{% schema %}
+{"name":"Quantity selector","tag":null,"settings":[],"presets":[{"name":"Quantity selector"}]}
+{% endschema %}

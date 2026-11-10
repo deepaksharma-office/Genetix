@@ -1,0 +1,14 @@
+{% doc %}
+  Renders selected variant inventory availability.
+
+  @example
+  Add the Inventory status block to product content.
+{% enddoc %}
+{% assign variant = closest.product.selected_or_first_available_variant %}
+<p class="genetix-product-block genetix-product__inventory" data-inventory-status data-available-label="{{ block.settings.available_text | escape }}" {{ block.shopify_attributes }}>
+  <span aria-hidden="true"></span>
+  <span data-inventory-label>{% if variant.available %}{{ block.settings.available_text | escape }}{% else %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+</p>
+{% schema %}
+{"name":"Inventory status","tag":null,"settings":[{"type":"text","id":"available_text","label":"Available text","default":"In stock"}],"presets":[{"name":"Inventory status"}]}
+{% endschema %}

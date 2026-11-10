@@ -11,6 +11,10 @@
   @param {string} [button_type] - Native button type; defaults to `button`.
   @param {boolean} [disabled] - Disables a rendered button.
   @param {string} [price] - Optional price appended to the label.
+  @param {boolean} [show_price] - Whether to append the optional price.
+  @param {string} [form_id] - Optional associated form ID.
+  @param {string} [data_action] - Optional purchase action identifier.
+  @param {string} [base_label] - Available-state label used by product interactions.
   @param {string} [class] - Additional CSS class names.
 
   @example
@@ -27,9 +31,11 @@
     class="genetix-button{% if class != blank %} {{ class }}{% endif %}"
     type="{{ native_type }}"
     style="--genetix-button-bg:{{ background | default: '#153640' }};--genetix-button-color:{{ color | default: '#ffffff' }};"
+    {% if form_id != blank %}form="{{ form_id }}"{% endif %}
+    {% if data_action != blank %}data-product-submit="{{ data_action }}" data-base-label="{{ base_label | default: label | escape }}"{% endif %}
     {% if disabled %}disabled{% endif %}
   >
-    <span>{{ label | escape }}{% if price != blank %} — <span data-button-price>{{ price }}</span>{% endif %}</span>
+    <span data-button-label>{{ label | escape }}{% if price != blank and show_price != false %} — <span data-button-price>{{ price }}</span>{% endif %}</span>
     {% if show_arrow %}
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z"></path></svg>
     {% endif %}

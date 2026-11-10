@@ -1,0 +1,10 @@
+{% doc %}
+  Renders one compact product impact statistic.
+
+  @example
+  Add four Product impact blocks for the active matrix.
+{% enddoc %}
+<div class="genetix-product__impact" {{ block.shopify_attributes }}><strong>{{ block.settings.value | escape }}</strong><span>{{ block.settings.label | escape }}</span></div>
+{% schema %}
+{"name":"Product impact","tag":null,"settings":[{"type":"text","id":"value","label":"Value","default":"2%"},{"type":"text","id":"label","label":"Label","default":"GHK-Cu"}],"presets":[{"name":"Product impact"}]}
+{% endschema %}

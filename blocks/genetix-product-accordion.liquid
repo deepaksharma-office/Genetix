@@ -1,0 +1,20 @@
+{% doc %}
+  Renders an expandable product information row.
+
+  @example
+  Add Product information rows below purchase controls.
+{% enddoc %}
+{% assign panel_id = 'ProductAccordion-' | append: section.id | append: '-' | append: block.id %}
+<div class="genetix-product-block genetix-product__accordion" {{ block.shopify_attributes }}>
+  <button class="genetix-product__accordion-trigger" type="button" aria-expanded="false" aria-controls="{{ panel_id }}" data-accordion-trigger>
+    <span>{{ block.settings.heading | escape }}</span>
+    <span class="genetix-product__accordion-icon" aria-hidden="true">
+      <svg class="genetix-product__plus" viewBox="0 0 24 24" fill="currentColor"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"/></svg>
+      <svg class="genetix-product__minus" viewBox="0 0 24 24" fill="currentColor"><path d="M5 11V13H19V11H5Z"/></svg>
+    </span>
+  </button>
+  <div id="{{ panel_id }}" class="genetix-product__accordion-panel" data-accordion-panel><div class="genetix-product__accordion-content rte">{{ block.settings.content }}</div></div>
+</div>
+{% schema %}
+{"name":"Product information row","tag":null,"settings":[{"type":"text","id":"heading","label":"Heading","default":"Formula & ingredients"},{"type":"richtext","id":"content","label":"Content","default":"<p>Add product details here.</p>"}],"presets":[{"name":"Product information row"}]}
+{% endschema %}

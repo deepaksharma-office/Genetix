@@ -1,1 +1,25 @@
-.genetix-newsletter__layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}.genetix-newsletter__form{display:flex;gap:8px}.genetix-newsletter__form input,.genetix-newsletter__form button{height:44px}.genetix-newsletter__form input{min-width:0;flex:1;border:1px solid var(--gx-line);padding:0 16px}.genetix-newsletter__form button{min-height:44px;margin-top:0}.genetix-newsletter__message{grid-column:1/-1}@media(max-width:749px){.genetix-newsletter__layout{grid-template-columns:1fr;gap:22px}.genetix-newsletter__form{display:block}.genetix-newsletter__form input,.genetix-newsletter__form button{width:100%}.genetix-newsletter__form button{margin-top:10px}}
+.genetix-newsletter{position:relative;isolation:isolate;overflow:hidden;border-inline-start:2px solid #29a8cf;background:linear-gradient(110deg,var(--gx-bg) 0%,var(--gx-bg) 70%,color-mix(in srgb,var(--gx-bg),#eaf5fa 45%) 100%)}
+.genetix-newsletter__orbit{position:absolute;z-index:-1;inset-block-start:-390px;inset-inline-end:-170px;width:650px;aspect-ratio:1;border:1px solid color-mix(in srgb,var(--gx-text),transparent 94%);border-radius:50%;pointer-events:none}
+.genetix-newsletter__orbit::before,.genetix-newsletter__orbit::after{position:absolute;border:1px solid color-mix(in srgb,var(--gx-text),transparent 95%);border-radius:50%;content:""}
+.genetix-newsletter__orbit::before{inset:45px}
+.genetix-newsletter__orbit::after{inset:95px}
+.genetix-newsletter__inner{position:relative}
+.genetix-newsletter__content{max-width:980px}
+.genetix-newsletter__eyebrow{margin-bottom:22px;font-size:9px;font-weight:700;letter-spacing:.02em}
+.genetix-newsletter h2{margin:0;font-size:clamp(25px,2.5vw,38px);font-weight:400;line-height:1.1}
+.genetix-newsletter__intro{display:flex;align-items:flex-start;gap:18px;max-width:960px;margin-top:16px}
+.genetix-newsletter__mark{width:25px;height:38px;flex:none;color:#26a5d0;stroke-width:1.15}
+.genetix-newsletter__intro .genetix__copy{max-width:900px;color:var(--gx-muted);font-size:16px;line-height:1.55}
+.genetix-newsletter__intro p{margin:0}
+.genetix-newsletter__customer-form{margin-top:50px}
+.genetix-newsletter__customer-form>label{display:block;margin-bottom:10px;font-size:8px;font-weight:700;text-transform:uppercase}
+.genetix-newsletter__form{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,270px);gap:12px}
+.genetix-newsletter__form input,.genetix-newsletter__form button{width:100%;min-height:56px;border-radius:0;font:inherit}
+.genetix-newsletter__form input{min-width:0;border:1px solid var(--gx-line);background:#fff;padding-inline:20px;color:var(--gx-text);font-size:14px}
+.genetix-newsletter__form input::placeholder{color:var(--gx-muted);opacity:1}
+.genetix-newsletter__form button{position:relative;border:1px solid var(--gx-button-bg);background:linear-gradient(165deg,var(--gx-button-bg) 0%,var(--gx-button-bg) 58%,color-mix(in srgb,var(--gx-button-bg),#16819a 48%) 100%);color:var(--gx-button-color);font-size:11px;font-weight:700;text-transform:uppercase;cursor:pointer}
+.genetix-newsletter__form input:focus-visible,.genetix-newsletter__form button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.genetix-newsletter__fine-print,.genetix-newsletter__message{margin-top:12px;font-size:10px;line-height:1.45}
+.genetix-newsletter__fine-print{color:var(--gx-muted)}
+.genetix-newsletter__fine-print p,.genetix-newsletter__message{margin-bottom:0}
+@media(max-width:749px){.genetix-newsletter{border-inline-start-width:1px}.genetix-newsletter__orbit{inset-block-start:-260px;inset-inline-end:-260px;width:500px}.genetix-newsletter__eyebrow{margin-bottom:16px}.genetix-newsletter h2{font-size:27px}.genetix-newsletter__intro{gap:12px}.genetix-newsletter__intro .genetix__copy{font-size:14px}.genetix-newsletter__customer-form{margin-top:34px}.genetix-newsletter__form{grid-template-columns:1fr}.genetix-newsletter__form input,.genetix-newsletter__form button{min-height:52px}}

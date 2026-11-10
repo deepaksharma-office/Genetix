@@ -1,0 +1,15 @@
+{% doc %}
+  Renders selected variant price and compare-at price.
+
+  @example
+  Add the Product price block to product content.
+{% enddoc %}
+{% assign variant = closest.product.selected_or_first_available_variant %}
+<div class="genetix-product-block genetix-product__price-row" {{ block.shopify_attributes }}>
+  <span class="genetix-product__price" data-price>{{ variant.price | money }}</span>
+  <span class="genetix-product__compare{% unless variant.compare_at_price > variant.price %} hidden{% endunless %}" data-compare-price>{{ variant.compare_at_price | money }}</span>
+  {% if block.settings.currency_label != blank %}<span class="genetix-product__currency">{{ block.settings.currency_label | escape }}</span>{% endif %}
+</div>
+{% schema %}
+{"name":"Product price","tag":null,"settings":[{"type":"text","id":"currency_label","label":"Currency label","default":"USD"}],"presets":[{"name":"Product price"}]}
+{% endschema %}

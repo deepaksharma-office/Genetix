@@ -12,105 +12,41 @@
     "genetix_featured_product_a79zr4": {
       "type": "genetix-featured-product",
       "blocks": {
-        "appstle_subscription_appstle_subscription_product_page_widget_YaiAbT": {
-          "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-product-page-widget/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
-          "settings": {}
-        },
-        "impact_NtXNPx": {
-          "type": "impact",
-          "settings": {
-            "value": "2%",
-            "label": "GHK-Cu"
-          }
-        },
-        "impact_AHrV8T": {
-          "type": "impact",
-          "settings": {
-            "value": "6%",
-            "label": "PAL-150"
-          }
-        },
-        "impact_KJKLkE": {
-          "type": "impact",
-          "settings": {
-            "value": "3%",
-            "label": "Niacinamide"
-          }
-        },
-        "impact_Bh3kXF": {
-          "type": "impact",
-          "settings": {
-            "value": "0.25%",
-            "label": "PDRN+"
-          }
-        },
-        "icon_text_Rr73dE": {
-          "type": "icon_text",
-          "settings": {
-            "icon": "shield",
-            "text": "Secure checkout"
-          }
-        },
-        "icon_text_CLtcgg": {
-          "type": "icon_text",
-          "settings": {
-            "icon": "truck",
-            "text": "Free insured U.S. shipping"
-          }
-        },
-        "accordion_qeU8nt": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Formula & ingredients",
-            "content": "<p>Add product details here.</p>"
-          }
-        },
-        "accordion_68C9tk": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Quality & laboratory testing",
-            "content": "<p>Add product details here.</p>"
-          }
-        },
-        "accordion_E4HaWw": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Shipping & fulfillment",
-            "content": "<p>Add product details here.</p>"
-          }
-        }
+            "gallery": { "type": "_genetix-product-gallery", "static": true, "settings": { "label": "GHK-Cu SCALP MATRIX", "show_thumbnails": true }, "blocks": {} },
+            "eyebrow": { "type": "genetix-product-eyebrow", "settings": { "text": "THE DAILY ESSENTIAL" }, "blocks": {} },
+            "title": { "type": "genetix-product-title", "settings": {}, "blocks": {} },
+            "meta": { "type": "genetix-product-text", "settings": { "text": "<p>2 fl oz / 60 ml · Skin + Scalp</p>", "style": "meta" }, "blocks": {} },
+            "price": { "type": "genetix-product-price", "settings": { "currency_label": "USD" }, "blocks": {} },
+            "description": { "type": "genetix-product-description", "settings": {}, "blocks": {} },
+            "impact_ghk": { "type": "genetix-product-impact", "settings": { "value": "2%", "label": "GHK-Cu" }, "blocks": {} },
+            "impact_pal": { "type": "genetix-product-impact", "settings": { "value": "6%", "label": "PAL-150" }, "blocks": {} },
+            "impact_niacinamide": { "type": "genetix-product-impact", "settings": { "value": "3%", "label": "Niacinamide" }, "blocks": {} },
+            "impact_pdrn": { "type": "genetix-product-impact", "settings": { "value": "0.25%", "label": "PDRN+" }, "blocks": {} },
+            "variant": { "type": "genetix-product-variant-selector", "settings": { "label": "Choose an option" }, "blocks": {} },
+            "quantity": { "type": "genetix-product-quantity", "settings": {}, "blocks": {} },
+            "add": { "type": "genetix-product-add-button", "settings": { "label": "Add to bag", "show_price": true, "show_arrow": true, "background": "#153640", "color": "#ffffff" }, "blocks": {} },
+            "buy": { "type": "genetix-product-buy-button", "settings": { "label": "Buy", "show_arrow": true }, "blocks": {} },
+            "secure_checkout": { "type": "genetix-product-icon-text", "settings": { "icon": "shield", "text": "Secure checkout" }, "blocks": {} },
+            "insured_shipping": { "type": "genetix-product-icon-text", "settings": { "icon": "truck", "text": "Free insured U.S. shipping" }, "blocks": {} },
+            "details": { "type": "genetix-product-accordion", "settings": { "heading": "Formula & ingredients", "content": "<p>Add product details here.</p>" }, "blocks": {} },
+            "quality": { "type": "genetix-product-accordion", "settings": { "heading": "Quality & laboratory testing", "content": "<p>Add product details here.</p>" }, "blocks": {} },
+            "shipping": { "type": "genetix-product-accordion", "settings": { "heading": "Shipping & fulfillment", "content": "<p>Add product details here.</p>" }, "blocks": {} }
       },
-      "block_order": [
-        "appstle_subscription_appstle_subscription_product_page_widget_YaiAbT",
-        "impact_NtXNPx",
-        "impact_AHrV8T",
-        "impact_KJKLkE",
-        "impact_Bh3kXF",
-        "icon_text_Rr73dE",
-        "icon_text_CLtcgg",
-        "accordion_qeU8nt",
-        "accordion_68C9tk",
-        "accordion_E4HaWw"
-      ],
+      "block_order": ["eyebrow", "title", "meta", "price", "description", "impact_ghk", "impact_pal", "impact_niacinamide", "impact_pdrn", "variant", "quantity", "add", "buy", "secure_checkout", "insured_shipping", "details", "quality", "shipping"],
       "disabled": true,
       "name": "GENETIX featured product",
       "settings": {
         "product": "{{ product }}",
-        "eyebrow": "THE DAILY ESSENTIAL",
-        "fallback_title": "GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix",
-        "product_meta": "2 fl oz / 60 ml · Skin + Scalp",
-        "currency_label": "USD",
-        "media_label": "GHK-Cu SCALP MATRIX",
-        "variant_label": "Choose an option",
-        "button_label": "Add to bag",
-        "show_button_arrow": true,
-        "button_background": "#153640",
-        "button_color": "#ffffff",
+        "gallery_position": "left",
+        "sticky_gallery": true,
+        "section_width": "page",
         "background": "#ffffff",
         "media_background": "#eef8fb",
         "text_color": "#173c48",
         "padding_top": 0,
-        "padding_bottom": 52
+        "padding_bottom": 52,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
       }
     },
     "main": {

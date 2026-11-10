@@ -1,0 +1,25 @@
+{% doc %}
+  Renders the selected product variant selector associated with the shared product form.
+
+  @example
+  Add the Variant selector block to product content.
+{% enddoc %}
+{% liquid
+  assign product = closest.product
+  assign variant = product.selected_or_first_available_variant
+%}
+<div class="genetix-product-block genetix-product__variant" {{ block.shopify_attributes }}>
+  {% if product.variants.size > 1 %}
+    <label for="Variant-{{ section.id }}-{{ block.id }}">{{ block.settings.label | escape }}</label>
+    <select id="Variant-{{ section.id }}-{{ block.id }}" data-variant-select>
+      {% for item in product.variants %}
+        <option value="{{ item.id }}" data-price="{{ item.price | money }}" data-compare-price="{{ item.compare_at_price | money }}" data-has-compare="{% if item.compare_at_price > item.price %}true{% else %}false{% endif %}" data-available="{{ item.available }}" data-inventory-management="{{ item.inventory_management }}" data-inventory-quantity="{{ item.inventory_quantity }}" data-inventory-policy="{{ item.inventory_policy }}" data-min="{{ item.quantity_rule.min | default: 1 }}" data-max="{{ item.quantity_rule.max }}" data-step="{{ item.quantity_rule.increment | default: 1 }}" {% if item == variant %}selected{% endif %}>{{ item.title | escape }}</option>
+      {% endfor %}
+    </select>
+  {% else %}
+    <input type="hidden" value="{{ variant.id }}" data-variant-id data-price="{{ variant.price | money }}" data-compare-price="{{ variant.compare_at_price | money }}" data-has-compare="{% if variant.compare_at_price > variant.price %}true{% else %}false{% endif %}" data-available="{{ variant.available }}" data-inventory-management="{{ variant.inventory_management }}" data-inventory-quantity="{{ variant.inventory_quantity }}" data-inventory-policy="{{ variant.inventory_policy }}" data-min="{{ variant.quantity_rule.min | default: 1 }}" data-max="{{ variant.quantity_rule.max }}" data-step="{{ variant.quantity_rule.increment | default: 1 }}">
+  {% endif %}
+</div>
+{% schema %}
+{"name":"Variant selector","tag":null,"settings":[{"type":"text","id":"label","label":"Label","default":"Choose an option"}],"presets":[{"name":"Variant selector"}]}
+{% endschema %}

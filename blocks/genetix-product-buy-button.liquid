@@ -1,0 +1,22 @@
+{% doc %}
+  Renders a secondary standard buy button that adds the selected variant to cart.
+
+  @example
+  Add the Buy button block beneath the primary purchase button.
+{% enddoc %}
+{% liquid
+  assign variant = closest.product.selected_or_first_available_variant
+  assign form_id = 'GenetixProductForm-' | append: section.id
+  assign label = block.settings.label
+  assign button_disabled = false
+  unless variant.available
+    assign label = 'products.product.sold_out' | t
+    assign button_disabled = true
+  endunless
+%}
+<div class="genetix-product-block genetix-product__button-block" {{ block.shopify_attributes }}>
+  {% render 'genetix-button', label: label, base_label: block.settings.label, background: '#ffffff', color: '#173c48', show_arrow: block.settings.show_arrow, tag: 'button', button_type: 'submit', disabled: button_disabled, form_id: form_id, data_action: 'buy', class: 'genetix-product__buy' %}
+</div>
+{% schema %}
+{"name":"Buy button","tag":null,"settings":[{"type":"text","id":"label","label":"Label","default":"Buy"},{"type":"checkbox","id":"show_arrow","label":"Show arrow","default":true}],"presets":[{"name":"Buy button"}]}
+{% endschema %}

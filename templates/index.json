@@ -161,98 +161,39 @@
     "genetix_product": {
       "type": "genetix-featured-product",
       "blocks": {
-        "impact_ghk": {
-          "type": "impact",
-          "settings": {
-            "value": "2%",
-            "label": "GHK-Cu"
-          }
-        },
-        "impact_pal": {
-          "type": "impact",
-          "settings": {
-            "value": "6%",
-            "label": "PAL-150"
-          }
-        },
-        "impact_niacinamide": {
-          "type": "impact",
-          "settings": {
-            "value": "3%",
-            "label": "Niacinamide"
-          }
-        },
-        "impact_pdrn": {
-          "type": "impact",
-          "settings": {
-            "value": "0.25%",
-            "label": "PDRN+"
-          }
-        },
-        "secure_checkout": {
-          "type": "icon_text",
-          "settings": {
-            "icon": "shield",
-            "text": "Secure checkout"
-          }
-        },
-        "insured_shipping": {
-          "type": "icon_text",
-          "settings": {
-            "icon": "truck",
-            "text": "Free insured U.S. shipping"
-          }
-        },
-        "details": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Formula & ingredients",
-            "content": "<p>Add product details here.</p>"
-          }
-        },
-        "quality": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Quality & laboratory testing",
-            "content": "<p>Add product details here.</p>"
-          }
-        },
-        "shipping": {
-          "type": "accordion",
-          "settings": {
-            "heading": "Shipping & fulfillment",
-            "content": "<p>Add product details here.</p>"
-          }
-        }
+            "gallery": { "type": "_genetix-product-gallery", "static": true, "settings": { "label": "GHK-Cu SCALP MATRIX", "show_thumbnails": true }, "blocks": {} },
+            "eyebrow": { "type": "genetix-product-eyebrow", "settings": { "text": "THE DAILY ESSENTIAL" }, "blocks": {} },
+            "title": { "type": "genetix-product-title", "settings": {}, "blocks": {} },
+            "meta": { "type": "genetix-product-text", "settings": { "text": "<p>2 fl oz / 60 ml · Skin + Scalp</p>", "style": "meta" }, "blocks": {} },
+            "price": { "type": "genetix-product-price", "settings": { "currency_label": "USD" }, "blocks": {} },
+            "description": { "type": "genetix-product-description", "settings": {}, "blocks": {} },
+            "impact_ghk": { "type": "genetix-product-impact", "settings": { "value": "2%", "label": "GHK-Cu" }, "blocks": {} },
+            "impact_pal": { "type": "genetix-product-impact", "settings": { "value": "6%", "label": "PAL-150" }, "blocks": {} },
+            "impact_niacinamide": { "type": "genetix-product-impact", "settings": { "value": "3%", "label": "Niacinamide" }, "blocks": {} },
+            "impact_pdrn": { "type": "genetix-product-impact", "settings": { "value": "0.25%", "label": "PDRN+" }, "blocks": {} },
+            "variant": { "type": "genetix-product-variant-selector", "settings": { "label": "Choose an option" }, "blocks": {} },
+            "quantity": { "type": "genetix-product-quantity", "settings": {}, "blocks": {} },
+            "add": { "type": "genetix-product-add-button", "settings": { "label": "Add to bag", "show_price": true, "show_arrow": true, "background": "#153640", "color": "#ffffff" }, "blocks": {} },
+            "buy": { "type": "genetix-product-buy-button", "settings": { "label": "Buy", "show_arrow": true }, "blocks": {} },
+            "secure_checkout": { "type": "genetix-product-icon-text", "settings": { "icon": "shield", "text": "Secure checkout" }, "blocks": {} },
+            "insured_shipping": { "type": "genetix-product-icon-text", "settings": { "icon": "truck", "text": "Free insured U.S. shipping" }, "blocks": {} },
+            "details": { "type": "genetix-product-accordion", "settings": { "heading": "Formula & ingredients", "content": "<p>Add product details here.</p>" }, "blocks": {} },
+            "quality": { "type": "genetix-product-accordion", "settings": { "heading": "Quality & laboratory testing", "content": "<p>Add product details here.</p>" }, "blocks": {} },
+            "shipping": { "type": "genetix-product-accordion", "settings": { "heading": "Shipping & fulfillment", "content": "<p>Add product details here.</p>" }, "blocks": {} }
       },
-      "block_order": [
-        "impact_ghk",
-        "impact_pal",
-        "impact_niacinamide",
-        "impact_pdrn",
-        "secure_checkout",
-        "insured_shipping",
-        "details",
-        "quality",
-        "shipping"
-      ],
+      "block_order": ["eyebrow", "title", "meta", "price", "description", "impact_ghk", "impact_pal", "impact_niacinamide", "impact_pdrn", "variant", "quantity", "add", "buy", "secure_checkout", "insured_shipping", "details", "quality", "shipping"],
       "settings": {
         "product": "genetix-peptides",
-        "eyebrow": "THE DAILY ESSENTIAL",
-        "fallback_title": "GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix",
-        "product_meta": "2 fl oz / 60 ml · Skin + Scalp",
-        "currency_label": "USD",
-        "media_label": "GHK-Cu SCALP MATRIX",
-        "variant_label": "Choose an option",
-        "button_label": "Add to bag",
-        "show_button_arrow": true,
-        "button_background": "#153640",
-        "button_color": "#ffffff",
+        "gallery_position": "left",
+        "sticky_gallery": true,
+        "section_width": "page",
         "background": "#ffffff",
         "media_background": "#eef8fb",
         "text_color": "#173c48",
         "padding_top": 52,
-        "padding_bottom": 52
+        "padding_bottom": 52,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
       }
     },
     "genetix_ledger": {
@@ -302,7 +243,7 @@
           "type": "ingredient",
           "settings": {
             "kicker": "ACTIVE INGREDIENT",
-            "value": "0.25",
+            "value": "0.5",
             "unit": "%",
             "heading": "Salmon Mesenchymal Cell Conditioned Media (PDRN+)",
             "text": "Utilizing cutting-edge cellular DNA fragments to accelerate systemic tissue repair and revitalize skin at the cellular level."
@@ -320,6 +261,10 @@
         "eyebrow": "THE INGREDIENT LEDGER",
         "heading": "The GENETIX Matrix: Science. Not Words.",
         "text": "<p>Five ingredients. One advanced matrix.</p>",
+        "button_label": "Learn more",
+        "button_link": "shopify://products/genetix-peptides",
+        "button_background": "#153640",
+        "button_color": "#ffffff",
         "background": "#eaf5fa",
         "text_color": "#173c48",
         "padding_top": 52,
@@ -874,15 +819,18 @@
     "genetix_newsletter": {
       "type": "genetix-newsletter",
       "settings": {
-        "eyebrow": "JOIN THE FORMULA",
-        "heading": "Subscribe to our newsletter.",
-        "text": "<p>Product news, new releases, and the latest from GENETIX.</p>",
+        "eyebrow": "PRIVATE ACCESS / GENETIX PEPTIDES",
+        "heading": "GENETIX PEPTIDES: Clinical Cellular Matrix.",
+        "text": "<p>Join our VIP Mailing List for new product updates, official launch dates, exclusive access to upcoming giveaways, and priority allocation on our high-purity GHK-Cu topical production runs.</p>",
         "placeholder": "Your email address",
-        "button_label": "Subscribe",
-        "background": "#eaf5fa",
+        "button_label": "Join the VIP list",
+        "fine_print": "<p>By subscribing, you agree to receive GENETIX email updates. You can unsubscribe at any time.</p>",
+        "background": "#ffffff",
         "text_color": "#173c48",
-        "padding_top": 52,
-        "padding_bottom": 52
+        "button_background": "#153640",
+        "button_color": "#ffffff",
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     }
   },

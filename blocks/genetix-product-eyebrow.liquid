@@ -1,0 +1,10 @@
+{% doc %}
+  Renders editable eyebrow text in the GENETIX featured product.
+
+  @example
+  Add the Product eyebrow block to product content.
+{% enddoc %}
+<p class="genetix__eyebrow genetix-product-block" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+{% schema %}
+{"name":"Product eyebrow","tag":null,"settings":[{"type":"text","id":"text","label":"Text","default":"THE DAILY ESSENTIAL"}],"presets":[{"name":"Product eyebrow"}]}
+{% endschema %}

@@ -1,0 +1,23 @@
+{% doc %}
+  Renders the primary inventory-aware add-to-cart button.
+
+  @example
+  Add the Add to bag button block to product content.
+{% enddoc %}
+{% liquid
+  assign variant = closest.product.selected_or_first_available_variant
+  assign form_id = 'GenetixProductForm-' | append: section.id
+  assign label = block.settings.label
+  assign button_disabled = false
+  assign button_price = variant.price | money
+  unless variant.available
+    assign label = 'products.product.sold_out' | t
+    assign button_disabled = true
+  endunless
+%}
+<div class="genetix-product-block genetix-product__button-block" {{ block.shopify_attributes }}>
+  {% render 'genetix-button', label: label, base_label: block.settings.label, background: block.settings.background, color: block.settings.color, show_arrow: block.settings.show_arrow, tag: 'button', button_type: 'submit', disabled: button_disabled, price: button_price, show_price: block.settings.show_price, form_id: form_id, data_action: 'add', class: 'genetix-product__submit genetix-product__add-to-bag' %}
+</div>
+{% schema %}
+{"name":"Add to bag button","tag":null,"settings":[{"type":"text","id":"label","label":"Label","default":"Add to bag"},{"type":"checkbox","id":"show_price","label":"Show price","default":true},{"type":"checkbox","id":"show_arrow","label":"Show arrow","default":true},{"type":"color","id":"background","label":"Background","default":"#153640"},{"type":"color","id":"color","label":"Text","default":"#ffffff"}],"presets":[{"name":"Add to bag button"}]}
+{% endschema %}

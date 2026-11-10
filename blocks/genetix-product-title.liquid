@@ -1,0 +1,10 @@
+{% doc %}
+  Renders the selected product title.
+
+  @example
+  Add the Product title block to product content.
+{% enddoc %}
+<div class="genetix-product-block" {{ block.shopify_attributes }}><h2>{{ closest.product.title | escape }}</h2></div>
+{% schema %}
+{"name":"Product title","tag":null,"settings":[],"presets":[{"name":"Product title"}]}
+{% endschema %}

@@ -1,0 +1,10 @@
+{% doc %}
+  Renders merchant-authored Liquid in the GENETIX featured product.
+
+  @example
+  Add the Custom Liquid block for a product-specific integration.
+{% enddoc %}
+<div class="genetix-product-block genetix-product__custom-liquid" {{ block.shopify_attributes }}>{{ block.settings.custom_liquid }}</div>
+{% schema %}
+{"name":"Custom Liquid","tag":null,"settings":[{"type":"liquid","id":"custom_liquid","label":"Custom Liquid"}],"presets":[{"name":"Custom Liquid"}]}
+{% endschema %}

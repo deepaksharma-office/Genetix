@@ -1,0 +1,17 @@
+{% doc %}
+  Renders one compact trust or shipping message with an icon.
+
+  @example
+  Add Icon with text blocks after purchase actions.
+{% enddoc %}
+<div class="genetix-product__assurance" {{ block.shopify_attributes }}>
+  {% case block.settings.icon %}
+    {% when 'shield' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3 5 6v5c0 4.6 2.9 8.1 7 10 4.1-1.9 7-5.4 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+    {% when 'truck' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg>
+    {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg>
+  {% endcase %}
+  <span>{{ block.settings.text | escape }}</span>
+</div>
+{% schema %}
+{"name":"Icon with text","tag":null,"settings":[{"type":"select","id":"icon","label":"Icon","options":[{"value":"shield","label":"Shield"},{"value":"truck","label":"Truck"},{"value":"plus","label":"Plus"}],"default":"shield"},{"type":"text","id":"text","label":"Text","default":"Secure checkout"}],"presets":[{"name":"Icon with text"}]}
+{% endschema %}

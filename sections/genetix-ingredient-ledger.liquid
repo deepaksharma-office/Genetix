@@ -16,7 +16,19 @@
         <p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>
         <h2>{{ section.settings.heading | escape }}</h2>
       </div>
-      <div class="genetix__copy">{{ section.settings.text }}</div>
+      <div class="genetix-ledger__intro">
+        <div class="genetix__copy">{{ section.settings.text }}</div>
+        {% if section.settings.button_label != blank %}
+          {% render 'genetix-button',
+            label: section.settings.button_label,
+            link: section.settings.button_link,
+            background: section.settings.button_background,
+            color: section.settings.button_color,
+            show_arrow: true,
+            class: 'genetix-ledger__button'
+          %}
+        {% endif %}
+      </div>
     </div>
     <div class="genetix__grid genetix-ledger__items">
       {% for block in ingredient_blocks %}
@@ -40,6 +52,10 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE INGREDIENT LEDGER" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "The GENETIX Matrix: Science. Not Words." },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Four ingredients. One advanced matrix.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Learn more" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "color", "id": "button_background", "label": "Button background", "default": "#153640" },
+    { "type": "color", "id": "button_color", "label": "Button text", "default": "#ffffff" },
     { "type": "color", "id": "background", "label": "Background", "default": "#eaf5fa" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" },
     { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },

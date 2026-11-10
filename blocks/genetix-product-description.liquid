@@ -1,0 +1,10 @@
+{% doc %}
+  Renders the selected product description.
+
+  @example
+  Add the Product description block to product content.
+{% enddoc %}
+<div class="genetix-product-block genetix__copy genetix-product__description rte" {{ block.shopify_attributes }}>{{ closest.product.description }}</div>
+{% schema %}
+{"name":"Product description","tag":null,"settings":[],"presets":[{"name":"Product description"}]}
+{% endschema %}

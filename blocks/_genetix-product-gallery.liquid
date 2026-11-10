@@ -1,0 +1,47 @@
+{% doc %}
+  Renders the selected product media gallery for the GENETIX featured product.
+
+  @example
+  {% content_for 'block', type: '_genetix-product-gallery', id: 'gallery' %}
+{% enddoc %}
+
+{% assign product = closest.product %}
+<div class="genetix-product__gallery" {{ block.shopify_attributes }}>
+  {% if block.settings.label != blank %}<span class="genetix-product__media-label">{{ block.settings.label | escape }}</span>{% endif %}
+  {% if product.featured_media != blank %}
+    <button class="genetix-product__gallery-open" type="button" data-zoom-open aria-label="{{ 'actions.open_image_in_full_screen' | t }}">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
+    </button>
+  {% endif %}
+  <div class="genetix-product__main">
+    {% if product.featured_media != blank %}
+      {{ product.featured_media.preview_image | image_url: width: 1100 | image_tag: class: 'genetix-product__main-image', widths: '400, 700, 900, 1100', sizes: '(min-width: 750px) 46vw, 100vw', loading: 'eager', alt: product.featured_media.alt, data-main-image: '' }}
+    {% endif %}
+  </div>
+  {% if block.settings.show_thumbnails %}
+  {% if block.settings.show_thumbnails %}<div class="genetix-product__thumbs">
+      {% for media in product.media limit: 6 %}
+        <button class="genetix-product__thumb" type="button" data-media-src="{{ media.preview_image | image_url: width: 1600 }}" data-media-alt="{{ media.alt | escape }}" aria-label="{{ media.alt | default: product.title | escape }}" aria-current="{% if forloop.first %}true{% else %}false{% endif %}">
+          {{ media.preview_image | image_url: width: 140 | image_tag: alt: '', loading: 'lazy' }}
+        </button>
+      {% endfor %}
+  </div>{% endif %}
+  {% endif %}
+  {% if product.featured_media != blank %}
+    <dialog class="genetix-product__zoom">
+      <button class="genetix-product__zoom-close" type="button" data-zoom-close aria-label="{{ 'actions.close' | t }}">&times;</button>
+      {{ product.featured_media.preview_image | image_url: width: 1800 | image_tag: alt: product.featured_media.alt, data-zoom-image: '' }}
+    </dialog>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Product gallery",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "label", "label": "Media label", "default": "GHK-Cu SCALP MATRIX" },
+    { "type": "checkbox", "id": "show_thumbnails", "label": "Show thumbnails", "default": true }
+  ]
+}
+{% endschema %}

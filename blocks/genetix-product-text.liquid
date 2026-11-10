@@ -1,0 +1,10 @@
+{% doc %}
+  Renders merchant-authored product supporting text.
+
+  @example
+  Add the Product text block to product content.
+{% enddoc %}
+<div class="genetix-product-block genetix-product__text genetix-product__text--{{ block.settings.style }}" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+{% schema %}
+{"name":"Product text","tag":null,"settings":[{"type":"richtext","id":"text","label":"Text","default":"<p>2 fl oz / 60 ml · Skin + Scalp</p>"},{"type":"select","id":"style","label":"Style","options":[{"value":"meta","label":"Meta"},{"value":"body","label":"Body"}],"default":"meta"}],"presets":[{"name":"Product text"}]}
+{% endschema %}
