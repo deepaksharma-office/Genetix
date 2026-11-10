@@ -33,9 +33,7 @@
         {% content_for 'block', type: '_genetix-product-gallery', id: 'gallery', closest.product: product %}
         <div class="genetix-product__details">
           {% if product != blank %}
-<<<<<<< HEAD
             {% content_for 'blocks', closest.product: product %}
-=======
             <div class="genetix-product__price-row">
               <span class="genetix-product__price" data-price>{{ variant.price | money }}</span>
               {% if variant.compare_at_price > variant.price %}<span class="genetix-product__compare">{{ variant.compare_at_price | money }}</span>{% endif %}
@@ -93,7 +91,6 @@
                 {% endif %}
               {% endfor %}
             </div>
->>>>>>> 5b2399179d235f8e1020dde7bdee65fd1322f4f6
           {% else %}
             <p class="genetix__copy">{{ 'placeholders.product_title' | t }}</p>
           {% endif %}
