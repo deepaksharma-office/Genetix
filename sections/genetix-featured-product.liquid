@@ -33,7 +33,67 @@
         {% content_for 'block', type: '_genetix-product-gallery', id: 'gallery', closest.product: product %}
         <div class="genetix-product__details">
           {% if product != blank %}
+<<<<<<< HEAD
             {% content_for 'blocks', closest.product: product %}
+=======
+            <div class="genetix-product__price-row">
+              <span class="genetix-product__price" data-price>{{ variant.price | money }}</span>
+              {% if variant.compare_at_price > variant.price %}<span class="genetix-product__compare">{{ variant.compare_at_price | money }}</span>{% endif %}
+              {% if section.settings.currency_label != blank %}<span class="genetix-product__currency">{{ section.settings.currency_label | escape }}</span>{% endif %}
+            </div>
+            <div class="genetix__copy genetix-product__description">{{ product.description }}</div>
+
+            <div class="genetix-product__impacts">
+              {% for block in section.blocks %}
+                {% if block.type == 'impact' %}
+                  <div class="genetix-product__impact" {{ block.shopify_attributes }}><strong>{{ block.settings.value | escape }}</strong><span>{{ block.settings.label | escape }}</span></div>
+                {% endif %}
+              {% endfor %}
+            </div>
+
+            {% for block in section.blocks %}
+              {% if block.type == '@app' %}
+                {% render block %}
+              {% endif %}
+            {% endfor %}
+
+            {% form 'product', product, class: 'genetix-product__form' %}
+              {% if product.variants.size > 1 %}
+                <label for="Variant-{{ section.id }}">{{ section.settings.variant_label | escape }}</label>
+                <select id="Variant-{{ section.id }}" name="id" data-variant-select>
+                  {% for item in product.variants %}
+                    <option value="{{ item.id }}" data-price="{{ item.price | money }}" data-available="{{ item.available }}" data-min="{{ item.quantity_rule.min | default: 1 }}" data-max="{{ item.quantity_rule.max }}" data-step="{{ item.quantity_rule.increment | default: 1 }}" {% if item == variant %}selected{% endif %}>{{ item.title | escape }}</option>
+                  {% endfor %}
+                </select>
+              {% else %}
+                <input type="hidden" name="id" value="{{ variant.id }}">
+              {% endif %}
+              <div class="genetix-product__purchase-row">
+                <div class="genetix-product__quantity">
+                  <button type="button" data-quantity-minus aria-label="Decrease quantity">&minus;</button>
+                  <input type="number" name="quantity" value="{{ initial_quantity }}" min="{{ initial_quantity }}" {% if variant.quantity_rule.max %}max="{{ variant.quantity_rule.max }}"{% endif %} step="{{ variant.quantity_rule.increment | default: 1 }}" data-quantity-input aria-label="Quantity">
+                  <button type="button" data-quantity-plus aria-label="Increase quantity">+</button>
+                </div>
+                {% render 'genetix-button', label: section.settings.button_label, background: section.settings.button_background, color: section.settings.button_color, show_arrow: section.settings.show_button_arrow, tag: 'button', button_type: 'submit', disabled: button_disabled, price: button_price, class: 'genetix-product__submit' %}
+              </div>
+              <p class="genetix-product__error" data-error role="status"></p>
+            {% endform %}
+
+            <div class="genetix-product__assurances">
+              {% for block in section.blocks %}
+                {% if block.type == 'icon_text' %}
+                  <div class="genetix-product__assurance" {{ block.shopify_attributes }}>
+                    {% case block.settings.icon %}
+                      {% when 'shield' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3 5 6v5c0 4.6 2.9 8.1 7 10 4.1-1.9 7-5.4 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+                      {% when 'truck' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg>
+                      {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg>
+                    {% endcase %}
+                    <span>{{ block.settings.text | escape }}</span>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+>>>>>>> 5b2399179d235f8e1020dde7bdee65fd1322f4f6
           {% else %}
             <p class="genetix__copy">{{ 'placeholders.product_title' | t }}</p>
           {% endif %}
