@@ -50,6 +50,8 @@
 
 {% stylesheet %}
   .genetix-button {
+    position: relative;
+    isolation: isolate;
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
@@ -66,6 +68,30 @@
     text-decoration: none;
     text-transform: uppercase;
     cursor: pointer;
+    overflow: hidden;
+  }
+
+  .genetix-button::before {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background: linear-gradient(
+      110deg,
+      transparent 25%,
+      rgb(255 255 255 / 0.08) 38%,
+      rgb(255 255 255 / 0.72) 50%,
+      rgb(255 255 255 / 0.08) 62%,
+      transparent 75%
+    );
+    content: '';
+    pointer-events: none;
+    transform: translateX(-125%);
+  }
+
+  .genetix-button > span,
+  .genetix-button > svg {
+    position: relative;
+    z-index: 1;
   }
 
   .genetix-button svg {
@@ -83,5 +109,18 @@
   .genetix-button:disabled {
     opacity: 0.65;
     cursor: default;
+  }
+
+  @media (hover: hover) {
+    .genetix-button:not([aria-disabled='true']):not(:disabled):hover::before {
+      transform: translateX(125%);
+      transition: transform 650ms ease;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .genetix-button::before {
+      display: none;
+    }
   }
 {% endstylesheet %}

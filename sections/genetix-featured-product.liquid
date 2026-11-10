@@ -72,6 +72,12 @@
               {% endfor %}
             </div>
 
+            {% for block in section.blocks %}
+              {% if block.type == '@app' %}
+                {% render block %}
+              {% endif %}
+            {% endfor %}
+
             {% form 'product', product, class: 'genetix-product__form' %}
               {% if product.variants.size > 1 %}
                 <label for="Variant-{{ section.id }}">{{ section.settings.variant_label | escape }}</label>
@@ -133,7 +139,6 @@
       </div>
     </genetix-product>
   </div>
-  {% for block in section.blocks %}{% if block.type == '@app' %}{% render block %}{% endif %}{% endfor %}
 </section>
 {% schema %}
 {
