@@ -34,12 +34,7 @@
         <div class="genetix-product__details">
           {% if product != blank %}
             {% content_for 'blocks', closest.product: product %}
-            <div class="genetix-product__price-row">
-              <span class="genetix-product__price" data-price>{{ variant.price | money }}</span>
-              {% if variant.compare_at_price > variant.price %}<span class="genetix-product__compare">{{ variant.compare_at_price | money }}</span>{% endif %}
-              {% if section.settings.currency_label != blank %}<span class="genetix-product__currency">{{ section.settings.currency_label | escape }}</span>{% endif %}
-            </div>
-            <div class="genetix__copy genetix-product__description">{{ product.description }}</div>
+           
 
             <div class="genetix-product__impacts">
               {% for block in section.blocks %}
