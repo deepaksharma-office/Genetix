@@ -755,7 +755,7 @@
         "background": "#ffffff",
         "text_color": "#173c48",
         "muted_color": "#647c84",
-        "panel_background": "#eaf5fa",
+        "panel_background": "rgba(0,0,0,0)",
         "panel_text_color": "#173c48",
         "panel_muted_color": "#647c84",
         "padding_top": 52,
