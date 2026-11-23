@@ -14,7 +14,7 @@
 }
 
 .genetix__inner {
-    width: min(1400px, calc(100% - 40px));
+    width: min(1600px, calc(100% - 40px));
     margin-inline: auto;
     padding-block: var(--gx-pt, 72px) var(--gx-pb, 72px);
 }
