@@ -126,6 +126,7 @@
             "text": "<p>GHK-Cu Skin & Scalp Matrix</p>",
             "style": "body",
             "color": "#173c48",
+            "bg_color": "rgba(0,0,0,0)",
             "font_size": 16,
             "font_size_mobile": 16
           }
@@ -136,6 +137,7 @@
             "text": "<p>Most skincare brands sell watered-down formulas that sit on the surface. GENETIX PEPTIDES engineers advanced, lipid-stabilized matrices designed to penetrate the oil barrier and remodel the skin from the deep dermis up.</p>",
             "style": "body",
             "color": "#173c48",
+            "bg_color": "#FFFFFFA8",
             "font_size": 14,
             "font_size_mobile": 14
           }
