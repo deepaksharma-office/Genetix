@@ -317,9 +317,28 @@
           },
           "blocks": {}
         },
-        "title": {
-          "type": "genetix-product-title",
-          "settings": {},
+        "image_btRiR7": {
+          "type": "image",
+          "name": "t:names.image",
+          "settings": {
+            "image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17.png",
+            "link": "",
+            "image_ratio": "adapt",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
           "blocks": {}
         },
         "meta": {
@@ -459,7 +478,7 @@
       },
       "block_order": [
         "eyebrow",
-        "title",
+        "image_btRiR7",
         "meta",
         "price",
         "description",
