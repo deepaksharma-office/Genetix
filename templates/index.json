@@ -359,6 +359,7 @@
         "description": {
           "type": "genetix-product-description",
           "settings": {
+            "inline_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
             "inline_image_scale": 150
           },
           "blocks": {}
