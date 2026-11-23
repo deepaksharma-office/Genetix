@@ -103,7 +103,17 @@
         "title": {
           "type": "title",
           "settings": {
-            "title": "THE FUTURE OF SKIN LONGEVITY. CLINICAL PEPTIDE SCIENCE. UNCOMPROMISED QUALITY. SUPERIOR BIOAVAILABILITY.",
+            "title": "THE FUTURE OF SKIN LONGEVITY.",
+            "color": "#173c48",
+            "highlight_color": "#2196b5",
+            "font_size": 30,
+            "font_size_mobile": 24
+          }
+        },
+        "title_6DAtPy": {
+          "type": "title",
+          "settings": {
+            "title": "CLINICAL PEPTIDE SCIENCE. UNCOMPROMISED QUALITY. SUPERIOR BIOAVAILABILITY.",
             "color": "#173c48",
             "highlight_color": "#2196b5",
             "font_size": 36,
@@ -192,6 +202,7 @@
       },
       "block_order": [
         "title",
+        "title_6DAtPy",
         "subheading",
         "description",
         "shop",
