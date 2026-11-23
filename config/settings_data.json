@@ -10,7 +10,7 @@
 {
   "current": {
     "bg": "shopify://shop_images/25bc9a9e68e43768fecf7ca468499963a50e9a7e.png",
-    "logo": "shopify://shop_images/GENETIX_Peptides_Shopify_Header_Logo_Transparent_3200px.png",
+    "logo": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17.png",
     "logo_height": 83,
     "logo_height_mobile": 58,
     "page_text_color": "{{ settings.color_palette.foreground }}",

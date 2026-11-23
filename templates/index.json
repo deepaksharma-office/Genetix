@@ -574,7 +574,8 @@
       ],
       "settings": {
         "eyebrow": "THE INGREDIENT LEDGER",
-        "heading": "The GENETIX Matrix: Science. Not Words.",
+        "heading": "The  [image] Matrix: Science. Not Words.",
+        "heading_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
         "heading_image_scale": 100,
         "heading_image_alt": "GENETIX",
         "text": "<p>Five ingredients. One advanced matrix.</p>",
@@ -695,6 +696,7 @@
           "type": "text",
           "settings": {
             "text": "<p>Bring a little more intention to your routine. GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix brings focused peptide care to your skin and scalp.</p>",
+            "inline_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
             "inline_image_scale": 100,
             "inline_image_alt": "GENETIX PEPTIDES",
             "style": "body",
@@ -736,7 +738,8 @@
     "genetix_less": {
       "type": "genetix-less-noise",
       "settings": {
-        "eyebrow": "THE GENETIX PHILOSOPHY",
+        "eyebrow": "THE  [image]  PHILOSOPHY",
+        "title_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
         "title_image_width": 180,
         "heading": "Less noise.\nMore intention.",
         "text": "<p>We believe great care begins with a considered formula. The GENETIX MATRIX brings together five active ingredients in one skin and scalp routine.</p>",
@@ -834,6 +837,7 @@
           "type": "document_card",
           "settings": {
             "eyebrow": "DOCUMENTATION / THE GENETIX MATRIX",
+            "eyebrow_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
             "eyebrow_image_scale": 100,
             "eyebrow_image_alt": "GENETIX",
             "icon": "document",
@@ -942,7 +946,8 @@
         "intro": {
           "type": "text",
           "settings": {
-            "text": "<p>GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix.</p>",
+            "text": "<p>[image] PEPTIDES GHK-Cu Skin & Scalp Matrix.</p>",
+            "inline_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
             "inline_image_scale": 100,
             "inline_image_alt": "GENETIX PEPTIDES"
           }
@@ -1025,7 +1030,8 @@
         "second_eyebrow": {
           "type": "eyebrow",
           "settings": {
-            "text": "COMING NEXT / GENETIX PEPTIDES",
+            "text": "COMING NEXT /  [image] PEPTIDES",
+            "inline_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
             "inline_image_scale": 100,
             "inline_image_alt": "GENETIX PEPTIDES"
           }
@@ -1040,7 +1046,8 @@
         "second_text": {
           "type": "text",
           "settings": {
-            "text": "<p>A new addition to the GENETIX PEPTIDES collection. Product details will be shared here ahead of launch.</p>",
+            "text": "<p>A new addition to the [image] PEPTIDES collection. Product details will be shared here ahead of launch.</p>",
+            "inline_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
             "inline_image_scale": 100,
             "inline_image_alt": "GENETIX PEPTIDES"
           }
@@ -1112,7 +1119,8 @@
         "three": {
           "type": "faq",
           "settings": {
-            "question": "Where is GENETIX manufactured?",
+            "question": "Where is [image] manufactured?",
+            "question_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
             "question_image_scale": 100,
             "question_image_alt": "GENETIX",
             "answer": "<p>Add your answer here.</p>"
@@ -1161,6 +1169,7 @@
     "genetix_newsletter": {
       "type": "genetix-newsletter",
       "settings": {
+        "image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17.png",
         "image_alt": "",
         "image_width": 360,
         "image_width_mobile": 260,
