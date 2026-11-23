@@ -1,10 +1,13 @@
 .genetix-product{overflow:visible}
 .genetix-product__inner--wide{width:min(1440px,calc(100% - 40px))}
+genetix-product{display:block;overflow:visible}
 .genetix-product__form{display:none}
+.genetix-product__inner,.genetix-product__layout{overflow:visible}
 .genetix-product__layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(40px,7vw,96px);align-items:start}
-.genetix-product__layout--right .genetix-product__gallery{order:2}
+.genetix-product__layout--right>:is(.genetix-product__gallery,.shopify-block:has(>.genetix-product__gallery)){order:2}
+.genetix-product__layout>.shopify-block:has(>.genetix-product__gallery){min-width:0}
 .genetix-product__gallery{position:relative;min-width:0}
-.genetix-product__layout--sticky .genetix-product__gallery{position:sticky;top:calc(var(--header-height,60px) + var(--padding-sm,12px));align-self:start}
+.genetix-product__layout--sticky>:is(.genetix-product__gallery,.shopify-block:has(>.genetix-product__gallery)){position:sticky;top:calc(var(--header-height,60px) + var(--padding-sm,12px));align-self:start}
 .genetix-product__media-label{position:absolute;z-index:2;inset-block-start:20px;inset-inline-start:22px;font-size:9px;font-weight:600;letter-spacing:.05em}
 .genetix-product__gallery-open{position:absolute;z-index:3;inset-block-start:10px;inset-inline-end:10px;display:grid;width:44px;height:44px;padding:10px;place-items:center;border:0;background:transparent;color:var(--gx-text);cursor:pointer}
 .genetix-product__gallery-open svg{width:24px;height:24px}.genetix-product__gallery-open:focus-visible{outline:2px solid currentColor;outline-offset:-4px}
@@ -28,6 +31,6 @@
 .genetix-product__custom-liquid{padding-block:8px}.genetix-product__details>.genetix-product-block:empty{display:none}.genetix-product__details>.genetix-product-block.genetix-product-divider{height:1px;margin-block:12px;background:var(--gx-line)}
 .genetix-product__accordion{border-bottom:1px solid var(--gx-line)}.genetix-product__accordion-trigger{width:100%;padding:20px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;border:0;background:transparent;color:inherit;text-align:start;font:inherit;cursor:pointer}.genetix-product__accordion-icon,.genetix-product__accordion-icon svg{width:18px;height:18px;flex:none}.genetix-product__minus,.genetix-product__accordion-trigger[aria-expanded=true] .genetix-product__plus{display:none}.genetix-product__accordion-trigger[aria-expanded=true] .genetix-product__minus{display:block}.genetix-product__accordion-panel{height:0;overflow:hidden;transition:height .32s ease}.genetix-product__accordion-content{padding:0 30px 20px 0;color:var(--gx-muted);font-size:13px}
 .genetix-product__error{min-height:1.4em;margin:5px 0;color:#a22;font-size:12px}.genetix-product__zoom{width:min(92vw,900px);height:min(92vh,900px);border:0;padding:50px;background:#fff}.genetix-product__zoom::backdrop{background:rgb(0 0 0/.65)}.genetix-product__zoom img{width:100%;height:100%;object-fit:contain}.genetix-product__zoom-close{position:absolute;inset-block-start:12px;inset-inline-end:12px;width:36px;height:36px;border:0;background:var(--gx-teal);color:#fff;cursor:pointer}
-@media(max-width:749px){.genetix-product__inner--wide{width:min(100% - 28px,1200px)}.genetix-product__layout{grid-template-columns:1fr;gap:36px}.genetix-product__layout--right .genetix-product__gallery{order:0}.genetix-product__layout--sticky .genetix-product__gallery{position:relative;top:auto}.genetix-product__details h2{font-size:34px}.genetix-product__impact{margin-bottom:20px}.genetix-product__assurance{grid-column:1/-1;padding-block:8px}.genetix-product__quantity{grid-column:span 1}.genetix-product__button-block:has(.genetix-product__add-to-bag){grid-column:span 3}}
+@media(max-width:749px){.genetix-product__inner--wide{width:min(100% - 28px,1200px)}.genetix-product__layout{grid-template-columns:1fr;gap:36px}.genetix-product__layout--right>:is(.genetix-product__gallery,.shopify-block:has(>.genetix-product__gallery)){order:0}.genetix-product__layout--sticky>:is(.genetix-product__gallery,.shopify-block:has(>.genetix-product__gallery)){position:relative;top:auto}.genetix-product__details h2{font-size:34px}.genetix-product__impact{margin-bottom:20px}.genetix-product__assurance{grid-column:1/-1;padding-block:8px}.genetix-product__quantity{grid-column:span 1}.genetix-product__button-block:has(.genetix-product__add-to-bag){grid-column:span 3}}
 @media(max-width:420px){.genetix-product__quantity,.genetix-product__button-block:has(.genetix-product__add-to-bag){grid-column:1/-1}.genetix-product__impact{grid-column:span 2}}
 @media(prefers-reduced-motion:reduce){.genetix-product__accordion-panel{transition:none}}

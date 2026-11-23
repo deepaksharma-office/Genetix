@@ -17,7 +17,7 @@
     &copy; {{ 'now' | date: '%Y' }}
     {% if block_settings.inline_image != blank %}
       <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
-        {{ block_settings.inline_image | image_url: width: 400 | image_tag: class: 'footer-utilities__copyright-image', widths: '80, 120, 160, 240, 320, 400', sizes: '7em', loading: 'lazy', alt: block_settings.inline_image_alt }}
+        {{ block_settings.inline_image | image_url: width: 400 | image_tag: class: 'footer-utilities__copyright-image', widths: '320, 400', sizes: '7em', loading: 'lazy', alt: block_settings.inline_image_alt }}
       </a>
     {% else %}
       {{ shop.name | link_to: routes.root_url -}}

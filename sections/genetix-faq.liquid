@@ -21,7 +21,7 @@
         {% for block in section.blocks %}
           {% unless block.type == '@app' %}
           {% assign question_text = block.settings.question | escape %}
-          {% capture question_image %}{% if block.settings.question_image != blank %}{{ block.settings.question_image | image_url: width: 400 | image_tag: class: 'genetix-faq__question-image', widths: '80, 120, 160, 240, 320, 400', sizes: '6em', loading: 'lazy', alt: block.settings.question_image_alt }}{% endif %}{% endcapture %}
+          {% capture question_image %}{% if block.settings.question_image != blank %}{{ block.settings.question_image | image_url: width: 400 | image_tag: class: 'genetix-faq__question-image', widths: '320, 400', sizes: '6em', loading: 'lazy', alt: block.settings.question_image_alt }}{% endif %}{% endcapture %}
           {% if block.settings.question_image != blank %}{% if question_text contains '[image]' %}{% assign question_text = question_text | replace: '[image]', question_image %}{% elsif question_text contains 'GENETIX' %}{% assign question_text = question_text | replace: 'GENETIX', question_image %}{% else %}{% assign question_text = question_text | append: ' ' | append: question_image %}{% endif %}{% endif %}
           <article class="genetix-faq__item" {{ block.shopify_attributes }}>
             <button class="genetix-faq__question" style="--gx-inline-image-scale:{{ block.settings.question_image_scale | divided_by: 100.0 }}em;" type="button" data-faq-button aria-expanded="false" aria-controls="Faq-{{ section.id }}-{{ block.id }}">

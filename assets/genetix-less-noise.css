@@ -99,12 +99,12 @@
 .genetix-less-noise__media img {
   position: absolute;
   width: 100%;
-  height: 100%;
-  inset: 0;
+  height: auto;
+  bottom: 0;
 }
 
 .genetix-less-noise__media img {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .genetix-less-noise__panel-content {
