@@ -4,7 +4,7 @@
 .genetix-product__layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(40px,7vw,96px);align-items:start}
 .genetix-product__layout--right .genetix-product__gallery{order:2}
 .genetix-product__gallery{position:relative;min-width:0}
-.genetix-product__layout--sticky .genetix-product__gallery{position:sticky;top:calc(var(--header-group-height,var(--header-height,0px)) + var(--padding-sm,12px));align-self:start}
+.genetix-product__layout--sticky .genetix-product__gallery{position:sticky;top:calc(var(--header-height,60px) + var(--padding-sm,12px));align-self:start}
 .genetix-product__media-label{position:absolute;z-index:2;inset-block-start:20px;inset-inline-start:22px;font-size:9px;font-weight:600;letter-spacing:.05em}
 .genetix-product__gallery-open{position:absolute;z-index:3;inset-block-start:10px;inset-inline-end:10px;display:grid;width:44px;height:44px;padding:10px;place-items:center;border:0;background:transparent;color:var(--gx-text);cursor:pointer}
 .genetix-product__gallery-open svg{width:24px;height:24px}.genetix-product__gallery-open:focus-visible{outline:2px solid currentColor;outline-offset:-4px}

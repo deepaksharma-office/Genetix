@@ -62,6 +62,38 @@
             "background": "#153640",
             "color": "#ffffff"
           }
+        },
+        "verification_heading": {
+          "type": "checklist_heading",
+          "settings": { "heading": "Clinical verification" }
+        },
+        "check_hypoallergenic": {
+          "type": "check_item",
+          "settings": { "text": "Hypoallergenic" }
+        },
+        "check_dermatology": {
+          "type": "check_item",
+          "settings": { "text": "Dermatologically tested" }
+        },
+        "check_clinical": {
+          "type": "check_item",
+          "settings": { "text": "Clinically tested" }
+        },
+        "check_proven": {
+          "type": "check_item",
+          "settings": { "text": "Clinically proven" }
+        },
+        "check_kind": {
+          "type": "check_item",
+          "settings": { "text": "Kind to skin" }
+        },
+        "check_mild": {
+          "type": "check_item",
+          "settings": { "text": "Suitable for mild skin" }
+        },
+        "check_safe": {
+          "type": "check_item",
+          "settings": { "text": "Safe for skin" }
         }
       },
       "block_order": [
@@ -69,16 +101,25 @@
         "title",
         "subheading",
         "description",
-        "shop"
+        "shop",
+        "verification_heading",
+        "check_hypoallergenic",
+        "check_dermatology",
+        "check_clinical",
+        "check_proven",
+        "check_kind",
+        "check_mild",
+        "check_safe"
       ],
       "settings": {
         "image": "shopify://shop_images/Group_1.svg",
         "image_alt": "",
         "product_image": "shopify://shop_images/Hero-Reference-Bottle-39.png",
         "product_alt": "",
-        "product_width": 340,
-        "product_position_x": 72,
+        "product_width": 300,
+        "product_position_x": 59,
         "product_position_y": 8,
+        "verification_label": "Clinical verification",
         "floating_text": "GHK-Cu",
         "floating_text_color": "#9ddfeb",
         "floating_text_size": 112,
@@ -819,6 +860,8 @@
     "genetix_newsletter": {
       "type": "genetix-newsletter",
       "settings": {
+        "image_width": 360,
+        "image_width_mobile": 260,
         "eyebrow": "PRIVATE ACCESS / GENETIX PEPTIDES",
         "heading": "GENETIX PEPTIDES: Clinical Cellular Matrix.",
         "text": "<p>Join our VIP Mailing List for new product updates, official launch dates, exclusive access to upcoming giveaways, and priority allocation on our high-purity GHK-Cu topical production runs.</p>",

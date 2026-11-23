@@ -5,6 +5,14 @@
 {% endcomment %}
 {{ 'genetix-base.css' | asset_url | stylesheet_tag }}
 {{ 'genetix-hero.css' | asset_url | stylesheet_tag }}
+{% liquid
+  assign checklist_count = 0
+  for block in section.blocks
+    if block.type == 'check_item'
+      assign checklist_count = checklist_count | plus: 1
+    endif
+  endfor
+%}
 <section class="genetix genetix-hero" style="--gx-bg:{{ section.settings.background }};--gx-overlay:{{ section.settings.overlay }};--gx-overlay-opacity:{{ section.settings.overlay_opacity | divided_by: 100.0 }};--gx-min-height:{{ section.settings.min_height }}px;--gx-min-height-mobile:{{ section.settings.mobile_min_height }}px;--gx-product-width:{{ section.settings.product_width }}px;--gx-product-position-x:{{ section.settings.product_position_x }}%;--gx-product-position-y:{{ section.settings.product_position_y }}%;--gx-float-color:{{ section.settings.floating_text_color }};--gx-float-size:{{ section.settings.floating_text_size }}px;--gx-float-position-x:{{ section.settings.floating_text_position_x }}%;--gx-float-offset-y:{{ section.settings.floating_text_offset_y }}%;">
   {% if section.settings.image != blank %}
     <picture class="genetix-hero__background">
@@ -32,6 +40,25 @@
         {{ section.settings.product_image | image_url: width: 900 | image_tag: class: 'genetix-hero__product', widths: '240, 360, 500, 700, 900', sizes: '(min-width: 750px) 35vw, 58vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.product_alt }}
       </div>
     {% endif %}
+    {% if checklist_count > 0 %}
+      <aside class="genetix-hero__verification" aria-label="{{ section.settings.verification_label | escape }}">
+        {% for block in section.blocks %}
+          {% if block.type == 'checklist_heading' and block.settings.heading != blank %}
+            <h2 class="genetix-hero__verification-heading" {{ block.shopify_attributes }}>{{ block.settings.heading | escape }}</h2>
+          {% endif %}
+        {% endfor %}
+        <ul class="genetix-hero__checklist" role="list">
+          {% for block in section.blocks %}
+            {% if block.type == 'check_item' and block.settings.text != blank %}
+              <li class="genetix-hero__check-item" {{ block.shopify_attributes }}>
+                <span class="genetix-hero__check-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="m4 10 4 4 8-9"/></svg></span>
+                <span>{{ block.settings.text | escape }}</span>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </aside>
+    {% endif %}
   </div>
   {% for block in section.blocks %}{% if block.type == '@app' %}{% render block %}{% endif %}{% endfor %}
 </section>
@@ -47,6 +74,7 @@
     { "type": "range", "id": "product_width", "label": "Product width", "min": 180, "max": 600, "step": 10, "unit": "px", "default": 340 },
     { "type": "range", "id": "product_position_x", "label": "Product horizontal position", "min": 45, "max": 95, "step": 1, "unit": "%", "default": 72 },
     { "type": "range", "id": "product_position_y", "label": "Product vertical position", "min": 0, "max": 60, "step": 1, "unit": "%", "default": 8 },
+    { "type": "text", "id": "verification_label", "label": "Checklist accessible label", "default": "Clinical verification" },
     { "type": "header", "content": "Floating text" },
     { "type": "text", "id": "floating_text", "label": "Text", "default": "GHK-Cu" },
     { "type": "color", "id": "floating_text_color", "label": "Color", "default": "#9ddfeb" },
@@ -83,6 +111,12 @@
       { "type": "checkbox", "id": "show_arrow", "label": "Show arrow", "default": true },
       { "type": "color", "id": "background", "label": "Background", "default": "#153640" },
       { "type": "color", "id": "color", "label": "Text and icon", "default": "#ffffff" }
+    ] },
+    { "type": "checklist_heading", "name": "Checklist heading", "limit": 1, "settings": [
+      { "type": "text", "id": "heading", "label": "Heading", "default": "Clinical verification" }
+    ] },
+    { "type": "check_item", "name": "Checklist item", "settings": [
+      { "type": "text", "id": "text", "label": "Text", "default": "Dermatologically tested" }
     ] }
   ],
   "presets": [{ "name": "GENETIX hero", "blocks": [
@@ -90,7 +124,15 @@
     { "type": "title" },
     { "type": "text", "settings": { "text": "<p>GHK-Cu Skin & Scalp Matrix</p>", "font_size": 17, "font_size_mobile": 15 } },
     { "type": "text", "settings": { "text": "<p>Most skincare brands sell watered-down formulas that sit on the surface. GENETIX PEPTIDES engineers advanced, lipid-stabilized matrices designed to penetrate the oil barrier and remodel the skin from the deep dermis up.</p>", "font_size": 14, "font_size_mobile": 14 } },
-    { "type": "button" }
+    { "type": "button" },
+    { "type": "checklist_heading" },
+    { "type": "check_item", "settings": { "text": "Hypoallergenic" } },
+    { "type": "check_item", "settings": { "text": "Dermatologically tested" } },
+    { "type": "check_item", "settings": { "text": "Clinically tested" } },
+    { "type": "check_item", "settings": { "text": "Clinically proven" } },
+    { "type": "check_item", "settings": { "text": "Kind to skin" } },
+    { "type": "check_item", "settings": { "text": "Suitable for mild skin" } },
+    { "type": "check_item", "settings": { "text": "Safe for skin" } }
   ] }]
 }
 {% endschema %}
