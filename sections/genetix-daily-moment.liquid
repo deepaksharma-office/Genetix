@@ -21,7 +21,7 @@
                 {% if block.settings.title != blank %}<h2 style="--gx-block-color:{{ block.settings.color }};--gx-block-size:{{ block.settings.font_size }}px;--gx-block-size-mobile:{{ block.settings.font_size_mobile }}px;">{{ block.settings.title | escape | newline_to_br }}</h2>{% endif %}
               {% when 'text' %}
                 {% if block.settings.text != blank %}
-                  {% capture inline_image %}{% if block.settings.inline_image != blank %}{{ block.settings.inline_image | image_url: width: 400 | image_tag: class: 'genetix-daily__inline-image', widths: '80, 120, 160, 240, 320, 400', sizes: '6em', loading: 'lazy', alt: block.settings.inline_image_alt }}{% endif %}{% endcapture %}
+                  {% capture inline_image %}{% if block.settings.inline_image != blank %}{{ block.settings.inline_image | image_url: width: 400 | image_tag: class: 'genetix-daily__inline-image', widths: '320, 400', sizes: '6em', loading: 'lazy', alt: block.settings.inline_image_alt }}{% endif %}{% endcapture %}
                   {% assign rendered_text = block.settings.text %}
                   {% if block.settings.inline_image != blank %}
                     {% if rendered_text contains '[image]' %}{% assign rendered_text = rendered_text | replace: '[image]', inline_image %}{% elsif rendered_text contains 'GENETIX PEPTIDES' %}{% assign rendered_text = rendered_text | replace: 'GENETIX PEPTIDES', inline_image %}{% else %}{% assign rendered_text = inline_image | append: ' ' | append: rendered_text %}{% endif %}
