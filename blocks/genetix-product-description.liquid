@@ -4,7 +4,50 @@
   @example
   Add the Product description block to product content.
 {% enddoc %}
-<div class="genetix-product-block genetix__copy genetix-product__description rte" {{ block.shopify_attributes }}>{{ closest.product.description }}</div>
+{% liquid
+  assign product_description = closest.product.description
+  assign image_marker = '[image]'
+  assign has_image_marker = false
+  if product_description contains image_marker
+    assign has_image_marker = true
+  endif
+%}
+
+{% capture inline_image %}
+  {% if block.settings.inline_image != blank %}
+    {{
+      block.settings.inline_image
+      | image_url: width: 400
+      | image_tag:
+        class: 'genetix-product__description-image',
+        widths: '80, 120, 160, 240, 320, 400',
+        sizes: '4em',
+        loading: 'lazy'
+    }}
+  {% endif %}
+{% endcapture %}
+
+<div
+  class="genetix-product-block genetix__copy genetix-product__description rte"
+  style="--gx-description-image-scale: {{ block.settings.inline_image_scale | divided_by: 100.0 }}em;"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.inline_image != blank and has_image_marker == false %}{{ inline_image }} {% endif %}
+  {% if has_image_marker %}
+    {{ product_description | replace: image_marker, inline_image }}
+  {% else %}
+    {{ product_description }}
+  {% endif %}
+</div>
 {% schema %}
-{"name":"Product description","tag":null,"settings":[],"presets":[{"name":"Product description"}]}
+{
+  "name": "Product description",
+  "tag": null,
+  "settings": [
+    { "type": "image_picker", "id": "inline_image", "label": "Inline image" },
+    { "type": "range", "id": "inline_image_scale", "label": "Inline image height", "min": 50, "max": 250, "step": 5, "unit": "%", "default": 150, "visible_if": "{{ block.settings.inline_image != blank }}" },
+    { "type": "paragraph", "content": "Add [image] to the product description where the inline image should appear. Without the marker, the image appears at the beginning." }
+  ],
+  "presets": [{ "name": "Product description" }]
+}
 {% endschema %}

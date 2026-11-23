@@ -7,14 +7,44 @@
 {{ 'genetix-base.css' | asset_url | stylesheet_tag }}
 {{ 'genetix-ingredient-ledger.css' | asset_url | stylesheet_tag }}
 
-{% assign ingredient_blocks = section.blocks | where: 'type', 'ingredient' %}
+{% liquid
+  assign ingredient_blocks = section.blocks | where: 'type', 'ingredient'
+  assign escaped_heading = section.settings.heading | escape
+%}
 
-<section class="genetix genetix-ledger" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-cols:{{ ingredient_blocks.size }};--gx-pt:{{ section.settings.padding_top }}px;--gx-pb:{{ section.settings.padding_bottom }}px;--gx-pt-mobile:{{ section.settings.padding_top }}px;--gx-pb-mobile:{{ section.settings.padding_bottom }}px;">
+{% capture heading_image %}
+  {% if section.settings.heading_image != blank %}
+    {{
+      section.settings.heading_image
+      | image_url: width: 400
+      | image_tag:
+        class: 'genetix-ledger__heading-image',
+        widths: '80, 120, 160, 240, 320, 400',
+        sizes: '5em',
+        loading: 'lazy',
+        alt: section.settings.heading_image_alt
+    }}
+  {% endif %}
+{% endcapture %}
+
+<section class="genetix genetix-ledger" style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-ledger-title-image-scale:{{ section.settings.heading_image_scale | divided_by: 100.0 }}em;--gx-cols:{{ ingredient_blocks.size }};--gx-pt:{{ section.settings.padding_top }}px;--gx-pb:{{ section.settings.padding_bottom }}px;--gx-pt-mobile:{{ section.settings.padding_top }}px;--gx-pb-mobile:{{ section.settings.padding_bottom }}px;">
   <div class="genetix__inner">
     <div class="genetix-ledger__head">
       <div>
         <p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>
-        <h2>{{ section.settings.heading | escape }}</h2>
+        <h2>
+          {% if section.settings.heading_image != blank %}
+            {% if escaped_heading contains '[image]' %}
+              {{ escaped_heading | replace: '[image]', heading_image }}
+            {% elsif escaped_heading contains 'GENETIX' %}
+              {{ escaped_heading | replace: 'GENETIX', heading_image }}
+            {% else %}
+              {{ heading_image }} {{ escaped_heading }}
+            {% endif %}
+          {% else %}
+            {{ escaped_heading }}
+          {% endif %}
+        </h2>
       </div>
       <div class="genetix-ledger__intro">
         <div class="genetix__copy">{{ section.settings.text }}</div>
@@ -51,6 +81,10 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE INGREDIENT LEDGER" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "The GENETIX Matrix: Science. Not Words." },
+    { "type": "image_picker", "id": "heading_image", "label": "Image within heading" },
+    { "type": "range", "id": "heading_image_scale", "label": "Heading image height", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ section.settings.heading_image != blank }}" },
+    { "type": "text", "id": "heading_image_alt", "label": "Heading image alt text", "default": "GENETIX", "visible_if": "{{ section.settings.heading_image != blank }}" },
+    { "type": "paragraph", "content": "The image replaces GENETIX automatically. Add [image] to the heading to choose a different position." },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Four ingredients. One advanced matrix.</p>" },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Learn more" },
     { "type": "url", "id": "button_link", "label": "Button link" },

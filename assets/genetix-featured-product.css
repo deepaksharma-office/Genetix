@@ -14,9 +14,10 @@
 .genetix-product__details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 8px;min-width:0;padding-block:4px}
 .genetix-product-block,.genetix-product__error,.shopify-block{grid-column:1/-1;min-width:0}
 .genetix-product__details h2{max-width:18ch;margin:0;font-size:clamp(30px,3.1vw,50px);line-height:1.04}
+.genetix-product__content-image{display:flex;margin-block:8px 14px}.genetix-product__content-image--center{justify-content:center}.genetix-product__content-image--right{justify-content:flex-end}.genetix-product__content-image img{display:block;width:min(100%,var(--gx-product-content-image-width));height:auto}
 .genetix-product__text--meta{margin:26px 0 10px;color:var(--gx-muted);font-size:13px}.genetix-product__text p{margin:0}
 .genetix-product__price-row{display:flex;align-items:baseline;gap:10px;padding-block:8px 24px;border-bottom:1px solid var(--gx-line)}.genetix-product__price{font-size:28px}.genetix-product__compare{color:var(--gx-muted);text-decoration:line-through}.genetix-product__currency{margin-inline-start:auto;color:var(--gx-muted);font-size:11px}.genetix-product__compare.hidden{display:none}
-.genetix-product__description{padding-block:22px;font-size:13px;line-height:1.55}
+.genetix-product__description{padding-block:22px;font-size:13px;line-height:1.55}.genetix-product__description-image{display:inline-block;width:auto;height:var(--gx-description-image-scale);margin-inline:.12em;vertical-align:-.22em;object-fit:contain}
 .genetix-product__impact{grid-column:span 1;display:grid;gap:2px;margin:4px 0 24px}.genetix-product__impact strong{font-size:17px;font-weight:500}.genetix-product__impact span{color:var(--gx-muted);font-size:9px;text-transform:uppercase}
 .genetix-product__variant label{display:block;margin:18px 0 8px}.genetix-product__variant select{width:100%;min-height:46px;border:1px solid var(--gx-line);background:#fff;padding-inline:14px}
 .genetix-product__inventory{display:flex;align-items:center;gap:8px;margin:10px 0;color:var(--gx-muted);font-size:11px}.genetix-product__inventory>span:first-child{width:7px;height:7px;border-radius:50%;background:#2d8b57}.genetix-product__inventory[data-unavailable=true]>span:first-child{background:#a22}

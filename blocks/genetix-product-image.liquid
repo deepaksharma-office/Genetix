@@ -1,0 +1,37 @@
+{% doc %}
+  Renders a merchant-selected image within the GENETIX featured product content.
+
+  @example
+  Add the Product image block before the Product title block.
+{% enddoc %}
+
+{% if block.settings.image != blank %}
+  {% assign image_size = block.settings.width | append: 'px' %}
+  <div
+    class="genetix-product-block genetix-product__content-image genetix-product__content-image--{{ block.settings.alignment }}"
+    style="--gx-product-content-image-width: {{ block.settings.width }}px;"
+    {{ block.shopify_attributes }}
+  >
+    {{
+      block.settings.image
+      | image_url: width: 800
+      | image_tag:
+        widths: '100, 160, 240, 320, 480, 640, 800',
+        sizes: image_size,
+        loading: 'lazy'
+    }}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Product image",
+  "tag": null,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "range", "id": "width", "label": "Image width", "min": 40, "max": 400, "step": 4, "unit": "px", "default": 180 },
+    { "type": "text_alignment", "id": "alignment", "label": "Alignment", "default": "left" }
+  ],
+  "presets": [{ "name": "Product image" }]
+}
+{% endschema %}

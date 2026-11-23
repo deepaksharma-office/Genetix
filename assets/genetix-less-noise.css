@@ -20,6 +20,17 @@
   letter-spacing: 0;
 }
 
+.genetix-less-noise__title-image {
+  width: min(100%, var(--gx-less-title-image-width));
+  margin-block-end: 18px;
+}
+
+.genetix-less-noise__title-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .genetix-less-noise__content h2 {
   max-width: 13ch;
   font-size: clamp(38px, 4vw, 58px);

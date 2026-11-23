@@ -9,12 +9,19 @@
   style="
     {% render 'typography-style', preset: 'custom', settings: block_settings %}
     {% if block_settings.text_color != blank %}--color-utilities: {{ block_settings.text_color }};{% endif %}
+    --footer-copyright-image-scale: {{ block_settings.inline_image_scale | divided_by: 100.0 }}em;
   "
   {{ block.shopify_attributes }}
 >
   <span class="footer-utilities__text">
     &copy; {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url -}}
+    {% if block_settings.inline_image != blank %}
+      <a href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+        {{ block_settings.inline_image | image_url: width: 400 | image_tag: class: 'footer-utilities__copyright-image', widths: '80, 120, 160, 240, 320, 400', sizes: '7em', loading: 'lazy', alt: block_settings.inline_image_alt }}
+      </a>
+    {% else %}
+      {{ shop.name | link_to: routes.root_url -}}
+    {% endif %}
     {%- if block_settings.show_powered_by -%}
       , {{ powered_by_link }}
     {%- endif -%}
@@ -24,6 +31,15 @@
 {% stylesheet %}
   .footer-utilities__group-copyright {
     color: var(--color-utilities, var(--color-foreground-muted));
+  }
+
+  .footer-utilities__copyright-image {
+    display: inline-block;
+    width: auto;
+    height: var(--footer-copyright-image-scale, 1em);
+    margin-inline: 0.15em;
+    vertical-align: -0.2em;
+    object-fit: contain;
   }
 {% endstylesheet %}
 
@@ -37,6 +53,29 @@
       "id": "show_powered_by",
       "label": "t:settings.show_powered_by_shopify",
       "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "inline_image",
+      "label": "Store-name image"
+    },
+    {
+      "type": "range",
+      "id": "inline_image_scale",
+      "label": "Store-name image height",
+      "min": 50,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.inline_image != blank }}"
+    },
+    {
+      "type": "text",
+      "id": "inline_image_alt",
+      "label": "Store-name image alt text",
+      "default": "GENETIX PEPTIDES",
+      "visible_if": "{{ block.settings.inline_image != blank }}"
     },
     {
       "type": "paragraph",

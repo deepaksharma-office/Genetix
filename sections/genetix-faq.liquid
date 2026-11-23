@@ -20,9 +20,12 @@
       <div class="genetix-faq__items">
         {% for block in section.blocks %}
           {% unless block.type == '@app' %}
+          {% assign question_text = block.settings.question | escape %}
+          {% capture question_image %}{% if block.settings.question_image != blank %}{{ block.settings.question_image | image_url: width: 400 | image_tag: class: 'genetix-faq__question-image', widths: '80, 120, 160, 240, 320, 400', sizes: '6em', loading: 'lazy', alt: block.settings.question_image_alt }}{% endif %}{% endcapture %}
+          {% if block.settings.question_image != blank %}{% if question_text contains '[image]' %}{% assign question_text = question_text | replace: '[image]', question_image %}{% elsif question_text contains 'GENETIX' %}{% assign question_text = question_text | replace: 'GENETIX', question_image %}{% else %}{% assign question_text = question_text | append: ' ' | append: question_image %}{% endif %}{% endif %}
           <article class="genetix-faq__item" {{ block.shopify_attributes }}>
-            <button class="genetix-faq__question" type="button" data-faq-button aria-expanded="false" aria-controls="Faq-{{ section.id }}-{{ block.id }}">
-              <span>{{ block.settings.question | escape }}</span>
+            <button class="genetix-faq__question" style="--gx-inline-image-scale:{{ block.settings.question_image_scale | divided_by: 100.0 }}em;" type="button" data-faq-button aria-expanded="false" aria-controls="Faq-{{ section.id }}-{{ block.id }}">
+              <span>{{ question_text }}</span>
               <span class="genetix-faq__mark" aria-hidden="true">
                 <svg class="genetix-faq__plus" viewBox="0 0 24 24" fill="currentColor"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
                 <svg class="genetix-faq__minus" viewBox="0 0 24 24" fill="currentColor"><path d="M5 11V13H19V11H5Z"></path></svg>
@@ -64,6 +67,10 @@
     "name": "Question",
     "settings": [
       { "type": "text", "id": "question", "label": "Question", "default": "What is the GENETIX Matrix?" },
+      { "type": "image_picker", "id": "question_image", "label": "Image within question" },
+      { "type": "range", "id": "question_image_scale", "label": "Question image height", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ block.settings.question_image != blank }}" },
+      { "type": "text", "id": "question_image_alt", "label": "Question image alt text", "default": "GENETIX", "visible_if": "{{ block.settings.question_image != blank }}" },
+      { "type": "paragraph", "content": "The image replaces GENETIX automatically. Add [image] to choose another position." },
       { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Add your answer here.</p>" }
     ]
   }],

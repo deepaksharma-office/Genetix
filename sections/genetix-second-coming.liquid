@@ -18,12 +18,22 @@
           <div class="genetix-second__block genetix-second__block--{{ block.type }}" {{ block.shopify_attributes }}>
             {% case block.type %}
               {% when 'eyebrow' %}
-                {% if block.settings.text != blank %}<p class="genetix-second__eyebrow">{{ block.settings.text | escape }}</p>{% endif %}
+                {% if block.settings.text != blank %}
+                  {% assign eyebrow_text = block.settings.text | escape %}
+                  {% capture eyebrow_image %}{% if block.settings.inline_image != blank %}{{ block.settings.inline_image | image_url: width: 300 | image_tag: class: 'genetix-second__inline-image', widths: '60, 100, 160, 220, 300', sizes: '5em', loading: 'lazy', alt: block.settings.inline_image_alt }}{% endif %}{% endcapture %}
+                  {% if block.settings.inline_image != blank %}{% if eyebrow_text contains '[image]' %}{% assign eyebrow_text = eyebrow_text | replace: '[image]', eyebrow_image %}{% elsif eyebrow_text contains 'GENETIX PEPTIDES' %}{% assign eyebrow_text = eyebrow_text | replace: 'GENETIX PEPTIDES', eyebrow_image %}{% else %}{% assign eyebrow_text = eyebrow_text | append: ' ' | append: eyebrow_image %}{% endif %}{% endif %}
+                  <p class="genetix-second__eyebrow" style="--gx-inline-image-scale:{{ block.settings.inline_image_scale | divided_by: 100.0 }}em;">{{ eyebrow_text }}</p>
+                {% endif %}
               {% when 'title' %}
                 {% if block.settings.title != blank %}<h2>{{ block.settings.title | escape | newline_to_br }}</h2>{% endif %}
                 {% if block.settings.subtitle != blank %}<p class="genetix-second__subtitle">{{ block.settings.subtitle | escape }}</p>{% endif %}
               {% when 'text' %}
-                {% if block.settings.text != blank %}<div class="genetix-second__text rte">{{ block.settings.text }}</div>{% endif %}
+                {% if block.settings.text != blank %}
+                  {% capture text_image %}{% if block.settings.inline_image != blank %}{{ block.settings.inline_image | image_url: width: 400 | image_tag: class: 'genetix-second__inline-image', widths: '80, 120, 160, 240, 320, 400', sizes: '6em', loading: 'lazy', alt: block.settings.inline_image_alt }}{% endif %}{% endcapture %}
+                  {% assign rendered_text = block.settings.text %}
+                  {% if block.settings.inline_image != blank %}{% if rendered_text contains '[image]' %}{% assign rendered_text = rendered_text | replace: '[image]', text_image %}{% elsif rendered_text contains 'GENETIX PEPTIDES' %}{% assign rendered_text = rendered_text | replace: 'GENETIX PEPTIDES', text_image %}{% else %}{% assign rendered_text = text_image | append: ' ' | append: rendered_text %}{% endif %}{% endif %}
+                  <div class="genetix-second__text rte" style="--gx-inline-image-scale:{{ block.settings.inline_image_scale | divided_by: 100.0 }}em;">{{ rendered_text }}</div>
+                {% endif %}
               {% when 'badge' %}
                 {% if block.settings.text != blank %}<span class="genetix-second__badge" style="--gx-badge-bg:{{ block.settings.background }};--gx-badge-color:{{ block.settings.color }};">{{ block.settings.text | escape }}</span>{% endif %}
               {% when 'button' %}
@@ -81,14 +91,22 @@
   "blocks": [
     { "type": "@app" },
     { "type": "eyebrow", "name": "Eyebrow", "settings": [
-      { "type": "text", "id": "text", "label": "Text", "default": "COMING NEXT / GENETIX PEPTIDES" }
+      { "type": "text", "id": "text", "label": "Text", "default": "COMING NEXT / GENETIX PEPTIDES" },
+      { "type": "image_picker", "id": "inline_image", "label": "Inline image" },
+      { "type": "range", "id": "inline_image_scale", "label": "Inline image height", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ block.settings.inline_image != blank }}" },
+      { "type": "text", "id": "inline_image_alt", "label": "Inline image alt text", "default": "GENETIX PEPTIDES", "visible_if": "{{ block.settings.inline_image != blank }}" },
+      { "type": "paragraph", "content": "The image replaces GENETIX PEPTIDES automatically. Add [image] to choose another position." }
     ] },
     { "type": "title", "name": "Title", "limit": 1, "settings": [
       { "type": "textarea", "id": "title", "label": "Title", "default": "Second Coming" },
       { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "The cream version." }
     ] },
     { "type": "text", "name": "Rich text", "settings": [
-      { "type": "richtext", "id": "text", "label": "Text", "default": "<p>A new addition to the GENETIX PEPTIDES collection. Product details will be shared here ahead of launch.</p>" }
+      { "type": "richtext", "id": "text", "label": "Text", "default": "<p>A new addition to the GENETIX PEPTIDES collection. Product details will be shared here ahead of launch.</p>" },
+      { "type": "image_picker", "id": "inline_image", "label": "Inline image" },
+      { "type": "range", "id": "inline_image_scale", "label": "Inline image height", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ block.settings.inline_image != blank }}" },
+      { "type": "text", "id": "inline_image_alt", "label": "Inline image alt text", "default": "GENETIX PEPTIDES", "visible_if": "{{ block.settings.inline_image != blank }}" },
+      { "type": "paragraph", "content": "The image replaces GENETIX PEPTIDES automatically. Add [image] to choose another position." }
     ] },
     { "type": "badge", "name": "Badge", "limit": 1, "settings": [
       { "type": "text", "id": "text", "label": "Text", "default": "Coming soon" },

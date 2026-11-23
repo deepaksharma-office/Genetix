@@ -37,7 +37,12 @@
     {% for block in section.blocks %}
       {% if block.type == 'document_card' %}
         <article class="genetix-evidence__card" style="--gx-card-bg:{{ block.settings.background }};--gx-card-border:{{ block.settings.border_color }};" {{ block.shopify_attributes }}>
-          {% if block.settings.eyebrow != blank %}<p class="genetix__eyebrow genetix-evidence__card-eyebrow">{{ block.settings.eyebrow | escape }}</p>{% endif %}
+          {% if block.settings.eyebrow != blank %}
+            {% assign card_eyebrow = block.settings.eyebrow | escape %}
+            {% capture card_eyebrow_image %}{% if block.settings.eyebrow_image != blank %}{{ block.settings.eyebrow_image | image_url: width: 300 | image_tag: class: 'genetix-evidence__eyebrow-image', widths: '60, 100, 160, 220, 300', sizes: '5em', loading: 'lazy', alt: block.settings.eyebrow_image_alt }}{% endif %}{% endcapture %}
+            {% if block.settings.eyebrow_image != blank %}{% if card_eyebrow contains '[image]' %}{% assign card_eyebrow = card_eyebrow | replace: '[image]', card_eyebrow_image %}{% elsif card_eyebrow contains 'GENETIX' %}{% assign card_eyebrow = card_eyebrow | replace: 'GENETIX', card_eyebrow_image %}{% else %}{% assign card_eyebrow = card_eyebrow | append: ' ' | append: card_eyebrow_image %}{% endif %}{% endif %}
+            <p class="genetix__eyebrow genetix-evidence__card-eyebrow" style="--gx-inline-image-scale:{{ block.settings.eyebrow_image_scale | divided_by: 100.0 }}em;">{{ card_eyebrow }}</p>
+          {% endif %}
           <div class="genetix-evidence__document-icon" aria-hidden="true">
             {% if block.settings.custom_icon != blank %}
               {{ block.settings.custom_icon | image_url: width: 96 | image_tag: widths: '48, 72, 96', alt: '', loading: 'lazy' }}
@@ -94,6 +99,10 @@
     ] },
     { "type": "document_card", "name": "Documentation card", "limit": 1, "settings": [
       { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "DOCUMENTATION / THE GENETIX MATRIX" },
+      { "type": "image_picker", "id": "eyebrow_image", "label": "Image within top line" },
+      { "type": "range", "id": "eyebrow_image_scale", "label": "Top-line image height", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ block.settings.eyebrow_image != blank }}" },
+      { "type": "text", "id": "eyebrow_image_alt", "label": "Top-line image alt text", "default": "GENETIX", "visible_if": "{{ block.settings.eyebrow_image != blank }}" },
+      { "type": "paragraph", "content": "The image replaces GENETIX automatically. Add [image] to choose another position." },
       { "type": "select", "id": "icon", "label": "Primary icon", "options": [{ "value": "document", "label": "Document" }, { "value": "flask", "label": "Flask" }, { "value": "shield", "label": "Shield" }], "default": "document" },
       { "type": "image_picker", "id": "custom_icon", "label": "Custom primary icon" },
       { "type": "textarea", "id": "heading", "label": "Heading", "default": "Laboratory testing\n& lab reports" },

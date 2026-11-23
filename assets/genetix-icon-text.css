@@ -15,6 +15,17 @@
   border-inline-end: 1px solid var(--gx-icon-text-line);
 }
 
+.genetix-icon-text__intro-image {
+  width: min(100%, var(--gx-intro-image-width));
+  margin-block-end: 13px;
+}
+
+.genetix-icon-text__intro-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .genetix-icon-text__intro .genetix__eyebrow {
   margin-block-end: 13px;
   font-size: 14px;

@@ -16,6 +16,12 @@
       {% if section.settings.eyebrow != blank %}
         <p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>
       {% endif %}
+      {% if section.settings.title_image != blank %}
+        {% assign title_image_size = section.settings.title_image_width | append: 'px' %}
+        <div class="genetix-less-noise__title-image" style="--gx-less-title-image-width:{{ section.settings.title_image_width }}px;">
+          {{ section.settings.title_image | image_url: width: 800 | image_tag: widths: '100, 160, 240, 320, 480, 640, 800', sizes: title_image_size, loading: 'lazy' }}
+        </div>
+      {% endif %}
       {% if section.settings.heading != blank %}
         <h2>{{ section.settings.heading | escape | newline_to_br }}</h2>
       {% endif %}
@@ -78,6 +84,8 @@
   "settings": [
     { "type": "header", "content": "Left content" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE GENETIX PHILOSOPHY" },
+    { "type": "image_picker", "id": "title_image", "label": "Image above title" },
+    { "type": "range", "id": "title_image_width", "label": "Image width", "min": 40, "max": 400, "step": 4, "unit": "px", "default": 180, "visible_if": "{{ section.settings.title_image != blank }}" },
     { "type": "textarea", "id": "heading", "label": "Heading", "default": "Less noise.\nMore intention." },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>We believe great care begins with a considered formula. The GENETIX MATRIX brings together five active ingredients in one skin and scalp routine.</p>" },
     { "type": "richtext", "id": "secondary_text", "label": "Secondary text", "default": "<p>Precision in formulation. Purpose in every ingredient.</p>" },

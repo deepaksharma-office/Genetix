@@ -45,7 +45,7 @@
     "type_size_h6": "12",
     "type_line_height_h6": "display-loose",
     "page_background_color": "{{ settings.color_palette.background }}",
-    "page_width": "narrow",
+    "page_width": "wide",
     "page_transition_enabled": false,
     "transition_to_main_product": false,
     "card_hover_effect": "none",
@@ -117,9 +117,7 @@
       "10436698916776057164": {
         "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-helper/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
         "disabled": false,
-        "settings": {
-          "load_selling_plans_separately": true
-        }
+        "settings": {}
       },
       "4015264832934714879": {
         "type": "shopify://apps/cwillsendwill-popup-email/blocks/app/a5670cf8-5705-4b01-ad9e-447033feae26",

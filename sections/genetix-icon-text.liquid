@@ -9,10 +9,23 @@
 
 <section
   class="genetix genetix-icon-text"
-  style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-icon:{{ section.settings.icon_size }}px;--gx-icon-wrap-bg:{{ section.settings.icon_background }};--gx-icon-text-muted:{{ section.settings.muted_color }};--gx-icon-text-line:{{ section.settings.line_color }};--gx-icon-text-card-bg:{{ section.settings.card_background }};--gx-icon-text-card-color:{{ section.settings.card_text_color }};--gx-pt:{{ section.settings.padding_top }}px;--gx-pb:{{ section.settings.padding_bottom }}px;--gx-pt-mobile:{{ section.settings.padding_top }}px;--gx-pb-mobile:{{ section.settings.padding_bottom }}px;"
+  style="--gx-bg:{{ section.settings.background }};--gx-text:{{ section.settings.text_color }};--gx-intro-image-width:{{ section.settings.intro_image_width }}px;--gx-icon:{{ section.settings.icon_size }}px;--gx-icon-wrap-bg:{{ section.settings.icon_background }};--gx-icon-text-muted:{{ section.settings.muted_color }};--gx-icon-text-line:{{ section.settings.line_color }};--gx-icon-text-card-bg:{{ section.settings.card_background }};--gx-icon-text-card-color:{{ section.settings.card_text_color }};--gx-pt:{{ section.settings.padding_top }}px;--gx-pb:{{ section.settings.padding_bottom }}px;--gx-pt-mobile:{{ section.settings.padding_top }}px;--gx-pb-mobile:{{ section.settings.padding_bottom }}px;"
 >
   <div class="genetix__inner genetix-icon-text__inner">
     <div class="genetix-icon-text__intro">
+      {% if section.settings.intro_image != blank %}
+        <div class="genetix-icon-text__intro-image">
+          {% assign intro_image_size = section.settings.intro_image_width | append: 'px' %}
+          {{
+            section.settings.intro_image
+            | image_url: width: 800
+            | image_tag:
+              widths: '100, 160, 240, 320, 480, 640, 800',
+              sizes: intro_image_size,
+              loading: 'lazy'
+          }}
+        </div>
+      {% endif %}
       {% if section.settings.eyebrow != blank %}
         <p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>
       {% endif %}
@@ -64,6 +77,8 @@
   "name": "GENETIX icon text",
   "max_blocks": 8,
   "settings": [
+    { "type": "image_picker", "id": "intro_image", "label": "Image above title" },
+    { "type": "range", "id": "intro_image_width", "label": "Image width", "min": 40, "max": 400, "step": 4, "unit": "px", "default": 160, "visible_if": "{{ section.settings.intro_image != blank }}" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE GENETIX STANDARD" },
     { "type": "textarea", "id": "heading", "label": "Heading", "default": "Formulating Through\nPure Biochemistry" },
     { "type": "richtext", "id": "text", "label": "Introduction", "default": "<p>At Genetix Peptides, we believe in formulating through pure biochemistry in an industry heavily crowded by ‘more is better’ marketing. We refuse to chase deceptive percentages. Every formulation we engineer is scientifically balanced at the exact, optimal ratios required to heal, restore, and revitalize the skin—ensuring maximum cellular absorption without causing localized harm. Because while more sounds better, true science knows exactly what works.</p>" },
