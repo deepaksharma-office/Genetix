@@ -738,9 +738,9 @@
     "genetix_less": {
       "type": "genetix-less-noise",
       "settings": {
-        "eyebrow": "THE  [image]  PHILOSOPHY",
+        "eyebrow": "",
         "title_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
-        "title_image_width": 180,
+        "title_image_width": 100,
         "heading": "Less noise.\nMore intention.",
         "text": "<p>We believe great care begins with a considered formula. The GENETIX MATRIX brings together five active ingredients in one skin and scalp routine.</p>",
         "secondary_text": "<p>Precision in formulation. Purpose in every ingredient.</p>",
