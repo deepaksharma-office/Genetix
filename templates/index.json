@@ -9,23 +9,101 @@
  */
 {
   "sections": {
+    "section_bHjYh6": {
+      "type": "section",
+      "blocks": {
+        "image_PzbrLa": {
+          "type": "image",
+          "name": "t:names.image",
+          "settings": {
+            "image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17.png",
+            "link": "",
+            "image_ratio": "adapt",
+            "width": "custom",
+            "custom_width": 60,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_Pkw9YT": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h2>Medical-Grade Skin Longevity Line</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "image_PzbrLa",
+        "text_Pkw9YT"
+      ],
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 25,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
     "genetix_hero": {
       "type": "genetix-hero",
       "blocks": {
-        "eyebrow": {
-          "type": "text",
-          "settings": {
-            "text": "<p>THE SCIENCE OF CONSIDERED CARE</p>",
-            "style": "eyebrow",
-            "color": "#173c48",
-            "font_size": 11,
-            "font_size_mobile": 10
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
-            "title": "Clinical peptide science. <strong>Uncompromised quality.</strong> Superior bioavailability.",
+            "title": "THE FUTURE OF SKIN LONGEVITY. CLINICAL PEPTIDE SCIENCE. UNCOMPROMISED QUALITY. SUPERIOR BIOAVAILABILITY.",
             "color": "#173c48",
             "highlight_color": "#2196b5",
             "font_size": 48,
@@ -65,39 +143,54 @@
         },
         "verification_heading": {
           "type": "checklist_heading",
-          "settings": { "heading": "Clinical verification" }
+          "settings": {
+            "heading": "Clinical verification"
+          }
         },
         "check_hypoallergenic": {
           "type": "check_item",
-          "settings": { "text": "Hypoallergenic" }
+          "settings": {
+            "text": "Hypoallergenic"
+          }
         },
         "check_dermatology": {
           "type": "check_item",
-          "settings": { "text": "Dermatologically tested" }
+          "settings": {
+            "text": "Dermatologically tested"
+          }
         },
         "check_clinical": {
           "type": "check_item",
-          "settings": { "text": "Clinically tested" }
+          "settings": {
+            "text": "Clinically tested"
+          }
         },
         "check_proven": {
           "type": "check_item",
-          "settings": { "text": "Clinically proven" }
+          "settings": {
+            "text": "Clinically proven"
+          }
         },
         "check_kind": {
           "type": "check_item",
-          "settings": { "text": "Kind to skin" }
+          "settings": {
+            "text": "Kind to skin"
+          }
         },
         "check_mild": {
           "type": "check_item",
-          "settings": { "text": "Suitable for mild skin" }
+          "settings": {
+            "text": "Suitable for mild skin"
+          }
         },
         "check_safe": {
           "type": "check_item",
-          "settings": { "text": "Safe for skin" }
+          "settings": {
+            "text": "Safe for skin"
+          }
         }
       },
       "block_order": [
-        "eyebrow",
         "title",
         "subheading",
         "description",
@@ -202,27 +295,171 @@
     "genetix_product": {
       "type": "genetix-featured-product",
       "blocks": {
-            "gallery": { "type": "_genetix-product-gallery", "static": true, "settings": { "label": "GHK-Cu SCALP MATRIX", "show_thumbnails": true }, "blocks": {} },
-            "eyebrow": { "type": "genetix-product-eyebrow", "settings": { "text": "THE DAILY ESSENTIAL" }, "blocks": {} },
-            "title": { "type": "genetix-product-title", "settings": {}, "blocks": {} },
-            "meta": { "type": "genetix-product-text", "settings": { "text": "<p>2 fl oz / 60 ml · Skin + Scalp</p>", "style": "meta" }, "blocks": {} },
-            "price": { "type": "genetix-product-price", "settings": { "currency_label": "USD" }, "blocks": {} },
-            "description": { "type": "genetix-product-description", "settings": {}, "blocks": {} },
-            "impact_ghk": { "type": "genetix-product-impact", "settings": { "value": "2%", "label": "GHK-Cu" }, "blocks": {} },
-            "impact_pal": { "type": "genetix-product-impact", "settings": { "value": "6%", "label": "PAL-150" }, "blocks": {} },
-            "impact_niacinamide": { "type": "genetix-product-impact", "settings": { "value": "3%", "label": "Niacinamide" }, "blocks": {} },
-            "impact_pdrn": { "type": "genetix-product-impact", "settings": { "value": "0.25%", "label": "PDRN+" }, "blocks": {} },
-            "variant": { "type": "genetix-product-variant-selector", "settings": { "label": "Choose an option" }, "blocks": {} },
-            "quantity": { "type": "genetix-product-quantity", "settings": {}, "blocks": {} },
-            "add": { "type": "genetix-product-add-button", "settings": { "label": "Add to bag", "show_price": true, "show_arrow": true, "background": "#153640", "color": "#ffffff" }, "blocks": {} },
-            "buy": { "type": "genetix-product-buy-button", "settings": { "label": "Buy", "show_arrow": true }, "blocks": {} },
-            "secure_checkout": { "type": "genetix-product-icon-text", "settings": { "icon": "shield", "text": "Secure checkout" }, "blocks": {} },
-            "insured_shipping": { "type": "genetix-product-icon-text", "settings": { "icon": "truck", "text": "Free insured U.S. shipping" }, "blocks": {} },
-            "details": { "type": "genetix-product-accordion", "settings": { "heading": "Formula & ingredients", "content": "<p>Add product details here.</p>" }, "blocks": {} },
-            "quality": { "type": "genetix-product-accordion", "settings": { "heading": "Quality & laboratory testing", "content": "<p>Add product details here.</p>" }, "blocks": {} },
-            "shipping": { "type": "genetix-product-accordion", "settings": { "heading": "Shipping & fulfillment", "content": "<p>Add product details here.</p>" }, "blocks": {} }
+        "eyebrow": {
+          "type": "genetix-product-eyebrow",
+          "settings": {
+            "text": "THE DAILY ESSENTIAL"
+          },
+          "blocks": {}
+        },
+        "title": {
+          "type": "genetix-product-title",
+          "settings": {},
+          "blocks": {}
+        },
+        "meta": {
+          "type": "genetix-product-text",
+          "settings": {
+            "text": "<p>2 fl oz / 60 ml · Skin + Scalp</p>",
+            "style": "meta"
+          },
+          "blocks": {}
+        },
+        "price": {
+          "type": "genetix-product-price",
+          "settings": {
+            "currency_label": "USD"
+          },
+          "blocks": {}
+        },
+        "description": {
+          "type": "genetix-product-description",
+          "settings": {},
+          "blocks": {}
+        },
+        "impact_ghk": {
+          "type": "genetix-product-impact",
+          "settings": {
+            "value": "2%",
+            "label": "GHK-Cu"
+          },
+          "blocks": {}
+        },
+        "impact_pal": {
+          "type": "genetix-product-impact",
+          "settings": {
+            "value": "6%",
+            "label": "PAL-150"
+          },
+          "blocks": {}
+        },
+        "impact_niacinamide": {
+          "type": "genetix-product-impact",
+          "settings": {
+            "value": "3%",
+            "label": "Niacinamide"
+          },
+          "blocks": {}
+        },
+        "impact_pdrn": {
+          "type": "genetix-product-impact",
+          "settings": {
+            "value": "0.25%",
+            "label": "PDRN+"
+          },
+          "blocks": {}
+        },
+        "variant": {
+          "type": "genetix-product-variant-selector",
+          "settings": {
+            "label": "Choose an option"
+          },
+          "blocks": {}
+        },
+        "quantity": {
+          "type": "genetix-product-quantity",
+          "settings": {},
+          "blocks": {}
+        },
+        "add": {
+          "type": "genetix-product-add-button",
+          "settings": {
+            "label": "Add to bag",
+            "show_price": true,
+            "show_arrow": true,
+            "background": "#153640",
+            "color": "#ffffff"
+          },
+          "blocks": {}
+        },
+        "buy": {
+          "type": "genetix-product-buy-button",
+          "settings": {
+            "label": "Buy",
+            "show_arrow": true
+          },
+          "blocks": {}
+        },
+        "secure_checkout": {
+          "type": "genetix-product-icon-text",
+          "settings": {
+            "icon": "shield",
+            "text": "Secure checkout"
+          },
+          "blocks": {}
+        },
+        "insured_shipping": {
+          "type": "genetix-product-icon-text",
+          "settings": {
+            "icon": "truck",
+            "text": "Free insured U.S. shipping"
+          },
+          "blocks": {}
+        },
+        "details": {
+          "type": "genetix-product-accordion",
+          "settings": {
+            "heading": "Formula & ingredients",
+            "content": "<p>Add product details here.</p>"
+          },
+          "blocks": {}
+        },
+        "quality": {
+          "type": "genetix-product-accordion",
+          "settings": {
+            "heading": "Quality & laboratory testing",
+            "content": "<p>Add product details here.</p>"
+          },
+          "blocks": {}
+        },
+        "shipping": {
+          "type": "genetix-product-accordion",
+          "settings": {
+            "heading": "Shipping & fulfillment",
+            "content": "<p>Add product details here.</p>"
+          },
+          "blocks": {}
+        },
+        "gallery": {
+          "type": "_genetix-product-gallery",
+          "static": true,
+          "settings": {
+            "label": "GHK-Cu SCALP MATRIX",
+            "show_thumbnails": true
+          },
+          "blocks": {}
+        }
       },
-      "block_order": ["eyebrow", "title", "meta", "price", "description", "impact_ghk", "impact_pal", "impact_niacinamide", "impact_pdrn", "variant", "quantity", "add", "buy", "secure_checkout", "insured_shipping", "details", "quality", "shipping"],
+      "block_order": [
+        "eyebrow",
+        "title",
+        "meta",
+        "price",
+        "description",
+        "impact_ghk",
+        "impact_pal",
+        "impact_niacinamide",
+        "impact_pdrn",
+        "variant",
+        "quantity",
+        "add",
+        "buy",
+        "secure_checkout",
+        "insured_shipping",
+        "details",
+        "quality",
+        "shipping"
+      ],
       "settings": {
         "product": "genetix-peptides",
         "gallery_position": "left",
@@ -860,6 +1097,7 @@
     "genetix_newsletter": {
       "type": "genetix-newsletter",
       "settings": {
+        "image_alt": "",
         "image_width": 360,
         "image_width_mobile": 260,
         "eyebrow": "PRIVATE ACCESS / GENETIX PEPTIDES",
@@ -878,6 +1116,7 @@
     }
   },
   "order": [
+    "section_bHjYh6",
     "genetix_hero",
     "genetix_icons",
     "genetix_product",
