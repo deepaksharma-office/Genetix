@@ -28,7 +28,7 @@
           {% when 'title' %}
             {% if block.settings.title != blank %}<div class="genetix-hero__block genetix-hero__title-block" style="--gx-block-color:{{ block.settings.color }};--gx-block-size:{{ block.settings.font_size }}px;--gx-block-size-mobile:{{ block.settings.font_size_mobile }}px;--gx-highlight-color:{{ block.settings.highlight_color }};" {{ block.shopify_attributes }}><h1>{{ block.settings.title }}</h1></div>{% endif %}
           {% when 'text' %}
-            {% if block.settings.text != blank %}<div class="genetix-hero__block genetix-hero__text-block{% if block.settings.style == 'eyebrow' %} genetix-hero__text-block--eyebrow{% endif %}" style="--gx-block-color:{{ block.settings.color }};--gx-block-size:{{ block.settings.font_size }}px;--gx-block-size-mobile:{{ block.settings.font_size_mobile }}px;" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>{% endif %}
+            {% if block.settings.text != blank %}<div class="genetix-hero__block genetix-hero__text-block{% if block.settings.style == 'eyebrow' %} genetix-hero__text-block--eyebrow{% endif %}" style="--gx-block-bgcolor:{{ block.settings.bg_color }};--gx-block-color:{{ block.settings.color }};--gx-block-size:{{ block.settings.font_size }}px;--gx-block-size-mobile:{{ block.settings.font_size_mobile }}px;" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>{% endif %}
           {% when 'button' %}
             {% if block.settings.label != blank %}<div class="genetix-hero__block genetix-hero__button-block" {{ block.shopify_attributes }}>{% render 'genetix-button', label: block.settings.label, link: block.settings.link, background: block.settings.background, color: block.settings.color, show_arrow: block.settings.show_arrow, open_new_tab: block.settings.open_new_tab, class: 'genetix-hero__button' %}</div>{% endif %}
         {% endcase %}
@@ -101,6 +101,7 @@
       { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Targeted support for healthier-looking hair and scalp.</p>" },
       { "type": "select", "id": "style", "label": "Style", "options": [{ "value": "body", "label": "Body" }, { "value": "eyebrow", "label": "Eyebrow" }], "default": "body" },
       { "type": "color", "id": "color", "label": "Text color", "default": "#173c48" },
+      { "type": "color_background", "id": "bg_color", "label": "Background color", "default": "transparent" },
       { "type": "range", "id": "font_size", "label": "Desktop size", "min": 10, "max": 36, "step": 1, "unit": "px", "default": 16 },
       { "type": "range", "id": "font_size_mobile", "label": "Mobile size", "min": 10, "max": 30, "step": 1, "unit": "px", "default": 15 }
     ] },
