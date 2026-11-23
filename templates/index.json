@@ -137,7 +137,7 @@
             "text": "<p>Most skincare brands sell watered-down formulas that sit on the surface. GENETIX PEPTIDES engineers advanced, lipid-stabilized matrices designed to penetrate the oil barrier and remodel the skin from the deep dermis up.</p>",
             "style": "body",
             "color": "#173c48",
-            "bg_color": "#FFFFFFA8",
+            "bg_color": "#ffffffa8",
             "font_size": 14,
             "font_size_mobile": 14
           }
@@ -290,6 +290,8 @@
         "usa"
       ],
       "settings": {
+        "intro_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
+        "intro_image_width": 160,
         "eyebrow": "THE GENETIX STANDARD",
         "heading": "Formulating Through\nPure Biochemistry",
         "text": "<p>At Genetix Peptides, we believe in formulating through pure biochemistry in an industry heavily crowded by ‘more is better’ marketing. We refuse to chase deceptive percentages. Every formulation we engineer is scientifically balanced at the exact, optimal ratios required to heal, restore, and revitalize the skin—ensuring maximum cellular absorption without causing localized harm. Because while more sounds better, true science knows exactly what works.</p>",
@@ -337,7 +339,9 @@
         },
         "description": {
           "type": "genetix-product-description",
-          "settings": {},
+          "settings": {
+            "inline_image_scale": 150
+          },
           "blocks": {}
         },
         "impact_ghk": {
@@ -551,6 +555,8 @@
       "settings": {
         "eyebrow": "THE INGREDIENT LEDGER",
         "heading": "The GENETIX Matrix: Science. Not Words.",
+        "heading_image_scale": 100,
+        "heading_image_alt": "GENETIX",
         "text": "<p>Five ingredients. One advanced matrix.</p>",
         "button_label": "Learn more",
         "button_link": "shopify://products/genetix-peptides",
@@ -645,6 +651,8 @@
           "type": "text",
           "settings": {
             "text": "<p>CLINICAL CARE, EVERY DAY</p>",
+            "inline_image_scale": 100,
+            "inline_image_alt": "GENETIX PEPTIDES",
             "style": "eyebrow",
             "color": "#173c48",
             "font_size": 14,
@@ -667,6 +675,8 @@
           "type": "text",
           "settings": {
             "text": "<p>Bring a little more intention to your routine. GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix brings focused peptide care to your skin and scalp.</p>",
+            "inline_image_scale": 100,
+            "inline_image_alt": "GENETIX PEPTIDES",
             "style": "body",
             "color": "#173c48",
             "font_size": 15,
@@ -707,6 +717,7 @@
       "type": "genetix-less-noise",
       "settings": {
         "eyebrow": "THE GENETIX PHILOSOPHY",
+        "title_image_width": 180,
         "heading": "Less noise.\nMore intention.",
         "text": "<p>We believe great care begins with a considered formula. The GENETIX MATRIX brings together five active ingredients in one skin and scalp routine.</p>",
         "secondary_text": "<p>Precision in formulation. Purpose in every ingredient.</p>",
@@ -803,6 +814,8 @@
           "type": "document_card",
           "settings": {
             "eyebrow": "DOCUMENTATION / THE GENETIX MATRIX",
+            "eyebrow_image_scale": 100,
+            "eyebrow_image_alt": "GENETIX",
             "icon": "document",
             "heading": "Laboratory testing\n& lab reports",
             "text": "<p>Explore our testing documentation when the reports are published.</p>",
@@ -909,13 +922,17 @@
         "intro": {
           "type": "text",
           "settings": {
-            "text": "<p>GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix.</p>"
+            "text": "<p>GENETIX PEPTIDES GHK-Cu Skin & Scalp Matrix.</p>",
+            "inline_image_scale": 100,
+            "inline_image_alt": "GENETIX PEPTIDES"
           }
         },
         "description": {
           "type": "text",
           "settings": {
-            "text": "<p>A complete skin and scalp matrix, in a generous 2 oz format.</p>"
+            "text": "<p>A complete skin and scalp matrix, in a generous 2 oz format.</p>",
+            "inline_image_scale": 100,
+            "inline_image_alt": "GENETIX PEPTIDES"
           }
         },
         "one": {
@@ -988,7 +1005,9 @@
         "second_eyebrow": {
           "type": "eyebrow",
           "settings": {
-            "text": "COMING NEXT / GENETIX PEPTIDES"
+            "text": "COMING NEXT / GENETIX PEPTIDES",
+            "inline_image_scale": 100,
+            "inline_image_alt": "GENETIX PEPTIDES"
           }
         },
         "second_title": {
@@ -1001,7 +1020,9 @@
         "second_text": {
           "type": "text",
           "settings": {
-            "text": "<p>A new addition to the GENETIX PEPTIDES collection. Product details will be shared here ahead of launch.</p>"
+            "text": "<p>A new addition to the GENETIX PEPTIDES collection. Product details will be shared here ahead of launch.</p>",
+            "inline_image_scale": 100,
+            "inline_image_alt": "GENETIX PEPTIDES"
           }
         },
         "second_badge": {
@@ -1054,6 +1075,8 @@
           "type": "faq",
           "settings": {
             "question": "What is the GENETIX Matrix?",
+            "question_image_scale": 100,
+            "question_image_alt": "GENETIX",
             "answer": "<p>Add your answer here.</p>"
           }
         },
@@ -1061,6 +1084,8 @@
           "type": "faq",
           "settings": {
             "question": "How should I use this product?",
+            "question_image_scale": 100,
+            "question_image_alt": "GENETIX",
             "answer": "<p>Add your answer here.</p>"
           }
         },
@@ -1068,6 +1093,8 @@
           "type": "faq",
           "settings": {
             "question": "Where is GENETIX manufactured?",
+            "question_image_scale": 100,
+            "question_image_alt": "GENETIX",
             "answer": "<p>Add your answer here.</p>"
           }
         },
@@ -1075,6 +1102,8 @@
           "type": "faq",
           "settings": {
             "question": "Are laboratory reports available?",
+            "question_image_scale": 100,
+            "question_image_alt": "GENETIX",
             "answer": "<p>Add your answer here.</p>"
           }
         },
@@ -1082,6 +1111,8 @@
           "type": "faq",
           "settings": {
             "question": "How will I receive my order?",
+            "question_image_scale": 100,
+            "question_image_alt": "GENETIX",
             "answer": "<p>Add your answer here.</p>"
           }
         }
