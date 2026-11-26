@@ -323,235 +323,156 @@
         "padding_bottom": 52
       }
     },
-    "genetix_product": {
-      "type": "genetix-featured-product",
+    "genetix_custom_featured_product_FgaJFm": {
+      "type": "genetix-custom-featured-product",
       "blocks": {
-        "eyebrow": {
-          "type": "genetix-product-eyebrow",
+        "eyebrow_hUXBfC": {
+          "type": "eyebrow",
           "settings": {
-            "text": "THE DAILY ESSENTIAL"
-          },
-          "blocks": {}
+            "text": "THE DAILY ESSENTIAL",
+            "font_size": 12,
+            "color": ""
+          }
         },
-        "image_btRiR7": {
-          "type": "image",
-          "name": "t:names.image",
+        "brand_image_J3nxdh": {
+          "type": "brand_image",
           "settings": {
             "image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17.png",
-            "link": "",
-            "image_ratio": "adapt",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "content_size": 180,
+            "alignment": "left"
+          }
         },
-        "text_GHdNrL": {
-          "type": "text",
-          "name": "t:names.heading",
+        "meta_CbieUK": {
+          "type": "meta",
           "settings": {
             "text": "<p>GHK-Cu Skin & Scalp Matrix</p>",
-            "width": "fit-content",
-            "max_width": "none",
-            "alignment": "left",
-            "type_preset": "custom",
-            "font": "var(--font-body--family)",
-            "font_size": "2rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
+            "font_size": 20,
+            "color": ""
+          }
         },
-        "meta": {
-          "type": "genetix-product-text",
+        "meta_yDfJiY": {
+          "type": "meta",
           "settings": {
             "text": "<p>2 fl oz / 59 ml · Skin + Scalp</p>",
-            "style": "meta"
-          },
-          "blocks": {}
+            "font_size": 14,
+            "color": ""
+          }
         },
-        "price": {
-          "type": "genetix-product-price",
+        "price_3e4hCx": {
+          "type": "price",
           "settings": {
-            "currency_label": "USD"
-          },
-          "blocks": {}
+            "font_size": 24,
+            "color": ""
+          }
         },
-        "description": {
-          "type": "genetix-product-description",
+        "description_FpCqpM": {
+          "type": "description",
           "settings": {
+            "source": "product",
+            "custom_text": "<p>Describe the formula, ingredients, and benefits.</p>",
             "inline_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
-            "inline_image_scale": 150
-          },
-          "blocks": {}
+            "image_size": 72,
+            "font_size": 14,
+            "color": ""
+          }
         },
-        "impact_ghk": {
-          "type": "genetix-product-impact",
+        "impact_metrics_BiihLJ": {
+          "type": "impact_metrics",
           "settings": {
-            "value": "2%",
-            "label": "GHK-Cu"
-          },
-          "blocks": {}
+            "number_1": "2%",
+            "label_1": "GHK-Cu",
+            "number_2": "6%",
+            "label_2": "PAL-150",
+            "number_3": "3%",
+            "label_3": "Niacinamide",
+            "number_4": "0.5%",
+            "label_4": "PDRN+",
+            "number_5": "",
+            "label_5": "",
+            "number_6": "",
+            "label_6": "",
+            "number_size": 18,
+            "label_size": 12,
+            "color": ""
+          }
         },
-        "impact_pal": {
-          "type": "genetix-product-impact",
-          "settings": {
-            "value": "6%",
-            "label": "PAL-150"
-          },
-          "blocks": {}
-        },
-        "impact_niacinamide": {
-          "type": "genetix-product-impact",
-          "settings": {
-            "value": "3%",
-            "label": "Niacinamide"
-          },
-          "blocks": {}
-        },
-        "impact_pdrn": {
-          "type": "genetix-product-impact",
-          "settings": {
-            "value": "0.25%",
-            "label": "PDRN+"
-          },
-          "blocks": {}
-        },
-        "variant": {
-          "type": "genetix-product-variant-selector",
-          "settings": {
-            "label": "Choose an option"
-          },
-          "blocks": {}
-        },
-        "quantity": {
-          "type": "genetix-product-quantity",
-          "settings": {},
-          "blocks": {}
-        },
-        "add": {
-          "type": "genetix-product-add-button",
-          "settings": {
-            "label": "Add to bag",
-            "show_price": true,
-            "show_arrow": true,
-            "background": "#153640",
-            "color": "#ffffff"
-          },
-          "blocks": {}
-        },
-        "buy": {
-          "type": "genetix-product-buy-button",
-          "settings": {
-            "label": "Buy",
-            "show_arrow": true
-          },
-          "blocks": {}
-        },
-        "secure_checkout": {
-          "type": "genetix-product-icon-text",
+        "icon_text_BMB7fj": {
+          "type": "icon_text",
           "settings": {
             "icon": "shield",
-            "text": "Secure checkout"
-          },
-          "blocks": {}
+            "text": "Secure checkout",
+            "icon_size": 18,
+            "text_size": 14,
+            "color": ""
+          }
         },
-        "insured_shipping": {
-          "type": "genetix-product-icon-text",
+        "icon_text_gfmEGR": {
+          "type": "icon_text",
           "settings": {
             "icon": "truck",
-            "text": "Free insured U.S. shipping"
-          },
-          "blocks": {}
+            "text": "Free insured U.S. shipping",
+            "icon_size": 18,
+            "text_size": 14,
+            "color": ""
+          }
         },
-        "details": {
-          "type": "genetix-product-accordion",
+        "buy_button_mQCAqC": {
+          "type": "buy_button",
+          "settings": {}
+        },
+        "accordion_77DqHi": {
+          "type": "accordion",
           "settings": {
             "heading": "Formula & ingredients",
-            "content": "<p>Add product details here.</p>"
-          },
-          "blocks": {}
+            "content": "<p>Add product details here.</p>",
+            "font_size": 14,
+            "color": ""
+          }
         },
-        "quality": {
-          "type": "genetix-product-accordion",
+        "accordion_rLfxMj": {
+          "type": "accordion",
           "settings": {
-            "heading": "Quality & laboratory testing",
-            "content": "<p>Add product details here.</p>"
-          },
-          "blocks": {}
+            "heading": "Quality & clinical testing",
+            "content": "<p>Add product details here.</p>",
+            "font_size": 14,
+            "color": ""
+          }
         },
-        "shipping": {
-          "type": "genetix-product-accordion",
+        "accordion_yCjeCU": {
+          "type": "accordion",
           "settings": {
             "heading": "Shipping & fulfillment",
-            "content": "<p>Add product details here.</p>"
-          },
-          "blocks": {}
-        },
-        "gallery": {
-          "type": "_genetix-product-gallery",
-          "static": true,
-          "settings": {
-            "label": "GHK-Cu SCALP MATRIX",
-            "show_thumbnails": true
-          },
-          "blocks": {}
+            "content": "<p>Add product details here.</p>",
+            "font_size": 14,
+            "color": ""
+          }
         }
       },
       "block_order": [
-        "eyebrow",
-        "image_btRiR7",
-        "text_GHdNrL",
-        "meta",
-        "price",
-        "description",
-        "impact_ghk",
-        "impact_pal",
-        "impact_niacinamide",
-        "impact_pdrn",
-        "variant",
-        "quantity",
-        "add",
-        "buy",
-        "secure_checkout",
-        "insured_shipping",
-        "details",
-        "quality",
-        "shipping"
+        "eyebrow_hUXBfC",
+        "brand_image_J3nxdh",
+        "meta_CbieUK",
+        "meta_yDfJiY",
+        "price_3e4hCx",
+        "description_FpCqpM",
+        "impact_metrics_BiihLJ",
+        "icon_text_BMB7fj",
+        "icon_text_gfmEGR",
+        "buy_button_mQCAqC",
+        "accordion_77DqHi",
+        "accordion_rLfxMj",
+        "accordion_yCjeCU"
       ],
+      "name": "Custom Featured",
       "settings": {
         "product": "genetix-peptides",
-        "gallery_position": "left",
-        "sticky_gallery": true,
-        "section_width": "page",
+        "gallery_label": "SKIN + SCALP MATRIX",
+        "add_label": "Add to bag",
         "background": "#ffffff",
-        "media_background": "#eef8fb",
         "text_color": "#173c48",
-        "padding_top": 52,
-        "padding_bottom": 52,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
+        "media_background": "#eef6f9",
+        "padding_top": 48,
+        "padding_bottom": 48
       }
     },
     "genetix_ledger": {
@@ -1253,7 +1174,7 @@
     "section_bHjYh6",
     "genetix_hero",
     "genetix_icons",
-    "genetix_product",
+    "genetix_custom_featured_product_FgaJFm",
     "genetix_ledger",
     "genetix_vault",
     "genetix_daily",
