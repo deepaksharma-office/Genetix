@@ -9,46 +9,6 @@
  */
 {
   "sections": {
-    "genetix_featured_product_a79zr4": {
-      "type": "genetix-featured-product",
-      "blocks": {
-            "gallery": { "type": "_genetix-product-gallery", "static": true, "settings": { "label": "GHK-Cu SCALP MATRIX", "show_thumbnails": true }, "blocks": {} },
-            "eyebrow": { "type": "genetix-product-eyebrow", "settings": { "text": "THE DAILY ESSENTIAL" }, "blocks": {} },
-            "title": { "type": "genetix-product-title", "settings": {}, "blocks": {} },
-            "meta": { "type": "genetix-product-text", "settings": { "text": "<p>2 fl oz / 60 ml · Skin + Scalp</p>", "style": "meta" }, "blocks": {} },
-            "price": { "type": "genetix-product-price", "settings": { "currency_label": "USD" }, "blocks": {} },
-            "description": { "type": "genetix-product-description", "settings": {}, "blocks": {} },
-            "impact_ghk": { "type": "genetix-product-impact", "settings": { "value": "2%", "label": "GHK-Cu" }, "blocks": {} },
-            "impact_pal": { "type": "genetix-product-impact", "settings": { "value": "6%", "label": "PAL-150" }, "blocks": {} },
-            "impact_niacinamide": { "type": "genetix-product-impact", "settings": { "value": "3%", "label": "Niacinamide" }, "blocks": {} },
-            "impact_pdrn": { "type": "genetix-product-impact", "settings": { "value": "0.25%", "label": "PDRN+" }, "blocks": {} },
-            "variant": { "type": "genetix-product-variant-selector", "settings": { "label": "Choose an option" }, "blocks": {} },
-            "quantity": { "type": "genetix-product-quantity", "settings": {}, "blocks": {} },
-            "add": { "type": "genetix-product-add-button", "settings": { "label": "Add to bag", "show_price": true, "show_arrow": true, "background": "#153640", "color": "#ffffff" }, "blocks": {} },
-            "buy": { "type": "genetix-product-buy-button", "settings": { "label": "Buy", "show_arrow": true }, "blocks": {} },
-            "secure_checkout": { "type": "genetix-product-icon-text", "settings": { "icon": "shield", "text": "Secure checkout" }, "blocks": {} },
-            "insured_shipping": { "type": "genetix-product-icon-text", "settings": { "icon": "truck", "text": "Free insured U.S. shipping" }, "blocks": {} },
-            "details": { "type": "genetix-product-accordion", "settings": { "heading": "Formula & ingredients", "content": "<p>Add product details here.</p>" }, "blocks": {} },
-            "quality": { "type": "genetix-product-accordion", "settings": { "heading": "Quality & laboratory testing", "content": "<p>Add product details here.</p>" }, "blocks": {} },
-            "shipping": { "type": "genetix-product-accordion", "settings": { "heading": "Shipping & fulfillment", "content": "<p>Add product details here.</p>" }, "blocks": {} }
-      },
-      "block_order": ["eyebrow", "title", "meta", "price", "description", "impact_ghk", "impact_pal", "impact_niacinamide", "impact_pdrn", "variant", "quantity", "add", "buy", "secure_checkout", "insured_shipping", "details", "quality", "shipping"],
-      "disabled": true,
-      "name": "GENETIX featured product",
-      "settings": {
-        "product": "{{ product }}",
-        "gallery_position": "left",
-        "sticky_gallery": true,
-        "section_width": "page",
-        "background": "#ffffff",
-        "media_background": "#eef8fb",
-        "text_color": "#173c48",
-        "padding_top": 0,
-        "padding_bottom": 52,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40
-      }
-    },
     "main": {
       "type": "product-information",
       "blocks": {
@@ -360,6 +320,7 @@
       "block_order": [
         "disclosures_g9mWze"
       ],
+      "disabled": true,
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
@@ -419,7 +380,6 @@
     }
   },
   "order": [
-    "genetix_featured_product_a79zr4",
     "main",
     "179207146133fe3ad2"
   ]
