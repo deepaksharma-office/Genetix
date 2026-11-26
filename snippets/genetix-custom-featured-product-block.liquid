@@ -1,0 +1,45 @@
+{% doc %}
+  Renders one inline content block for the custom featured product section.
+  @param {block} block - The section block and its settings.
+  @param {product} product - The selected product.
+  @param {string} section_id - The owning section ID for unique controls.
+  @param {product_form} product_form - The Shopify product form for accelerated checkout.
+  @example
+  {% render 'genetix-custom-featured-product-block', block: block, product: product, section_id: section.id %}
+{% enddoc %}
+{% assign block_color = block.settings.color | default: 'inherit' %}
+{% case block.type %}
+  {% when 'eyebrow' %}<p class="gxc-block gxc-eyebrow" style="--gxc-block-color:{{ block_color }};--gxc-font-size:{{ block.settings.font_size }}px" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+  {% when 'brand_image' %}{% if block.settings.image %}<div class="gxc-block gxc-inline-image gxc-inline-image--{{ block.settings.alignment }}" style="--gxc-inline-size:{{ block.settings.content_size }}px" {{ block.shopify_attributes }}>{{ block.settings.image | image_url: width: 800 | image_tag: widths: '120, 180, 260, 400, 800', sizes: '(min-width: 750px) 400px, 80vw', loading: 'lazy' }}</div>{% endif %}
+  {% when 'title' %}<h1 class="gxc-block gxc-title" style="--gxc-block-color:{{ block_color }};--gxc-font-size:{{ block.settings.font_size }}px" {{ block.shopify_attributes }}>{{ product.title | escape }}</h1>
+  {% when 'meta' %}{% if block.settings.text != blank %}<div class="gxc-block gxc-meta" style="--gxc-block-color:{{ block_color }};--gxc-font-size:{{ block.settings.font_size }}px" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>{% endif %}
+  {% when 'price' %}<div class="gxc-block gxc-price" style="--gxc-block-color:{{ block_color }};--gxc-font-size:{{ block.settings.font_size }}px" {{ block.shopify_attributes }}><span data-price>{{ product.selected_or_first_available_variant.price | money }}</span>{% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}<s>{{ product.selected_or_first_available_variant.compare_at_price | money }}</s>{% endif %}</div>
+  {% when 'description' %}
+    {% liquid
+      assign description_copy = product.description
+      if block.settings.source == 'custom'
+        assign description_copy = block.settings.custom_text
+      endif
+    %}
+    {% if description_copy != blank %}
+      {% if block.settings.inline_image %}
+        {% capture inline_image_markup %}{{ block.settings.inline_image | image_url: width: 640 | image_tag: widths: '120, 240, 400, 640', sizes: '(min-width: 750px) 320px, 80vw', class: 'gxc-description__inline-image', alt: block.settings.inline_image.alt }}{% endcapture %}
+      {% else %}
+        {% assign inline_image_markup = '' %}
+      {% endif %}
+      {% assign description_copy = description_copy | replace: '[image]', inline_image_markup %}
+      <div class="gxc-block gxc-description rte" style="--gxc-block-color:{{ block_color }};--gxc-font-size:{{ block.settings.font_size }}px;--gxc-inline-size:{{ block.settings.image_size }}px" {{ block.shopify_attributes }}>{{ description_copy }}</div>
+    {% endif %}
+  {% when 'impact_metrics' %}<div class="gxc-block gxc-impact" style="--gxc-block-color:{{ block_color }};--gxc-impact-number:{{ block.settings.number_size }}px;--gxc-impact-label:{{ block.settings.label_size }}px" {{ block.shopify_attributes }}>{% for index in (1..6) %}{% assign number_key = 'number_' | append: index %}{% assign label_key = 'label_' | append: index %}{% if block.settings[number_key] != blank or block.settings[label_key] != blank %}<div class="gxc-impact__item"><strong>{{ block.settings[number_key] | escape }}</strong><span>{{ block.settings[label_key] | escape }}</span></div>{% endif %}{% endfor %}</div>
+  {% when 'icon_text' %}<div class="gxc-block gxc-icon-text" style="--gxc-block-color:{{ block_color }};--gxc-icon-size:{{ block.settings.icon_size }}px;--gxc-icon-text-size:{{ block.settings.text_size }}px" {{ block.shopify_attributes }}>
+    {% if block.settings.custom_icon %}{{ block.settings.custom_icon | image_url: width: 96 | image_tag: widths: '24, 48, 96', alt: '', class: 'gxc-icon-text__image' }}{% else %}
+      {% case block.settings.icon %}
+        {% when 'shield' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 3 5 6v5c0 4.6 2.9 8.1 7 10 4.1-1.9 7-5.4 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+        {% when 'truck' %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M3 6h11v11H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg>
+        {% else %}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>
+      {% endcase %}
+    {% endif %}<span>{{ block.settings.text | escape }}</span></div>
+  {% when 'accordion' %}{% assign accordion_id = 'GxcAccordion-' | append: section_id | append: '-' | append: block.id %}<div class="gxc-block gxc-accordion" style="--gxc-block-color:{{ block_color }};--gxc-font-size:{{ block.settings.font_size }}px" {{ block.shopify_attributes }}><button class="gxc-accordion__trigger" type="button" data-accordion-trigger aria-expanded="false" aria-controls="{{ accordion_id }}"><span>{{ block.settings.heading | escape }}</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor"/></svg></button><div class="gxc-accordion__panel" id="{{ accordion_id }}" data-accordion-panel><div class="gxc-accordion__body rte">{{ block.settings.content }}</div></div></div>
+  {% when 'buy_button' %}<div class="gxc-block gxc-buy-button" {{ block.shopify_attributes }}>{{ product_form | payment_button }}</div>
+  {% when 'variant' %}{% if product.variants.size > 1 %}<label class="gxc-block gxc-variant" style="--gxc-block-color:{{ block_color }};--gxc-font-size:{{ block.settings.font_size }}px" for="GxcVariant-{{ section_id }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}<select id="GxcVariant-{{ section_id }}" data-variant-select>{% for variant in product.variants %}<option value="{{ variant.id }}" data-price="{{ variant.price | money | escape }}" data-compare-price="{{ variant.compare_at_price | money | escape }}" data-has-compare="{% if variant.compare_at_price > variant.price %}true{% else %}false{% endif %}" data-available="{{ variant.available }}" data-min="{{ variant.quantity_rule.min | default: 1 }}" data-max="{{ variant.quantity_rule.max }}" data-step="{{ variant.quantity_rule.increment | default: 1 }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>{{ variant.title | escape }}</option>{% endfor %}</select></label>{% endif %}
+{% endcase %}

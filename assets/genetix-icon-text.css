@@ -37,7 +37,7 @@
   width: auto;
   height: var(--gx-inline-image-scale, 1em);
   margin-inline: .1em;
-  vertical-align: -.18em;
+  vertical-align: -.08em;
   object-fit: contain;
 }
 
@@ -130,7 +130,7 @@
   height: 1em;
   flex: none;
   object-fit: contain;
-  vertical-align: middle;
+  vertical-align: -.08em;
 }
 
 .genetix-icon-text__item p {

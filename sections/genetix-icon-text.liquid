@@ -19,71 +19,122 @@
           {{
             section.settings.intro_image
             | image_url: width: 800
-            | image_tag:
-              widths: '100, 160, 240, 320, 480, 640, 800',
-              sizes: intro_image_size,
-              loading: 'lazy'
+            | image_tag: widths: '100, 160, 240, 320, 480, 640, 800', sizes: intro_image_size, loading: 'lazy'
           }}
         </div>
       {% endif %}
       {% if section.settings.eyebrow != blank %}
         {% assign icon_text_eyebrow = section.settings.eyebrow | escape %}
         {% capture icon_text_eyebrow_image %}{% if section.settings.eyebrow_image != blank %}{{ section.settings.eyebrow_image | image_url: width: 300 | image_tag: class: 'genetix-icon-text__eyebrow-image', widths: '60, 100, 160, 220, 300', sizes: '6em', loading: 'lazy', alt: section.settings.eyebrow_image_alt }}{% endif %}{% endcapture %}
-        {% if section.settings.eyebrow_image != blank %}{% if icon_text_eyebrow contains '[image]' %}{% assign icon_text_eyebrow = icon_text_eyebrow | replace: '[image]', icon_text_eyebrow_image %}{% elsif icon_text_eyebrow contains 'GENETIX' %}{% assign icon_text_eyebrow = icon_text_eyebrow | replace: 'GENETIX', icon_text_eyebrow_image %}{% else %}{% assign icon_text_eyebrow = icon_text_eyebrow | append: ' ' | append: icon_text_eyebrow_image %}{% endif %}{% endif %}
-        <p class="genetix__eyebrow" style="--gx-icon-text-eyebrow-size:{{ section.settings.eyebrow_font_size }}px;--gx-inline-image-scale:{{ section.settings.eyebrow_image_scale | divided_by: 100.0 }}em;">{{ icon_text_eyebrow }}</p>
+        {% if section.settings.eyebrow_image != blank -%}
+          {%- if icon_text_eyebrow contains '[image]' -%}
+            {%- assign icon_text_eyebrow = icon_text_eyebrow | replace: '[image]', icon_text_eyebrow_image -%}
+          {%- elsif icon_text_eyebrow contains 'GENETIX' -%}
+            {%- assign icon_text_eyebrow = icon_text_eyebrow | replace: 'GENETIX', icon_text_eyebrow_image -%}
+          {%- else -%}
+            {%- assign icon_text_eyebrow = icon_text_eyebrow | append: ' ' | append: icon_text_eyebrow_image -%}
+          {%- endif -%}
+        {%- endif %}
+        <p
+          class="genetix__eyebrow"
+          style="--gx-icon-text-eyebrow-size:{{ section.settings.eyebrow_font_size }}px;--gx-inline-image-scale:{{ section.settings.eyebrow_image_scale | divided_by: 100.0 }}em;"
+        >
+          {{ icon_text_eyebrow }}
+        </p>
       {% endif %}
       {% if section.settings.heading != blank %}
         <h2>{{ section.settings.heading | escape | newline_to_br }}</h2>
       {% endif %}
       {% if section.settings.text != blank %}
-        <div class="genetix-icon-text__statement rte custom_gradient_style ">{{ section.settings.text }}</div>
+        {% assign statement_text = section.settings.text %}
+        {% if section.settings.statement_image != blank %}
+          {% capture statement_image %}{{ section.settings.statement_image | image_url: width: 600 | image_tag: class: 'genetix-icon-text__statement-image', widths: '60, 100, 160, 220, 300, 600', sizes: '6em', loading: 'lazy', alt: section.settings.statement_image_alt }}{% endcapture %}
+          {% if statement_text contains '[image]' %}
+            {% assign statement_text = statement_text | replace: '[image]', statement_image %}
+          {% elsif statement_text contains 'GENETIX' %}
+            {% assign statement_text = statement_text | replace_first: 'GENETIX', statement_image %}
+          {% elsif statement_text contains 'Genetix' %}
+            {% assign statement_text = statement_text | replace_first: 'Genetix', statement_image %}
+          {% elsif statement_text contains 'genetix' %}
+            {% assign statement_text = statement_text | replace_first: 'genetix', statement_image %}
+          {% else %}
+            {% capture image_paragraph %}<p>{{ statement_image }}</p>{% endcapture %}
+            {% assign statement_text = statement_text | append: image_paragraph %}
+          {% endif %}
+        {% endif %}
+        <div class="genetix-icon-text__statement rte custom_gradient_style" style="--gx-statement-image-scale: {{ section.settings.statement_image_scale | divided_by: 100.0 }}em;">
+          {{ statement_text }}
+        </div>
       {% endif %}
     </div>
 
     <div class="genetix-icon-text__items">
       {% for block in section.blocks %}
         {% unless block.type == '@app' %}
-        <article class="genetix-icon-text__item" style="--gx-item-heading-size:{{ block.settings.heading_font_size }}px;" {{ block.shopify_attributes }}>
-          <div class="genetix-icon-text__icon custom_gradient_style ">
-            {% if block.settings.image != blank %}
-              {{
-                block.settings.image
-                | image_url: width: 180
-                | image_tag: widths: '80, 120, 180', sizes: '80px', loading: 'lazy', alt: ''
-              }}
-            {% else %}
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <circle cx="12" cy="12" r="8" />
-                <path d="M8 12h8M12 8v8" />
-              </svg>
-            {% endif %}
-          </div>
-          {% if block.settings.heading != blank %}
-            <h3 class="genetix-icon-text__item-heading">
-              {% if block.settings.heading_image != blank %}
-                {% assign heading_image_size = block.settings.heading_font_size | append: 'px' %}
+          <article
+            class="genetix-icon-text__item"
+            style="--gx-item-heading-size:{{ block.settings.heading_font_size }}px;"
+            {{ block.shopify_attributes }}
+          >
+            <div class="genetix-icon-text__icon custom_gradient_style ">
+              {% if block.settings.image != blank %}
                 {{
-                  block.settings.heading_image
-                  | image_url: width: 120
-                  | image_tag: class: 'genetix-icon-text__heading-image', widths: '24, 40, 60, 80, 120', sizes: heading_image_size, loading: 'lazy', alt: ''
+                  block.settings.image
+                  | image_url: width: 180
+                  | image_tag: widths: '80, 120, 180', sizes: '80px', loading: 'lazy', alt: ''
                 }}
+              {% else %}
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="8" />
+                  <path d="M8 12h8M12 8v8" />
+                </svg>
               {% endif %}
-              {{ block.settings.heading | escape }}
-            </h3>
-          {% endif %}
-          {% if block.settings.text != blank %}
-            <p>{{ block.settings.text | escape }}</p>
-          {% endif %}
-          {% if block.settings.link != blank and block.settings.link_label != blank %}
-            <a href="{{ block.settings.link }}">{{ block.settings.link_label | escape }}</a>
-          {% endif %}
-        </article>
+            </div>
+            {% if block.settings.heading != blank %}
+              <h3 class="genetix-icon-text__item-heading">
+                {% if block.settings.heading_image != blank %}
+                  {% assign heading_image_size = block.settings.heading_font_size | append: 'px' %}
+                  {{
+                    block.settings.heading_image
+                    | image_url: width: 120
+                    | image_tag:
+                      class: 'genetix-icon-text__heading-image',
+                      widths: '24, 40, 60, 80, 120',
+                      sizes: heading_image_size,
+                      loading: 'lazy',
+                      alt: ''
+                  }}
+                {% endif %}
+                {{ block.settings.heading | escape }}
+              </h3>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <p>{{ block.settings.text | escape }}</p>
+            {% endif %}
+            {% if block.settings.link != blank and block.settings.link_label != blank %}
+              <a href="{{ block.settings.link }}">{{ block.settings.link_label | escape }}</a>
+            {% endif %}
+          </article>
         {% endunless %}
       {% endfor %}
     </div>
   </div>
-  {% for block in section.blocks %}{% if block.type == '@app' %}{% render block %}{% endif %}{% endfor %}
+  {% for block in section.blocks -%}
+    {%- if block.type == '@app' %}{% render block %}{% endif -%}
+  {%- endfor %}
 </section>
+
+{% style %}
+  #shopify-section-{{ section.id }} .genetix-icon-text__statement .genetix-icon-text__statement-image {
+    display: inline-block;
+    height: var(--gx-statement-image-scale, 1em);
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    vertical-align: -.08em;
+    margin: 0 0.15em;
+  }
+{% endstyle %}
 
 {% schema %}
 {
@@ -91,16 +142,91 @@
   "max_blocks": 8,
   "settings": [
     { "type": "image_picker", "id": "intro_image", "label": "Image above title" },
-    { "type": "range", "id": "intro_image_width", "label": "Image width", "min": 40, "max": 400, "step": 4, "unit": "px", "default": 160, "visible_if": "{{ section.settings.intro_image != blank }}" },
+    {
+      "type": "range",
+      "id": "intro_image_width",
+      "label": "Image width",
+      "min": 40,
+      "max": 400,
+      "step": 4,
+      "unit": "px",
+      "default": 160,
+      "visible_if": "{{ section.settings.intro_image != blank }}"
+    },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE GENETIX STANDARD" },
     { "type": "image_picker", "id": "eyebrow_image", "label": "Inline eyebrow image" },
-    { "type": "range", "id": "eyebrow_font_size", "label": "Eyebrow text size", "min": 8, "max": 24, "step": 1, "unit": "px", "default": 14 },
-    { "type": "range", "id": "eyebrow_image_scale", "label": "Inline image size", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ section.settings.eyebrow_image != blank }}" },
-    { "type": "text", "id": "eyebrow_image_alt", "label": "Inline image alt text", "default": "GENETIX", "visible_if": "{{ section.settings.eyebrow_image != blank }}" },
-    { "type": "paragraph", "content": "The image replaces GENETIX automatically. Add [image] to choose another position." },
+    {
+      "type": "range",
+      "id": "eyebrow_font_size",
+      "label": "Eyebrow text size",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_image_scale",
+      "label": "Inline image size",
+      "min": 50,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ section.settings.eyebrow_image != blank }}"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_image_alt",
+      "label": "Inline image alt text",
+      "default": "GENETIX",
+      "visible_if": "{{ section.settings.eyebrow_image != blank }}"
+    },
+    {
+      "type": "paragraph",
+      "content": "The image replaces GENETIX automatically. Add [image] to choose another position."
+    },
     { "type": "textarea", "id": "heading", "label": "Heading", "default": "Formulating Through\nPure Biochemistry" },
-    { "type": "richtext", "id": "text", "label": "Introduction", "default": "<p>At Genetix Peptides, we believe in formulating through pure biochemistry in an industry heavily crowded by ‘more is better’ marketing. We refuse to chase deceptive percentages. Every formulation we engineer is scientifically balanced at the exact, optimal ratios required to heal, restore, and revitalize the skin—ensuring maximum cellular absorption without causing localized harm. Because while more sounds better, true science knows exactly what works.</p>" },
-    { "type": "range", "id": "icon_size", "label": "Icon size", "min": 40, "max": 100, "step": 4, "unit": "px", "default": 72 },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Introduction",
+      "default": "<p>At Genetix Peptides, we believe in formulating through pure biochemistry in an industry heavily crowded by ‘more is better’ marketing. We refuse to chase deceptive percentages. Every formulation we engineer is scientifically balanced at the exact, optimal ratios required to heal, restore, and revitalize the skin—ensuring maximum cellular absorption without causing localized harm. Because while more sounds better, true science knows exactly what works.</p>"
+    },
+    { "type": "image_picker", "id": "statement_image", "label": "Introduction inline image" },
+    {
+      "type": "range",
+      "id": "statement_image_scale",
+      "label": "Introduction inline image size",
+      "min": 50,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ section.settings.statement_image != blank }}"
+    },
+    {
+      "type": "text",
+      "id": "statement_image_alt",
+      "label": "Introduction image alt text",
+      "default": "GENETIX",
+      "visible_if": "{{ section.settings.statement_image != blank }}"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add [image] in the introduction to position the image. Otherwise it replaces the first matching GENETIX, Genetix or genetix, or appears below the text."
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 40,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
     { "type": "color", "id": "icon_background", "label": "Icon background", "default": "#153640" },
     { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" },
@@ -108,8 +234,26 @@
     { "type": "color", "id": "line_color", "label": "Divider lines", "default": "#dce7eb" },
     { "type": "color", "id": "card_background", "label": "Statement background", "default": "#153f48" },
     { "type": "color", "id": "card_text_color", "label": "Statement text", "default": "#ffffff" },
-    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 48 },
-    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 52 }
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 52
+    }
   ],
   "blocks": [
     { "type": "@app" },
@@ -120,8 +264,22 @@
         { "type": "image_picker", "id": "image", "label": "Custom icon" },
         { "type": "image_picker", "id": "heading_image", "label": "Inline heading image" },
         { "type": "text", "id": "heading", "label": "Heading", "default": "Quality first" },
-        { "type": "range", "id": "heading_font_size", "label": "Heading size", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 16 },
-        { "type": "textarea", "id": "text", "label": "Description", "default": "A considered approach to every detail." },
+        {
+          "type": "range",
+          "id": "heading_font_size",
+          "label": "Heading size",
+          "min": 12,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 16
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "A considered approach to every detail."
+        },
         { "type": "text", "id": "link_label", "label": "Link label" },
         { "type": "url", "id": "link", "label": "Link" }
       ]
@@ -131,10 +289,34 @@
     {
       "name": "GENETIX icon text",
       "blocks": [
-        { "type": "item", "settings": { "heading": "Cruelty free", "text": "A considered approach to care, without unnecessary compromises." } },
-        { "type": "item", "settings": { "heading": "Laboratory Tested", "text": "A focus on quality, consistency, and the details of the formula." } },
-        { "type": "item", "settings": { "heading": "Manufactured in an FDA Registered Facility", "text": "Manufactured with considered standards." } },
-        { "type": "item", "settings": { "heading": "Made in the USA", "text": "Produced in the United States. Refined care, down to the details." } }
+        {
+          "type": "item",
+          "settings": {
+            "heading": "Cruelty free",
+            "text": "A considered approach to care, without unnecessary compromises."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "heading": "Laboratory Tested",
+            "text": "A focus on quality, consistency, and the details of the formula."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "heading": "Manufactured in an FDA Registered Facility",
+            "text": "Manufactured with considered standards."
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "heading": "Made in the USA",
+            "text": "Produced in the United States. Refined care, down to the details."
+          }
+        }
       ]
     }
   ]

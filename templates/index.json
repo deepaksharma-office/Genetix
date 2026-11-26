@@ -300,11 +300,17 @@
         "usa"
       ],
       "settings": {
-        "intro_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
         "intro_image_width": 100,
-        "eyebrow": "",
+        "eyebrow": "The [image] Standard",
+        "eyebrow_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
+        "eyebrow_font_size": 14,
+        "eyebrow_image_scale": 100,
+        "eyebrow_image_alt": "GENETIX",
         "heading": "Formulating Through\nPure Biochemistry",
-        "text": "<p>At Genetix Peptides, we believe in formulating through pure biochemistry in an industry heavily crowded by ‘more is better’ marketing. We refuse to chase deceptive percentages. Every formulation we engineer is scientifically balanced at the exact, optimal ratios required to heal, restore, and revitalize the skin—ensuring maximum cellular absorption without causing localized harm. Because while more sounds better, true science knows exactly what works.</p>",
+        "text": "<p>At [image] Peptides, we believe in formulating through pure biochemistry in an industry heavily crowded by ‘more is better’ marketing. We refuse to chase deceptive percentages. Every formulation we engineer is scientifically balanced at the exact, optimal ratios required to heal, restore, and revitalize the skin—ensuring maximum cellular absorption without causing localized harm. Because while more sounds better, true science knows exactly what works.</p>",
+        "statement_image": "shopify://shop_images/Group_1_819c139f-d8c7-4cd4-8b7a-d33343ee6d45.svg",
+        "statement_image_scale": 100,
+        "statement_image_alt": "GENETIX",
         "icon_size": 72,
         "icon_background": "#153640",
         "background": "#ffffff",
@@ -351,10 +357,36 @@
           },
           "blocks": {}
         },
+        "text_GHdNrL": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>GHK-Cu Skin & Scalp Matrix</p>",
+            "width": "fit-content",
+            "max_width": "none",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "2rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "meta": {
           "type": "genetix-product-text",
           "settings": {
-            "text": "<p>2 fl oz / 60 ml · Skin + Scalp</p>",
+            "text": "<p>2 fl oz / 59 ml · Skin + Scalp</p>",
             "style": "meta"
           },
           "blocks": {}
@@ -490,6 +522,7 @@
       "block_order": [
         "eyebrow",
         "image_btRiR7",
+        "text_GHdNrL",
         "meta",
         "price",
         "description",
@@ -588,7 +621,7 @@
         "heading_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
         "heading_image_scale": 100,
         "heading_image_alt": "GENETIX",
-        "text": "<p>Five ingredients. One advanced matrix.</p>",
+        "text": "",
         "button_label": "Learn more",
         "button_link": "shopify://products/genetix-peptides",
         "button_background": "#153640",
@@ -643,7 +676,7 @@
             "eyebrow_image_scale": 100,
             "eyebrow_image_alt": "GENETIX",
             "title": "2 oz",
-            "subtitle": "60 ml of concentrated care",
+            "subtitle": "59 ml of concentrated care",
             "text": "<p>We reject corporate markups. We deliver a massive, clinical-grade 2 oz bottle loaded with uncompromised, active compound concentrations.</p>",
             "footer_title": "2× the volume",
             "footer_text": "Compared with a standard 1 oz bottle"
@@ -753,11 +786,14 @@
     "genetix_less": {
       "type": "genetix-less-noise",
       "settings": {
-        "eyebrow": "",
-        "title_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
+        "eyebrow": "The [image] Philosophy",
+        "eyebrow_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
+        "eyebrow_font_size": 14,
+        "eyebrow_image_scale": 100,
+        "eyebrow_image_alt": "GENETIX",
         "title_image_width": 100,
         "heading": "Less noise.\nMore intention.",
-        "text": "<p>We believe great care begins with a considered formula. The GENETIX MATRIX brings together five active ingredients in one skin and scalp routine.</p>",
+        "text": "<p>We believe true skin longevity begins with a precision, scientifically crafted formula.</p>",
         "text_inline_image_scale": 100,
         "text_inline_image_alt": "GENETIX",
         "secondary_text": "<p>Precision in formulation. Purpose in every ingredient.</p>",
@@ -806,7 +842,7 @@
         "four": {
           "type": "entry",
           "settings": {
-            "heading": "2 fl oz / 60 ml",
+            "heading": "2 fl oz / 59 ml",
             "text": "A generous full-size format."
           }
         }
@@ -990,7 +1026,7 @@
           "type": "spec",
           "settings": {
             "label": "Volume",
-            "value": "2 fl oz / 60 ml"
+            "value": "2 fl oz / 59 ml"
           }
         },
         "three": {
@@ -1120,16 +1156,17 @@
         "one": {
           "type": "faq",
           "settings": {
-            "question": "What is the GENETIX Matrix?",
+            "question": "What is the GHK-Cu Skin & Scalp Matrix?",
             "question_image_scale": 100,
             "question_image_alt": "GENETIX",
-            "answer": "<p>Add your answer here.</p>"
+            "answer": "<p>A skin and scalp matrix with GHK-Cu, PAL-150, niacinamide, a high-purity hyaluronic acid base, and Salmon Mesenchymal Cell Conditioned Media (PDRN+).</p>"
           }
         },
         "two": {
           "type": "faq",
           "settings": {
-            "question": "How should I use this product?",
+            "question": "Where is GENETIX PEPTIDES manufactured?",
+            "question_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
             "question_image_scale": 100,
             "question_image_alt": "GENETIX",
             "answer": "<p>Add your answer here.</p>"
@@ -1138,8 +1175,7 @@
         "three": {
           "type": "faq",
           "settings": {
-            "question": "Where is [image] manufactured?",
-            "question_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
+            "question": "Will clinical testing reports be available?",
             "question_image_scale": 100,
             "question_image_alt": "GENETIX",
             "answer": "<p>Add your answer here.</p>"
@@ -1148,7 +1184,7 @@
         "four": {
           "type": "faq",
           "settings": {
-            "question": "Are laboratory reports available?",
+            "question": "How long does standard U.S. shipping take?",
             "question_image_scale": 100,
             "question_image_alt": "GENETIX",
             "answer": "<p>Add your answer here.</p>"
@@ -1157,7 +1193,7 @@
         "five": {
           "type": "faq",
           "settings": {
-            "question": "How will I receive my order?",
+            "question": "How will I receive my order tracking?",
             "question_image_scale": 100,
             "question_image_alt": "GENETIX",
             "answer": "<p>Add your answer here.</p>"
@@ -1174,7 +1210,7 @@
       "settings": {
         "eyebrow": "FREQUENTLY ASKED QUESTIONS",
         "heading": "Good questions. Clear answers.",
-        "text": "<p>Everything you need to know.</p>",
+        "text": "<p>Get to know the Skin & Scalp Matrix.</p>",
         "link_label": "Contact our team",
         "link": "shopify://pages/contact",
         "open_first": true,
