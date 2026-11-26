@@ -103,9 +103,9 @@
         "title": {
           "type": "title",
           "settings": {
-            "title": "THE FUTURE OF SKIN LONGEVITY.",
+            "title": "<strong>THE FUTURE OF SKIN LONGEVITY.</strong>",
             "color": "#173c48",
-            "highlight_color": "#2196b5",
+            "highlight_color": "#000000",
             "font_size": 30,
             "font_size_mobile": 24
           }
