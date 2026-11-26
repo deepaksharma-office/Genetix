@@ -44,7 +44,7 @@
     "type_size_h6": "12",
     "type_line_height_h6": "display-loose",
     "page_background_color": "{{ settings.color_palette.background }}",
-    "page_width": "wide",
+    "page_width": "normal",
     "page_transition_enabled": false,
     "transition_to_main_product": false,
     "card_hover_effect": "none",
