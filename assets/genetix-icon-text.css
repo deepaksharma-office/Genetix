@@ -37,7 +37,7 @@
   width: auto;
   height: var(--gx-inline-image-scale, 1em);
   margin-inline: .1em;
-  vertical-align: -.18em;
+  vertical-align: -.08em;
   object-fit: contain;
 }
 
