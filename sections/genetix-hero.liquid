@@ -26,7 +26,7 @@
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'title' %}
-            {% if block.settings.title != blank %}<div class="genetix-hero__block genetix-hero__title-block" style="--gx-block-color:{{ block.settings.color }};--gx-block-size:{{ block.settings.font_size }}px;--gx-block-size-mobile:{{ block.settings.font_size_mobile }}px;--gx-highlight-color:{{ block.settings.highlight_color }}; {% if block.settings.bold %}font-weight: 600 !important;{% endif %}" {{ block.shopify_attributes }}><h1>{{ block.settings.title }}</h1></div>{% endif %}
+            {% if block.settings.title != blank %}<div class="genetix-hero__block genetix-hero__title-block" style="--gx-block-color:{{ block.settings.color }};--gx-block-size:{{ block.settings.font_size }}px;--gx-block-size-mobile:{{ block.settings.font_size_mobile }}px;--gx-highlight-color:{{ block.settings.highlight_color }}; {% if block.settings.bold %}font-weight: 600 !important;{% endif %}" {{ block.shopify_attributes }}>{{ block.settings.title }}</div>{% endif %}
           {% when 'text' %}
             {% if block.settings.text != blank %}<div class="genetix-hero__block genetix-hero__text-block {% if block.settings.bg_color !=blank %} hero_text_bg{% endif %} {% if block.settings.style == 'eyebrow' %} genetix-hero__text-block--eyebrow{% endif %}" style="--gx-block-bgcolor:{{ block.settings.bg_color }};--gx-block-color:{{ block.settings.color }};--gx-block-size:{{ block.settings.font_size }}px;--gx-block-size-mobile:{{ block.settings.font_size_mobile }}px;" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>{% endif %}
           {% when 'button' %}
