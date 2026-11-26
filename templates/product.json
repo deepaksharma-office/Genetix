@@ -9,57 +9,60 @@
  */
 {
   "sections": {
-    "genetix_custom_featured_product_Vh9qXC": {
+      "genetix_custom_featured_product_FgaJFm": {
       "type": "genetix-custom-featured-product",
       "blocks": {
-        "eyebrow_BQbmJX": {
+        "eyebrow_hUXBfC": {
           "type": "eyebrow",
           "settings": {
             "text": "THE DAILY ESSENTIAL",
-            "font_size": 9,
-            "color": ""
-          }
-        },
-        "brand_image_UTgadi": {
-          "type": "brand_image",
-          "settings": {
-            "content_size": 180,
-            "alignment": "left"
-          }
-        },
-        "title_DkifLE": {
-          "type": "title",
-          "settings": {
-            "font_size": 34,
-            "color": ""
-          }
-        },
-        "meta_QhBMdQ": {
-          "type": "meta",
-          "settings": {
-            "text": "<p>2 fl oz / 59 ml · Skin + Scalp</p>",
             "font_size": 12,
             "color": ""
           }
         },
-        "price_y9cHJq": {
+        "brand_image_J3nxdh": {
+          "type": "brand_image",
+          "settings": {
+            "image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17.png",
+            "content_size": 180,
+            "alignment": "left"
+          }
+        },
+        "meta_CbieUK": {
+          "type": "meta",
+          "settings": {
+            "text": "<p>GHK-Cu Skin & Scalp Matrix</p>",
+            "font_size": 24,
+            "color": ""
+          }
+        },
+        "meta_yDfJiY": {
+          "type": "meta",
+          "settings": {
+            "text": "<p>2 fl oz / 59 ml · Skin + Scalp</p>",
+            "font_size": 14,
+            "color": ""
+          }
+        },
+        "price_3e4hCx": {
           "type": "price",
           "settings": {
             "font_size": 24,
             "color": ""
           }
         },
-        "description_WkhQMg": {
+        "description_FpCqpM": {
           "type": "description",
           "settings": {
             "source": "product",
             "custom_text": "<p>Describe the formula, ingredients, and benefits.</p>",
-            "image_size": 120,
-            "font_size": 11,
+            "inline_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
+            "image_size": 72,
+            "font_size": 14,
             "color": ""
           }
         },
-        "impact_metrics_zrXV4g": {
+        "impact_metrics_BiihLJ": {
           "type": "impact_metrics",
           "settings": {
             "number_1": "2%",
@@ -75,80 +78,80 @@
             "number_6": "",
             "label_6": "",
             "number_size": 18,
-            "label_size": 10,
+            "label_size": 12,
             "color": ""
           }
         },
-        "icon_text_FFKmNJ": {
+        "icon_text_BMB7fj": {
           "type": "icon_text",
           "settings": {
             "icon": "shield",
             "text": "Secure checkout",
             "icon_size": 18,
-            "text_size": 11,
+            "text_size": 14,
             "color": ""
           }
         },
-        "icon_text_6JmGQN": {
+        "icon_text_gfmEGR": {
           "type": "icon_text",
           "settings": {
             "icon": "truck",
             "text": "Free insured U.S. shipping",
             "icon_size": 18,
-            "text_size": 11,
+            "text_size": 14,
             "color": ""
           }
         },
-        "buy_button_RncL8X": {
+        "buy_button_mQCAqC": {
           "type": "buy_button",
           "settings": {}
         },
-        "accordion_AjJtaB": {
+        "accordion_77DqHi": {
           "type": "accordion",
           "settings": {
             "heading": "Formula & ingredients",
             "content": "<p>Add product details here.</p>",
-            "font_size": 11,
+            "font_size": 14,
             "color": ""
           }
         },
-        "accordion_DA9zVC": {
+        "accordion_rLfxMj": {
           "type": "accordion",
           "settings": {
             "heading": "Quality & clinical testing",
             "content": "<p>Add product details here.</p>",
-            "font_size": 11,
+            "font_size": 14,
             "color": ""
           }
         },
-        "accordion_cPLjBr": {
+        "accordion_yCjeCU": {
           "type": "accordion",
           "settings": {
             "heading": "Shipping & fulfillment",
             "content": "<p>Add product details here.</p>",
-            "font_size": 11,
+            "font_size": 14,
             "color": ""
           }
         }
       },
       "block_order": [
-        "eyebrow_BQbmJX",
-        "brand_image_UTgadi",
-        "title_DkifLE",
-        "meta_QhBMdQ",
-        "price_y9cHJq",
-        "description_WkhQMg",
-        "impact_metrics_zrXV4g",
-        "icon_text_FFKmNJ",
-        "icon_text_6JmGQN",
-        "buy_button_RncL8X",
-        "accordion_AjJtaB",
-        "accordion_DA9zVC",
-        "accordion_cPLjBr"
+        "eyebrow_hUXBfC",
+        "brand_image_J3nxdh",
+        "meta_CbieUK",
+        "meta_yDfJiY",
+        "price_3e4hCx",
+        "description_FpCqpM",
+        "impact_metrics_BiihLJ",
+        "icon_text_BMB7fj",
+        "icon_text_gfmEGR",
+        "buy_button_mQCAqC",
+        "accordion_77DqHi",
+        "accordion_rLfxMj",
+        "accordion_yCjeCU"
       ],
       "name": "Custom Featured",
       "settings": {
-        "product": "",
+        "product": "genetix-peptides",
         "gallery_label": "SKIN + SCALP MATRIX",
         "add_label": "Add to bag",
         "background": "#ffffff",
@@ -529,7 +532,7 @@
     }
   },
   "order": [
-    "genetix_custom_featured_product_Vh9qXC",
+    "genetix_custom_featured_product_FgaJFm",
     "main",
     "179207146133fe3ad2"
   ]
