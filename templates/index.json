@@ -105,6 +105,7 @@
           "settings": {
             "title": "<strong>THE FUTURE OF SKIN LONGEVITY.</strong>",
             "color": "#173c48",
+            "bold": true,
             "highlight_color": "#000000",
             "font_size": 24,
             "font_size_mobile": 24
@@ -115,6 +116,7 @@
           "settings": {
             "title": "CLINICAL PEPTIDE SCIENCE. UNCOMPROMISED QUALITY. SUPERIOR BIOAVAILABILITY.",
             "color": "#173c48",
+            "bold": false,
             "highlight_color": "#2196b5",
             "font_size": 38,
             "font_size_mobile": 26

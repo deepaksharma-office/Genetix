@@ -26,7 +26,7 @@
       {% for block in section.blocks %}
         {% case block.type %}
           {% when 'title' %}
-            {% if block.settings.title != blank %}<div class="genetix-hero__block genetix-hero__title-block" style="--gx-block-color:{{ block.settings.color }};--gx-block-size:{{ block.settings.font_size }}px;--gx-block-size-mobile:{{ block.settings.font_size_mobile }}px;--gx-highlight-color:{{ block.settings.highlight_color }};" {{ block.shopify_attributes }}><h1>{{ block.settings.title }}</h1></div>{% endif %}
+            {% if block.settings.title != blank %}<div class="genetix-hero__block genetix-hero__title-block" style="--gx-block-color:{{ block.settings.color }};--gx-block-size:{{ block.settings.font_size }}px;--gx-block-size-mobile:{{ block.settings.font_size_mobile }}px;--gx-highlight-color:{{ block.settings.highlight_color }}; {% if block.settings.bold %}font-weight: bold;{% endif %}" {{ block.shopify_attributes }}><h1>{{ block.settings.title }}</h1></div>{% endif %}
           {% when 'text' %}
             {% if block.settings.text != blank %}<div class="genetix-hero__block genetix-hero__text-block {% if block.settings.bg_color !=blank %} hero_text_bg{% endif %} {% if block.settings.style == 'eyebrow' %} genetix-hero__text-block--eyebrow{% endif %}" style="--gx-block-bgcolor:{{ block.settings.bg_color }};--gx-block-color:{{ block.settings.color }};--gx-block-size:{{ block.settings.font_size }}px;--gx-block-size-mobile:{{ block.settings.font_size_mobile }}px;" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>{% endif %}
           {% when 'button' %}
@@ -93,6 +93,7 @@
     { "type": "title", "name": "Title", "limit": 3, "settings": [
       { "type": "inline_richtext", "id": "title", "label": "Title", "default": "Clinical peptide science. <strong>Uncompromised quality.</strong> Superior bioavailability." },
       { "type": "color", "id": "color", "label": "Text color", "default": "#173c48" },
+      { "type": "checkbox", "id": "bold", "label": "Bold", "default": false },
       { "type": "color", "id": "highlight_color", "label": "Bold highlight color", "default": "#2196b5" },
       { "type": "range", "id": "font_size", "label": "Desktop size", "min": 24, "max": 92, "step": 1, "unit": "px", "default": 48 },
       { "type": "range", "id": "font_size_mobile", "label": "Mobile size", "min": 24, "max": 60, "step": 1, "unit": "px", "default": 36 }
