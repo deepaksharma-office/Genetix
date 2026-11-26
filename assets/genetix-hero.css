@@ -2,5 +2,5 @@
 .genetix-hero__text-block{background-color: var(--gx-block-bgcolor)}
 .hero_text_bg{padding: 1rem;}
 .genetix-hero__verification-heading {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem !important;
 }
