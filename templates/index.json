@@ -300,11 +300,14 @@
         "usa"
       ],
       "settings": {
-        "intro_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
         "intro_image_width": 100,
-        "eyebrow": "",
+        "eyebrow": "The [image] Standard",
+        "eyebrow_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
+        "eyebrow_font_size": 14,
+        "eyebrow_image_scale": 100,
+        "eyebrow_image_alt": "GENETIX",
         "heading": "Formulating Through\nPure Biochemistry",
-        "text": "<p>At Genetix Peptides, we believe in formulating through pure biochemistry in an industry heavily crowded by ‘more is better’ marketing. We refuse to chase deceptive percentages. Every formulation we engineer is scientifically balanced at the exact, optimal ratios required to heal, restore, and revitalize the skin—ensuring maximum cellular absorption without causing localized harm. Because while more sounds better, true science knows exactly what works.</p>",
+        "text": "<p>At [image] Peptides, we believe in formulating through pure biochemistry in an industry heavily crowded by ‘more is better’ marketing. We refuse to chase deceptive percentages. Every formulation we engineer is scientifically balanced at the exact, optimal ratios required to heal, restore, and revitalize the skin—ensuring maximum cellular absorption without causing localized harm. Because while more sounds better, true science knows exactly what works.</p>",
         "icon_size": 72,
         "icon_background": "#153640",
         "background": "#ffffff",
@@ -754,6 +757,9 @@
       "type": "genetix-less-noise",
       "settings": {
         "eyebrow": "",
+        "eyebrow_font_size": 14,
+        "eyebrow_image_scale": 100,
+        "eyebrow_image_alt": "GENETIX",
         "title_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
         "title_image_width": 100,
         "heading": "Less noise.\nMore intention.",
