@@ -357,14 +357,6 @@
           },
           "blocks": {}
         },
-        "meta": {
-          "type": "genetix-product-text",
-          "settings": {
-            "text": "<p>2 fl oz / 59 ml · Skin + Scalp</p>",
-            "style": "meta"
-          },
-          "blocks": {}
-        },
         "text_GHdNrL": {
           "type": "text",
           "name": "t:names.heading",
@@ -388,6 +380,14 @@
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "meta": {
+          "type": "genetix-product-text",
+          "settings": {
+            "text": "<p>2 fl oz / 59 ml · Skin + Scalp</p>",
+            "style": "meta"
           },
           "blocks": {}
         },
@@ -522,8 +522,8 @@
       "block_order": [
         "eyebrow",
         "image_btRiR7",
-        "meta",
         "text_GHdNrL",
+        "meta",
         "price",
         "description",
         "impact_ghk",
