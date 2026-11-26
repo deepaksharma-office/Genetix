@@ -230,7 +230,7 @@
         "floating_text_color": "#9ddfeb",
         "floating_text_size": 112,
         "floating_text_position_x": 50,
-        "floating_text_offset_y": 20,
+        "floating_text_offset_y": 45,
         "alignment": "left",
         "background": "#eaf5fa",
         "overlay": "#ffffff",
