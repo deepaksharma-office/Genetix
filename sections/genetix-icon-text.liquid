@@ -40,7 +40,7 @@
     <div class="genetix-icon-text__items">
       {% for block in section.blocks %}
         {% unless block.type == '@app' %}
-        <article class="genetix-icon-text__item" {{ block.shopify_attributes }}>
+        <article class="genetix-icon-text__item" style="--gx-item-heading-size:{{ block.settings.heading_font_size }}px;" {{ block.shopify_attributes }}>
           <div class="genetix-icon-text__icon custom_gradient_style ">
             {% if block.settings.image != blank %}
               {{
@@ -56,7 +56,17 @@
             {% endif %}
           </div>
           {% if block.settings.heading != blank %}
-            <h3>{{ block.settings.heading | escape }}</h3>
+            <h3 class="genetix-icon-text__item-heading">
+              {% if block.settings.heading_image != blank %}
+                {% assign heading_image_size = block.settings.heading_font_size | append: 'px' %}
+                {{
+                  block.settings.heading_image
+                  | image_url: width: 120
+                  | image_tag: class: 'genetix-icon-text__heading-image', widths: '24, 40, 60, 80, 120', sizes: heading_image_size, loading: 'lazy', alt: ''
+                }}
+              {% endif %}
+              {{ block.settings.heading | escape }}
+            </h3>
           {% endif %}
           {% if block.settings.text != blank %}
             <p>{{ block.settings.text | escape }}</p>
@@ -100,7 +110,9 @@
       "name": "Benefit",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Custom icon" },
+        { "type": "image_picker", "id": "heading_image", "label": "Inline heading image" },
         { "type": "text", "id": "heading", "label": "Heading", "default": "Quality first" },
+        { "type": "range", "id": "heading_font_size", "label": "Heading size", "min": 12, "max": 28, "step": 1, "unit": "px", "default": 16 },
         { "type": "textarea", "id": "text", "label": "Description", "default": "A considered approach to every detail." },
         { "type": "text", "id": "link_label", "label": "Link label" },
         { "type": "url", "id": "link", "label": "Link" }

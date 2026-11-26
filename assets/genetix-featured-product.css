@@ -5,7 +5,7 @@ genetix-product{display:block;overflow:visible}
 .genetix-product__inner,.genetix-product__layout{overflow:visible}
 .genetix-product__layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(40px,7vw,96px);align-items:start}
 .genetix-product__layout--right>:is(.genetix-product__gallery,.shopify-block:has(>.genetix-product__gallery)){order:2}
-.genetix-product__layout>.shopify-block:has(>.genetix-product__gallery){min-width:0}
+.genetix-product__layout>.shopify-block:has(>.genetix-product__gallery){grid-column:auto;min-width:0}
 .genetix-product__gallery{position:relative;min-width:0}
 .genetix-product__layout--sticky>:is(.genetix-product__gallery,.shopify-block:has(>.genetix-product__gallery)){position:sticky;top:calc(var(--header-height,60px) + var(--padding-sm,12px));align-self:start}
 .genetix-product__media-label{position:absolute;z-index:2;inset-block-start:20px;inset-inline-start:22px;font-size:9px;font-weight:600;letter-spacing:.05em}

@@ -24,3 +24,4 @@
 .genetix-newsletter__fine-print{color:var(--gx-muted);text-align:center}
 .genetix-newsletter__fine-print p,.genetix-newsletter__message{margin-bottom:0}
 @media(max-width:749px){.genetix-newsletter{border-inline-start-width:1px}.genetix-newsletter__orbit{inset-block-start:-260px;inset-inline-end:-260px;width:500px}.genetix-newsletter__image-wrap{width:min(100%,var(--gx-newsletter-image-width-mobile));margin-bottom:20px}.genetix-newsletter__eyebrow{margin-bottom:16px}.genetix-newsletter h2{font-size:27px}.genetix-newsletter__intro .genetix__copy{font-size:14px}.genetix-newsletter__customer-form{margin-top:34px}.genetix-newsletter__form{grid-template-columns:1fr}.genetix-newsletter__form input,.genetix-newsletter__form button{min-height:52px}}
+.genetix-newsletter__inline-image{display:inline-block;width:auto;height:var(--gx-inline-image-scale,1em);margin-inline:.1em;vertical-align:-.18em;object-fit:contain}

@@ -104,8 +104,24 @@
 
 .genetix-icon-text__item h3 {
   max-width: 20ch;
-  font-size: 16px;
+  font-size: var(--gx-item-heading-size, 16px);
   line-height: 1.25;
+}
+
+.genetix-icon-text__item-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+}
+
+.genetix-icon-text__heading-image {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: none;
+  object-fit: contain;
+  vertical-align: middle;
 }
 
 .genetix-icon-text__item p {

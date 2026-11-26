@@ -26,7 +26,10 @@
         <h2>{{ section.settings.heading | escape | newline_to_br }}</h2>
       {% endif %}
       {% if section.settings.text != blank %}
-        <div class="genetix-less-noise__copy rte">{{ section.settings.text }}</div>
+        {% assign less_text = section.settings.text %}
+        {% capture less_inline_image %}{% if section.settings.text_inline_image != blank %}{{ section.settings.text_inline_image | image_url: width: 240 | image_tag: class: 'genetix-less-noise__inline-image', widths: '60, 100, 160, 240', sizes: '5em', loading: 'lazy', alt: section.settings.text_inline_image_alt }}{% endif %}{% endcapture %}
+        {% if section.settings.text_inline_image != blank %}{% if less_text contains '[image]' %}{% assign less_text = less_text | replace: '[image]', less_inline_image %}{% elsif less_text contains 'GENETIX' %}{% assign less_text = less_text | replace: 'GENETIX', less_inline_image %}{% else %}{% assign less_text = less_text | append: ' ' | append: less_inline_image %}{% endif %}{% endif %}
+        <div class="genetix-less-noise__copy rte" style="--gx-inline-image-scale:{{ section.settings.text_inline_image_scale | divided_by: 100.0 }}em;">{{ less_text }}</div>
       {% endif %}
       {% if section.settings.secondary_text != blank %}
         <div class="genetix-less-noise__secondary rte">{{ section.settings.secondary_text }}</div>
@@ -88,6 +91,10 @@
     { "type": "range", "id": "title_image_width", "label": "Image width", "min": 40, "max": 400, "step": 4, "unit": "px", "default": 180, "visible_if": "{{ section.settings.title_image != blank }}" },
     { "type": "textarea", "id": "heading", "label": "Heading", "default": "Less noise.\nMore intention." },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>We believe great care begins with a considered formula. The GENETIX MATRIX brings together five active ingredients in one skin and scalp routine.</p>" },
+    { "type": "image_picker", "id": "text_inline_image", "label": "Inline image in text" },
+    { "type": "range", "id": "text_inline_image_scale", "label": "Inline image size", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ section.settings.text_inline_image != blank }}" },
+    { "type": "text", "id": "text_inline_image_alt", "label": "Inline image alt text", "default": "GENETIX", "visible_if": "{{ section.settings.text_inline_image != blank }}" },
+    { "type": "paragraph", "content": "The image replaces GENETIX automatically. Add [image] to choose another position." },
     { "type": "richtext", "id": "secondary_text", "label": "Secondary text", "default": "<p>Precision in formulation. Purpose in every ingredient.</p>" },
     { "type": "text", "id": "button_label", "label": "Link label", "default": "Meet the ingredient matrix" },
     { "type": "url", "id": "button_link", "label": "Link" },

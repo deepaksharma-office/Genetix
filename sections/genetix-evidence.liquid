@@ -10,7 +10,12 @@
     <div class="genetix-evidence__content">
       {% if section.settings.eyebrow != blank %}<p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}
       {% if section.settings.heading != blank %}<h2>{{ section.settings.heading | escape | newline_to_br }}</h2>{% endif %}
-      {% if section.settings.text != blank %}<div class="genetix__copy genetix-evidence__intro rte">{{ section.settings.text }}</div>{% endif %}
+      {% if section.settings.text != blank %}
+        {% assign evidence_text = section.settings.text %}
+        {% capture evidence_inline_image %}{% if section.settings.text_inline_image != blank %}{{ section.settings.text_inline_image | image_url: width: 240 | image_tag: class: 'genetix-evidence__inline-image', widths: '60, 100, 160, 240', sizes: '5em', loading: 'lazy', alt: section.settings.text_inline_image_alt }}{% endif %}{% endcapture %}
+        {% if section.settings.text_inline_image != blank %}{% if evidence_text contains '[image]' %}{% assign evidence_text = evidence_text | replace: '[image]', evidence_inline_image %}{% elsif evidence_text contains 'GENETIX' %}{% assign evidence_text = evidence_text | replace: 'GENETIX', evidence_inline_image %}{% else %}{% assign evidence_text = evidence_text | append: ' ' | append: evidence_inline_image %}{% endif %}{% endif %}
+        <div class="genetix__copy genetix-evidence__intro rte" style="--gx-inline-image-scale:{{ section.settings.text_inline_image_scale | divided_by: 100.0 }}em;">{{ evidence_text }}</div>
+      {% endif %}
       <ul class="genetix-evidence__list" role="list">
         {% for block in section.blocks %}
           {% if block.type == 'evidence' %}
@@ -83,6 +88,10 @@
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "QUALITY + LABORATORY TESTING" },
     { "type": "textarea", "id": "heading", "label": "Heading", "default": "Evidence matters.\nQuality comes first." },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Our manufacturing and testing standards are central to the GENETIX PEPTIDES matrix. Laboratory testing and lab reports will be published in this dedicated section.</p>" },
+    { "type": "image_picker", "id": "text_inline_image", "label": "Inline image in text" },
+    { "type": "range", "id": "text_inline_image_scale", "label": "Inline image size", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ section.settings.text_inline_image != blank }}" },
+    { "type": "text", "id": "text_inline_image_alt", "label": "Inline image alt text", "default": "GENETIX", "visible_if": "{{ section.settings.text_inline_image != blank }}" },
+    { "type": "paragraph", "content": "The image replaces GENETIX automatically. Add [image] to choose another position." },
     { "type": "color", "id": "background", "label": "Background", "default": "#eef8fb" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" },
     { "type": "color", "id": "muted_color", "label": "Muted text", "default": "#647c84" },

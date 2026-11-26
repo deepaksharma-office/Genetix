@@ -26,7 +26,12 @@
         {% for block in section.blocks %}
           {% if block.type == 'comparison' and block.settings.side == 'left' %}
             <article class="genetix-vault__comparison" {{ block.shopify_attributes }}>
-              {% if block.settings.eyebrow != blank %}<p class="genetix-vault__comparison-eyebrow">{{ block.settings.eyebrow | escape }}</p>{% endif %}
+              {% if block.settings.eyebrow != blank %}
+                {% assign comparison_eyebrow = block.settings.eyebrow | escape %}
+                {% capture comparison_eyebrow_image %}{% if block.settings.eyebrow_image != blank %}{{ block.settings.eyebrow_image | image_url: width: 300 | image_tag: class: 'genetix-vault__inline-image', widths: '60, 100, 160, 220, 300', sizes: '6em', loading: 'lazy', alt: block.settings.eyebrow_image_alt }}{% endif %}{% endcapture %}
+                {% if block.settings.eyebrow_image != blank %}{% if comparison_eyebrow contains '[image]' %}{% assign comparison_eyebrow = comparison_eyebrow | replace: '[image]', comparison_eyebrow_image %}{% elsif comparison_eyebrow contains 'GENETIX' %}{% assign comparison_eyebrow = comparison_eyebrow | replace: 'GENETIX', comparison_eyebrow_image %}{% else %}{% assign comparison_eyebrow = comparison_eyebrow | append: ' ' | append: comparison_eyebrow_image %}{% endif %}{% endif %}
+                <p class="genetix-vault__comparison-eyebrow" style="--gx-inline-image-scale:{{ block.settings.eyebrow_image_scale | divided_by: 100.0 }}em;">{{ comparison_eyebrow }}</p>
+              {% endif %}
               {% if block.settings.title != blank %}<h3>{{ block.settings.title }}</h3>{% endif %}
               {% if block.settings.subtitle != blank %}<p class="genetix-vault__subtitle">{{ block.settings.subtitle | escape }}</p>{% endif %}
               {% if block.settings.text != blank %}<div class="genetix-vault__body rte">{{ block.settings.text }}</div>{% endif %}
@@ -49,7 +54,12 @@
         {% for block in section.blocks %}
           {% if block.type == 'comparison' and block.settings.side == 'right' %}
             <article class="genetix-vault__comparison" {{ block.shopify_attributes }}>
-              {% if block.settings.eyebrow != blank %}<p class="genetix-vault__comparison-eyebrow">{{ block.settings.eyebrow | escape }}</p>{% endif %}
+              {% if block.settings.eyebrow != blank %}
+                {% assign comparison_eyebrow = block.settings.eyebrow | escape %}
+                {% capture comparison_eyebrow_image %}{% if block.settings.eyebrow_image != blank %}{{ block.settings.eyebrow_image | image_url: width: 300 | image_tag: class: 'genetix-vault__inline-image', widths: '60, 100, 160, 220, 300', sizes: '6em', loading: 'lazy', alt: block.settings.eyebrow_image_alt }}{% endif %}{% endcapture %}
+                {% if block.settings.eyebrow_image != blank %}{% if comparison_eyebrow contains '[image]' %}{% assign comparison_eyebrow = comparison_eyebrow | replace: '[image]', comparison_eyebrow_image %}{% elsif comparison_eyebrow contains 'GENETIX' %}{% assign comparison_eyebrow = comparison_eyebrow | replace: 'GENETIX', comparison_eyebrow_image %}{% else %}{% assign comparison_eyebrow = comparison_eyebrow | append: ' ' | append: comparison_eyebrow_image %}{% endif %}{% endif %}
+                <p class="genetix-vault__comparison-eyebrow" style="--gx-inline-image-scale:{{ block.settings.eyebrow_image_scale | divided_by: 100.0 }}em;">{{ comparison_eyebrow }}</p>
+              {% endif %}
               {% if block.settings.title != blank %}<h3>{{ block.settings.title }}</h3>{% endif %}
               {% if block.settings.subtitle != blank %}<p class="genetix-vault__subtitle">{{ block.settings.subtitle | escape }}</p>{% endif %}
               {% if block.settings.text != blank %}<div class="genetix-vault__body rte">{{ block.settings.text }}</div>{% endif %}
@@ -107,6 +117,10 @@
     { "type": "comparison", "name": "Comparison column", "limit": 2, "settings": [
       { "type": "select", "id": "side", "label": "Position", "options": [{ "value": "left", "label": "Left" }, { "value": "right", "label": "Right" }], "default": "left" },
       { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE INDUSTRY STANDARD" },
+      { "type": "image_picker", "id": "eyebrow_image", "label": "Inline eyebrow image" },
+      { "type": "range", "id": "eyebrow_image_scale", "label": "Inline image size", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ block.settings.eyebrow_image != blank }}" },
+      { "type": "text", "id": "eyebrow_image_alt", "label": "Inline image alt text", "default": "GENETIX", "visible_if": "{{ block.settings.eyebrow_image != blank }}" },
+      { "type": "paragraph", "content": "The image replaces GENETIX automatically. Add [image] to choose another position." },
       { "type": "inline_richtext", "id": "title", "label": "Title", "default": "$150.00–$199.00" },
       { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "For a standard 1 oz bottle" },
       { "type": "richtext", "id": "text", "label": "Description", "default": "<p>Corporate brands charge up to $150.00 to $199.00 for a tiny, standard 1 oz bottle of diluted, unbonded formulas.</p>" },

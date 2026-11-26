@@ -20,9 +20,15 @@
         </div>
       {% endif %}
       {% if section.settings.eyebrow != blank %}
-        <p class="genetix__eyebrow genetix-newsletter__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {% assign newsletter_eyebrow = section.settings.eyebrow | escape %}
+        {% capture newsletter_eyebrow_image %}{% if section.settings.eyebrow_inline_image != blank %}{{ section.settings.eyebrow_inline_image | image_url: width: 240 | image_tag: class: 'genetix-newsletter__inline-image', widths: '60, 100, 160, 240', sizes: '5em', loading: 'lazy', alt: section.settings.eyebrow_inline_image_alt }}{% endif %}{% endcapture %}
+        {% if section.settings.eyebrow_inline_image != blank %}{% if newsletter_eyebrow contains '[image]' %}{% assign newsletter_eyebrow = newsletter_eyebrow | replace: '[image]', newsletter_eyebrow_image %}{% elsif newsletter_eyebrow contains 'GENETIX' %}{% assign newsletter_eyebrow = newsletter_eyebrow | replace: 'GENETIX', newsletter_eyebrow_image %}{% else %}{% assign newsletter_eyebrow = newsletter_eyebrow | append: ' ' | append: newsletter_eyebrow_image %}{% endif %}{% endif %}
+        <p class="genetix__eyebrow genetix-newsletter__eyebrow" style="--gx-inline-image-scale:{{ section.settings.eyebrow_inline_image_scale | divided_by: 100.0 }}em;">{{ newsletter_eyebrow }}</p>
       {% endif %}
-      <h2>{{ section.settings.heading | escape }}</h2>
+      {% assign newsletter_heading = section.settings.heading | escape %}
+      {% capture newsletter_heading_image %}{% if section.settings.heading_inline_image != blank %}{{ section.settings.heading_inline_image | image_url: width: 300 | image_tag: class: 'genetix-newsletter__inline-image', widths: '60, 100, 160, 240, 300', sizes: '5em', loading: 'lazy', alt: section.settings.heading_inline_image_alt }}{% endif %}{% endcapture %}
+      {% if section.settings.heading_inline_image != blank %}{% if newsletter_heading contains '[image]' %}{% assign newsletter_heading = newsletter_heading | replace: '[image]', newsletter_heading_image %}{% elsif newsletter_heading contains 'GENETIX' %}{% assign newsletter_heading = newsletter_heading | replace: 'GENETIX', newsletter_heading_image %}{% else %}{% assign newsletter_heading = newsletter_heading | append: ' ' | append: newsletter_heading_image %}{% endif %}{% endif %}
+      <h2 style="--gx-inline-image-scale:{{ section.settings.heading_inline_image_scale | divided_by: 100.0 }}em;">{{ newsletter_heading }}</h2>
       <div class="genetix-newsletter__intro">
         <div class="genetix__copy">{{ section.settings.text }}</div>
       </div>
@@ -47,7 +53,10 @@
         <button type="submit">{{ section.settings.button_label | escape }}</button>
       </div>
       {% if section.settings.fine_print != blank %}
-        <div class="genetix-newsletter__fine-print">{{ section.settings.fine_print }}</div>
+        {% assign newsletter_fine_print = section.settings.fine_print %}
+        {% capture newsletter_fine_image %}{% if section.settings.fine_print_inline_image != blank %}{{ section.settings.fine_print_inline_image | image_url: width: 200 | image_tag: class: 'genetix-newsletter__inline-image', widths: '60, 100, 160, 200', sizes: '4em', loading: 'lazy', alt: section.settings.fine_print_inline_image_alt }}{% endif %}{% endcapture %}
+        {% if section.settings.fine_print_inline_image != blank %}{% if newsletter_fine_print contains '[image]' %}{% assign newsletter_fine_print = newsletter_fine_print | replace: '[image]', newsletter_fine_image %}{% elsif newsletter_fine_print contains 'GENETIX' %}{% assign newsletter_fine_print = newsletter_fine_print | replace: 'GENETIX', newsletter_fine_image %}{% else %}{% assign newsletter_fine_print = newsletter_fine_print | append: ' ' | append: newsletter_fine_image %}{% endif %}{% endif %}
+        <div class="genetix-newsletter__fine-print" style="--gx-inline-image-scale:{{ section.settings.fine_print_inline_image_scale | divided_by: 100.0 }}em;">{{ newsletter_fine_print }}</div>
       {% endif %}
       {% if form.posted_successfully? %}
         <p id="NewsletterMessage-{{ section.id }}" class="genetix-newsletter__message" role="status">{{ 'blocks.email_signup.success' | t }}</p>
@@ -69,11 +78,20 @@
     { "type": "range", "id": "image_width_mobile", "label": "Mobile image width", "min": 100, "max": 400, "step": 10, "unit": "px", "default": 260 },
     { "type": "header", "content": "Content" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "PRIVATE ACCESS / GENETIX PEPTIDES" },
+    { "type": "image_picker", "id": "eyebrow_inline_image", "label": "Inline eyebrow image" },
+    { "type": "range", "id": "eyebrow_inline_image_scale", "label": "Eyebrow image size", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ section.settings.eyebrow_inline_image != blank }}" },
+    { "type": "text", "id": "eyebrow_inline_image_alt", "label": "Eyebrow image alt text", "default": "GENETIX", "visible_if": "{{ section.settings.eyebrow_inline_image != blank }}" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "GENETIX PEPTIDES: Clinical Cellular Matrix." },
+    { "type": "image_picker", "id": "heading_inline_image", "label": "Inline heading image" },
+    { "type": "range", "id": "heading_inline_image_scale", "label": "Heading image size", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ section.settings.heading_inline_image != blank }}" },
+    { "type": "text", "id": "heading_inline_image_alt", "label": "Heading image alt text", "default": "GENETIX", "visible_if": "{{ section.settings.heading_inline_image != blank }}" },
     { "type": "richtext", "id": "text", "label": "Text", "default": "<p>Join our VIP Mailing List for new product updates, official launch dates, exclusive access to upcoming giveaways, and priority allocation on our high-purity GHK-Cu topical production runs.</p>" },
     { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "Your email address" },
     { "type": "text", "id": "button_label", "label": "Button label", "default": "Join the VIP list" },
     { "type": "richtext", "id": "fine_print", "label": "Fine print", "default": "<p>By subscribing, you agree to receive GENETIX email updates. You can unsubscribe at any time.</p>" },
+    { "type": "image_picker", "id": "fine_print_inline_image", "label": "Inline image in fine print" },
+    { "type": "range", "id": "fine_print_inline_image_scale", "label": "Fine print image size", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ section.settings.fine_print_inline_image != blank }}" },
+    { "type": "text", "id": "fine_print_inline_image_alt", "label": "Fine print image alt text", "default": "GENETIX", "visible_if": "{{ section.settings.fine_print_inline_image != blank }}" },
     { "type": "color", "id": "background", "label": "Background", "default": "#ffffff" },
     { "type": "color", "id": "text_color", "label": "Text", "default": "#173c48" },
     { "type": "color", "id": "button_background", "label": "Button background", "default": "#153640" },

@@ -103,10 +103,11 @@
         "title": {
           "type": "title",
           "settings": {
-            "title": "THE FUTURE OF SKIN LONGEVITY.",
+            "title": "<strong>THE FUTURE OF SKIN LONGEVITY.</strong>",
             "color": "#173c48",
-            "highlight_color": "#2196b5",
-            "font_size": 30,
+            "bold": true,
+            "highlight_color": "#000000",
+            "font_size": 24,
             "font_size_mobile": 24
           }
         },
@@ -115,8 +116,9 @@
           "settings": {
             "title": "CLINICAL PEPTIDE SCIENCE. UNCOMPROMISED QUALITY. SUPERIOR BIOAVAILABILITY.",
             "color": "#173c48",
+            "bold": false,
             "highlight_color": "#2196b5",
-            "font_size": 36,
+            "font_size": 38,
             "font_size_mobile": 26
           }
         },
@@ -230,7 +232,7 @@
         "floating_text_color": "#9ddfeb",
         "floating_text_size": 112,
         "floating_text_position_x": 50,
-        "floating_text_offset_y": 20,
+        "floating_text_offset_y": 45,
         "alignment": "left",
         "background": "#eaf5fa",
         "overlay": "#ffffff",

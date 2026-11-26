@@ -171,3 +171,4 @@
     padding: 44px 28px;
   }
 }
+.genetix-less-noise__inline-image{display:inline-block;width:auto;height:var(--gx-inline-image-scale,1em);margin-inline:.1em;vertical-align:-.18em;object-fit:contain}
