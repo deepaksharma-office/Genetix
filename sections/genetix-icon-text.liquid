@@ -46,7 +46,25 @@
         <h2>{{ section.settings.heading | escape | newline_to_br }}</h2>
       {% endif %}
       {% if section.settings.text != blank %}
-        <div class="genetix-icon-text__statement rte custom_gradient_style ">{{ section.settings.text }}</div>
+        {% assign statement_text = section.settings.text %}
+        {% if section.settings.statement_image != blank %}
+          {% capture statement_image %}{{ section.settings.statement_image | image_url: width: 600 | image_tag: class: 'genetix-icon-text__statement-image', widths: '60, 100, 160, 220, 300, 600', sizes: '6em', loading: 'lazy', alt: section.settings.statement_image_alt }}{% endcapture %}
+          {% if statement_text contains '[image]' %}
+            {% assign statement_text = statement_text | replace: '[image]', statement_image %}
+          {% elsif statement_text contains 'GENETIX' %}
+            {% assign statement_text = statement_text | replace_first: 'GENETIX', statement_image %}
+          {% elsif statement_text contains 'Genetix' %}
+            {% assign statement_text = statement_text | replace_first: 'Genetix', statement_image %}
+          {% elsif statement_text contains 'genetix' %}
+            {% assign statement_text = statement_text | replace_first: 'genetix', statement_image %}
+          {% else %}
+            {% capture image_paragraph %}<p>{{ statement_image }}</p>{% endcapture %}
+            {% assign statement_text = statement_text | append: image_paragraph %}
+          {% endif %}
+        {% endif %}
+        <div class="genetix-icon-text__statement rte custom_gradient_style" style="--gx-statement-image-scale: {{ section.settings.statement_image_scale | divided_by: 100.0 }}em;">
+          {{ statement_text }}
+        </div>
       {% endif %}
     </div>
 
@@ -106,6 +124,18 @@
   {%- endfor %}
 </section>
 
+{% style %}
+  #shopify-section-{{ section.id }} .genetix-icon-text__statement .genetix-icon-text__statement-image {
+    display: inline-block;
+    height: var(--gx-statement-image-scale, 1em);
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    vertical-align: middle;
+    margin: 0 0.15em;
+  }
+{% endstyle %}
+
 {% schema %}
 {
   "name": "GENETIX icon text",
@@ -163,6 +193,29 @@
       "id": "text",
       "label": "Introduction",
       "default": "<p>At Genetix Peptides, we believe in formulating through pure biochemistry in an industry heavily crowded by ‘more is better’ marketing. We refuse to chase deceptive percentages. Every formulation we engineer is scientifically balanced at the exact, optimal ratios required to heal, restore, and revitalize the skin—ensuring maximum cellular absorption without causing localized harm. Because while more sounds better, true science knows exactly what works.</p>"
+    },
+    { "type": "image_picker", "id": "statement_image", "label": "Introduction inline image" },
+    {
+      "type": "range",
+      "id": "statement_image_scale",
+      "label": "Introduction inline image size",
+      "min": 50,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ section.settings.statement_image != blank }}"
+    },
+    {
+      "type": "text",
+      "id": "statement_image_alt",
+      "label": "Introduction image alt text",
+      "default": "GENETIX",
+      "visible_if": "{{ section.settings.statement_image != blank }}"
+    },
+    {
+      "type": "paragraph",
+      "content": "Add [image] in the introduction to position the image. Otherwise it replaces the first matching GENETIX, Genetix or genetix, or appears below the text."
     },
     {
       "type": "range",
