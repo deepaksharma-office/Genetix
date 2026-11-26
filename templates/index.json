@@ -126,6 +126,8 @@
           "type": "text",
           "settings": {
             "text": "<p>GHK-Cu Skin & Scalp Matrix</p>",
+            "inline_image_scale": 100,
+            "inline_image_alt": "GENETIX",
             "style": "body",
             "color": "#173c48",
             "bg_color": "rgba(0,0,0,0)",
@@ -137,6 +139,8 @@
           "type": "text",
           "settings": {
             "text": "<p>Most skincare brands sell watered-down formulas that sit on the surface. GENETIX PEPTIDES engineers advanced, lipid-stabilized matrices designed to penetrate the oil barrier and remodel the skin from the deep dermis up.</p>",
+            "inline_image_scale": 100,
+            "inline_image_alt": "GENETIX",
             "style": "body",
             "color": "#173c48",
             "bg_color": "#ffffffa8",
@@ -249,6 +253,7 @@
           "settings": {
             "image": "shopify://shop_images/Cruelty-Free-Rabbit.png",
             "heading": "Cruelty free",
+            "heading_font_size": 16,
             "text": "A considered approach to care, without unnecessary compromises.",
             "link_label": "",
             "link": ""
@@ -259,6 +264,7 @@
           "settings": {
             "image": "shopify://shop_images/Icon-flask-58.png",
             "heading": "Laboratory Tested",
+            "heading_font_size": 16,
             "text": "A focus on quality, consistency, and the details of the formula.",
             "link_label": "",
             "link": ""
@@ -269,6 +275,7 @@
           "settings": {
             "image": "shopify://shop_images/Icon-factory-69.png",
             "heading": "Manufactured in an FDA Registered Facility",
+            "heading_font_size": 16,
             "text": "Manufactured with considered standards.",
             "link_label": "",
             "link": ""
@@ -279,6 +286,7 @@
           "settings": {
             "image": "shopify://shop_images/Icon-flag-80.png",
             "heading": "Made in the USA",
+            "heading_font_size": 16,
             "text": "Produced in the United States. Refined care, down to the details.",
             "link_label": "",
             "link": ""
@@ -617,6 +625,8 @@
           "settings": {
             "side": "left",
             "eyebrow": "THE INDUSTRY STANDARD",
+            "eyebrow_image_scale": 100,
+            "eyebrow_image_alt": "GENETIX",
             "title": "$150.00–$199.00",
             "subtitle": "For a standard 1 oz bottle",
             "text": "<p>Corporate brands charge up to $150.00 to $199.00 for a tiny, standard 1 oz bottle of diluted, unbonded formulas.</p>",
@@ -629,6 +639,9 @@
           "settings": {
             "side": "right",
             "eyebrow": "THE GENETIX STANDARD",
+            "eyebrow_image": "shopify://shop_images/Group_1_819c139f-d8c7-4cd4-8b7a-d33343ee6d45.svg",
+            "eyebrow_image_scale": 100,
+            "eyebrow_image_alt": "GENETIX",
             "title": "2 oz",
             "subtitle": "60 ml of concentrated care",
             "text": "<p>We reject corporate markups. We deliver a massive, clinical-grade 2 oz bottle loaded with uncompromised, active compound concentrations.</p>",
@@ -661,7 +674,7 @@
         "image_width": 280,
         "background": "#153640",
         "text_color": "#ffffff",
-        "muted_color": "#a9bec4",
+        "muted_color": "{{ settings.color_palette.background }}",
         "line_color": "#49636b",
         "padding_top": 52,
         "padding_bottom": 52
@@ -745,6 +758,8 @@
         "title_image_width": 100,
         "heading": "Less noise.\nMore intention.",
         "text": "<p>We believe great care begins with a considered formula. The GENETIX MATRIX brings together five active ingredients in one skin and scalp routine.</p>",
+        "text_inline_image_scale": 100,
+        "text_inline_image_alt": "GENETIX",
         "secondary_text": "<p>Precision in formulation. Purpose in every ingredient.</p>",
         "button_label": "Meet the ingredient matrix",
         "button_link": "shopify://pages/meet-the-ingredient-matrix",
@@ -868,6 +883,8 @@
         "eyebrow": "QUALITY + LABORATORY TESTING",
         "heading": "Evidence matters.\nQuality comes first.",
         "text": "<p>Our manufacturing and testing standards are central to the GENETIX PEPTIDES matrix. Laboratory testing and lab reports will be published in this dedicated section.</p>",
+        "text_inline_image_scale": 100,
+        "text_inline_image_alt": "GENETIX",
         "background": "#eef8fb",
         "text_color": "#173c48",
         "muted_color": "#647c84",
@@ -1176,11 +1193,17 @@
         "image_width": 360,
         "image_width_mobile": 260,
         "eyebrow": "PRIVATE ACCESS / GENETIX PEPTIDES",
+        "eyebrow_inline_image_scale": 100,
+        "eyebrow_inline_image_alt": "GENETIX",
         "heading": "GENETIX PEPTIDES: Clinical Cellular Matrix.",
+        "heading_inline_image_scale": 100,
+        "heading_inline_image_alt": "GENETIX",
         "text": "<p>Join our VIP Mailing List for new product updates, official launch dates, exclusive access to upcoming giveaways, and priority allocation on our high-purity GHK-Cu topical production runs.</p>",
         "placeholder": "Your email address",
         "button_label": "Join the VIP list",
         "fine_print": "<p>By subscribing, you agree to receive GENETIX email updates. You can unsubscribe at any time.</p>",
+        "fine_print_inline_image_scale": 100,
+        "fine_print_inline_image_alt": "GENETIX",
         "background": "#ffffff",
         "text_color": "#173c48",
         "button_background": "#153640",

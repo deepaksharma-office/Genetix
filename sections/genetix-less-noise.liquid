@@ -14,7 +14,10 @@
   <div class="genetix__inner genetix-less-noise__inner">
     <div class="genetix-less-noise__content">
       {% if section.settings.eyebrow != blank %}
-        <p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {% assign less_noise_eyebrow = section.settings.eyebrow | escape %}
+        {% capture less_noise_eyebrow_image %}{% if section.settings.eyebrow_image != blank %}{{ section.settings.eyebrow_image | image_url: width: 300 | image_tag: class: 'genetix-less-noise__eyebrow-image', widths: '60, 100, 160, 220, 300', sizes: '6em', loading: 'lazy', alt: section.settings.eyebrow_image_alt }}{% endif %}{% endcapture %}
+        {% if section.settings.eyebrow_image != blank %}{% if less_noise_eyebrow contains '[image]' %}{% assign less_noise_eyebrow = less_noise_eyebrow | replace: '[image]', less_noise_eyebrow_image %}{% elsif less_noise_eyebrow contains 'GENETIX' %}{% assign less_noise_eyebrow = less_noise_eyebrow | replace: 'GENETIX', less_noise_eyebrow_image %}{% else %}{% assign less_noise_eyebrow = less_noise_eyebrow | append: ' ' | append: less_noise_eyebrow_image %}{% endif %}{% endif %}
+        <p class="genetix__eyebrow" style="--gx-less-eyebrow-size:{{ section.settings.eyebrow_font_size }}px;--gx-inline-image-scale:{{ section.settings.eyebrow_image_scale | divided_by: 100.0 }}em;">{{ less_noise_eyebrow }}</p>
       {% endif %}
       {% if section.settings.title_image != blank %}
         {% assign title_image_size = section.settings.title_image_width | append: 'px' %}
@@ -87,6 +90,11 @@
   "settings": [
     { "type": "header", "content": "Left content" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE GENETIX PHILOSOPHY" },
+    { "type": "image_picker", "id": "eyebrow_image", "label": "Inline eyebrow image" },
+    { "type": "range", "id": "eyebrow_font_size", "label": "Eyebrow text size", "min": 8, "max": 24, "step": 1, "unit": "px", "default": 14 },
+    { "type": "range", "id": "eyebrow_image_scale", "label": "Inline image size", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ section.settings.eyebrow_image != blank }}" },
+    { "type": "text", "id": "eyebrow_image_alt", "label": "Inline image alt text", "default": "GENETIX", "visible_if": "{{ section.settings.eyebrow_image != blank }}" },
+    { "type": "paragraph", "content": "The image replaces GENETIX automatically. Add [image] to choose another position." },
     { "type": "image_picker", "id": "title_image", "label": "Image above title" },
     { "type": "range", "id": "title_image_width", "label": "Image width", "min": 40, "max": 400, "step": 4, "unit": "px", "default": 180, "visible_if": "{{ section.settings.title_image != blank }}" },
     { "type": "textarea", "id": "heading", "label": "Heading", "default": "Less noise.\nMore intention." },

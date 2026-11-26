@@ -16,8 +16,17 @@
 
 .genetix-less-noise__content .genetix__eyebrow {
   margin-block-end: 23px;
-  font-size: 14px;
+  font-size: var(--gx-less-eyebrow-size, 14px);
   letter-spacing: 0;
+}
+
+.genetix-less-noise__eyebrow-image {
+  display: inline-block;
+  width: auto;
+  height: var(--gx-inline-image-scale, 1em);
+  margin-inline: .1em;
+  vertical-align: -.18em;
+  object-fit: contain;
 }
 
 .genetix-less-noise__title-image {

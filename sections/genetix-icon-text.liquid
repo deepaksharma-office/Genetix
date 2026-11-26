@@ -27,7 +27,10 @@
         </div>
       {% endif %}
       {% if section.settings.eyebrow != blank %}
-        <p class="genetix__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {% assign icon_text_eyebrow = section.settings.eyebrow | escape %}
+        {% capture icon_text_eyebrow_image %}{% if section.settings.eyebrow_image != blank %}{{ section.settings.eyebrow_image | image_url: width: 300 | image_tag: class: 'genetix-icon-text__eyebrow-image', widths: '60, 100, 160, 220, 300', sizes: '6em', loading: 'lazy', alt: section.settings.eyebrow_image_alt }}{% endif %}{% endcapture %}
+        {% if section.settings.eyebrow_image != blank %}{% if icon_text_eyebrow contains '[image]' %}{% assign icon_text_eyebrow = icon_text_eyebrow | replace: '[image]', icon_text_eyebrow_image %}{% elsif icon_text_eyebrow contains 'GENETIX' %}{% assign icon_text_eyebrow = icon_text_eyebrow | replace: 'GENETIX', icon_text_eyebrow_image %}{% else %}{% assign icon_text_eyebrow = icon_text_eyebrow | append: ' ' | append: icon_text_eyebrow_image %}{% endif %}{% endif %}
+        <p class="genetix__eyebrow" style="--gx-icon-text-eyebrow-size:{{ section.settings.eyebrow_font_size }}px;--gx-inline-image-scale:{{ section.settings.eyebrow_image_scale | divided_by: 100.0 }}em;">{{ icon_text_eyebrow }}</p>
       {% endif %}
       {% if section.settings.heading != blank %}
         <h2>{{ section.settings.heading | escape | newline_to_br }}</h2>
@@ -90,6 +93,11 @@
     { "type": "image_picker", "id": "intro_image", "label": "Image above title" },
     { "type": "range", "id": "intro_image_width", "label": "Image width", "min": 40, "max": 400, "step": 4, "unit": "px", "default": 160, "visible_if": "{{ section.settings.intro_image != blank }}" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "THE GENETIX STANDARD" },
+    { "type": "image_picker", "id": "eyebrow_image", "label": "Inline eyebrow image" },
+    { "type": "range", "id": "eyebrow_font_size", "label": "Eyebrow text size", "min": 8, "max": 24, "step": 1, "unit": "px", "default": 14 },
+    { "type": "range", "id": "eyebrow_image_scale", "label": "Inline image size", "min": 50, "max": 200, "step": 5, "unit": "%", "default": 100, "visible_if": "{{ section.settings.eyebrow_image != blank }}" },
+    { "type": "text", "id": "eyebrow_image_alt", "label": "Inline image alt text", "default": "GENETIX", "visible_if": "{{ section.settings.eyebrow_image != blank }}" },
+    { "type": "paragraph", "content": "The image replaces GENETIX automatically. Add [image] to choose another position." },
     { "type": "textarea", "id": "heading", "label": "Heading", "default": "Formulating Through\nPure Biochemistry" },
     { "type": "richtext", "id": "text", "label": "Introduction", "default": "<p>At Genetix Peptides, we believe in formulating through pure biochemistry in an industry heavily crowded by ‘more is better’ marketing. We refuse to chase deceptive percentages. Every formulation we engineer is scientifically balanced at the exact, optimal ratios required to heal, restore, and revitalize the skin—ensuring maximum cellular absorption without causing localized harm. Because while more sounds better, true science knows exactly what works.</p>" },
     { "type": "range", "id": "icon_size", "label": "Icon size", "min": 40, "max": 100, "step": 4, "unit": "px", "default": 72 },

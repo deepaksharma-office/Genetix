@@ -28,8 +28,17 @@
 
 .genetix-icon-text__intro .genetix__eyebrow {
   margin-block-end: 13px;
-  font-size: 14px;
+  font-size: var(--gx-icon-text-eyebrow-size, 14px);
   letter-spacing: 0;
+}
+
+.genetix-icon-text__eyebrow-image {
+  display: inline-block;
+  width: auto;
+  height: var(--gx-inline-image-scale, 1em);
+  margin-inline: .1em;
+  vertical-align: -.18em;
+  object-fit: contain;
 }
 
 .genetix-icon-text__intro h2 {
