@@ -144,7 +144,7 @@
             "inline_image_alt": "GENETIX",
             "style": "body",
             "color": "#173c48",
-            "bg_color": "#ffffffa8",
+            "bg_color": "rgba(0,0,0,0)",
             "font_size": 14,
             "font_size_mobile": 14
           }
