@@ -36,7 +36,7 @@
 
     {% form 'customer', class: 'genetix-newsletter__customer-form' %}
       <input type="hidden" name="contact[tags]" value="newsletter">
-      <label for="Newsletter-{{ section.id }}">{{ 'blocks.email_signup.label' | t }}</label>
+      {% comment %} <label for="Newsletter-{{ section.id }}">{{ 'blocks.email_signup.label' | t }}</label> {% endcomment %}
       <div class="genetix-newsletter__form">
         <input
           id="Newsletter-{{ section.id }}"
