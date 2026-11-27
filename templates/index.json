@@ -369,8 +369,8 @@
         "description_FpCqpM": {
           "type": "description",
           "settings": {
-            "source": "product",
-            "custom_text": "<p>Describe the formula, ingredients, and benefits.</p>",
+            "source": "custom",
+            "custom_text": "<p>THE [image] MATRIC SCIENCE, NOT WORDS 2% Pure GHK-Cu Complex: Reconstituted from 99% pure cosmetic-grade crystals into a high-performance Hyaluronic Acid matris base for rapid dermal absorption. 61% PAL-150 Matrikine Complex: Infused with lipophilic palmitic fatty acid tails that act like a Trojan Horse, seamlessly bypassing the skin's all bemer.</p>",
             "inline_image": "shopify://shop_images/ef7a204eecad8294f92f65a9558141e230facf17_ede90196-8c3d-4c64-b69c-56fa53144c6f.png",
             "image_size": 72,
             "font_size": 14,
