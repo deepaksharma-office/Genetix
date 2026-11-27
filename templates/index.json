@@ -264,7 +264,7 @@
           "type": "item",
           "settings": {
             "image": "shopify://shop_images/Icon-flask-58.png",
-            "heading": "Laboratory Tested",
+            "heading": "Clinically Tested",
             "heading_font_size": 16,
             "text": "A focus on quality, consistency, and the details of the formula.",
             "link_label": "",
@@ -750,7 +750,7 @@
         "two": {
           "type": "entry",
           "settings": {
-            "heading": "Laboratory Tested",
+            "heading": "Clinically Tested",
             "text": "Quality at the core of the matrix."
           }
         },
@@ -805,7 +805,7 @@
           "type": "evidence",
           "settings": {
             "icon": "flask",
-            "text": "Laboratory tested"
+            "text": "Clinically Tested"
           }
         },
         "documentation": {
